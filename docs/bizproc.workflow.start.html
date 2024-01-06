@@ -1,0 +1,93 @@
+<html>
+        <head>
+            <title>bizproc.workflow.start</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">bizproc.workflow.start <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/bizproc/bizproc_workflow_instance/bizproc_workflow_start.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">bizproc</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<p><b>bizproc.workflow.start</b> – метод запускает Бизнес-процесс.</p>
+
+<p>Для запуска БП из ленты новостей используйте метод <a class="link" href="/rest_help/lists/elements/lists_element_add.php">lists_element_add</a>. IBLOCK_TYPE_ID в этом случае будет <b>bitrix_processes</b>.</p>
+
+<h4>Параметры</h4>
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th></tr>
+   
+    <tr> 	<td>TEMPLATE_ID</td> 	<td>Идентификатор шаблона БП</td></tr>
+   
+    <tr> 	<td>DOCUMENT_ID</td> 	<td>Идентификатор документа БП</td></tr>
+   
+    <tr> 	<td>PARAMETERS</td> 	<td>Значения параметров БП (если шаблон с параметрами)</td></tr>
+   
+   </tbody>
+ </table>
+
+<h4>Примеры</h4>
+
+<pre class="syntax" rel="example">function startWf(leadId, tplId, cb)
+{
+	if (!leadId)
+	{
+		alert('Lead not selected');
+		return;
+	}
+	var params = {
+		TEMPLATE_ID: tplId,
+		DOCUMENT_ID: ['crm', 'CCrmDocumentLead', leadId],
+		PARAMETERS: null
+	};
+
+	BX24.callMethod(
+		'bizproc.workflow.start',
+		params,
+		function(result)
+		{
+			if(result.error())
+			alert("Error: " + result.error());
+			else if (cb)
+				cb();
+		}
+	);
+}</pre>
+
+<p>Примеры подстановки в параметр DOCUMENT_ID:</p>
+
+<pre class="syntax">['crm', 'CCrmDocumentLead', 'LEAD_777'] – Лид
+['crm', 'CCrmDocumentCompany', 'COMPANY_777'] – Компания
+['crm', 'CCrmDocumentContact', 'CONTACT_777'] – Контакт
+['crm', 'CCrmDocumentDeal', 'DEAL_777'] – Сделка
+['disk', 'Bitrix\Disk\BizProcDocument', '777'] – файл Диска
+['lists', 'BizprocDocument', '777'] – документ Процессов в ленте (в новостях)
+['lists', 'Bitrix\Lists\BizprocDocumentLists', '777'] – документ Списков
+</pre>
+
+<p>Пример DOCUMENT_ID для смарт-процесса:</p>
+
+<pre class="syntax">DOCUMENT_ID = ['crm', 'Bitrix\Crm\Integration\BizProc\Document\Dynamic', 'DYNAMIC_147_1']</pre>
+
+<p>Где 147 – это ID смарт-процесса, 1 – ID элемента.</p>
+<br>
+<p>Пример подстановки в параметр DOCUMENT_ID для новых счетов:</p>
+
+<pre class="syntax">Bitrix\Crm\Integration\BizProc\Document\SmartInvoice
+
+SMART_INVOICE_&lt;ID элемента&gt; </pre>
+
+<p>Для передачи в PARAMETERS параметра типа «Привязка к пользователю» используйте запись идентификатора пользователя в виде <b>user_ID</b>. Например:</p>
+
+<pre class="syntax">PARAMETERS: {
+	'resp_employee': user_14 // ID сотрудника
+}
+</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

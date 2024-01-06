@@ -1,0 +1,147 @@
+<html>
+        <head>
+            <title>imconnector.send.messages</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">imconnector.send.messages <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/imconnector/methods/imconnector_send_messages.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p>
+
+<div class="tab">
+
+<h3 class="tab-title">Описание</h3>
+
+
+<p>Метод отправки сообщений в ОЛ.</p>
+
+<h4>Параметры</h4>
+
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>CONNECTOR </td> 	<td>ID коннектора (который был указан при регистрации обработчика).
+</td> <td></td></tr>   
+
+    <tr> 	<td>LINE</td> 	<td>ID открытой линии.
+</td> <td></td></tr>   
+
+    <tr> 	<td>MESSAGES</td> 	<td>Массив сообщений, где сообщения описываются массивом следующего формата:
+  
+
+<pre class="syntax">array(
+	array(
+		//Массив описания пользователя
+		'user' =&gt; array(
+			'id',//ID пользователя во внешней системе *
+			'last_name',//Фамилия
+			'name',//Имя
+			'picture' =&gt;
+				array(
+					'url'//Ссылка на аватарку пользователя, доступную для портала
+				),
+				'url',//Ссылка на профиль пользователя
+				'sex',//Пол. Допустимо male и female
+				'email', //email
+				'phone', //телефон
+				'skip_phone_validate' =&gt; 'Y', //В значении 'Y' позволяет не применять валидацию 
+											  //номера телефона пользователя. По умолчанию 'N'.
+		),
+		//Массив описания сообщения
+		'message' =&gt; array(
+			'id', //ID сообщения во внешней системе.*
+			'date', //Время сообщения в формате timestamp *
+			'disable_crm' =&gt; 'Y' ,//отключить чат трекер (CRM трекер)
+			'text', //Текст сообщения. Должен быть указан элемент text или files. 
+					//Допустимое форматирование (BB коды) описаны 
+					//здесь: https://dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&amp;LESSON_ID=7679
+			'files' =&gt; array(//Массив описаний файлов, где каждый файл описывается 
+							//массивом, со ссылкой, которая доступна порталу
+				array('url' =&gt; 'Cсылка на файл'),
+				array('url' =&gt; 'Cсылка на файл'),
+				 ...
+			)
+		),
+		//Массив описания чата
+		'chat' =&gt; array(
+			'id',//ID чата во внешней системе *
+			'name', //Имя чата во внешней системе
+			'url', //Ссылка на чат во внешней системе
+		),
+	),
+	array(...),
+);
+</pre>
+
+<p>Формат передаваемого файла не имеет ограничений. В чате вложение в сообщение может форматироваться как картинка для типов: jpe, jpg, jpeg, png, webp, gif, bmp. </p>
+
+<p>Сообщения можно отправлять от имени менеджера, указав user_id в массиве message.</p>
+
+</td> <td></td></tr>   
+
+   </tbody>
+ </table>
+
+<p class="note">Параметр <b>skip_phone_validate</b> из структуры пользователя рекомендуется применять в только исключительных случаях. Параметр - вынужденная мера для преодоления ограничений валидатора номеров телефонов.</p>
+</div>
+
+<!------->
+
+
+
+
+<div class="tab">
+
+<h3 class="tab-title">Ошибки при вызове метода и их причины</h3>
+
+<table class="tnormal" width="100%">
+<tbody>
+<tr>
+	<th width="20%">Код</th><th>Выводимый текст ошибки</th><th>Пояснение</th></tr>
+
+<tr><td>WRONG_AUTH_TYPE</td>	<td>Current authorization type is denied for this method</td><td>Некорректный тип авторизации. Необходим тип oauth</td></tr>
+
+<tr><td>CONNECTOR</td>	<td>Argument 'CONNECTOR' is null or empty</td><td>Не указан обязательный параметр в запросе 'CONNECTOR'</td></tr>
+
+<tr><td>LINE</td>	<td>Argument 'LINE' is null or empty</td><td>Не указан обязательный параметр в запросе 'LINE'</td></tr>
+
+<tr><td rowspan="2">MESSAGES</td>	<td>Argument 'MESSAGES' is null or empty</td><td>Не указан обязательный параметр в запросе 'MESSAGES'</td></tr>
+<tr>	<td>The value of an argument 'MESSAGES' must be of type array</td><td>Значение параметра не является массивом.</td></tr>
+
+<tr><td>IMCONNECTOR_NO_CORRECT_PROVIDER</td>	<td>Не удалось найти подходящий провайдер для коннектора</td><td>Некорректное значение в параметре 'CONNECTOR'</td></tr>
+
+<tr><td>IMCONNECTOR_COULD_NOT_GET_PROVIDER_OBJECT</td>	<td>Не удалось получить объект провайдера</td><td>Некорректное значение в параметре 'CONNECTOR'</td></tr>
+
+<tr><td>IMCONNECTOR_NOT_SPECIFIED_CORRECT_COMMAND</td>	<td>Не указана корректная команда</td><td>Что-то невероятное. Это где-то ошибся разработчик.</td></tr>
+
+<tr><td>IMCONNECTOR_NOT_SPECIFIED_CORRECT_CONNECTOR</td>	<td>Не указан коннектор</td><td>Некорректное значение в параметре 'CONNECTOR'</td></tr>
+
+<tr><td>NOT_ACTIVE_LINE</td>	<td>Линия c таким ID неактивна или не существует</td><td>Линия на портале удалена или отключена</td></tr>
+
+<tr><td>PROVIDER_UNSUPPORTED_TYPE_INCOMING_MESSAGE</td>	<td>Неподдерживаемый тип входящего сообщения от сервера</td><td>Некорректное значение в параметре 'type_message', если он передан</td></tr>
+
+<tr><td>IMCONNECTOR_NOT_ALL_THE_REQUIRED_DATA</td>	<td>Переданы не все необходимые данные</td><td>Пустое или не корректное значение в параметре 'user'</td></tr>
+
+<tr><td>CONNECTOR_PROXY_NO_ADD_USER</td>	<td>Не удалось создать или получить пользователя системы, сопоставленного с пользователем удаленного мессенджера</td><td>Для работы чата открытых линий необходимо на портал добавить специального технического пользователя с признаком, что это пользователь для мессенджер-коннектора, и под которым невозможно авторизоваться</td></tr>
+
+<tr><td>CONNECTOR_PROXY_NO_USER_IM</td>	<td>Не получен id пользователя мессенджера</td><td>Некорректное значение поля 'id' в параметре 'user'. Это следствие предыдущей ошибки</td></tr>
+
+<tr><td>IMCONNECTOR_NOT_ALL_THE_REQUIRED_DATA</td>	<td>Переданы не все необходимые данные</td><td>Некорректное значение поля 'text' или 'files' в параметре 'message'. Не переданы какие-либо данные для отправки сообщения</td></tr>
+
+<tr><td rowspan="2">100</td>	<td>The MESSAGES parameter must be an array of messages (arrays)</td><td>Значение параметра 'MESSAGES' должно быть массивом сообщений.</td></tr>
+<tr>	<td>The incorrect structure of a message inside MESSAGES parameter.</td><td>Некорректная структура сообщений.</td></tr>
+
+</tbody>
+</table>
+
+
+<br><br>
+</div>
+
+<!------->							
+        </div>
+        </body>
+        </html>

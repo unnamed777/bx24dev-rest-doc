@@ -1,0 +1,147 @@
+<html>
+        <head>
+            <title>tasks.task.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">tasks.task.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<p class="note_blue">
+Scope: <span class="bg_blue">task</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<div class="tab">
+
+<h3 class="tab-title">Описание и пример</h3>
+<p>Возвращает информацию о конкретной задаче.</p>	
+
+<p></p><div class="note"><b>Внимание!</b> Необходимо указать поля в <strong>select</strong>, т.к. поля по умолчанию могут быть изменены в будущем.</div><p></p>
+
+<h4>Примеры</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'tasks.task.get', 
+	{taskId:1, select:['ID','TITLE']}, 
+	function(res){console.log(res.answer.result);}
+);
+</pre>
+
+<p>Для получения тэгов конкретной задачи:</p>
+
+<pre class="syntax">BX24.callMethod(
+	'tasks.task.get',
+	{taskId:1367, select:['TAGS']},
+	function(res){console.log(res.answer.result);}
+);</pre>
+
+<p>Синтаксис для выборки всех полей:</p>
+
+<pre class="syntax">BX24.callMethod(
+	'tasks.task.get',
+	{taskId:1367, select:['*']},
+	function(res){console.log(res.answer.result);}
+)</pre>
+
+
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+<table class="tnormal" width="100%"> 
+  <tbody> 
+    <tr><th width="15%">Параметр</th><th>Описание</th></tr>
+<tr><td>taskId</td><td>Идентификатор задачи.</td></tr>
+	
+<tr><td>select</td><td>Массив полей записей, которые будут возвращены методом. Можно указать только те поля, которые необходимы. <br><br>
+
+Поле может принимать значения: 		 
+        
+        <ul> 		
+          <li><b>ID</b> - идентификатор задачи;</li>
+          <li><b>PARENT_ID</b> - идентификатор родительской задачи;</li>
+          <li><b>TITLE</b> - название задачи;</li>
+          <li><b>DESCRIPTION</b> - описание;</li>
+          <li> <b>MARK</b> - оценка;</li>
+          <li> <b>PRIORITY</b> - приоритет:
+			<ul>
+				<li><strong>0</strong> - низкий;</li> 
+				<li><strong>1</strong> - средний;</li> 
+				<li><strong>2</strong> - высокий.</li> 
+			</ul>
+	</li>
+          <li><b>STATUS</b> - статус;</li>
+          <li><b>MULTITASK</b> - множественная задача;</li>
+          <li><b>NOT_VIEWED</b> - непросмотренная задача;</li>
+          <li><b>REPLICATE</b> - повторяемая задача;</li>	 
+          <li> <b>GROUP_ID </b>- рабочая группа.&nbsp;</li>
+          <li> <b>STAGE_ID </b>- стадия;</li>
+          <li><b>CREATED_BY</b> - постановщик;</li>
+          <li><b>CREATED_DATE</b> - дата создания;</li>
+          <li><b>RESPONSIBLE_ID</b> - исполнитель;</li>
+          <li> <b>ACCOMPLICE</b> - идентификатор соисполнителя;</li>
+          <li> <b>AUDITOR</b> - идентификатор наблюдателя </li>
+          <li><b>CHANGED_BY</b> - кем изменена задача;</li>
+          <li><b>CHANGED_DATE</b> - дата изменения;</li>
+          <li><b>STATUS_CHANGED_DATE</b> - кто изменил статус;</li>
+          <li><b>CLOSED_BY</b> - кто закрыл задачу;</li>
+          <li><b>CLOSED_DATE</b> - дата закрытия задачи;</li>
+          <li><b>DATE_START</b> - дата начала;</li>
+          <li><b>DEADLINE</b> - крайний срок;</li>
+          <li><b>START_DATE_PLAN</b> - плановое начало;</li>
+          <li><b>END_DATE_PLAN</b> - плановое завершение;</li>
+          <li><b>GUID</b> - GUID (статистически уникальный 128-битный идентификатор);</li>
+          <li><b>XML_ID</b> - внешний код;</li>
+          <li><b>COMMENTS_COUNT</b> - количество комментариев;</li>
+          <li><b>NEW_COMMENTS_COUNT</b> - количество новых комментариев;</li>
+          <li><b>TASK_CONTROL</b> - принять в работу;</li>
+          <li><b>ADD_IN_REPORT</b> - добавить в отчет;</li>
+          <li><b>FORKED_BY_TEMPLATE_ID</b> - создано автоматически из шаблона;</li>
+          <li><b>TIME_ESTIMATE</b> - затраченное время;</li>
+          <li><b>TIME_SPENT_IN_LOGS</b> - затраченное время из истории изменений;</li>
+          <li><b>MATCH_WORK_TIME</b> - пропустить выходные дни;</li>
+          <li><b>FORUM_TOPIC_ID</b> - идентификатор темы форума;</li>
+          <li><b>FORUM_ID</b> - идентификатор форума;</li>
+          <li><b>SITE_ID</b> - идентификатор сайта;</li>
+          <li><b>SUBORDINATE</b> - задача подчиненного;</li>
+          <li><b>FAVORITE</b> - Избранное;</li>
+          <li><b>VIEWED_DATE</b> - дата последнего просмотра;</li>
+          <li><b>SORTING</b> - индекс сортировки;</li>
+          <li><b>DURATION_PLAN</b> - затрачено (план);</li>
+          <li><b>DURATION_FACT</b> - затрачено (фактически);</li>
+          <li><b>DURATION_TYPE</b> - Тип продолжительности: <ul>
+<li>0 - секунды</li>
+<li>1 - минуты</li> 
+<li>2 - часы</li> 
+<li>3 - дни</li>
+<li>4 - недели</li> 
+<li>5 - месяцы</li> 
+<li>6 - года</li> 
+ </ul></li>
+          <li> <b>UF_CRM_TASK</b> - привязка к  элементам CRM.</li>                         
+</ul> 	
+
+<p>По умолчанию будут возвращены все невычисляемые поля основной таблицы запроса.</p>
+
+<p>Для получения пользовательских полей и поля привязки к CRM сущностям (UF_CRM_TASK), их нужно будет напрямую указать в SELECT.
+Список полей можно уточнить, отправив запрос <a class="link" href="/rest_help/tasks/task/tasks/tasks_task_getFields.php">tasks.task.getFields</a>.</p>
+
+</td></tr>
+  </tbody>
+</table>  
+
+
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

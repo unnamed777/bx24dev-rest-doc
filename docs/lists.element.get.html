@@ -1,0 +1,116 @@
+<html>
+        <head>
+            <title>lists.element.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">lists.element.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/lists/elements/lists_element_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Описание</h3>
+
+
+<pre class="syntax">lists.element.get(params)</pre>
+<p>Метод возвращает список элементов или элемент. В случае успеха возвращает данные по элементу(там), иначе пустой массив.</p>
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr><th width="15%">Параметр</th><th>Описание</th></tr>
+<tr><td>IBLOCK_TYPE_ID</td><td>id типа инфоблока (обязательно):
+<ul>
+<li><b>lists</b> - тип инфоблока списка</li>
+<li><b>bitrix_processes</b> - тип инфоблока процессов</li> 
+<li><b>lists_socnet</b> - тип инфоблока списков групп</li></ul></td></tr>
+<tr><td>SOCNET_GROUP_ID</td><td>id группы (обязательно, если список создается для группы);</td></tr>
+<tr><td>IBLOCK_CODE/IBLOCK_ID</td><td>код или id инфоблока (обязательно)</td></tr>
+<tr><td>ELEMENT_CODE/ELEMENT_ID</td><td>код или id элемента (Если не указан, вернет список всех элементов списка)</td></tr>
+<tr><td>ELEMENT_ORDER</td><td>Сортировка.  Массив <a class="link" href="https://dev.1c-bitrix.ru/api_help/iblock/fields.php#felement" title="Список полей элементов в API документации" target="_blank">полей элементов информационного блока</a>. Направление сортировки: <b>asc</b> (по возрастания) или <b>desc</b> (по убыванию)
+
+Пример: <br>
+<pre class="syntax">'ELEMENT_ORDER': { "ID": "DESC" } </pre>
+
+<br>
+
+Не поддерживается сортировка всех множественных свойств, а так же свойств:
+
+S:Money, PREVIEW_TEXT, DETAIL_TEXT, S:ECrm, S:map_yandex, PREVIEW_PICTURE, DETAIL_PICTURE, S:DiskFile, IBLOCK_SECTION_ID, BIZPROC, COMMENTS.
+
+</td></tr>
+
+<tr><td>FILTER</td><td>Фильтрация элементов. Объект с списком полей и значений.
+Для фильтрации доступны почти все поля из фильтра <a class="link" href="https://dev.1c-bitrix.ru/api_help/iblock/classes/ciblockelement/getlist.php" title="" target="_blank">CIBlockElement::GetList</a>. Например для фильтрации по полю число, нужно указать знак равно:
+<pre class="syntax">'FILTER': {
+	'=ID': [120,121],
+}</pre>
+Так же есть возможность использовать полнотекстовый поиск. Для этого Нужно использовать поле SEARCHABLE_CONTENT с префиксом <code>"*"</code>;</td></tr>
+
+</tbody>
+</table>
+
+    
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Пример</h3>
+
+<pre class="syntax" rel="example">var params = {
+	'IBLOCK_TYPE_ID': 'lists_socnet',
+	'IBLOCK_CODE': 'rest_1',
+	'ELEMENT_CODE': 'element_1'
+};
+BX24.callMethod(
+	'lists.element.get',
+	params,
+	function(result)
+	{
+		if(result.error())
+			alert("Error: " + result.error());
+		else
+			console.log(result.data());
+	}
+);</pre>
+
+
+<pre class="syntax" rel="example">var params = {
+	'IBLOCK_TYPE_ID': 'lists',
+	'IBLOCK_ID': '41',
+	'FILTER': {
+		'&gt;=DATE_CREATE': '27.03.2018 00:00:00',
+		'&lt;=DATE_CREATE': '27.03.2018 23:59:59',
+	}
+};</pre>
+
+<!---<p>Пример отключения постраничной навигации:</p>
+
+<pre class="syntax">$result = CRest::call(
+	'lists.element.get',
+	[
+		'IBLOCK_TYPE_ID' => 'lists',
+		'IBLOCK_ID' => '42',
+		'start' => -1
+	]
+);</pre>
+Скрыто из-за наличия параметра start, который на сегодня (06.09.23) не работает.
+--->
+
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

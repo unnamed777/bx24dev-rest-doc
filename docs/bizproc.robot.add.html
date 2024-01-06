@@ -1,0 +1,201 @@
+<html>
+        <head>
+            <title>bizproc.robot.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">bizproc.robot.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/bizproc/bizproc_robot/bizproc_robot_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<p class="note_blue">
+Scope: <span class="bg_blue">bizproc</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<div class="tab">
+
+<h3 class="tab-title">Описание</h3>
+
+<p><b>bizproc.robot.add</b> - метод регистрирует нового робота.</p>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+  
+		<tr>
+			<td>CODE</td>
+			<td>Внутренний идентификатор робота. <br>Допустимые символы a-z, A-Z, 0-9, точка, дефис и нижнее подчеркивание. Обязательный параметр.</td>
+		</tr>
+		<tr>
+			<td>HANDLER</td>
+			<td>URL приложения, на который будут отправлены данные. Обязательный параметр.</td>
+		</tr>
+		<tr>
+			<td>AUTH_USER_ID</td>
+			<td>ID пользователя, токен которого будет передан приложению.</td>
+		</tr>
+		
+		<tr>
+			<td>NAME</td>
+			<td>Название робота. Может быть строкой или ассоциативным массивом локализированных строк. Обязательный параметр.</td>
+		</tr>
+		<tr>
+			<td>USE_SUBSCRIPTION</td>
+			<td>Использование подписки. Допустимые значения - Y или N. Можно указать, должен ли робот ожидать ответа от приложения. Если параметр пустой или не указан - пользователь может сам настроить этот параметр в настройках действия в дизайнере бизнес-процессов.</td>
+		</tr>
+
+				<tr>
+			<td>PROPERTIES</td>
+			<td>Массив параметров робота. Список значений аналогичен значениям параметра RETURN_PROPERTIES.
+</td>
+		</tr>
+
+<tr>
+			<td>USE_PLACEMENT</td>
+			<td>Дает  возможность открывать дополнительные настройки робота в  слайдере приложения. Принимает значения (Y/N). Необязательный параметр.</td>
+		</tr>
+<tr>
+			<td>PLACEMENT_HANDLER</td>
+			<td>URL встройки (обработчик встройки на стороне приложения). Если использовать параметр USE_PLACEMENT со значением "Y", но не указать PLACEMENT_HANDLER, то возникает 
+		<span class="learning-lesson-detail-block js-detail-info-block">
+			<span class="learning-lesson-detail-word js-detail-info-word">ошибка</span>
+			<span class="learning-lesson-detail-body js-detail-info-body">
+				<span class="learning-lesson-detail-body-inner  js-detail-info-body-inner">
+                    <button class="learning-lesson-detail-close-button  js-detail-close-button" type="button"></button>
+                    <code> "error": "ERROR_WRONG_HANDLER_URL",<br>
+  "error_description": "Wrong handler URL"</code>
+                </span>
+			</span>
+		</span>
+		.</td>
+		</tr>
+		<tr>
+			<td>RETURN_PROPERTIES</td>
+			<td>Массив возвращаемых значений робота. Параметр управляет возможностью ожидать ответа приложения роботом и работать с данными, которые придут в ответе.<br> <p></p><div class="note"><b>Внимание</b>! Системное название параметра должно начинаться с буквы и может содержать только символы <b>a-z</b>, <b>A-Z</b>, <b>0-9</b> и нижнее подчеркивание.</div>
+<p>Каждый параметр обязательно должен содержать:</p>
+<ul><li><b>Name</b> - строка или массив локализаций.</li>
+<li><b>Description</b> - описание параметра, строка или массив локализаций.</li>
+<li><b>Type</b> - тип параметра. Список базовых параметров:</li>
+<ul>
+<li><code>bool</code> (<b>Да/Нет</b>)</li>
+<li><code>date</code> (<b>Дата</b>)</li>
+<li><code>datetime</code> (<b>Дата/Время</b>)</li>
+<li><code>double</code> (<b>Число</b>)</li>
+<li><code>int</code> (<b>Целое число</b>)</li>
+
+<li><code>select</code> (<b>Список</b>) массив значений списка:</li>
+<li><code>string</code> (<b>Строка</b>)</li>
+<li><code>text</code> (<b>Текст</b>)</li>
+<li><code>user</code> (<b>Пользователь</b>)</li>
+
+</ul>
+<li><b>Options</b> Только для <strong>TYPE</strong> равному <strong>select</strong>.
+<pre class="syntax">[
+'value1' =&gt; 'title1',
+'value2' =&gt; 'title2',
+'value3' =&gt; 'title3',
+'value4' =&gt; 'title4',
+]</pre>
+</li>
+<li><b>Required(Y/N)</b> - обязательность параметра.</li>
+<li><b>Multiple(Y/N)</b> - множественность параметра.</li>
+<li><b>Default</b> - значение параметра по-умолчанию. По умолчанию тип параметра - <b>string</b>, необязательный, немножественный.</li>
+</ul> 
+</td>
+		</tr>
+
+		
+</tbody>
+</table>
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Пример</h3>
+<pre class="syntax" rel="example">var params = {
+	'CODE': 'robot',
+	'HANDLER': 'http:///robot.php',
+	'AUTH_USER_ID': 1,
+	'NAME': 'Пример робота',
+	'PROPERTIES': {
+		'bool': {
+			'Name': 'Да/Нет',
+			'Type': 'bool',
+			'Required': 'Y',
+			'Multiple': 'N'
+		},
+		'date': {
+			'Name': 'Дата',
+			'Type': 'date'
+		},
+		'datetime': {
+			'Name': 'Дата/Время',
+			'Type': 'datetime'
+		},
+		'double': {
+			'Name': 'Число',
+			'Type': 'double',
+			'Required': 'Y'
+		},
+		'int': {
+			'Name': 'Целое число',
+			'Type': 'int'
+		},
+		'select': {
+			'Name': 'Список',
+			'Type': 'select',
+			'Options': {
+				'one': 'one',
+				'two': 'two'
+			}
+		},
+		'string': {
+			'Name': 'Строка',
+			'Type': 'string',
+			'Default': 'default string value'
+		},
+		'text': {
+			'Name': 'Текст',
+			'Type': 'text'
+		},
+		'user': {
+			'Name': 'Пользователь',
+			'Type': 'user'
+		}
+	}
+};
+BX24.callMethod(
+	'bizproc.robot.add',
+	params,
+	function(result)
+	{
+		if(result.error())
+			alert("Error: " + result.error());
+		else
+			alert("Успешно: " + result.data());
+	}
+);
+</pre>
+
+</div>
+
+<!------->
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

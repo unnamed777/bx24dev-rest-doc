@@ -1,0 +1,129 @@
+<html>
+        <head>
+            <title>entity.section.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">entity.section.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/entity/entity_section_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Описание и пример</h3>
+
+<p>Получение списка разделов хранилища (секций инфоблока). Списочный метод.</p>
+
+<p>Пользователь должен обладать хотя бы правами на чтение (<b>R</b>) хранилища.</p>
+
+<h4>Пример</h4>
+
+<p>Вызов<br>
+</p><pre class="syntax" rel="example">BX24.callMethod('entity.section.get', {ENTITY: 'menu_new', SORT: {'NAME': 'ASC'}}, function(result){
+	sections = result.data();
+});</pre><p></p>
+
+<p>Запрос<br>
+</p><pre>https://my.bitrix24.ru/rest/entity.section.get.json?ENTITY=menu_new&amp;SORT%5BNAME%5D=ASC&amp;auth=9affe382af74d9c5caa588e28096e872</pre><p></p>
+
+<p>Ответ<br>
+</p><pre>{"result":[{"ID":"219","CODE":null,"TIMESTAMP_X":"2013-06-23T10:11:59+03:00","DATE_CREATE":"2013-06-23T10:11:59+03:00","CREATED_BY":"1","MODIFIED_BY":"1","ACTIVE":"Y","SORT":"500","NAME":"\u0412\u0442\u043e\u0440\u0430\u044f \u0442\u0435\u0441\u0442\u043e\u0432\u0430\u044f \u0441\u0435\u043a\u0446\u0438\u044f","PICTURE":null,"DETAIL_PICTURE":null,"DESCRIPTION":null,"LEFT_MARGIN":"1","RIGHT_MARGIN":"2","DEPTH_LEVEL":"1","ENTITY":"menu_new","SECTION":null},{"ID":"218","CODE":null,"TIMESTAMP_X":"2013-06-23T10:24:46+03:00","DATE_CREATE":"2013-06-23T10:08:54+03:00","CREATED_BY":"1","MODIFIED_BY":"1","ACTIVE":"Y","SORT":"500","NAME":"\u041f\u0435\u0440\u0432\u0430\u044f \u0442\u0435\u0441\u0442\u043e\u0432\u0430\u044f \u0441\u0435\u043a\u0446\u0438\u044f","PICTURE":null,"DETAIL_PICTURE":null,"DESCRIPTION":null,"LEFT_MARGIN":"3","RIGHT_MARGIN":"4","DEPTH_LEVEL":"1","ENTITY":"menu_new","SECTION":null}],"total":2}</pre><p></p>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+
+<table class="tnormal" width="100%">
+<tbody><tr>
+	<th width="20%">Параметр</th>
+	<th>Описание</th>
+</tr>
+<tr>
+	<td>ENTITY</td>
+	<td>Обязательный. Строковой идентификатор хранилища.</td>
+</tr>
+<tr>
+	<td>SORT</td>
+	<td> Массив для сортировки, имеющий вид <i>by1</i>=&gt;<i>order1</i>[, <i>by2</i>=&gt;<i>order2</i> [, ..]], где <i> by1, ... </i> - поле сортировки, может принимать значения: 
+        <ul> 	 
+          <li><b>ID</b> - код раздела;</li>
+         	 
+          <li><b>SECTION</b> - код родительской раздела;</li>
+         	 
+          <li><b>NAME</b> - название раздела;</li>
+         
+          <li><b>CODE</b> - символьный код раздела;</li>
+         	 
+          <li><b>ACTIVE</b> - активности раздела</li>
+         	 
+          <li><b>LEFT_MARGIN</b> - левая граница;</li>
+         	 
+          <li><b>DEPTH_LEVEL</b> - глубина вложенности (начинается с 1);</li>
+         	 
+          <li><b>SORT</b> - индекс сортировки;</li>
+         
+          <li><b>CREATED</b> - по времени создания раздела;</li>
+         
+          <li><b>CREATED_BY</b> - по идентификатору создателя раздела;</li>
+         
+          <li><b>MODIFIED_BY</b> - по идентификатору пользователя изменившего раздела;</li>
+         	 
+          <li><b>TIMESTAMP_X</b> - по времени последнего изменения.</li>
+         </ul>
+       <i>order1, ... </i> - порядок сортировки, может принимать значения: 
+        <ul> 	 
+          <li><b>ASC</b> - по возрастанию;</li>
+         	 
+          <li><b>DESC</b> - по убыванию.</li>
+         </ul>
+
+<p>Значение по умолчанию Array("SORT"=&gt;"ASC") означает, что результат выборки будет отсортирован по возрастанию. Если задать пустой массив Array(), то результат отсортирован не будет.</p></td>
+</tr>
+<tr>
+	<td>FILTER</td><td>Массив вида array("фильтруемое поле"=&gt;"значение" [, ...]). 	<i>Фильтруемое поле</i> может принимать значения: 
+        <ul> 	 
+          <li><b>ACTIVE</b> - фильтр по активности (Y|N);</li>
+         	 
+          <li><b>NAME</b> - по названию (можно искать по шаблону [%_]);</li>
+         	 
+          <li><b>CODE</b> - по символьному коду (по шаблону [%_]);</li>
+         	 
+          <li><b>SECTION_ID</b> - по коду раздела-родителя (если указать false, то будут возвращены корневые разделы);</li>
+         	 
+          <li><b>DEPTH_LEVEL</b> - по уровню вложенности (начинается с 1);</li>
+         
+          <li><b>LEFT_MARGIN</b>, <b>RIGHT_MARGIN</b> - по положению в дереве (используется, когда необходима выборка дерева подразделов;</li>
+         	 
+          <li><b>ID</b> - по коду раздела;</li>
+         
+          <li><span style="font-weight: bold; ">TIMESTAMP_X</span> - по времени последнего изменения;</li>
+         
+          <li><span style="font-weight: bold; ">DATE_CREATE</span> - по времени создания;</li>
+         
+          <li><span style="font-weight: bold; ">MODIFIED_BY </span>- по коду пользователя изменившему раздел; 
+            <br>
+           </li>
+         
+          <li><span style="font-weight: bold; ">CREATED_BY</span> - по содателю; 
+            <br>
+           </li>
+         </ul>
+      <p> Все фильтруемые поля могут содержать перед названием <a class="link" href="http://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=43&amp;LESSON_ID=2683" target="_blank">тип проверки фильтра</a>. </p>
+       
+      Необязательное. По умолчанию записи не фильтруются. </td>
+</tr>
+</tbody></table>
+
+</div>
+
+<!------->
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

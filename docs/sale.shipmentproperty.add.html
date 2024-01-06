@@ -1,0 +1,73 @@
+<html>
+        <head>
+            <title>sale.shipmentproperty.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">sale.shipmentproperty.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/sale/shipmentproperty/sale_shipmentproperty_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">sale</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<pre class="syntax">sale.shipmentproperty.add(fields)</pre>
+
+<p>Метод для добавления свойства отгрузки.</p>
+
+<p>Если операция успешна, возвращается <a class="link" href="/rest_help/sale/shipmentproperty/resource.php">ресурс свойства отгрузки</a> в теле ответа.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th><th>Тип</th>
+			<th>Описание</th>      </tr>
+
+<tr><td>fields</td><td>nested object</td> <td>Поля, соответствующие доступному списку полей <a class="link" href="/rest_help/sale/shipmentproperty/sale_shipmentproperty_getFieldsByType.php">getFieldsByType</a>.</td></tr>
+
+
+	</tbody>
+</table>
+
+<br><br>
+
+<h4>Примеры</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'sale.shipmentproperty.add', 
+	{
+		fields: {
+			personTypeid: '1',
+			propsGroupId: '8',
+			name: 'Должность',
+			code: 'Position',
+			active: 'Y',
+			util: 'Y',
+			userProps: 'Y',
+			isFiltered: 'Y',
+			sort: '100',
+			description: '',
+			type: 'ENUM',
+			required: 'N',		
+			settings[
+				multiline: 'Y',
+				maxlength: 100
+			]
+		}
+	}, 
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error().ex);
+		else
+			console.log(result.data());
+	}
+);
+</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

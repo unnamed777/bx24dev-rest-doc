@@ -1,0 +1,39 @@
+<html>
+        <head>
+            <title>catalog.priceTypeLang.getLanguages</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">catalog.priceTypeLang.getLanguages <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/catalog/pricetypelang/catalog_pricetypelang_getlanguages.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">catalog.priceTypeLang.getLanguages()</pre>
+
+<p>Метод возвращает доступные для перевода языки.</p>
+
+
+
+<h4>Параметры</h4>
+
+<p>Без параметров.</p>
+
+
+
+<h4>Примеры</h4>
+<pre class="syntax" rel="example">BX24.callMethod(
+	'catalog.priceTypeLang.getLanguages', 
+	{}, 
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error().ex);
+		else
+			console.log(result.data());
+	}
+);
+</pre>
+
+<br>							
+        </div>
+        </body>
+        </html>

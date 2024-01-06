@@ -1,0 +1,51 @@
+<html>
+        <head>
+            <title>landing.landing.downblock</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">landing.landing.downblock <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/landing/page/methods_block/landing_landing_downblock.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">landing.landing.downblock(lid, block)</pre>
+
+<p>Метод для опускания блока на одну позицию вниз на странице. Возвращает <i>true</i> или ошибку.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Метод</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>lid</td> 	<td>Идентификатор страницы</td> <td></td></tr>
+   
+    <tr> 	<td>block</td> 	<td>Идентификатор блока</td> <td></td></tr>
+
+   </tbody>
+ </table>
+<br>
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'landing.landing.downblock',
+	{
+		lid: 351,
+		block: 6428
+	},
+	function(result)
+	{
+		if(result.error())
+		{
+			console.error(result.error());
+		}
+		else
+		{
+			console.info(result.data());
+		}
+	}
+);</pre>
+<br><br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,101 @@
+<html>
+        <head>
+            <title>task.logitem.list</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">task.logitem.list <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/tasks/task/item/task_logitem_list.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">task</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<pre class="syntax">task.logitem.list(id)</pre>
+
+<p>Возвращает историю изменений задачи.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th></tr>
+   
+    <tr> 	<td>ID</td> 	<td>Идентификатор задачи. Обязательный параметр</td></tr>
+     
+   </tbody>
+ </table>
+
+<p>Возвращаемое значение - json файл.</p>
+
+<div class="learnin-post-text">
+<table class="learning-spoiler">
+<thead onclick="LearningInitSpoiler(this)">
+<tr><th>
+<div>Пример json</div>
+</th></tr></thead>
+<tbody style="display:none;" class="learning-spoiler">
+<tr><td><pre class="syntax">Array
+(
+	[result] =&gt; Array
+		(
+			[0] =&gt; Array
+				(
+					[CREATED_DATE] =&gt; 2022-12-09T11:10:49+02:00
+					[USER_ID] =&gt; 1
+					[TASK_ID] =&gt; 1223
+					[FIELD] =&gt; NEW
+					[FROM_VALUE] =&gt;
+					[TO_VALUE] =&gt;
+				)
+
+			[1] =&gt; Array
+				(
+					[CREATED_DATE] =&gt; 2022-12-09T11:11:29+02:00
+					[USER_ID] =&gt; 1
+					[TASK_ID] =&gt; 1223
+					[FIELD] =&gt; COMMENT
+					[FROM_VALUE] =&gt;
+					[TO_VALUE] =&gt; 1247
+				)
+
+			[2] =&gt; Array
+				(
+					[CREATED_DATE] =&gt; 2022-12-09T11:11:40+02:00
+					[USER_ID] =&gt; 1
+					[TASK_ID] =&gt; 1223
+					[FIELD] =&gt; TAGS
+					[FROM_VALUE] =&gt;
+					[TO_VALUE] =&gt; это секретно
+				)
+
+		)
+
+	[time] =&gt; Array
+		(
+			[start] =&gt; 1670577445.3012
+			[finish] =&gt; 1670577447.9552
+			[duration] =&gt; 2.6539649963379
+			[processing] =&gt; 2.2574801445007
+			[date_start] =&gt; 2022-12-09T11:17:25+02:00
+			[date_finish] =&gt; 2022-12-09T11:17:27+02:00
+			[operating] =&gt; 2.2573609352112
+		)
+)</pre></td></tr>
+</tbody>
+</table></div>
+
+<h4>Пример использования</h4>
+
+<pre class="syntax">BX24.callMethod(
+	'task.logitem.list',
+	[1205],
+	function(result){
+		console.info(result.data());
+		console.log(result);
+	}
+);</pre>
+<br><br>							
+        </div>
+        </body>
+        </html>

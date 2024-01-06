@@ -1,0 +1,41 @@
+<html>
+        <head>
+            <title>lists.get.iblock.type.id</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">lists.get.iblock.type.id <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/lists/lists/lists_get_iblock_type_id.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Метод возвращает id типа инфоблока. В случае успеха будет возвращена строка с id типа инфоблока, иначе <i>null</i>. </p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Метод</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>IBLOCK_CODE/IBLOCK_ID</td> 	<td>код или id инфоблока</td> <td></td></tr>
+   
+   </tbody>
+ </table>
+
+<h4>Пример:</h4>
+<pre class="syntax" rel="example">var params = {
+	'IBLOCK_ID': '41'
+};
+BX.rest.callMethod(
+	'lists.get.iblock.type.id',
+	params,
+	function(result)
+	{
+		if(result.error())
+			alert("Error: " + result.error());
+		else
+			console.log(result.data());
+	}
+);</pre>
+<br>							
+        </div>
+        </body>
+        </html>

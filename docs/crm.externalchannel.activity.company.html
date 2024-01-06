@@ -1,0 +1,284 @@
+<html>
+        <head>
+            <title>crm.externalchannel.activity.company</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.externalchannel.activity.company <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/externalchannel/crm_externalchannel_activity_company.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Описание</h3>
+<pre class="syntax">crm.externalchannel.activity.company</pre>
+
+<p>Cоздает дело "Документ от компании". </p>
+
+
+<h4>Параметры</h4>
+
+<p>См. <a class="link" href="/rest_help/crm/externalchannel/index.php">параметры функций</a>. </p>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Пример вызова для Дела компании</h3>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	"crm.externalchannel.activity.company",
+	{
+		batch:[
+			{
+				agent{
+					"fields":{
+						"обновляемое поле":"значение",
+						"ORIGIN_VERSION":"ascFSrbtJfIpEPIEPEnCg==",
+						"ORIGIN_ID":"fff6e1b4-55bc-11d9-848a-00112f43529a-10001", 
+					},
+					"external_fields":{
+						"EXTERNAL_URL":"company_id=2001",
+					},
+					"REQUISITE":[
+						{
+							"XML_ID":"faa1c2a9-55bc-11d9-848a-00112f43529a-40001",
+							"RQ_ADDR":{
+								"PRIMARY":{
+									"ADDRESS_1":"#Улица, дом, корпус, строение#",
+									"ADDRESS_2":"#Квартира / офис#",
+									"CITY":"#Город#",
+									"POSTAL_CODE":"#Почтовый индекс#",
+									"REGION":"#Район#",
+									"PROVINCE":"#Область#",
+									"COUNTRY":"#Страна#",
+									"COUNTRY_CODE":""
+								},
+								"HOME":{
+									"ADDRESS_1":"#Улица, дом, корпус, строение#",
+									"ADDRESS_2":"#Квартира / офис#",
+									"CITY":"#Город#",
+									"POSTAL_CODE":"#Почтовый индекс#",
+									"REGION":"#Район#",
+									"PROVINCE":"#Область#",
+									"COUNTRY":"#Страна#",
+									"COUNTRY_CODE":""
+								},
+								"REGISTERED":{
+									"ADDRESS_1":"#Улица, дом, корпус, строение#",
+									"ADDRESS_2":"#Квартира / офис#",
+									"CITY":"#Город#",
+									"POSTAL_CODE":"#Почтовый индекс#",
+									"REGION":"#Район#",
+									"PROVINCE":"#Область#",
+									"COUNTRY":"#Страна#",
+									"COUNTRY_CODE":""
+								},
+								"BENEFICIARY":{
+									"ADDRESS_1":"#Улица, дом, корпус, строение#",
+									"ADDRESS_2":"#Квартира / офис#",
+									"CITY":"#Город#",
+									"POSTAL_CODE":"#Почтовый индекс#",
+									"REGION":"#Район#",
+									"PROVINCE":"#Область#",
+									"COUNTRY":"#Страна#",
+									"COUNTRY_CODE":""
+								}
+							},
+							"RQ_NAME":"#Организация#",
+							"RQ_FIRST_NAME":"",
+							"RQ_LAST_NAME":"",
+							"RQ_SECOND_NAME":""
+							"RQ_COMPANY_NAME":"#Сокращенное наименование организации#",
+							"RQ_COMPANY_REG_DATE":"#Дата государственной регистрации#",
+							"RQ_DIRECTOR":"#Ген. директор#",
+							"RQ_ACCOUNTANT":"#Гл. бухгалтер#",
+							"RQ_CEO_NAME":"",
+							"RQ_CEO_WORK_POS":"",
+							"RQ_CONTACT":"",
+							"RQ_EMAIL":"",
+							"RQ_PHONE":"",
+							"RQ_FAX":"",
+							"RQ_IDENT_DOC":""
+							"RQ_IDENT_DOC_SER":"",
+							"RQ_IDENT_DOC_NUM":"",
+							"RQ_IDENT_DOC_DATE":"",
+							"RQ_IDENT_DOC_ISSUED_BY":"",
+							"RQ_IDENT_DOC_DEP_CODE":"",
+							"RQ_INN":"#ИНН#",
+							"RQ_KPP":"",
+							"RQ_USRLE":"",
+							"RQ_IFNS":"",
+							"RQ_OGRN":"#ОГРН#",
+							"RQ_OGRNIP":"#ОКПО#",
+							"RQ_OKPO":"#ОКТМО#",
+							"RQ_OKTMO":"",
+							"RQ_OKVED":"",
+							"RQ_EDRPOU":"",
+							"RQ_DRFO":"",
+							"RQ_KBE":"",
+							"RQ_IIN":"",
+							"RQ_BIN":"",
+							"RQ_VAT_PAYER":"",
+							"RQ_VAT_ID":"",
+							"RQ_VAT_CERT_SER":"",
+							"RQ_VAT_CERT_NUM":"",
+							"RQ_VAT_CERT_DATE":"",
+							"RQ_RESIDENCE_COUNTRY":"",
+							"BANK_DETAILS":[
+								{"
+									"RQ_BANK_NAME":"#Наименование банка#",
+									"RQ_BANK_ADDR":"#Адрес банка#",
+									"RQ_BANK_ROUTE_NUM":"",
+									"RQ_BIK":"#БИК#",
+									"RQ_MFO":"",
+									"RQ_ACC_NAME":"",
+									"RQ_ACC_NUM":"#Расчетный счёт#",
+									"RQ_IIK":"",
+									"RQ_ACC_CURRENCY":"#Валюта счёта#",
+									"RQ_COR_ACC_NUM":"#Кор. счёт#",
+									"RQ_IBAN":"",
+									"RQ_SWIFT":"#SWIFT#",
+									"RQ_BIC":"",
+									"COMMENTS":"#Комментарий#",
+									"XML_ID":"caa2g4q8-55bc-11d9-848a-00112f43529a-50001"
+								}
+							]
+						}
+					]
+				},
+				activity{
+					"fields":{
+						"обновляемое поле":"значение"
+					},
+					"external_fields":{
+						"NUMBER":"N-1\/20160518",
+						"MANAGER":"",
+						"TYPE_ID":"Реализация"
+					}
+				}
+			}
+		],
+		params:{
+			"CHANNEL_ID":"ext_channel.574b405083de90.99016531"
+		}
+	},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.dir(result.data());
+	}
+);
+</pre>
+
+
+
+
+<p>Для документов типа Реализация достаточно передавать следующий список полей:</p>
+
+<pre class="syntax">batch:[
+	{
+		"agent":{
+			"fields":{
+				"обновляемое поле":"значение",
+				...
+			},
+			"external_fields":{
+				...
+			}
+			"activity":{
+				"fields":{
+					"ORIGIN_ID":"A_xmlid_1_1_20160516",
+					"SUBJECT":"Название документа/дела на портале ",
+					"START_TIME":"2016-05-20T12:00:50+04:00",
+					"DESCRIPTION":"Произвольное описание документа/дела",
+					"RESULT_VALUE":"1",
+					"RESULT_SUM":"300",
+					"RESULT_CURRENCY_ID":"RUB"
+				},
+				"external_fields":{
+					"NUMBER":"N-1\/20160518",
+					"MANAGER":"Иван Иванов",
+				}
+			}
+		}
+	}
+],
+params:{
+	...
+}
+
+</pre>
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Удаление реквизитов</h3>
+<p>Если на обновление поступил контрагент без реквизитов, то есть отсутствует массив REQUISITE, то будут удалены все его реквизиты, включая банковские, и адреса.
+Если реквизиты переданы, но не переданы банковские BANK_DETAILS или адреса RQ_ADDR, то будет удалена та сущность, поле которой не передано.
+</p>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Языковые ограничения</h3>
+<h4>Поля реквизитов, на которые накладываются по умолчанию языковые ограничения.</h4>
+<p>Поля, которые будут доступны в форме редактирования реквизитов для языка RU и дефолтном наборе пресетов:</p>
+<pre class="syntax">RQ_ADDR 
+RQ_NAME 
+RQ_FIRST_NAME 
+RQ_LAST_NAME 
+RQ_SECOND_NAME 
+RQ_COMPANY_NAME 
+RQ_COMPANY_FULL_NAME 
+RQ_COMPANY_REG_DATE 
+RQ_DIRECTOR 
+RQ_ACCOUNTANT 
+RQ_CEO_NAME 
+RQ_CEO_WORK_POS 
+RQ_CONTACT 
+RQ_EMAIL 
+RQ_PHONE 
+RQ_FAX 
+RQ_IDENT_DOC 
+RQ_IDENT_DOC_SER 
+RQ_IDENT_DOC_NUM 
+RQ_IDENT_DOC_DATE 
+RQ_IDENT_DOC_ISSUED_BY 
+RQ_IDENT_DOC_DEP_CODE 
+RQ_INN 
+RQ_KPP 
+RQ_USRLE 
+RQ_IFNS 
+RQ_OGRN 
+RQ_OGRNIP 
+RQ_OKPO 
+RQ_OKTMO 
+RQ_OKVED
+</pre>
+
+<h4>Ограничения для банковских реквизитов для языка RU</h4>
+<pre class="syntax">RQ_BANK_NAME 
+RQ_BANK_ADDR 
+RQ_BIK 
+RQ_ACC_NUM 
+RQ_ACC_CURRENCY 
+RQ_COR_ACC_NUM 
+RQ_SWIFT
+</pre>
+
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

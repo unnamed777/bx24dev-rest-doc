@@ -1,0 +1,38 @@
+<html>
+        <head>
+            <title>event.offline.list</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">event.offline.list <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/general/events_method/event_offline_list.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Метод для чтения текущей очереди без вносения изменений в ее состояние, в отличие от <a class="link" href="/rest_help/general/events_method/event_offline_get.php">event.offline.get</a>. Доступность оффлайн событий можно проверить через метод <a class="link" href="/rest_help/general/feature_get.php">feature.get</a>.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Метод</th> 	<th>Описание</th> <th width="8%">Тип</th></tr>
+   
+    <tr> 	<td>filter</td> 	<td>Фильтр записей.  По умолчанию отдаются все записи, без фильтрации. Поддерживается фильтрация по полям:<br>
+ ID,<br>
+TIMESTAMP_X,<br>
+EVENT_NAME,<br>
+MESSAGE_ID,<br>
+PROCESS_ID,<br>
+ERROR<br>
+ со стандартными операциями типа =, &gt;, &lt;, &lt;= и т.д.</td> <td>array </td></tr>
+   
+    <tr> 	<td>order</td> 	<td>Сортировка записей. Поддерживается сортировка по тем же полям, что и в фильтре. На вход принимается массив вида [поле=&gt;ASC|DESC]. По умолчанию - [ID:ASC].</td> <td>array </td></tr>
+   
+<tr><td>start</td><td>Номер страницы вывода. Работает для https запросов.</td><td>string</td> </tr>
+   </tbody>
+ </table>
+
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

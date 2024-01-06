@@ -1,0 +1,93 @@
+<html>
+        <head>
+            <title>timeman.timecontrol.reports.settings.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">timeman.timecontrol.reports.settings.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/timeman/timecontrol/timeman_timecontrol_reports_settings_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Описание</h3>
+
+<p>Метод для получения пользовательских настроек для построения интерфейса отчетов инструмента контроля времени.</p>
+
+<h4>Параметры</h4>
+
+<p>Без параметров.</p>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Пример вызова</h3>
+
+<p>JavaScript</p>
+
+<pre class="syntax" rel="example">BX24.callMethod('timeman.timecontrol.reports.settings.get', {}, function(result){
+	if(result.error())
+	{
+		console.error(result.error().ex);
+	}
+	else
+	{
+		console.log(result.data());
+	}
+});</pre>
+
+<p>PHP</p>
+
+<pre class="syntax">$result = restCommand('timeman.timecontrol.reports.settings.get', Array(), $_REQUEST["auth"]);	
+</pre>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Пример ответа</h3>
+
+<pre class="syntax">{
+	"result": {
+		"active":true,
+		"user_id":2,
+		"user_admin":true,
+		"user_head":true,
+		"departments":[
+			{"id":"92","name":"Калининградский филиал"},
+			{"id":"93","name":"Администрация"},
+			{"id":"106","name":"ИТ-отдел"}
+		],
+		"minimum_idle_for_report":1,
+		"report_view_type":"head"
+	}
+}</pre>
+
+<h4>Описание ключей</h4>
+
+<ul>
+    <li><b>active</b> - доступность инструмента контроля времени.</li>
+    <li><b>user_id</b> - текущий идентификатор пользователя.</li>
+    <li><b>user_admin</b> - флаг являетесь ли вы администратором.</li>
+    <li><b>user_head</b> - флаг являетесь ли вы руководителем.
+    </li><li><b>departments</b> - список доступных подразделений (доступно только если вы руководитель)</li>
+	<ul>
+      <li><b>id</b> - идентификатор подразделения</li>
+      <li><b>name</b> - название подразделения</li>
+	</ul>  
+    <li><b>minimum_idle_for_report</b> - минимальное кол-во времени для запроса отчета (в минутах)</li>
+    <li><b>report_view_type</b> - уровень детализации отчета (head, full, simple)</li>
+</ul>
+
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

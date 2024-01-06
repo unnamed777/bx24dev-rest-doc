@@ -1,0 +1,132 @@
+<html>
+        <head>
+            <title>sale.cashbox.handler.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">sale.cashbox.handler.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/sale/cashbox/sale_cashbox_handler_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<p class="note_blue">
+Scope: <span class="bg_blue">sale, cashbox</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<div class="tab">
+
+<h3 class="tab-title">Описание и пример</h3>
+
+<p>Метод добавляет REST-обработчик кассы.</p>
+
+<h4>Пример</h4>
+
+<p></p><pre class="syntax" rel="example">BX.rest.callMethod(
+	"sale.cashbox.handler.add",
+	{
+		"CODE": "restcashbox01",
+		"NAME": "REST-касса 01",
+		"SORT": 100,
+		"SETTINGS":
+		{
+			"PRINT_URL": "http:\/\/example.com\/rest_print.php",
+			"CHECK_URL": "http:\/\/example.com\/rest_check.php",
+			"HTTP_VERSION": "1.1",
+			"CONFIG":
+			{
+				"AUTH": {
+					"LABEL": "Авторизация",
+					"ITEMS": {
+						"KEYWORD": {
+							"TYPE": "STRING",
+							"LABEL": "Кодовое слово"
+						},
+						"PREFERENCE": {
+							"TYPE": "ENUM",
+							"LABEL": "Множественный выбор",
+							"REQUIRED": "Y",
+							"OPTIONS": {
+								"FIRST": "Первый",
+								"SECOND": "Второй",
+								"THIRD": "Третий",
+							}
+						}
+					}
+				},
+				"INTERACTION": {
+					"LABEL": "Настройки взаимодействия с кассой",
+					"ITEMS": {
+						"MODE": {
+							"TYPE": "ENUM",
+							"LABEL": "Режим работы с кассой",
+							"OPTIONS": {
+								"ACTIVE": "боевой",
+								"TEST": "тестовый"
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.dir(result.data());
+	}
+);
+</pre><p></p>
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>CODE</td>  <td>Обязательный. Код REST-обработчика. Должен быть уникальным среди всех обработчиков.</td> <td></td></tr>
+
+    <tr> 	<td>NAME</td> 	<td>Обязательный. Название REST-обработчика.</td> <td></td></tr>
+
+    <tr> 	<td>SORT</td> 	<td>Сортировка (по умолчанию <code>100</code>).</td> <td></td></tr>
+
+    <tr> 	<td>SUPPORTS_FFD105</td> 	<td>Поддерживает ли касса формат фискальных данных версии 1.05 (по умолчанию <code>N</code>).</td> <td></td></tr>
+
+    <tr> 	<td>SETTINGS</td> 	<td>Обязательный. Настройки обработчика (все параметры обязательные):
+
+<ul>
+<li><strong>PRINT_URL</strong> - адрес, на который отправляются данные для печати чека;</li>
+<li><strong>CHECK_URL</strong> - адрес, по которому происходит проверка статуса чека;</li>
+<li><strong>HTTP_VERSION</strong> - версия протокола HTTP, используемая для запросов. Возможные значения: <code>1.0</code>, <code>1.1</code>. Если параметр не заполнен, то для запросов используется HTTP 1.0. Параметр доступен с версии <b>sale 22.0.100</b>;</li>
+<li><strong>CONFIG</strong> - структура настроек, которые пользователь сможет устанавливать и изменять на странице редактирования кассы. Каждый ключ в этом параметре задаёт один раздел на странице настроек:
+	<ul>
+	<li><strong>LABEL</strong> - заголовок раздела;</li>
+	<li><strong>ITEMS</strong> - список настроек раздела:
+		<ul>
+		<li><strong>TYPE</strong> - <a class="link" href="https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=43&amp;LESSON_ID=7350" target="_blank">тип настройки</a>;</li>
+		<li><strong>LABEL</strong> - название настройки;</li>
+		<li><strong>REQUIRED</strong> - является ли настройка обязательной.</li>
+		</ul>
+	</li>
+	</ul>
+</li>
+</ul></td> <td></td></tr>
+   
+   </tbody>
+ </table><p></p>
+
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

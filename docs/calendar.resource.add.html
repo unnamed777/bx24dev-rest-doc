@@ -1,0 +1,46 @@
+<html>
+        <head>
+            <title>calendar.resource.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">calendar.resource.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/calendar/calendar_resource_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">calendar.resource.add(name)</pre>
+<p>Добавляет новый ресурс, принимает на вход массив с параметрами.  </p>
+
+<h4>Параметры функции</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+  
+		<tr>
+			<td>* name </td>
+			<td>Наименование ресурса (строка).</td>
+		</tr>
+		
+<tr><td colspan="2"><b>* - обязательные параметры</b></td></tr>
+	</tbody>
+</table>
+
+<h4>Возвращаемые значения</h4>
+
+<p>Возвращает ID добавленного ресурса.</p>
+
+
+<h4>Пример использования</h4>
+<pre class="syntax" rel="example">BX24.callMethod("calendar.resource.add",
+	{
+		name: 'My resource title'
+	}
+);
+</pre>
+<br><br>							
+        </div>
+        </body>
+        </html>

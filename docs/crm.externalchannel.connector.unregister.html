@@ -1,0 +1,71 @@
+<html>
+        <head>
+            <title>crm.externalchannel.connector.unregister</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.externalchannel.connector.unregister <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/externalchannel/externalchannel_connector_unregister.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<a class="link" name="register"></a>
+<pre class="syntax">crm.externalchannel.connector.unregister(fields)</pre>
+
+<p>Удаляет коннектор внешнего канала.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>      </tr>
+
+<tr><td>fields</td>
+<td>Набор полей - массив вида array("поле"=&gt;"значение"[, ...]), содержащий значения полей адреса. Где "поле" может принимать два значения "<a class="link" href="http://dev.1c-bitrix.ru/rest_help/crm/externalchannel/externalchannel_connector_unregister.php#Type_id">TYPE_ID</a>", "ORIGINATOR_ID"</td></tr>
+
+	</tbody>
+</table>
+
+<a class="link" name="Type_id"></a>
+<br>
+<b>Предопределенный справочник типов параметра TYPE_ID: </b>
+
+<table class="tnormal" width="30%">
+	<tbody>
+		
+<tr><td>CUSTOM</td><td>Кастомный тип</td></tr>
+<tr><td>BITRIX</td><td>БУС</td></tr>
+<tr><td>ONE_C</td><td>1С</td></tr>
+<tr><td>WORDPRESS</td><td>Wordpress</td></tr>
+<tr><td>JOOMLA</td><td>Joomla</td></tr>
+<tr><td>DRUPAL </td><td>Drupal</td></tr>
+<tr><td>MAGENTO </td><td>Magento</td></tr>
+
+
+	</tbody>
+</table>
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	"crm.externalchannel.connector.register",
+	{
+		fields:{
+			"ORIGINATOR_ID":"sale",
+			"TYPE_ID":"2"
+		}
+	},
+	function(result) 
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.dir(result.data());
+	}
+);
+</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

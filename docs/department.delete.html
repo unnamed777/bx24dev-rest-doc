@@ -1,0 +1,35 @@
+<html>
+        <head>
+            <title>department.delete</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">department.delete <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/departments/department_delete.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Удаляет подразделение. Возможно только от имени пользователя с правами изменения структуры компании.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+<tbody><tr><th width="15%">Параметр</th><th>Описание</th></tr>
+
+<tr><td>ID</td><td> идентификатор подразделения (обязательный)</td></tr>
+
+</tbody></table>
+
+
+<p><b>Вызов</b></p>
+
+<pre class="syntax" rel="example">BX24.callMethod('department.delete', {"ID": 222});</pre>
+
+<p><b>Запрос</b></p>
+<pre class="syntax">https://my.bitrix24.ru/rest/department.delete.json?ID=222&amp;auth=70a32986f1bf204dec4567147ca6a2af</pre>
+
+<p><b>Ответ</b></p>
+
+<pre class="syntax">{"result":true}</pre>
+<br><br>							
+        </div>
+        </body>
+        </html>

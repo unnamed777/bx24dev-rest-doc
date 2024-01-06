@@ -1,0 +1,58 @@
+<html>
+        <head>
+            <title>userfieldconfig.getTypes</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">userfieldconfig.getTypes <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/userfieldconfig/userfieldconfig/userfieldconfig_getTypes.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">userfieldconfig, scope модуля</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<pre class="syntax">userfieldconfig.getTypes({moduleId: string})</pre>
+
+<p>Метод вернет набор доступных типов пользовательских полей для модуля moduleId.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>moduleId</td> 	<td>Идентификатор модуля. Обязательный.</td> <td></td></tr>
+   
+   </tbody>
+ </table>
+
+    
+<h4>Пример</h4>
+
+<p>Пример ответа</p>
+
+<pre class="syntax">{
+	"types": {
+		"employee": {
+			"userTypeId": "employee",
+			"description": "Привязка к сотруднику"
+		},
+		"money": {
+			"userTypeId": "money",
+			"description": "Деньги"
+		},
+		"string": {
+			"userTypeId": "string",
+			"description": "Строка"
+		},
+		"integer": {
+			"userTypeId": "integer",
+			"description": "Целое число"
+		},
+		...
+	}
+}</pre>
+<br>							
+        </div>
+        </body>
+        </html>

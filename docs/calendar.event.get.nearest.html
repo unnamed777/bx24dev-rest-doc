@@ -1,0 +1,75 @@
+<html>
+        <head>
+            <title>calendar.event.get.nearest</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">calendar.event.get.nearest <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/calendar/calendar_event_get_nearest.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Возвращает список будущих событий для текущего пользователя.</p>
+
+<h4>Параметры функции</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+  
+		<tr>
+			<td>type</td>
+			<td>Тип календаря:
+<ul>
+<li>user;</li>
+
+<li>group.</li>
+</ul>
+</td>
+		</tr>
+		<tr>
+			<td>ownerId</td>
+			<td>Идентификатор владельца календаря.</td>
+		</tr>	
+
+<tr>
+			<td>days</td>
+			<td>Число дней для выборки (по умолчанию - 60).</td>
+		</tr>
+
+<tr>
+			<td>forCurrentUser</td>
+			<td>Вывод списка событий для текущего пользователя.</td>
+		</tr>
+
+
+<tr>
+			<td>maxEventsCount</td>
+			<td>Максимальное число выводимых событий.</td>
+		</tr>
+
+<tr>
+			<td>detailUrl</td>
+			<td>url для календаря.</td>
+		</tr>
+
+	</tbody>
+</table>
+
+
+<h4>Пример использования</h4>
+<pre class="syntax" rel="example">BX24.callMethod("calendar.event.get.nearest",
+	{
+		type: 'user',
+		ownerId: '2',
+		days: 10,
+		forCurrentUser: true,
+		detailUrl: '/company/personal/user/#user_id#/calendar/'
+	}
+);
+</pre>
+<br><br>							
+        </div>
+        </body>
+        </html>

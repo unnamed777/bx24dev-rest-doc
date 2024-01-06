@@ -1,0 +1,126 @@
+<html>
+        <head>
+            <title>landing.demos.getList</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">landing.demos.getList <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/landing/demos/landing_demos_getlist.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Описание</h3>
+<pre class="syntax">landing.demos.getList(
+	params
+)</pre>
+
+
+<p>Метод для получения списка доступных партнерских шаблонов текущего приложения. </p>
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>params</td> 	<td>	Опциональный массив, с опциональными ключами:
+<ul>
+<li>select</li>
+<li>filter</li> 
+<li>order</li> 
+<li>group</li> 
+ </ul>
+которые содержат значения таблицы основных полей сущности. Таблица размещена ниже.</td> <td></td></tr>
+   
+   </tbody>
+ </table>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Поля сущности</h3>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Поле</th> 	<th>Описание</th> </tr>
+   
+    <tr> 	<td>ID </td> 	<td>Идентификатор записи.</td> </tr>
+   
+    <tr> 	<td>XML_ID </td> 	<td>Уникальный код записи.</td> </tr>
+   
+    <tr> 	<td>APP_CODE </td> 	<td>Код текущего приложения.</td> </tr>
+   
+    <tr> 	<td>ACTIVE </td> 	<td>Активность (Y / N).</td> </tr>
+   
+    <tr> 	<td>TITLE </td> 	<td>Название.</td> </tr>
+   
+    <tr> 	<td>DESCRIPTION  </td> 	<td>Описание.</td> </tr>
+   
+    <tr> 	<td>PREVIEW_URL </td> 	<td>URL предварительного просмотра.</td> </tr>
+   
+    <tr> 	<td>TYPE </td> 	<td>Тип создаваемого сайта (STORE, PAGE).</td> </tr>
+   
+    <tr> 	<td>TPL_TYPE </td> 	<td>Размещается в мастере создания сайта / магазина (S) или страницы (P).</td> </tr>
+   
+    <tr> 	<td>MANIFEST </td> 	<td>Манифест.</td> </tr>
+   
+    <tr> 	<td>SHOW_IN_LIST </td> 	<td>Показывать ли в списке шаблонов.</td> </tr>
+   
+    <tr> 	<td>PREVIEW / PREVIEW2X / PREVIEW3X</td> 	<td> Разноразмерные превью.</td> </tr>
+   
+    <tr> 	<td>CREATED_BY_ID </td> 	<td>Идентификатор пользователя создавшего запись</td> </tr>
+   
+    <tr> 	<td>MODIFIED_BY_ID </td> 	<td>Идентификатор пользователя изменившего запись.</td> </tr>
+   
+    <tr> 	<td>DATE_CREATE </td> 	<td>Дата создания.</td> </tr>
+   
+    <tr> 	<td>DATE_MODIFY </td> 	<td>Дата изменения.</td> </tr>
+   
+   </tbody>
+ </table>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Пример</h3>
+<pre class="syntax" rel="example">BX24.callMethod(
+	'landing.demos.getList',
+	{
+		params: {
+			select: [
+				'ID', 'TITLE', 'MANIFEST'
+			],
+			filter: {
+				'&gt;ID': '1'
+			}
+		}
+	},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.info(result.data());
+	}
+);</pre>
+
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

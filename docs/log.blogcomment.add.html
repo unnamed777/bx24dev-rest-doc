@@ -1,0 +1,74 @@
+<html>
+        <head>
+            <title>log.blogcomment.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">log.blogcomment.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/log/log_blogcomment_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">log</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<p>Добавляет комментарий к сообщению Ленты новостей.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal">
+  <tbody>
+	<tr><th width="15%">Параметр</th><th>Описание</th><th width="10%">Версия</th></tr>
+	<tr><td>$USER_ID</td><td>Автор комментария. Доступно только для администратора. По умолчанию - текущий пользователь.</td><td></td></tr>
+	<tr><td>$POST_ID</td><td>ID сообщения</td><td></td></tr>
+	<tr><td>$TEXT</td><td>Текст комментария</td><td></td></tr>
+	<tr><td>$FILES </td><td>Файлы, массив значений, описанный по правилам, приведенным <a class="link" href="https://dev.1c-bitrix.ru/rest_help/js_library/rest/files.php" target="_blank">тут.</a></td><td></td></tr>
+
+  </tbody>
+</table>
+
+
+<h4>Примеры:</h4>
+<pre class="syntax" rel="example">BX.rest.callMethod('log.blogcomment.add', {
+	POST_ID: 10, 
+	TEXT: 'test comment'
+}).then();</pre>
+
+<pre class="syntax">// Получает комментарий в ленте новостей. Если не передавать id в фильтр, вернёт все доступные по правам комментарии
+let params = {};
+
+let params = {
+	FIRST_ID: 893, //b_sonet_log_comment
+	LAST_ID: 894,
+};
+
+BX.rest.callMethod(
+	'log.blogcomment.user.get',
+	params,
+	function(result)
+	{
+		if(result.error())
+			alert("Error: " + result.error());
+		else
+			console.log(result.data());
+	}
+);</pre>
+
+<pre class="syntax">// Удаляет комментарий в ленте новостей
+let params = {
+	COMMENT_ID: 261, //b_blog_comment
+};
+
+BX.rest.callMethod(
+	'log.blogcomment.delete',
+	params,
+	function(result)
+	{
+		if(result.error())
+			alert("Error: " + result.error());
+		else
+			console.log(result.data());
+	}
+);</pre>							
+        </div>
+        </body>
+        </html>

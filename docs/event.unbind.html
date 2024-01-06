@@ -1,0 +1,64 @@
+<html>
+        <head>
+            <title>event.unbind</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">event.unbind <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/general/events_method/event_unbind.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Отмена зарегистрированного обработчика <a class="link" href="/rest_help/general/events/index.php">события</a>.</p>
+
+<p>Работает только при авторизации под пользователем с правами администрирования портала.</p>
+
+<!--<p>Метод доступен для вызова с авторизацией пользователя без прав администратора с ограничением: удалять можно только события с <code>auth_type=ID</code> текущего пользователя (будет подставляться автоматически).</p>-->
+
+
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+<tbody><tr>
+	<th width="20%">Параметр</th>
+	<th>Описание</th>
+</tr>
+<tr>
+	<td>event</td>
+	<td>Имя события. Обязательный.</td>
+</tr>
+<tr>
+	<td>handler</td>
+	<td>Ссылка на обработчик события. Обязательный.</td>
+</tr>
+<tr>
+	<td>auth_type</td>
+	<td>Идентификатор пользователя, под которым авторизуется обработчик события. Не обязательный.
+<p class="note"><b>Примечание</b>: если требуется удалить обработчики события, установленные с пустым <i>auth_type</i> (с авторизацией от имени пользователя, вызвавшего событие), но оставить остальные обработчики, указывайте <i>auth_type=0</i> или пустое значение параметра.</p></td>
+</tr>
+    <tr> 	<td>event_type</td> 	<td>Значения: online|offline. По умолчанию event_type=online, и поведение метода не меняется. Если казывается event_type=offline, то метод работает с <a class="link" href="https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=99&amp;LESSON_ID=4462" title="" target="_blank">офлайн событиями</a>.</td> </tr>
+</tbody></table>
+
+<p>Если какие-либо параметры не указаны, то будут удалены все обработчики события, удовлетворяющие остальным требованиям. </p>
+
+<h4>Возвращаемое значение</h4>
+
+<p>Метод вернет количество удаленных при вызове обработчиков событий.</p>
+
+<a class="link" name="example"></a><h4>Пример:</h4>
+
+<pre>https://my.bitrix24.ru/rest/event.unbind.json?auth=a25e86871fcebb24f4d9076caf2e6623&amp;auth_type=0&amp;event=OnAppUpdate&amp;handler=http%3A%2F%2Fwww.my-domain.ru%2Fhandler%2F</pre>
+
+<p><b>Ответ:</b></p>
+
+<pre>{"result":{"count":1}}
+</pre>
+
+<h4>Смотри также</h4>
+
+<ul>
+<li><a class="link" href="/rest_help/js_library/rest/bx24_callunbind.php">BX24.callUnbind</a></li> 
+ </ul>
+<br><br>							
+        </div>
+        </body>
+        </html>

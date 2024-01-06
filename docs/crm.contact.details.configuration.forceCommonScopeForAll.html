@@ -1,0 +1,38 @@
+<html>
+        <head>
+            <title>crm.contact.details.configuration.forceCommonScopeForAll</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.contact.details.configuration.forceCommonScopeForAll <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/custom_form/crm_contact_details_configuration_forceCommonScopeForAll.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Метод позволяет принудительно установить общую карточку контактов для всех пользователей.</p>
+
+
+<h4>Параметры</h4>
+
+<p>Без параметров</p>
+
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">//---
+//Установить общую карточку контактов для всех пользователей.
+BX24.callMethod(
+	"crm.contact.details.configuration.forceCommonScopeForAll",
+	{},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.dir(result.data());
+	}
+);
+//---</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,68 @@
+<html>
+        <head>
+            <title>crm.measure.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.measure.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/measure/crm_measure_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.measure.add(fields)</pre>
+
+<p>Добавляет новую единицу измерения. </p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+<tr>
+<td>fields</td>
+<td>Набор полей - массив вида array("поле"=&gt;"значение"[, ...]), содержащий значения полей единицы измерения.
+<div class="note">
+	<b>Примечание</b>: чтобы узнать требуемый формат полей, выполните метод  <a class="link" href="/rest_help/crm/measure/crm_measure_fields.php">crm.measure.fields</a> и посмотрите формат пришедших значений этих полей.</div>
+<p>Поля для добавления единицы измерения:</p>
+<ul>
+<li>CODE 	- Код;</li>
+<li>MEASURE_TITLE 	- Наименование единицы измерения;</li>
+<li>SYMBOL_RUS 	- Условное обозначение;</li>
+<li>SYMBOL_INTL 	- Условное обозначение (международное);</li>
+<li>SYMBOL_LETTER_INTL 	- Кодовое буквенное обозначение (международное);</li>
+<li>IS_DEFAULT 	- По умолчанию.</li>
+</ul>
+</td>
+</tr>
+	</tbody>
+</table>
+
+
+
+
+<h4>Пример</h4>
+<pre class="syntax" rel="example">BX24.callMethod(
+	"crm.measure.add",
+	{
+		fields: {
+			"CODE": "212",
+			"MEASURE_TITLE": "Ватт",
+			"SYMBOL_RUS": "Вт",
+			"SYMBOL_INTL": "W",
+			"SYMBOL_LETTER_INTL": "WTT",
+			"IS_DEFAULT": "N"
+		}
+	},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.info("Создана единица измерения с ID " + result.data());
+	}
+);
+</pre><br><br>							
+        </div>
+        </body>
+        </html>

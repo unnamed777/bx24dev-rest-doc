@@ -1,0 +1,105 @@
+<html>
+        <head>
+            <title>tasks.task.history.list</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">tasks.task.history.list <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_history_list.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">task</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<pre class="syntax"><strong>tasks.task.history.list(</strong>taskId<strong>)</strong></pre>
+
+<p>Метод получения истории задачи.</p>
+
+<p>Возвращаем массив данных (см. пример).</p>
+
+<p>Можно фильтровать и сортировать по всем полям (см. tasks.task.list). По умолчанию отдает всю историю без разбивки по страницам.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+<tr>
+<td>taskId</td>
+<td>Идентификатор задачи.</td>
+</tr>
+
+
+	</tbody>
+</table>
+
+
+
+<h4>Примеры</h4>
+
+<ol>
+<li>Вывод истории конкретной задачи без использования фильтров:
+
+<pre class="syntax" rel="example">BX24.callMethod('tasks.task.history.list', {taskId: 125}, (res)=&gt;{console.log(res.answer.result);});
+</pre>
+
+<p>Результат:</p>
+
+<img src="/images/screens/tasks_task_history_list-2.png">
+
+
+ 
+</li>
+
+<br>
+
+<li>Вывод истории конкретной задачи с использованием фильтра <code>NEW</code> (т.е. когда была создана задача):
+<pre class="syntax" rel="example">BX24.callMethod('tasks.task.history.list', {taskId: 119, filter:{FIELD:'NEW'}}, (res)=&gt;{console.log(res.answer.result);});
+</pre>
+
+<p>Результат:</p>
+<pre class="syntax">{
+	"result": {
+		"list": [
+			{
+				"id": "1230",
+				"createdDate": "01.03.2019 15:29:28",
+				"field": "NEW",
+				"value": {
+					"from": null,
+					"to": null
+				},
+				"user": {
+					"id": "1",
+					"name": "Максим",
+					"lastName": "Гречушников",
+					"secondName": "",
+					"login": "admin"
+				}
+			}
+		]
+	},
+	"time": {
+		"start": 1552382093.81029,
+		"finish": 1552382093.927268,
+		"duration": 0.11697793006896973,
+		"processing": 0.018744230270385742,
+		"date_start": "2019-03-12T11:14:53+02:00",
+		"date_finish": "2019-03-12T11:14:53+02:00"
+	}
+}
+</pre>
+</li>
+</ol>
+
+
+
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,59 @@
+<html>
+        <head>
+            <title>crm.timeline.note.delete</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.timeline.note.delete <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/timeline/note/crm_timeline_note_delete.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax"><b>crm.timeline.note.delete(</b>
+	{
+		ownerTypeId: number,
+		ownerId: number,
+		itemType: number,
+		itemId: number
+	}
+<b>)</b></pre>
+
+<p>Удалить заметку</p>
+
+<h4>Параметр</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th></tr>
+   
+    <tr> 	<td>ownerTypeId</td> 	<td>Идентификатор типа элемента (справочник доступных типов), к которому относится запись.</td></tr>
+   
+    <tr> 	<td>ownerId</td> 	<td>Идентификатор элемента, к которому относится запись</td></tr>
+   
+    <tr> 	<td>itemType</td> 	<td>Тип записи, из которой нужно удалить заметку:
+<ol>
+<li>запись истории</li>
+<li>дело</li> 
+ </ol></td></tr>
+   
+    <tr> 	<td>itemId</td> 	<td>Идентификатор записи, из которой нужно удалить заметку. <br>
+Если itemType=1, то это идентификатор записи истории таймлайна, <br>
+Если itemType=2, то это идентификатор дела.</td></tr>
+
+   </tbody>
+ </table>
+
+<h4>Пример</h4>
+
+<p>Пример использования</p>
+
+<pre class="syntax">crm.timeline.note.delete?ownerTypeId=1&amp;ownerId=1&amp;itemId=1&amp;itemType=2</pre>
+
+<p>Успешный результат:</p>
+
+<pre class="syntax">{
+	"result": true
+}</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

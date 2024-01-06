@@ -1,0 +1,62 @@
+<html>
+        <head>
+            <title>catalog.productImage.list</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">catalog.productImage.list <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/catalog/productimage/catalog_productimage_list.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">catalog.productImage.list(productId, select)</pre>
+
+<p>Метод получает список изображений по конкретному товару или торговому предложению.</p>
+
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th><th>Тип</th>
+			<th>Описание</th>      </tr>
+
+<tr><td>productId</td><td>string</td> <td>Идентификатор товара или торгового предложения. Обязательный параметр.</td></tr>
+
+<tr><td>select</td><td>object</td> <td>Список <a class="link" href="/rest_help/catalog/productimage/catalog_productimage_getfields.php">полей</a> для показа в ответе.</td></tr>
+
+<tr><td>start</td><td>string</td> <td>Номер страницы вывода. Работает для https запросов.</td></tr>
+	</tbody>
+</table>
+
+
+<br><br>
+
+<h4>Примеры</h4>
+
+<p>Для JS</p>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'catalog.productImage.list',
+	{
+		productId: 1
+	},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error().ex);
+		else
+			console.log(result.data());
+		result.next();
+	}
+);
+</pre>
+
+
+<p>Для HTTPS</p>
+
+<pre class="syntax">https://ваш_портал/rest/catalog.productImage.list?auth=_ключ_авторизации_&amp;start=50</pre>
+
+<br>							
+        </div>
+        </body>
+        </html>

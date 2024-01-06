@@ -1,0 +1,60 @@
+<html>
+        <head>
+            <title>landing.landing.addblock</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">landing.landing.addblock <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/landing/page/methods_block/landing_landing_addblock.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">landing.landing.addblock(lid, fields)</pre>
+
+<p>Метод для добавление нового блока на страницу. Возвращает идентификатор нового блока или ошибку.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Метод</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>lid</td> 	<td>Идентификатор страницы</td> <td></td></tr>
+   
+    <tr> 	<td>fields</td> 	<td>Массив полей блока, где из поддерживаемого пока только следующие значения:
+<ul>
+<li><b>CODE</b> - символьный код блока. <br>Код блока можно получить из метода <a class="link" href="/rest_help/landing/block/blocks/landing_block_getrepository.php">landing.block.getrepository</a>. Если добавляется блок, который был зарегистрирован партнером через <a class="link" href="/rest_help/landing/partners_blocks/landing_repo_register.php">landing.repo.register</a>, то необходимо передавать для CODE значение <code>repo_&lt;ID&gt;</code>, где &lt;ID&gt; - идентификатор такого блока.</li>
+<li><b>AFTER_ID</b> - после какого блока (его ID) надо добавить новый блок (если не указано, блок добавится в начало)</li> 
+<li><b>ACTIVE</b> - активность блока (Y / N)</li> 
+<li><b>CONTENT</b> - полностью иное содержимое блока (см. замечания для метода <a class="link" href="/rest_help/landing/block/blocks/landing_block_updatecontent.php">landing.block.updatecontent</a>)</li>
+ </ul></td> <td></td></tr>
+
+   </tbody>
+ </table>
+<br>
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'landing.landing.addblock',
+	{
+		lid: 351,
+		fields: {
+			CODE: '15.social'
+		}
+	},
+	function(result)
+	{
+		if(result.error())
+		{
+			console.error(result.error());
+		}
+		else
+		{
+			console.info(result.data());
+		}
+	}
+);</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

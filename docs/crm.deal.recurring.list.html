@@ -1,0 +1,53 @@
+<html>
+        <head>
+            <title>crm.deal.recurring.list</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.deal.recurring.list <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/cdeals/crm_deal_recurring_list.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.deal.recurring.list ()</pre>
+
+<p>Возвращает список настроек шаблонов регулярных сделок по фильтру.</p>
+
+<p>При выборке используйте маску "*" для выборки всех полей (без пользовательских и множественных).
+</p>
+
+
+
+<h4>Параметры</h4>
+
+<p>Cм. описание <a class="link" href="/rest_help/general/lists.php">списочных методов</a>.</p>
+
+
+<h4>Пример:</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	"crm.deal.recurring.list",
+	{
+		order: { "DEAL_ID": "ASC" },
+		filter: { "&gt;COUNTER_REPEAT": 5 },
+		select: [ "ID", "DEAL_ID ", "NEXT_EXECUTION", "LAST_EXECUTION", "CATEGORY_ID", "IS_LIMIT" ]
+	},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+		{
+			console.dir(result.data());
+			if(result.more())
+				result.next();
+		}
+	}
+);
+</pre>
+
+
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

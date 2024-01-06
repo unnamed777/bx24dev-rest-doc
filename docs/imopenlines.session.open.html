@@ -1,0 +1,75 @@
+<html>
+        <head>
+            <title>imopenlines.session.open</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">imopenlines.session.open <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/imopenlines/session/imopenlines_session_open.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Метод возвращает идентификатор чата по USER_CODE.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+	<tr> 	<th width="27%">Параметр</th><th>Пример</th><th>Обязательный</th><th>Описание</th>
+   
+	</tr><tr> 	<td>USER_CODE</td><td>livechat|58|2042|479</td><td>Да</td><td>Код чата, можно найти в ENTITY_ID.</td></tr>
+   
+   </tbody>
+ </table>
+
+<h4>Вызов метода и ответ</h4>
+
+<p>JavaScript для Битрикс24 в коробке.</p>
+<pre class="syntax" rel="example">BX.rest.callMethod(
+	'imopenlines.session.open',
+	{
+		USER_CODE: 'livechat|58|2042|479'
+	}
+)
+	.then(result =&gt; console.log(result.data()))
+	.catch(result =&gt; console.warn(result.error().ex))
+;
+</pre>
+
+<p>JavaScript для облачного Битрикс24:</p>
+
+<pre class="syntax">BX24.callMethod(
+	'imopenlines.session.open',
+	{
+		CHAT_ID: 2024
+	},
+	function(result)
+	{
+		if(result.error())
+		{
+			console.warn(result.error().ex);
+			return false;
+		}
+
+		console.log(result.data());
+	}
+);</pre>
+
+<p>Пример ответа:</p>
+<pre class="syntax">{
+	"chatId":"2043"
+}</pre>
+
+<h4>Возможные коды ошибок</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+	<tr> 	<th width="27%">Код</th><th>Описание</th>
+   
+	</tr><tr> 	<td>ACCESS_DENIED</td><td>У текущего пользователя нет доступа к указанному чату.</td></tr>
+  
+   </tbody>
+ </table>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,34 @@
+<html>
+        <head>
+            <title>crm.item.productrow.set</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.item.productrow.set <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/productrow/crm_item_productrow_set.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.item.productrow.set({ownerType: string, ownerId: number, productRows: []})</pre>
+
+<p>Метод привяжет к элементу CRM с типом ownerType и идентификатором ownerId товарные позиции productRows. Метод перезапишет все уже существующие товарные позиции, привязанные к элементу. Таким образом, метод "заменяет" уже существующие товарные позиции на те, что были присланы.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>ownerType</td> 	<td>Символьный код типа сущности CRM. Узнать, какому типу сущности соответствует конкретный код можно через методы класса \CCrmOwnerTypeAbbr.</td> <td></td></tr>
+   
+    <tr> 	<td>ownerId</td> 	<td>Идентификатор элемента CRM</td> <td></td></tr>
+   
+    <tr> 	<td>productRows</td> 	<td>Массив товарных позиций. Каждый элемент массива - объект с данными, аналогичными fields из <a class="link" href="/rest_help/crm/productrow/crm_item_productrow_add.php">crm.item.productrow.add</a>.</td> <td></td></tr>
+   
+   </tbody>
+ </table>
+
+<p>Значения некоторых полей (priceExclusive и др.) будут вычислены автоматически на основании предоставленных данных. Задать их вручную нельзя. Полный список можно read-only полей можно узнать с помощью метода <a class="link" href="/rest_help/crm/productrow/crm_item_productrow_fields.php">crm.item.productrow.fields</a>.</p>
+
+<p>Метод вернет результат аналогичный вызову метода <a class="link" href="/rest_help/crm/productrow/crm_item_productrow_list.php">crm.item.productrow.list</a> с фильтром по заданному элементу CRM.</p>							
+        </div>
+        </body>
+        </html>

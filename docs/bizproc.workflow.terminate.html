@@ -1,0 +1,50 @@
+<html>
+        <head>
+            <title>bizproc.workflow.terminate</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">bizproc.workflow.terminate <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/bizproc/bizproc_workflow_instance/bizproc_workflow_terminate.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">bizproc</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<p><b>bizproc.workflow.terminate</b> - метод останавливает активный Бизнес-процесс.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th></tr>
+   
+    <tr> 	<td>ID </td> 	<td>Идентификатор БП, который нужно остановить</td></tr>
+   
+    <tr> 	<td>STATUS </td> 	<td>Установить текст статуса. (не обязательный)</td></tr>
+   
+   </tbody>
+ </table>
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">function terminateWf(id, cb)
+{
+	var params = {ID: id, STATUS: 'Terminated by rest app.'};
+	BX24.callMethod(
+		'bizproc.workflow.terminate',
+		params,
+		function(result)
+		{
+			if(result.error())
+				alert("Error: " + result.error());
+			else if (cb)
+				cb();
+		}
+	);
+}</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

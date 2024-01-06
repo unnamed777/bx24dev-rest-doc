@@ -1,0 +1,235 @@
+<html>
+        <head>
+            <title>sale.paysystem.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">sale.paysystem.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/paysystem/sale_paysystem_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Описание</h3>
+<pre class="syntax">sale.paysystem.add<b>(</b>
+	fields
+<b>)</b></pre>
+
+<p>Метод добавляет платежную систему. </p>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>fields</td> 	<td>Набор полей (массив вида <code>array("поле":"значение"[, ...])</code>), содержащий значения, описывающие платежную систему. Доступные поля:
+<ul>
+<li>NAME - Название системы.</li>
+<li>DESCRIPTION - описание платёжной системы.</li>
+<li>XML_ID - Символьный код.</li> 
+<li>PERSON_TYPE_ID - ID типа плательщика.</li> 
+<li>BX_REST_HANDLER - Код обработчика в системе.</li> 
+<li>ACTIVE - Флаг активности платежной системы.</li> 
+<li>ENTITY_REGISTRY_TYPE - Привязка платежной системы (значение для магазина: <code>ORDER</code>; значение для счетов crm: <code>CRM_INVOICE</code>)</li> 
+<li>LOGOTYPE - Логотип платёжной системы (картинка в формате 
+		<span class="learning-lesson-detail-block js-detail-info-block">
+			<span class="learning-lesson-detail-word js-detail-info-word">Base64</span>
+			<span class="learning-lesson-detail-body js-detail-info-body">
+				<span class="learning-lesson-detail-body-inner  js-detail-info-body-inner">
+                    <button class="learning-lesson-detail-close-button  js-detail-close-button" type="button"></button>
+                    
+<strong>Base64</strong> — стандарт кодирования двоичных данных при помощи только 64 символов ASCII. Алфавит кодирования содержит текстово-цифровые латинские символы A-Z, a-z и 0-9 (62 знака) и 2 дополнительных символа, зависящих от системы реализации. Каждые 3 исходных байта кодируются 4 символами (увеличение на ¹⁄₃).
+<br><br><a class="link external-link" href="https://ru.wikipedia.org/wiki/Base64" target="_blank">Подробнее</a>...
+                </span>
+			</span>
+		</span>
+		). Поле доступно с версии <strong>20.0.550</strong></li> 
+<li>NEW_WINDOW - Поле, отвечающее за настройку "Открывать в новом окне" (по умолчанию значение <code>N</code>). Доступно с версии <strong>20.100.0</strong></li> 
+ </ul></td> <td></td></tr>
+   
+
+
+
+
+   </tbody>
+ </table>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Примеры</h3>
+<p></p><pre class="syntax" rel="example">BX24.callMethod(
+	"sale.paysystem.add",
+	{
+		'NAME' : 'Платежная система с Rest',	// Название платежной системы
+		'PERSON_TYPE_ID' : 1,					// ID типа плательщика
+		'ACTIVE' : 'Y',							// Флаг активности платежной системы
+		'BX_REST_HANDLER' : 'resthandlercode',	// Код обработчика в системе
+		'SETTINGS' : {							// Настройки обработчика для данной платежной системы
+			'REST_SHOP_ID' : {					// Код параметра
+				'TYPE' : 'VALUE',				// Тип значение
+				'VALUE' : '111111111'			// Значение
+			},
+			'REST_SCID' : {
+				'TYPE' : 'VALUE',
+				'VALUE' : '2222222'
+			}
+		}
+	},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.info("Платежная система добавлен с ID " + result.data());
+	}
+);</pre><p></p>
+
+
+
+<p></p><pre class="syntax" rel="example">BX24.callMethod(
+	"sale.paysystem.add",
+	{
+		'NAME' : 'Платежная система с Rest', // Название платежной системы
+		'PERSON_TYPE_ID' : 1, // ID типа плательщика
+		'ACTIVE' : 'Y', // Флаг активности платежной системы
+		'BX_REST_HANDLER' : 'resthandlercode', // Код обработчика в системе
+		'LOGOTYPE' : 'iVBORw0KGgoAAAANSUhEUgAAASQAAACmCAID...', // Логотип платёжной системы в base64
+		'SETTINGS' : { // Настройки обработчика для данной платежной системы
+			'REST_SHOP_ID' : { // Код параметра
+				'TYPE' : 'VALUE', // Тип значение
+				'VALUE' : '111111111' // Значение
+			},
+			'REST_SCID' : {
+				'TYPE' : 'VALUE',
+				'VALUE' : '2222222'
+			}
+		}
+	},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.info("Платежная система добавлен с ID " + result.data());
+	}
+);</pre><p></p>
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Возможные значения</h3>
+
+
+<p><table width="100%" class="tnormal"> 
+  <tbody> 
+            <tr><th colspan="2"><b>Возможные значения TYPE</b>
+               </th></tr>
+                    
+            <tr bgcolor="white"> <td><b>ORDER</b></td> <td>Параметры</td> </tr>
+          
+            <tr bgcolor="#EEEEEE"> <td><b>PROPERTY</b></td> <td>Свойства счета</td> </tr>
+                    
+            <tr bgcolor="white"> <td><b>PAYMENT</b></td> <td>Оплата</td> </tr>
+          
+            <tr bgcolor="#EEEEEE"> <td><b>USER</b></td> <td>Пользователь</td> </tr>
+                    
+            <tr bgcolor="white"> <td><b>VALUE</b></td> <td>Значение типа строка</td> </tr>
+          
+            <tr bgcolor="#EEEEEE"> <td><b>INPUT</b></td> <td>Чекбокс</td> </tr>
+
+   </tbody>
+ </table></p>
+
+
+
+<p><table width="100%" class="tnormal"> 
+  <tbody> 
+            <tr><th colspan="2"><b>Возможные значения VALUE</b>
+               </th></tr>
+                    
+            <tr bgcolor="white"> <td><b>ORDER</b></td> <td>ID: ID, <br>
+	ACCOUNT_NUMBER: Номер заказа, <br>
+	ORDER_TOPIC: Тема, <br>
+	DATE_INSERT: Дата заказа, <br>
+	DATE_INSERT_DATE: Дата заказа (без времени), <br>
+	DATE_BILL: Дата и время выставления, <br>
+	DATE_BILL_DATE: Дата выставления, <br>
+	DATE_PAY_BEFORE: Срок оплаты, <br>
+	SHOULD_PAY: Сумма счета, <br>
+	CURRENCY: Валюта, <br>
+	PRICE: Стоимость заказа, <br>
+	PRICE_DELIVERY: Стоимость доставки, <br>
+	DISCOUNT_VALUE: Величина скидки, <br>
+	USER_ID: Код покупателя, <br>
+	PAY_SYSTEM_ID: Код платежной системы, <br>
+	DELIVERY_ID: Код службы доставки, <br>
+	TAX_VALUE: Налог, <br>
+	USER_DESCRIPTION: Комментарий</td> </tr>
+          
+            <tr bgcolor="#EEEEEE"> <td><b>PAYMENT
+	</b></td> <td>ID: ID <br>
+	ACCOUNT_NUMBER: Номер оплаты, <br>
+	DATE_BILL: Дата и время выставления, <br>
+	DATE_BILL_DATE: Дата выставления(без времени), <br>
+	SUM: Сумма счета, <br>
+	CURRENCY: Валюта, <br></td> </tr>
+
+            <tr bgcolor="white"> <td><b>USER</b></td> <td>
+	ID: Код покупателя, <br>
+	LOGIN: Логин, <br>
+	NAME: Имя, <br>
+	SECOND_NAME: Отчество, <br>
+	LAST_NAME: Фамилия, <br>
+	EMAIL: EMail, <br>
+	PERSONAL_PROFESSION: Профессия, <br>
+	PERSONAL_WWW: Персональный веб-сайт, <br>
+	PERSONAL_ICQ: Номер ICQ, <br>
+	PERSONAL_GENDER: Пол, <br>
+	PERSONAL_FAX: Номер факса, <br>
+	PERSONAL_MOBILE: Номер телефона, <br>
+	PERSONAL_STREET: Адрес, <br>
+	PERSONAL_MAILBOX: Почтовый ящик, <br>
+	PERSONAL_CITY: Город, <br>
+	PERSONAL_STATE: Штат, <br>
+	PERSONAL_ZIP: Индекс, <br>
+	PERSONAL_COUNTRY: Страна, <br>
+	WORK_COMPANY: Компания, <br>
+	WORK_DEPARTMENT: Отдел, <br>
+	WORK_POSITION: Должность, <br>
+	WORK_WWW: Сайт компании, <br>
+	WORK_PHONE: Рабочий телефон, <br>
+	WORK_FAX: Рабочий факс, <br>
+	WORK_STREET: Адрес компании, <br>
+	WORK_MAILBOX: Рабочий почтовый ящик, <br>
+	WORK_CITY: Город компании, <br>
+	WORK_STATE: Штат компании, <br>
+	WORK_ZIP: Индекс компании, <br>
+	WORK_COUNTRY: Страна компании <br></td> </tr>
+
+   </tbody>
+ </table></p>
+
+
+
+</div>
+
+<!------->
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,40 @@
+<html>
+        <head>
+            <title>task.stages.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">task.stages.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/tasks/task/kanban/task_stages_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">task</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<p>Метод добавления стадии Канбана / Моего плана. Принимает на вход массив fields.</p>
+
+<h4>Поля массива</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Метод</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>TITLE</td> 	<td>Заголовок стадии</td> <td></td></tr>
+   
+    <tr> 	<td>COLOR</td> 	<td>Цвет стадии</td> <td></td></tr>
+   
+    <tr> 	<td>AFTER_ID</td> 	<td>Идентификатор стадии, после которой надо добавить. Если не указано или равно 0, добавится в начало.</td> <td></td></tr>
+   
+    <tr> 	<td>ENTITY_ID</td> 	<td>Идентификатор сущности. Может равняться ID группы, тогда стадия добавится в Канбан группы При недостаточном уровне прав выводится ошибка доступа. Если равняется 0 или отсутствует, то стадия добавляется в Мой план текущего пользователя.</td> <td></td></tr>
+   
+    <tr> 	<td>isAdmin</td> 	<td>Если установлено <i>true</i>, то проверки прав происходить не будет. При условии, что запрашивающий является админом портала.</td> <td></td></tr>
+   
+   </tbody>
+ </table>
+
+<p>Возвращает ID добавленной стадии. </p>
+
+<br>							
+        </div>
+        </body>
+        </html>

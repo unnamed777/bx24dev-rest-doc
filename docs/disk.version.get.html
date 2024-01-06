@@ -1,0 +1,41 @@
+<html>
+        <head>
+            <title>disk.version.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">disk.version.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/disk/version/disk_version_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">disk</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<p>Возвращает версию по идентификатору</p>
+
+<p><b>Пример ответа</b>:</p>
+
+<pre class="syntax">"result": {
+	"ID": "2414", //идентификатор
+	"CREATED_BY": "1", //идентификатор пользователя, который создал версию
+	"CREATE_TIME": "2017-05-22T16:32:32+02:00", //время создания
+	"DOWNLOAD_URL": "https://test.ivandivan/rest/.../download/?token=...", //ссылка на скачивание контента
+	"GLOBAL_CONTENT_VERSION": "1", //инкрементальный счетчик версии контента относительно файла
+	"NAME": "Screenshot from 2017-05-19 09-13-02.png", //название файла на момент создания версии
+	"OBJECT_ID": "8933", //идентификатор файла, к которому принадлежит версия
+	"SIZE": "39078" //размер версии в байтах
+}</pre>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>id</td> 	<td>Идентификатор версии</td> <td></td></tr>
+
+   </tbody>
+ </table><br>							
+        </div>
+        </body>
+        </html>

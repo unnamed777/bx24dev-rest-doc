@@ -1,0 +1,103 @@
+<html>
+        <head>
+            <title>timeman.networkrange.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">timeman.networkrange.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/timeman/networkrange/timeman_networkrange_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Описание</h3>
+
+<p>Метод для получения диапазонов сетевых адресов, входящих в офисную сеть.</p>
+
+<h4>Параметры</h4>
+<p>Без параметров.</p>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Пример вызова</h3>
+
+<p>JavaScript</p>
+
+<pre class="syntax" rel="example">BX24.callMethod('timeman.networkrange.get', {}, function(result){
+	if(result.error())
+	{
+		console.error(result.error().ex);
+	}
+	else
+	{
+		console.log(result.data());
+	}
+});</pre>
+
+<p>PHP</p>
+
+<pre class="syntax">$result = restCommand('timeman.networkrange.get', Array(), $_REQUEST["auth"]);
+</pre>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Пример ответа</h3>
+
+<pre class="syntax">{
+	"result": [
+		{"ip_range":"10.0.0.0-10.255.255.255","name":"Офисная сеть 10.x.x.x"},
+		{"ip_range":"172.16.0.0-172.31.255.255","name":"Офисная сеть 172.x.x.x"},
+		{"ip_range":"192.168.0.0-192.168.255.255","name":"Офисная сеть 192.168.x.x"}
+	]
+} </pre>
+
+<h4>Описание ключей</h4>
+
+<ul>
+<li><b>ip_range</b> - диапазон сетевых адресов.</li>
+<li><b>name</b> - название диапазона.</li>
+
+</ul>
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Пример ответа при возникновении ошибок</h3>
+
+<pre class="syntax">{
+	"error": "ACCESS_ERROR",
+	"error_description": "You don't have access to user this method"
+}</pre>
+
+<ul>
+<li>Ключ <b>error</b> - код возникшей ошибки.</li>
+<li>Ключ <b>error_description</b> - краткое описание возникшей ошибки.</li>
+
+</ul>
+
+<h4>Возможные коды ошибок</h4>
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr><th width="15%">Код</th><th>Описание</th></tr>
+<tr><td>ACCESS_ERROR</td><td>Указанный метод доступен только администраторам.</td></tr>
+
+</tbody>
+</table>
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

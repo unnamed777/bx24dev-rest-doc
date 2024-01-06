@@ -1,0 +1,55 @@
+<html>
+        <head>
+            <title>crm.requisite.preset.field.update</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.requisite.preset.field.update <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/requisite/methods/crm_requisite_preset_field_update.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.requisite.preset.field.update(preset, fields)</pre>
+
+<p>Обновляет поле из набора полей шаблона, связанного с реквизитом. В наборе могут быть значения из возвращаемых методом <a class="link" href="/rest_help/crm/requisite/methods/crm_requisite_preset_field_fields.php">crm.requisite.preset.field.fields</a>.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr><th width="15%">Параметр</th> <th>Описание</th></tr>
+
+<tr><td>preset</td><td>Поля шаблона, к которому привязан набор полей.</td></tr>
+<tr><td>fields</td><td>Описание полей из набора.</td></tr>
+
+</tbody>
+</table>
+
+<a class="link" name="example"></a>
+<h4>Пример</h4>
+<pre class="syntax" rel="example">BX24.callMethod(
+	"crm.requisite.preset.field.update",
+	{
+		ID:id,
+		preset:
+		{
+			"ID":1
+		},
+		fields:
+		{
+			"FIELD_TITLE":"Имя",
+			"IN_SHORT_LIST":"Y",
+		}
+	},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+		{
+			console.info(result.data());
+		}
+	}
+);
+</pre><br><br>							
+        </div>
+        </body>
+        </html>

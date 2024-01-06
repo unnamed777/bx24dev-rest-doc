@@ -1,0 +1,58 @@
+<html>
+        <head>
+            <title>crm.dealcategory.fields</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.dealcategory.fields <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/category/crm_dealcategory_fields.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.dealcategory.fields</pre>
+
+<p>Возвращает описание полей направления сделок.</p>
+
+<h4>Параметры</h4>
+
+<p>Без параметров</p>
+
+
+<a class="link" name="example"></a>
+<h4>Пример</h4>
+<pre class="syntax" rel="example">BX24.callMethod(
+	"crm.dealcategory.fields",
+	{},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.dir(result.data());
+	}
+);
+</pre>
+<h4>Поля</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Поле</th> 	<th>Описание</th><th>Тип</th><th>Примечание</th></tr>
+   
+    <tr> 	<td>CREATED_DATE</td> 	<td>Дата создания</td><td>datetime</td><td>Только для чтения</td></tr>
+   
+    <tr> 	<td>ID</td> 	<td>Идентификатор направления сделки</td><td>integer</td><td>Только для чтения</td></tr>
+      
+    <tr> 	<td>IS_LOCKED</td> 	<td>Заблокировано</td><td>char</td><td>Только для чтения</td></tr>
+   
+    <tr> 	<td>NAME</td> 	<td>Название направления</td><td>string</td><td>Обязательное</td></tr>
+   
+    <tr> 	<td>SORT</td> 	<td>Сортировка</td><td>integer</td><td></td></tr>
+
+
+   </tbody>
+ </table>
+
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

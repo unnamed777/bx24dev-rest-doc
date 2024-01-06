@@ -1,0 +1,55 @@
+<html>
+        <head>
+            <title>feature.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">feature.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/general/feature_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">$result[] = CRest::call(
+	'feature.get',
+	[
+		'CODE' =&gt; 'rest_offline_extended',
+	]
+);</pre>
+
+<p>Возвращает информацию о доступности функционала на конкретном портале.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th>  <th>Тип</th> <th>Описание</th></tr>
+   
+    <tr> 	<td>CODE</td>  <td>string</td> <td>Доступные ключи:
+<ul>
+<li>rest_offline_extended - доступность оффлайн событий</li>
+<li>rest_auth_connector — доступность ключа auth_connector в события</li>  
+ </ul></td></tr>
+
+   
+   </tbody>
+ </table>
+
+<h4>Ответ и возвращаемое значение</h4>
+
+
+<p>Пример ответа:</p>
+
+<pre class="syntax">'result' =&gt;
+	[
+		'value' =&gt; 'Y'
+	]</pre>
+
+
+<p>Возвращаемое значение:</p>
+
+<ul>
+<li><code>value Y</code> - наличие функционала на портале. Y - есть на текущем портале, N - нет на портале</li>
+<li><code>lang_selfhosted</code>, где lang заменяется на en, ru, ua, kz и т.д. (для коробок Битрикс24).</li> 
+ </ul>
+<br><br>							
+        </div>
+        </body>
+        </html>

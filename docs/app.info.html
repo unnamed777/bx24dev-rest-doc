@@ -1,0 +1,119 @@
+<html>
+        <head>
+            <title>app.info</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">app.info <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/general/app_info.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Описание и пример</h3>
+
+<p>Показ информации о приложении. Метод поддерживает безопасный вызов.</p>
+
+<h4>Пример</h4>
+
+<p>Запрос</p>
+<pre>http://my.bitrix24.ru/rest/app.info?auth=d161f25928c3184678924ec127edd29a</pre>
+
+<p>Ответ JSON</p>
+<pre>{
+	"result": {
+		"ID":"7",
+		"CODE":"local.56017020f07e17.98523769",
+		"VERSION":1,
+		"STATUS":"L",
+		"INSTALLED":true,
+		"PAYMENT_EXPIRED":"N",
+		"DAYS":null,
+		"LICENSE":"ru_project"
+	}
+}
+</pre>
+<p>Ответ XML</p>
+<pre class="syntax" rel="example">&lt;response&gt;
+	&lt;result&gt;
+		&lt;ID&gt;7&lt;/ID&gt;
+		&lt;CODE&gt;local.56017020f07e17.98523769&lt;/CODE&gt;
+		&lt;VERSION&gt;1&lt;/VERSION&gt;
+		&lt;STATUS&gt;L&lt;/STATUS&gt;
+		&lt;INSTALLED&gt;1&lt;/INSTALLED&gt;
+		&lt;PAYMENT_EXPIRED&gt;N&lt;/PAYMENT_EXPIRED&gt;
+		&lt;DAYS&gt;&lt;/DAYS&gt;
+		&lt;LICENSE&gt;ru_project&lt;/LICENSE&gt;
+	&lt;/result&gt;
+&lt;/response&gt;</pre>
+
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Поля ответа</h3>
+
+<table width="100%" class="tnormal"> 
+  <tbody>
+    <tr> 	<th width="20%">Поле</th> 	<th>Описание</th> </tr>
+      
+    <tr> 	<td>ID</td> 	<td>локальный идентификатор приложения на портале</td> </tr>
+
+    <tr> 	<td>CODE</td> 	<td>код приложения</td> </tr>
+   
+    <tr> 	<td>VERSION</td> 	<td>установленная версия приложения</td> </tr>
+ 
+    <tr> 	<td>STATUS</td> 	<td>статус приложения. Возможные значения:
+
+<ul>
+<li><b>F</b> (Free) - бесплатное;</li>
+<li><b>D</b> (Demo) - демо-версия;</li> 
+<li><b>T</b> (Trial) - триальная версия (ограниченная по времени);</li> 
+<li><b>P</b> (Paid) - оплаченное приложение;</li>
+<li><b>L</b> (Local) - локальное приложение.</li>
+<li><b>S</b> (Subscription) - подписное приложение.</li>
+ </ul></td> </tr>
+
+    <tr> 	<td>INSTALLED</td> 	<td>[true|false] Статус установленности приложения. Если приложение не установлено, оно доступно только администраторам портала и должно сигнализировать об окончании установки при помощи вызова <a class="link" href="/rest_help/js_library/system/installFinish.php">BX24.installFinish()</a></td> </tr>
+   
+    <tr> 	<td>PAYMENT_EXPIRED</td> 	<td>[Y|N] флаг, показывающий, истек ли оплаченный период или период триального использования.</td> </tr>
+   
+    <tr> 	<td>DAYS</td> 	<td>Количество дней, оставшееся до конца оплаченного периода или периода триального использования.</td> </tr>
+   
+    <tr> 	<td>LICENSE</td> 	<td>Обозначение тарифа с указанием региона в виде префикса.Состоит из базового языка портала и идентификатора тарифного плана. В случае с тарифами, состав которых менялся при сохранении публичного наименования (как CRM+, Команда и Компания), понять, какой именно тариф действует по этому полю нельзя. Примеры вариантов значений:
+
+<ul>
+<li><b>ru_project</b> - тариф Проект</li>
+<li><b>ru_basic</b> - тариф Базовый</li> 
+<li><b>ru_std</b> - тариф Стандартный</li> 
+<li><b>ru_pro100</b> - тариф Профессиональный</li>
+<li><b>ru_ent250</b> - Энтерпрайз 250</li> 
+<li><b>ru_ent500</b> - Энтерпрайз 500</li> 
+<li><b>ru_ent1000</b> - Энтерпрайз 1000</li>
+<li><b>ru_ent2000</b> - Энтерпрайз 2000</li>
+<li><b>ru_ent10000</b> - Энтерпрайз 10000</li>
+ </ul>
+
+</td> </tr>
+   
+    <tr> 	<td>LICENSE_TYPE </td> 	<td>Внутреннее обозначение тарифа без указания региона. Нужно, чтобы различать тарифы, состав которых менялся при сохранении публичного наименования (как CRM+, Команда и Компания)</td> </tr>
+   
+    <tr> 	<td>LICENSE_FAMILY</td> 	<td>Обозначение тарифа без указания региона.</td> </tr>
+   </tbody>
+</table>
+
+<p>По истечении оплаченного периода приложение продолжит работать в течение периода, отводимого на возможные задержки поступления оплаты (grace period), по окончании которого будет автоматически переключено на демо-режим или заблокировано. При этом значение флага PAYMENT_EXPIRED будет равен Y, а поле DAYS будет содержать отрицательное число.</p>
+
+
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

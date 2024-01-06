@@ -1,0 +1,61 @@
+<html>
+        <head>
+            <title>task.commentitem.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">task.commentitem.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/tasks/task/commentitem/add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">task</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<p>Создает новый комментарий к задаче. Возвращает идентификатор добавленного комментария.</p>
+ 
+<h4>Параметры функции</h4>
+<table class="tnormal" width="100%"> 
+  <tbody> 
+    <tr><th width="15%">Параметр</th><th>Описание</th></tr>
+		<tr><td>TASKID</td>	<td>Идентификатор задачи. Обязательный параметр.</td>	</tr>
+		<tr><td>FIELDS</td>	<td>Массив полей данных по задаче (<b>POST_MESSAGE</b>). Обязательный параметр.</td>	</tr>
+	</tbody>
+</table>
+
+ <p></p><div class="note"><b>Внимание!</b> Соблюдение порядка следования параметров в запросе обязательно. При его нарушении запрос будет выполнен с ошибками.</div><p></p>
+
+<table width="100%" class="tnormal">
+  <tbody>
+    <tr><th width="15%">Поля</th><th>Описание</th><th width="10%">Версия</th></tr>
+
+    <tr> 	<td>AUTHOR_ID </td> 	<td>Идентификатор пользователя, от имени которого создается комментарий.
+</td> <td></td></tr>
+      <tr> 	<td>AUTHOR_NAME </td> 	<td>Имя пользователя (опционально).</td> <td></td></tr>
+      <tr> 	<td>AUTHOR_EMAIL </td> 	<td>E-mail пользователя (опционально).</td> <td></td></tr>
+      <tr> 	<td>USE_SMILES </td> 	<td>(Y|N) - парсить или нет комментарии на наличие смайлов.</td> <td></td></tr>
+      <tr> 	<td>POST_MESSAGE </td> 	<td>Текст сообщения.</td> <td></td></tr>
+      <tr> 	<td>UF_FORUM_MESSAGE_DOC</td> 	<td>Массив файлов с диска для прикрепления вида <code>['n123', ...]</code></td> <td></td></tr>
+
+</tbody>
+</table>
+
+
+
+
+
+<h4>Пример</h4>
+<pre class="syntax" rel="example">// Добавляем новый комментарий с текстом "HELLO" для задачи с ID=13
+BX24.callMethod(
+	'task.commentitem.add',
+	[13, {'POST_MESSAGE': 'HELLO'}],
+	function(result){
+		console.info(result.data());
+		console.log(result);
+	}
+);
+</pre>
+ 
+<br><br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,50 @@
+<html>
+        <head>
+            <title>landing.site.getadditionalfields</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">landing.site.getadditionalfields <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/landing/site/methods/landing_site_getadditionalfields.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">landing.site.getadditionalfields(id)</pre>
+
+<p>Метод для получения <a class="link" href="/rest_help/landing/site/additional_field.php">дополнительных полей</a> сайта. Возвращает дополнительные поля сайта или ошибку.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Метод</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>id</td> 	<td>идентификатор сайта</td> <td></td></tr>
+
+   </tbody>
+ </table>
+
+<br>
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'landing.site.getadditionalfields',
+	{
+		id: 205
+	},
+	function(result)
+	{
+		if(result.error())
+		{
+			console.error(result.error());
+		}
+		else
+		{
+			console.info(result.data());
+		}
+	}
+);
+</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

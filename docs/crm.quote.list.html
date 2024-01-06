@@ -1,0 +1,40 @@
+<html>
+        <head>
+            <title>crm.quote.list</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.quote.list <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/komm_quote/crm_quote_list.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Возвращает список предложений по фильтру. Является реализацией списочного метода для предложений.</p>
+
+<h4>Параметры</h4>
+
+<p>Cм. описание <a class="link" href="/rest_help/rest_sum/index.php">списочных методов</a>.</p>
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	"crm.quote.list", 
+	{ 
+		order: { "STATUS_ID": "ASC" },
+		filter: { "=COMPANY_ID": 1 },
+		select: [ "ID", "TITLE", "STATUS_ID", "OPPORTUNITY", "CURRENCY_ID" ]
+	}, 
+	function(result) 
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+		{
+			console.dir(result.data());
+			if(result.more())
+				result.next();
+		}
+	}
+);
+</pre><br><br>							
+        </div>
+        </body>
+        </html>

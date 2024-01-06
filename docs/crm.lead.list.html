@@ -1,0 +1,110 @@
+<html>
+        <head>
+            <title>crm.lead.list</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.lead.list <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/leads/crm_lead_list.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Возвращает список лидов по фильтру. Является реализацией списочного метода для лидов.</p>
+
+<p>При выборке используйте маски:</p>
+
+<ul>
+<li>"*" - для выборки всех полей (без пользовательских и множественных)</li>
+<li>"UF_*"- для выборки всех пользовательских полей (без множественных)</li> 
+ </ul>
+<p>Маски для выборки множественных полей нет. Для выборки множественных полей укажите нужные в списке выбора ("PHONE", "EMAIL" и так далее).</p>
+
+<p class="note"><strong>Внимание</strong>! Возможности добавить к фильтру логическое условие OR, если нужно выбрать по нескольким разным полям, нет.</p>
+
+<h4>Параметры</h4>
+
+<p>Cм. описание <a class="link" href="/rest_help/general/lists.php">списочных методов</a>.</p>
+
+<h4>Пример</h4>
+<pre class="syntax" rel="example">// Поиск несконвертированных лидов с суммой больше нуля
+BX24.callMethod(
+	"crm.lead.list", 
+	{ 
+		order: { "STATUS_ID": "ASC" },
+		filter: { "&gt;OPPORTUNITY": 0, "!STATUS_ID": "CONVERTED" },
+		select: [ "ID", "TITLE", "STATUS_ID", "OPPORTUNITY", "CURRENCY_ID" ]
+	}, 
+	function(result) 
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+		{
+			console.dir(result.data());
+			if(result.more())
+				result.next();
+		}
+	}
+);
+// Поиск лида по телефону
+BX24.callMethod(
+	"crm.lead.list", 
+	{ 
+		filter: { "PHONE": "555888" },
+		select: [ "ID", "TITLE" ]
+	}, 
+	function(result) 
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+		{
+			console.dir(result.data());
+			if(result.more())
+				result.next();
+		}
+	}
+);
+</pre>
+
+<p>Пример выборки лидов за месяц:</p>
+
+<pre class="syntax">$result = CRest::call(
+	'crm.lead.list',
+	[
+		'filter' =&gt; [
+			'&gt;DATE_CREATE' =&gt; '2019-10-01T00:00:00',
+			'&lt;DATE_CREATE' =&gt; '2019-10-31T23:59:59'
+		],
+		'select' =&gt; [
+			'ID',
+			'DATE_CREATE'
+		]
+	]
+);</pre>
+
+<p>Пример вывода следующего пакета лидов.</p>
+
+<pre class="syntax">BX24.callMethod(
+	"crm.lead.list",
+	{
+		order: { "STATUS_ID": "ASC" },
+		filter: { "&gt;OPPORTUNITY": 0, "!STATUS_ID": "CONVERTED" },
+		select: [ "ID", "TITLE", "STATUS_ID", "OPPORTUNITY", "CURRENCY_ID" ],
+		start: "50"
+	},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+		{
+			console.dir(result.data());
+			if(result.more())
+				result.next();
+		}
+	}
+); </pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

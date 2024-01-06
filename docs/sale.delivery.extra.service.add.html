@@ -1,0 +1,100 @@
+<html>
+        <head>
+            <title>sale.delivery.extra.service.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">sale.delivery.extra.service.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/sale/delivery/saledeliveryextraservice/sale_delivery_extra_service_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">sale, delivery</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<p>Метод для добавления дополнительной услуги службы доставки.</p>
+
+<p><a class="link" href="https://dev.1c-bitrix.ru/upload/api_help/rest/files-sale/schemas/methods/sale.delivery.extra.service.add/request.json" target="_blank">JSON схема запроса</a></p>
+
+<h4>Пример</h4>
+
+<p>Запрос:
+<br></p><pre>https://my.bitrix24.ru/rest/sale.delivery.extra.service.add</pre><p></p>
+
+<ul>
+<li><b>Для типа checkbox</b>
+
+<p>Вызов JSON:
+<br></p><pre class="syntax" rel="example">{
+	DELIVERY_ID: 623,
+	ACTIVE: "Y",
+	CODE: "door_delivery",
+	NAME: "Door Delivery",
+	TYPE: "checkbox",
+	PRICE: 59.99,
+	SORT: 100,
+}</pre><p></p>
+
+<p>Ответ JSON:
+<br></p><pre>{
+	"result": 988,
+	"time": {
+		"start": 1638367387.32351,
+		"finish": 1638367387.72551,
+		"duration": 0.40199995040893555,
+		"processing": 0.051999807357788086,
+		"date_start": "2021-12-01T16:03:07+02:00",
+		"date_finish": "2021-12-01T16:03:07+02:00"
+	}
+}</pre><p></p>
+
+</li>
+
+
+<li><b>Для типа enum</b>
+
+<p>Вызов JSON:
+<br></p><pre class="syntax" rel="example">{
+	DELIVERY_ID: 689,
+	ACTIVE: "Y",
+	CODE: "cargo_type",
+	NAME: "Cargo Type",
+	TYPE: "enum",
+	ITEMS: [
+		{
+			TITLE: "Small Package(s)",
+			CODE: "small_package",
+			PRICE: 129.99,
+		},
+		{
+			TITLE: "Documents",
+			CODE: "documents",
+			PRICE: 69.99,
+		},
+	],
+	SORT: 100,
+}</pre><p></p>
+
+<p>Ответ JSON:
+<br></p><pre>{
+	"result": 989,
+	"time": {
+		"start": 1638367586.86651,
+		"finish": 1638367587.27851,
+		"duration": 0.4120001792907715,
+		"processing": 0.057000160217285156,
+		"date_start": "2021-12-01T16:06:26+02:00",
+		"date_finish": "2021-12-01T16:06:27+02:00"
+	}
+}</pre><p></p>
+
+</li>
+</ul>
+
+
+
+
+
+<br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,115 @@
+<html>
+        <head>
+            <title>placement.bind</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">placement.bind <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/application_embedding/metods/placement_bind.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Метод  установит обработчик места встраивания. </p>
+
+<p>Обработчик ограничен условиями:</p>
+
+<ul>
+<li>запрос исполняется с авторизацией администратора,</li>
+<li>обработчик лежит в том же домене, что и зарегистрированный <b>redirect_uri</b> приложения</li> 
+<li>каждое места встраивания привязано к праву доступа (<a class="link" href="/learning/course/index.php?COURSE_ID=99&amp;LESSON_ID=2280" title="Список доступных разрешений" target="_blank">scope</a>). Чтобы установить обработчик места встраивания в интерфейсе CRM, дайте приложению доступ к CRM.</li> 
+ </ul>
+
+<p>После установки приложений с интерфейсом необходимо  выполнить метод <a class="link" href="/rest_help/js_library/system/installFinish.php">BX24.installFinish</a> после запроса. В противном случае кнопки не отобразятся в местах встраивания. Для <a class="link" href="https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=99&amp;LESSON_ID=8579&amp;LESSON_PATH=8771.8583.8593.8579" title="" target="_blank">серверных локальных приложений без интерфейса в Битрикс24</a> плейсменты отображаются сразу.</p>
+
+<p>С версии <b>rest 21.200.0</b> метод поддерживает многоязычность.</p>
+
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+<tbody><tr>
+	<th width="20%">Параметр</th>
+	<th>Описание</th>
+</tr>
+<tr>
+	<td>PLACEMENT</td>
+	<td>Идентификатор требуемого места встраивания. Обязателен.</td>
+</tr>
+<tr>
+	<td>HANDLER</td>
+	<td>URL обработчика места встраивания. Обязателен.</td>
+</tr>
+
+<tr>
+	<td>LANG_ALL</td>
+	<td>Массив параметров для каждого языка. Ключи массива:
+<ul>
+<li>TITLE - заголовок обработчика, будет выводиться по месту встраивания. Не обязателен, по умолчанию - название приложения</li>
+<li>DESCRIPTION - Описание обработчика, может выводиться по месту встраивания. Не обязателен.</li> 
+<li>GROUP_NAME - Название группы, который позволяет группировать обработчики в месте встраивания. Не обязателен.</li> 
+ </ul>
+</td>
+</tr>
+
+<tr>
+	<td>USER_ID</td>
+	<td>Принимает число, позволяет отображать встройку для указанного пользователя (только одного!). 0 или не указано поле - встройка регистрируется для всех.
+
+<p class="note"><b>Внимание!</b> Данное поле поддерживается не всеми 
+		<span class="learning-lesson-detail-block js-detail-info-block">
+			<span class="learning-lesson-detail-word js-detail-info-word">местами встраивания</span>
+			<span class="learning-lesson-detail-body js-detail-info-body">
+				<span class="learning-lesson-detail-body-inner  js-detail-info-body-inner">
+                    <button class="learning-lesson-detail-close-button  js-detail-close-button" type="button"></button>
+                    На данный момент поддерживается только PAGE_BACKGROUND_WORKER.
+                </span>
+			</span>
+		</span>
+		. При попытке регистрации места встраивания без этой возможности вы получите ошибку <code>ERROR_PLACEMENT_USER_MODE: User mode is not available</code>.  Допустимость регистрации смотрите в <a class="link" href="/rest_help/application_embedding/index.php">описании мест встроек</a>.
+<br><br>
+Также <code>HANDLER</code> встройки должен быть уникальным для приложения, без учёта разных USER_ID.</p>
+</td>
+</tr>
+
+
+</tbody></table>
+
+
+<h4>Пример</h4>
+
+<pre class="syntax">https://portal.bitrix24.com/rest/placement.bind/?auth=sode3flffcmv500fuagrprhllx3soi72
+	&amp;PLACEMENT=CRM_CONTACT_LIST_MENU
+	&amp;HANDLER=http%3A%2F%2Fwww.applicationhost.com%2Fplacement%2F
+	&amp;TITLE=Demo
+HTTP/1.1 200 OK
+{
+	"result": true
+}</pre>
+
+
+<p>Пример с поддержкой нескольких языков:</p>
+
+<pre class="syntax">CRest::call(
+	'placement.bind',
+	[
+		'PLACEMENT' =&gt; 'PLACEMENT_CODE',
+		'HANDLER' =&gt; 'https://example.com/place.php',
+		'LANG_ALL' =&gt; [
+			'en' =&gt; [
+				'TITLE' =&gt; 'title',
+				'DESCRIPTION' =&gt; 'description',
+				'GROUP_NAME' =&gt; 'group',
+			],
+			'ru' =&gt; [
+				'TITLE' =&gt; 'заголовок',
+				'DESCRIPTION' =&gt; 'описание',
+				'GROUP_NAME' =&gt; 'группа',
+			],
+		],
+	]
+);</pre>
+
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

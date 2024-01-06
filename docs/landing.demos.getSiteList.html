@@ -1,0 +1,43 @@
+<html>
+        <head>
+            <title>landing.demos.getSiteList</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">landing.demos.getSiteList <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/landing/demos/landing_demos_getsitelist.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Метод для получения списка доступных шаблонов для создания сайтов. Как партнерских, так и системных.</p>
+
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>type </td> 	<td>Тип шаблона (page: обычные сайты, store: магазины)</td> <td></td></tr>
+   
+   </tbody>
+ </table>
+
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'landing.demos.getSiteList',
+	{
+		type: 'page'
+	},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.info(result.data());
+	}
+);</pre>
+<br><br>							
+        </div>
+        </body>
+        </html>

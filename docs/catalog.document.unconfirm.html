@@ -1,0 +1,60 @@
+<html>
+        <head>
+            <title>catalog.document.unconfirm</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">catalog.document.unconfirm <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/catalog/catalogdocument/catalog_document_unconfirm.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p></p><div class="note"><font color="red"><strong>Внимание!</strong></font> Метод устарел с версии <b>22.400.0</b>. Рекомендуется использовать метод <a class="link" href="/rest_help/catalog/catalogdocument/catalog_document_cancel.php">catalog.document.cancel</a>.</div><p></p>
+
+<pre class="syntax">catalog.document.unconfirm(id)</pre>
+
+<p>Метод для отмены проведения документа.</p>
+
+<p>Если операция успешна, возвращается <code>true</code> в теле ответа.</p>
+
+<h4>Параметры</h4>
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th><th>Тип</th>
+			<th>Описание</th>      </tr>
+<tr><td>id</td><td>integer</td> <td>Номер документа.</td></tr>
+	</tbody>
+</table>
+
+<h4>Примеры</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'catalog.document.unconfirm',
+	{
+		'id': 42,
+	},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.log(result.data());
+	}
+);
+</pre>
+
+<pre class="syntax">$result = CRest::call(
+	'catalog.document.unconfirm',
+	[
+		'id' =&gt; 42,
+	]
+);
+
+echo '&lt;pre&gt;';
+print_r($result);
+echo '&lt;/pre&gt;';
+</pre>
+
+<br>							
+        </div>
+        </body>
+        </html>

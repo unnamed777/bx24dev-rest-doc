@@ -1,0 +1,49 @@
+<html>
+        <head>
+            <title>crm.documentgenerator.template.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.documentgenerator.template.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/documentgenerator/tempates/crm_documentgenerator_template_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<a class="link" name="register"></a>
+<pre class="syntax">crm.documentgenerator.template.add(fields)</pre>
+
+<p>Метод добавляет новый шаблон. Возвращает те же данные, что и при вызове <a class="link" href="/rest_help/crm/documentgenerator/tempates/crm_documentgenerator_template_get.php">crm.documentgenerator.template.get()</a> на новом шаблоне.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>      </tr>
+
+<tr><td>fields</td><td>массив полей шаблона, среди которых:
+<ul>
+<li><code>fields[name]</code> - название шаблона (обязательное).</li>
+<li><code>fields[file]</code> - контент файла, закодированный в <i>base64</i> (обязательное). Как альтернативу, контент файла можно передать в <i>multipart / form-data</i>. В этом случае его не надо кодировать в <i>base64</i>.</li>
+<li><code>fields[numeratorId]</code> - идентификатор нумератора (обязательное).</li>
+<li><code>fields[region]</code> - страна  (обязательное).</li>
+<li><code>fields[entityTypeId]</code> - массив идентификаторов привязанных сущностей (обязательное). Здесь необходимо передавать код сделки с учетом фильтрации по направлениям.</li>
+<li><code>fields[users]</code> - массив прав доступа.</li>
+<li><code>fields[active]</code> - Y/N флаг активности.</li>
+<li><code>fields[withStamps]</code> - Y/N ставить печати и подписи.</li>
+<li><code>fields[sort]</code> - индекс сортировки.</li>
+</ul>
+
+
+
+
+</td></tr>
+
+
+
+	</tbody>
+</table>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

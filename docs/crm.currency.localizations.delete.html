@@ -1,0 +1,52 @@
+<html>
+        <head>
+            <title>crm.currency.localizations.delete</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.currency.localizations.delete <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/currency/crm_currency_localizations_delete.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Удаляет выбранные локализации для валюты, указанной по символьному идентификатору.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+<tr>
+<td>id</td>
+<td>Символьный идентификатор валюты.</td>
+</tr>
+
+<tr>
+<td>lids</td>
+<td>Массив идентификаторов языков, локализации которых требуется удалить.</td>
+</tr>
+	</tbody>
+</table>
+
+<h4>Пример</h4>
+<pre class="syntax" rel="example">var id = prompt("Введите ID валюты");
+var langId = prompt("Введите ID языка (ru, en, de)");
+BX24.callMethod(
+	"crm.currency.localizations.delete",
+	{
+		id:id,
+		lids:[ langId ]
+	},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.info(result.data());
+	}
+);
+</pre><br><br>							
+        </div>
+        </body>
+        </html>

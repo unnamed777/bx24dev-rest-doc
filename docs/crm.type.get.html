@@ -1,0 +1,66 @@
+<html>
+        <head>
+            <title>crm.type.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.type.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/dynamic/methodscrmtype/crm_type_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.type.get({id: number})</pre>
+
+<p>
+Отдает информацию о смарт-процессе с идентификатором типа <code>id</code>.</p>
+<p>Ответ:</p>
+
+<pre class="syntax">{
+	"type": {
+		"id":  24,
+		"title": "Смарт-процесс",
+		"code": "",  
+		"createdBy": 1,
+		"entityTypeId": 132,
+		"isCategoriesEnabled": "Y",
+		"isStagesEnabled": "Y",
+		"isBeginCloseDatesEnabled": "Y",
+		"isClientEnabled": "Y",
+		"isUseInUserfieldEnabled": "Y",
+		"isLinkWithProductsEnabled": "Y",
+		"isCrmTrackingEnabled": "N",
+		"isMycompanyEnabled": "Y",
+		"isDocumentsEnabled": "Y",
+		"isSourceEnabled": "Y",
+		"isObserversEnabled": "Y",
+		"isRecyclebinEnabled": "Y",
+		"isAutomationEnabled": "Y",
+		"isBizProcEnabled": "Y",
+		"isSetOpenPermissions": "Y",
+		"relations":  {
+			"parent": [
+				{
+					"entityTypeId": 3,
+					"isChildrenListEnabled": "Y",
+					"isPredefined": "Y"
+				}
+			],
+			"child": []
+		},
+		"linkedUserFields": {
+			"CALENDAR_EVENT|UF_CRM_CAL_EVENT": "N",
+			"TASKS_TASK|UF_CRM_TASK": "N",
+			"TASKS_TASK_TEMPLATE|UF_CRM_TASK": "N",
+		},
+		"customSections": [
+			{
+				"id": 18,
+				"title": "Новый раздел",
+				"isSelected": "N"
+			}
+		]
+	}
+}
+</pre>
+<br><br>							
+        </div>
+        </body>
+        </html>

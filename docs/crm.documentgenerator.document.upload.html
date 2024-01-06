@@ -1,0 +1,44 @@
+<html>
+        <head>
+            <title>crm.documentgenerator.document.upload</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.documentgenerator.document.upload <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/documentgenerator/documents/crm_documentgenerator_document_upload.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<a class="link" name="register"></a>
+<pre class="syntax">crm.documentgenerator.document.upload(fileContent, region, entityTypeId, entityId, title, number)</pre>
+
+<p>Загружает сформированный документ и прикрепляет его к указанной сущности. В процессе загрузки создаётся скрытый шаблон, привязанный к текущему rest-приложению (один шаблон на каждое приложение). К этому шаблону прикрепляется пустой файл (т.к. шаблон не может быть без файла).</p>
+
+<p>Метод возвращает значения, аналогичные <a class="link" href="/rest_help/crm/documentgenerator/documents/crm_documentgenerator_document_add.php">crm.documentgenerator.document.add</a>.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>      </tr>
+
+<tr><td>fileContent</td><td>контент docx файла в <i>base64</i>.</td></tr>
+<tr><td>region</td><td>страна.</td></tr>
+<tr><td>entityTypeId</td><td>ID типа сущности CRM.</td></tr>
+<tr><td>entityId</td><td>ID сущности CRM.</td></tr>
+<tr><td>title</td><td>заголовок документа.</td></tr>
+<tr><td>number</td><td>номер документа.</td></tr>
+<tr><td>pdfContent</td><td> контент pdf файла в <i>base64</i>, не обязательно.</td></tr>
+<tr><td>imageContent</td><td>контент картинки в <i>base64</i>, не обязательно.</td></tr>
+
+
+
+
+	</tbody>
+</table>
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

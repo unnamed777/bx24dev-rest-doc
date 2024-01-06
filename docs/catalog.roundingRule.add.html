@@ -1,0 +1,48 @@
+<html>
+        <head>
+            <title>catalog.roundingRule.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">catalog.roundingRule.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/catalog/roundingrule/catalog_roundingrule_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">catalog.roundingRule.add(fields)</pre>
+
+<p>Метод добавляет правило округления цен.</p>
+
+
+<h4>Параметры</h4>
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th><th>Тип</th>
+			<th>Описание</th>      </tr>
+<tr><td>fields</td><td>object</td> <td>Поля, соответствующие доступному списку полей <a class="link" href="/rest_help/catalog/roundingrule/catalog_roundingrule_getfields.php">fields</a>.</td></tr>
+	</tbody>
+</table>
+
+<h4>Примеры</h4>
+<pre class="syntax" rel="example">BX24.callMethod(
+	'catalog.roundingRule.add',
+	{
+		fields: {
+			catalogGroupId: 14,
+			price: 1000,
+			roundType: 4,
+			roundPrecision: 100
+		}
+	},
+	function(result) {
+		if (result.error())
+			console.error(result.error().ex);
+		else
+			console.log(result.data());
+	}
+);
+</pre>
+
+<br>							
+        </div>
+        </body>
+        </html>

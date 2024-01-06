@@ -1,0 +1,149 @@
+<html>
+        <head>
+            <title>lists.element.update</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">lists.element.update <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/lists/elements/lists_element_update.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Описание</h3>
+
+<pre class="syntax">lists.element.update(params, fields)</pre>
+<p>Метод обновляет элемент списка. В случае успешного обновления элемента ответ true, иначе Exception.</p>
+<br>
+<p class="note"><b>Важно! <u>Все поля</u> элемента и их значения должны передаваться в запросе.</b></p>
+<br>
+<p>Чтобы загрузить файлы в поле типа Файл (Диск) необходимо:</p>
+
+<ol>
+<li> использовать rest api модуля disk: <a class="link" href="/rest_help/disk/folder/disk_folder_uploadfile.php">disk.folder.uploadfile</a> и <a class="link" href="/rest_help/disk/storage/disk_storage_uploadfile.php">disk.storage.uploadfile</a>. В ответе при загрузке этих файлов, вы будете получать  "ID": 290.</li>
+<li>Получить список ID загруженных файлов. </li> 
+<li>Затем с помощью rest api модуля lists добавлять файлы в нужное поле. В случае если у поля уже есть прикрепленные файлы вам нужно получить предыдущие значения из <a class="link" href="/rest_help/lists/elements/lists_element_get.php">lists.element.get</a>
+и передать их вместе с новыми:
+<pre class="syntax" rel="example">var params = {
+	'IBLOCK_TYPE_ID': 'lists',
+	'IBLOCK_ID': '41',
+	'ELEMENT_CODE': 'element1',
+	'FIELDS': {
+		'NAME': 'Test element 1',
+		'PROPERTY_121': {'4754': ['50', 'n1582']} // либо без id 'PROPERTY_121': {'n0': ['50', 'n1582']}
+	}
+};
+BX.rest.callMethod(
+	'lists.element.update',
+	params,
+	function(result)
+	{
+		if(result.error())
+			alert("Error: " + result.error());
+		else
+			alert("Success: " + result.data());
+	}
+);</pre>
+<p>Значения в поле Файл (Диск) без префикса "n" это уже прикрепленные файлы (attachedId), а с префиксом это ваши новые файлы, уже загруженные предварительно в диск.</p>
+
+</li> 
+ </ol>
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr><th width="15%">Параметр</th><th>Описание</th></tr>
+<tr><td colspan="2" align="center"><b><u>Все поля</u> элемента и их значения должны передаваться в запросе.</b></td></tr>
+
+<tr><td>IBLOCK_TYPE_ID</td><td>id типа инфоблока (обязательно):
+<ul>
+<li><b>lists</b> - тип инфоблока списка</li>
+<li><b>bitrix_processes</b> - тип инфоблока процессов</li> 
+<li><b>lists_socnet</b> - тип инфоблока списков групп</li></ul></td></tr>
+<tr><td>IBLOCK_CODE/IBLOCK_ID</td><td>код или id инфоблока (обязательно)</td></tr>
+<tr><td>ELEMENT_CODE/ELEMENT_ID</td><td>код или id элемента (обязательно)</td></tr>
+<tr><td>FIELDS</td><td>массив полей и значений</td></tr>
+<tr><td>SOCNET_GROUP_ID</td><td>id группы (обязательно, если список создается для группы);</td></tr>
+</tbody>
+</table>
+
+
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Пример</h3>
+
+<pre class="syntax" rel="example">var params = {
+	'IBLOCK_TYPE_ID': 'lists_socnet',
+	'IBLOCK_CODE': 'rest_1',
+	'ELEMENT_CODE': 'element_1',
+	'FIELDS': {
+		'NAME': 'Test element (Update)',
+		'PROPERTY_62': {
+		'599': 'Text string (Update)'
+		},
+		'PROPERTY_63': {
+		'600': '73',
+		'601': '97',
+		'602': '17'
+		}
+	}
+};
+BX24.callMethod(
+	'lists.element.update',
+	params,
+	function(result)
+	{
+		if(result.error())
+			alert("Error: " + result.error());
+		else
+			alert("Success: " + result.data());
+	}
+);</pre>
+
+<!--<p>Запись значения в свойство Файл (Диск) , в случае если id файла оригинальный, взятый из диска, должно быть вида: n124</p>
+
+<p><pre class="syntax" rel="example">var params = {
+	'IBLOCK_TYPE_ID': 'bitrix_processes',
+	  'IBLOCK_ID': '154',
+	  'ELEMENT_ID': '15318',
+	  'FIELDS': {
+	  'NAME': 'Test element (Update)',
+	  'PROPERTY_2946': {
+		  'n0': 'n3374'
+	  }
+	  }
+  };
+  BX24.callMethod(
+	  'lists.element.update',
+	  params,
+	  function(result)
+	  {
+	  if(result.error())
+		  alert("Error: " + result.error());
+	  else
+		  alert("Success: " + result.data());
+	  }
+  );</pre></p>-->
+
+</div>
+
+<!------->
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

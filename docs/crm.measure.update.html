@@ -1,0 +1,62 @@
+<html>
+        <head>
+            <title>crm.measure.update</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.measure.update <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/measure/crm_measure_update.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.measure.update(id, fields)</pre>
+
+<p>Обновляет существующую единицу измерения.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+<tr>
+<td>id</td>
+<td>Идентификатор единицы измерения.</td>
+</tr>
+
+<tr>
+<td>fields</td>
+<td><a class="link" href="/rest_help/crm/measure/crm_measure_add.php">Набор полей</a> - массив вида array("обновляемое поле"=&gt;"значение"[, ...]), где "обновляемое поле" может принимать значения из возвращаемых методом <a class="link" href="/rest_help/crm/measure/crm_measure_fields.php">crm.measure.fields</a>.
+
+<div class="note">
+	<b>Примечание</b>: чтобы узнать требуемый формат полей, выполните метод  <a class="link" href="/rest_help/crm/measure/crm_measure_fields.php">crm.measure.fields</a> и посмотрите формат пришедших значений этих полей.</div></td>
+</tr>
+	</tbody>
+</table>
+
+
+
+
+<h4>Пример</h4>
+<pre class="syntax" rel="example">var id = prompt("Введите ID");
+var title = prompt("Введите новое наименование для единицы измерения");
+BX24.callMethod(
+	"crm.measure.update",
+	{
+		id: id,
+		fields: {
+			"MEASURE_TITLE": title
+		}
+	},
+	function (result)
+	{
+		if (result.error())
+			console.error(result.error());
+		else
+			console.info(result.data());
+	}
+);
+</pre><br><br>							
+        </div>
+        </body>
+        </html>

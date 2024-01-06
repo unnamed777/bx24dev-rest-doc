@@ -1,0 +1,56 @@
+<html>
+        <head>
+            <title>entity.item.property.update</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">entity.item.property.update <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/entity/entity_item_property_update.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Обновление дополнительного свойства элементов хранилища. Пользователь должен обладать правами на управление (<b>Х</b>) хранилищем.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+<tbody><tr>
+	<th width="20%">Параметр</th>
+	<th>Описание</th>
+</tr>
+<tr>
+	<td>ENTITY</td>
+	<td>Обязательный. Строковой идентификатор хранилища.</td>
+</tr>
+<tr>
+	<td>PROPERTY</td>
+	<td>Обязательный. Строковой идентификатор свойства.</td>
+</tr>
+<tr>
+	<td>PROPERTY_NEW</td>
+	<td>Новый строковой идентификатор свойства.</td>
+</tr>
+<tr>
+	<td>NAME</td>
+	<td>Наименование свойства.</td>
+</tr>
+<tr>
+	<td>TYPE</td>
+	<td>Тип свойства (<b>S</b> - строка, <b>N</b> - число, <b>F</b> - файл).</td>
+</tr>
+</tbody></table>
+
+<h4>Пример</h4>
+
+<p>Вызов
+<br></p><pre class="syntax" rel="example">BX24.callMethod('entity.item.property.update', {ENTITY: 'menu_new', PROPERTY: 'new_prop', NAME: 'Уже не новое свойство'});</pre><p></p>
+
+<p>Запрос
+<br></p><pre>https://my.bitrix24.ru/rest/entity.item.property.update.json?ENTITY=menu_new&amp;NAME=%D0%A3%D0%B6%D0%B5%20%D0%BD%D0%B5%20%D0%BD%D0%BE%D0%B2%D0%BE%D0%B5%20%D1%81%D0%B2%D0%BE%D0%B9%D1%81%D1%82%D0%B2%D0%BE&amp;PROPERTY=new_prop&amp;auth=ad5a6f34f14f644136830eb8a936f07f</pre><p></p>
+
+
+<p>Ответ
+<br></p><pre>{"result":true}</pre><p></p>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

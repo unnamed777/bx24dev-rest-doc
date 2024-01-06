@@ -1,0 +1,54 @@
+<html>
+        <head>
+            <title>crm.requisite.preset.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.requisite.preset.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/requisite/methods/crm_requisite_preset_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.requisite.preset.add(fields)</pre>
+
+<p>Создаёт новый шаблон.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr><th width="15%">Параметр</th> <th>Описание</th></tr>
+
+<tr><td>fields</td><td>Набор полей - массив вида array("поле"=&gt;"значение"[, ...]), содержащий значения полей шаблона. Где "поле" может принимать значения из возвращаемых методом <a class="link" href="/rest_help/crm/requisite/methods/crm_requisite_preset_fields.php">crm.requisite.preset.fields</a>.
+<div class="note">
+	<b>Примечание</b>: чтобы узнать требуемый формат полей, выполните метод <a class="link" href="/rest_help/crm/requisite/methods/crm_requisite_preset_fields.php">crm.requisite.preset.fields</a> и посмотрите формат пришедших значений этих полей.</div>
+</td></tr>
+
+</tbody>
+</table>
+
+<a class="link" name="example"></a>
+<h4>Пример</h4>
+<pre class="syntax" rel="example">BX24.callMethod(
+	"crm.requisite.preset.add", 
+	{
+		fields:
+		{
+			"ENTITY_TYPE_ID": 8,
+			"COUNTRY_ID": 1,
+			"NAME": "ИП",
+			"XML_ID": "#CRM_REQUISITE_PRESET_DEF_RU_INDIVIDUAL#",
+			"ACTIVE": "Y",
+			"SORT": 520
+		}
+	},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.info("Создан шаблон с ID " + result.data());
+	}
+);
+</pre><br><br>							
+        </div>
+        </body>
+        </html>

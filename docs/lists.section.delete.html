@@ -1,0 +1,60 @@
+<html>
+        <head>
+            <title>lists.section.delete</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">lists.section.delete <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/lists/section/lists_section_delete.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">lists.section.delete(
+	params
+)</pre>
+
+<p>Метод удаляет раздел списка. В случае успешного создания раздела ответ <i>true</i>, иначе Exception.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>IBLOCK_TYPE_ID</td> 	<td>Идентификатор типа инфоблока (обязательный). Возможные значения:
+<ul>
+<li><strong>lists</strong> - тип инфоблока списка</li>
+<li><strong>bitrix_processes</strong> - тип инфоблока процессов</li> 
+<li><strong>lists_socnet</strong> - тип инфоблока списков групп</li> 
+ </ul></td> <td></td></tr>
+   
+    <tr> 	<td>IBLOCK_CODE/IBLOCK_ID</td> 	<td>Код или идентификатор инфоблока (обязательный).</td> <td></td></tr>
+   
+    <tr> 	<td>SECTION_CODE/SECTION_ID</td> 	<td>Код или идентификатор раздела (обязательный).</td> <td></td></tr>
+   
+  <tr><td>SOCNET_GROUP_ID</td><td>id группы (обязательно, если список создается для группы);</td></tr>
+   </tbody>
+ </table>
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">/* lists.section.delete */
+var params = {
+	'IBLOCK_TYPE_ID': 'lists',
+	'IBLOCK_CODE': 'rest_1',
+	'SECTION_CODE': 'Section_code_1'
+};
+BX.rest.callMethod(
+	'lists.section.delete',
+	params,
+	function(result)
+	{
+		if(result.error())
+			alert("Error: " + result.error());
+		else
+			console.log(result.data());
+	}
+);</pre>
+
+<br>							
+        </div>
+        </body>
+        </html>

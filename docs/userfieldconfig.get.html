@@ -1,0 +1,139 @@
+<html>
+        <head>
+            <title>userfieldconfig.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">userfieldconfig.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/userfieldconfig/userfieldconfig/userfieldconfig_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<p class="note_blue">
+Scope: <span class="bg_blue">userfieldconfig, scope модуля</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<div class="tab">
+
+<h3 class="tab-title">Описание и параметры</h3>
+<pre class="syntax">userfieldconfig.get({id: number, moduleId: string})</pre>
+
+<p>Метод вернет данные о настройках пользовательского поля с идентификатором <strong>id</strong>.</p>
+
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>id </td> 	<td>Идентификатор настроек поля. Обязательный.</td> <td></td></tr>
+   
+    <tr> 	<td>moduleId</td> 	<td>Строковый идентификатор модуля. Обязательный.</td> <td></td></tr>
+   
+   </tbody>
+ </table>
+
+</div>
+
+<!------->
+
+<div class="tab">
+
+<h3 class="tab-title">Пример</h3>
+
+<p>Пример ответа.</p>
+
+<pre class="syntax">{
+    "field": {
+        "id": "165",
+        "entityId": "RPA_1",
+        "fieldName": "UF_RPA_1_1585069397",
+        "userTypeId": "file",
+        "xmlId": null,
+        "sort": "100",
+        "multiple": "Y",
+        "mandatory": "N",
+        "showFilter": "E",
+        "showInList": "Y",
+        "editInList": "Y",
+        "isSearchable": "Y",
+        "settings": {
+            "SIZE": 20,
+            "LIST_WIDTH": 0,
+            "LIST_HEIGHT": 0,
+            "MAX_SHOW_SIZE": 0,
+            "MAX_ALLOWED_SIZE": 0,
+            "EXTENSIONS": []
+        },
+        "languageId": {
+            "en": "en",
+            "ru": "ru"
+        },
+        "editFormLabel": {
+            "en": "",
+            "ru": "Множественный файл"
+        },
+        "listColumnLabel": {
+            "en": null,
+            "ru": null
+        },
+        "listFilterLabel": {
+            "en": null,
+            "ru": null
+        },
+        "errorMessage": {
+            "en": null,
+            "ru": null
+        },
+        "helpMessage": {
+            "en": null,
+            "ru": null
+        }
+    }
+}</pre>
+
+<p>Где:</p>
+
+<ul>
+<li>id - идентификатор</li>
+<li>entityId - строковый идентификатор сущности</li> 
+<li>fieldName - код поля</li>
+<li>userTypeId - строковый идентификатор типа поля</li>
+<li>xmlId - внешний идентификатор</li> 
+<li>sort - индекс сортировки</li>
+<li>multiple - флаг множественности</li>
+<li>mandatory - флаг обязательности</li> 
+<li>showFilter - флаг показа поля в фильтре</li>
+<li>showInList - флаг показа поля в списке</li>
+<li>editInList - флаг разрешения редактирования поля в списке</li> 
+<li>isSearchable - флаг наличия значения поля в полнотекстовом индексе</li>
+<li>settings - список дополнительных настроек поля, зависит от его типа</li>
+<li>languageId - список идентификаторов языков, для которых есть фразы</li> 
+<li>editFormLabel - список с языкозависимыми названиями поля, где ключ - идентификатор языка, а значение - фраза</li>
+<li>listColumnLabel - аналогичный список фраз для подписи поля в списке (не используется)</li>
+<li>listFilterLabel - аналогичный список фраз для подписи поля в фильтре (не используется)</li> 
+<li>errorMessage - аналогичный список фраз для сообщения об ошибке (не используется)</li> 
+<li>helpMessage - аналогичный список подсказок (не используется)</li>
+<li>enum - массив с вариантами значений для свойств типа список enumeration:
+      <ul>
+      <li>id - идентификатор варианта</li>
+      <li>userFieldId - идентификатор настроек поля</li> 
+      <li>value - значение</li> 
+      <li>def - флаг по умолчанию (N или Y), по умолчанию N. Только один может быть вариантом по умолчанию.</li>
+      <li>sort - индекс сортировки</li> 
+      <li>xmlId - внешний идентификатор варианта, генерируется автоматически</li> 
+       </ul> </li> 
+ </ul>
+
+</div>
+
+<!------->
+
+   
+
+    
+    <br><br>							
+        </div>
+        </body>
+        </html>

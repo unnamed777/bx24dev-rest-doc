@@ -1,0 +1,50 @@
+<html>
+        <head>
+            <title>placement.list</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">placement.list <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/application_embedding/metods/placement_list.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Метод для получения списка доступных приложению мест встраивания.</p>
+
+<h4>Параметры</h4>
+
+<p><table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>SCOPE </td> 	<td>Ограничение списка одним из прав доступа приложения</td> <td></td></tr>
+   
+   </tbody>
+ </table></p>
+
+
+<h4>Пример</h4>
+
+<pre class="syntax">GET https://sometestportal.bitrix24.com/rest/placement.list?auth=7e623a5a0000cd710000cd5b00000001000000a8b1dbe022e2de93198634e9526b00f7 HTTP/1.1
+HTTP/1.1 200 OK
+{
+	"result": [
+		"CRM_LEAD_LIST_MENU", 
+		"CRM_DEAL_LIST_MENU", 
+		"CRM_INVOICE_LIST_MENU", 
+		"CRM_QUOTE_LIST_MENU", 
+		"CRM_CONTACT_LIST_MENU", 
+		"CRM_COMPANY_LIST_MENU", 
+		"CRM_ACTIVITY_LIST_MENU", 
+		"CRM_LEAD_DETAIL_TAB", 
+		"CRM_DEAL_DETAIL_TAB", 
+		"CRM_CONTACT_DETAIL_TAB", 
+		"CRM_COMPANY_DETAIL_TAB", 
+		"CRM_LEAD_DETAIL_ACTIVITY", 
+		"CRM_DEAL_DETAIL_ACTIVITY", 
+		"CRM_CONTACT_DETAIL_ACTIVITY", 
+		"CRM_COMPANY_DETAIL_ACTIVITY"
+	]
+}</pre>
+<br><br>							
+        </div>
+        </body>
+        </html>

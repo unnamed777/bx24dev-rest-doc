@@ -1,0 +1,106 @@
+<html>
+        <head>
+            <title>user.fields</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">user.fields <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/users/user_fields.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note">Перечень полей пользователей Битрикс24, который будет получен в результате выполнения метода, зависит от скоупа приложения/вебхука. Подробности о доступе к данным пользователей можно узнать в <a class="link" href="/rest_help/users/index.php">статье</a>. </p>
+
+<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Описание</h3>
+
+<p>Получение списка названий полей пользователя. Метод отдаёт стандартный список полей, использование пользовательских полей не предусмотрено.</p>
+
+<p><b>Параметры</b></p>
+<p>Метод параметров не имеет.</p>
+<br>
+<p><b>Вызов</b></p>
+<pre class="syntax" rel="example">BX24.callMethod('user.fields');</pre>
+
+<p><b>Запрос</b> (xml для наглядности ответа)</p>
+<pre class="syntax">https://my.bitrix24.ru/rest/user.fields.xml?auth=7c9d8f00ea0ddd9e02cab3eb2b3bd0d1</pre>
+
+<p><b>Ответ</b></p>
+<pre class="syntax">&lt;response&gt;
+	&lt;result&gt;
+		&lt;ID&gt;ID&lt;/ID&gt;
+		&lt;ACTIVE&gt;Активность&lt;/ACTIVE&gt;
+		&lt;EMAIL&gt;E-Mail&lt;/EMAIL&gt;
+		&lt;NAME&gt;Имя&lt;/NAME&gt;
+		&lt;LAST_NAME&gt;Фамилия&lt;/LAST_NAME&gt;
+		&lt;SECOND_NAME&gt;Отчество&lt;/SECOND_NAME&gt;
+		&lt;PERSONAL_GENDER&gt;Пол&lt;/PERSONAL_GENDER&gt;
+		&lt;PERSONAL_PROFESSION&gt;Профессия&lt;/PERSONAL_PROFESSION&gt;
+		&lt;PERSONAL_WWW&gt;Домашняя страничка&lt;/PERSONAL_WWW&gt;
+		&lt;PERSONAL_BIRTHDAY&gt;Дата рождения&lt;/PERSONAL_BIRTHDAY&gt;
+		&lt;PERSONAL_PHOTO&gt;Фотография&lt;/PERSONAL_PHOTO&gt;
+		&lt;PERSONAL_ICQ&gt;ICQ&lt;/PERSONAL_ICQ&gt;
+		&lt;PERSONAL_PHONE&gt;Личный телефон&lt;/PERSONAL_PHONE&gt;
+		&lt;PERSONAL_FAX&gt;Факс&lt;/PERSONAL_FAX&gt;
+		&lt;PERSONAL_MOBILE&gt;Личный мобильный&lt;/PERSONAL_MOBILE&gt;
+		&lt;PERSONAL_PAGER&gt;Пейджер&lt;/PERSONAL_PAGER&gt;
+		&lt;PERSONAL_STREET&gt;Улица проживания&lt;/PERSONAL_STREET&gt;
+		&lt;PERSONAL_CITY&gt;Город проживания&lt;/PERSONAL_CITY&gt;
+		&lt;PERSONAL_STATE&gt;Область / край&lt;/PERSONAL_STATE&gt;
+		&lt;PERSONAL_ZIP&gt;Почтовый индекс&lt;/PERSONAL_ZIP&gt;
+		&lt;PERSONAL_COUNTRY&gt;Страна&lt;/PERSONAL_COUNTRY&gt;
+		&lt;WORK_COMPANY&gt;Компания&lt;/WORK_COMPANY&gt;
+		&lt;WORK_POSITION&gt;Должность&lt;/WORK_POSITION&gt;
+		&lt;UF_DEPARTMENT&gt;Подразделения&lt;/UF_DEPARTMENT&gt;
+		&lt;UF_INTERESTS&gt;Интересы&lt;/UF_INTERESTS&gt;
+		&lt;UF_SKILLS&gt;Навыки&lt;/UF_SKILLS&gt;
+		&lt;UF_WEB_SITES&gt;Другие сайты&lt;/UF_WEB_SITES&gt;
+		&lt;UF_XING&gt;Xing&lt;/UF_XING&gt;
+		&lt;UF_LINKEDIN&gt;LinkedIn&lt;/UF_LINKEDIN&gt;
+		&lt;UF_FACEBOOK&gt;Facebook*&lt;/UF_FACEBOOK&gt;
+		&lt;UF_TWITTER&gt;Twitter&lt;/UF_TWITTER&gt;
+		&lt;UF_SKYPE&gt;Skype&lt;/UF_SKYPE&gt;
+		&lt;UF_DISTRICT&gt;Район&lt;/UF_DISTRICT&gt;
+		&lt;UF_PHONE_INNER&gt;Внутренний телефон&lt;/UF_PHONE_INNER&gt;
+	&lt;/result&gt;
+&lt;/response&gt;</pre>
+
+<p class="note">* Социальная сеть признана экстремистской и запрещена на территории Российской Федерации.</p>
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Пример</h3>
+
+<p>Изменить подразделение пользователя:</p>
+<pre class="syntax" rel="example">$res = CRest::call(
+	'user.update',
+	[
+		'ID' =&gt; 4,
+		'UF_DEPARTMENT' =&gt; [
+			3
+		],
+	]
+);</pre>
+
+<p>Добавить пользователя в рабочую группу:</p>
+<pre class="syntax" rel="example">$res = CRest::call(
+	'sonet_group.user.invite',
+	[
+		'USER_ID' =&gt; 4,
+		'GROUP_ID' =&gt; 3,
+		'MESSAGE' =&gt; 'Invitation'
+	]
+);
+</pre>
+
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

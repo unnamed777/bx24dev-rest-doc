@@ -1,0 +1,47 @@
+<html>
+        <head>
+            <title>landing.site.markUnDelete</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">landing.site.markUnDelete <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/landing/site/methods/landing_site_markUnDelete.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">landing.site.markUnDelete<b>(</b>
+	$id
+<b>)</b></pre>
+
+<p>Метод помечает сайт как не удаленный.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal">
+  <tbody>
+    <tr><th width="15%">Параметр</th><th>Описание</th><th width="10%">Версия</th></tr>
+    <tr><td>ID</td><td>Идентификатор страницы</td><td></td></tr>
+  </tbody>
+</table>
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'landing.site.markUnDelete',
+	{
+		id: 1688
+	},
+	function(result)
+	{
+		if(result.error())
+		{
+			console.error(result.error());
+		}
+		else
+		{
+			console.info(result.data());
+		}
+	}
+);</pre>
+<br>							
+        </div>
+        </body>
+        </html>

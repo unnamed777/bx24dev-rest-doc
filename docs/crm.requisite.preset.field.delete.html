@@ -1,0 +1,49 @@
+<html>
+        <head>
+            <title>crm.requisite.preset.field.delete</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.requisite.preset.field.delete <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/requisite/methods/crm_requisite_preset_field_delete.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.requisite.preset.field.delete(id, preset)</pre>
+
+<p>Удаляет поле из набора полей шаблона для определенного реквизита.  В наборе могут быть значения из возвращаемых методом <a class="link" href="/rest_help/crm/requisite/methods/crm_requisite_preset_field_fields.php">crm.requisite.preset.field.fields</a>.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr><th width="15%">Параметр</th> <th>Описание</th></tr>
+
+<tr><td>id</td><td>Идентификатор поля из набора шаблона.</td></tr>
+<tr><td>preset</td><td>Поля шаблона, к которому привязан набор.</td></tr>
+
+</tbody>
+</table>
+
+<a class="link" name="example"></a>
+<h4>Пример</h4>
+<pre class="syntax" rel="example">var id = prompt("Введите ID");
+BX24.callMethod(
+	"crm.requisite.preset.field.delete",
+	{
+		ID:id,
+		preset:
+		{
+			"ID":1
+		}
+	},
+	function(result) 
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.dir(result.data());
+	}
+);
+</pre><br><br>							
+        </div>
+        </body>
+        </html>

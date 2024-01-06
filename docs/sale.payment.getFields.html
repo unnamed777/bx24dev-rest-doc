@@ -1,0 +1,109 @@
+<html>
+        <head>
+            <title>sale.payment.getFields</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">sale.payment.getFields <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/sale/sale.payment.add/sale_payment_getFields.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<p class="note_blue">
+Scope: <span class="bg_blue">sale</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<div class="tab">
+
+<h3 class="tab-title">Описание и пример</h3>
+<pre class="syntax">sale.payment.getFields()</pre>
+
+<p>Метод возвращает поля оплаты.</p>
+
+<h4>Параметры</h4>
+
+<p>Без параметров.</p>
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'sale.payment.getFields', 
+	{}, 
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error().ex);
+		else
+			console.log(result.data());
+	}
+);
+</pre>
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Возвращаемые поля</h3>
+
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Поле</th>
+			<th>Описание</th>      </tr>
+
+<tr><td>id</td><td>Идентификатор оплаты.</td> </tr>
+<tr><td>orderId</td><td>Идентификатор заказа.</td> </tr>
+<tr><td>paid</td><td>Флаг оплаченности: Y или N.</td> </tr>
+<tr><td>datePaid</td><td>Дата оплаты.</td> </tr>
+<tr><td>empPaidId</td><td>Кто оплатил.</td> </tr>
+<tr><td>paySystemId</td><td>ID платежной системы.</td> </tr>
+<tr><td>psStatus</td><td>Данные, пришедшие от платежной системы: статус транзакции.</td> </tr>
+<tr><td>psStatusCode</td><td>Данные, пришедшие от платежной системы: код транзакции.</td> </tr>
+<tr><td>psInvoiceId</td><td>Идентификатор оплаты в платежной системе.</td> </tr>
+<tr><td>psStatusDescription</td><td>Данные, пришедшие от платежной системы: описание транзакции.</td> </tr>
+<tr><td>psStatusMessage</td><td>Данные, пришедшие от платежной системы: сообщение.</td> </tr>
+<tr><td>psSum</td><td>Данные, пришедшие от платежной системы: сумма транзакции.</td> </tr>
+<tr><td>psCurrency</td><td>Данные, пришедшие от платежной системы: валюта.</td> </tr>
+<tr><td>psResponseDate</td><td>Данные, пришедшие от платежной системы: дата ответа от платежной системы.</td> </tr>
+<tr><td>payVoucherNum</td><td>Номер платежного документа.</td> </tr>
+<tr><td>payVoucherDate</td><td>Дата платежного документа.</td> </tr>
+<tr><td>datePayBefore</td><td>Дата, до которой необходимо оплатить счет (в магазине не используется).</td> </tr>
+<tr><td>dateBill</td><td>Дата выставления счета.</td> </tr>
+<tr><td>xmlId</td><td>Внешний идентификатор.</td> </tr>
+<tr><td>sum</td><td>Сумма оплаты.</td> </tr>
+<tr><td>priceCod</td><td>Стоимость оплаты при доставке (используется, например, для наложенного платежа).</td> </tr>
+<tr><td>currency</td><td>Валюта.</td> </tr>
+<tr><td>paySystemName</td><td>Название платежной системы.</td> </tr>
+<tr><td>responsibleId</td><td>ID пользователя, ответственного за оплату.</td> </tr>
+<tr><td>empResponsibleId</td><td>ID пользователя, который назначил ответственного.</td> </tr>
+<tr><td>dateResponsibleId</td><td>Дата назначения ответственного.</td> </tr>
+<tr><td>comments</td><td>Комментарий к оплате.</td> </tr>
+<tr><td>companyId</td><td>ID компании, которая будет принимать оплату.</td> </tr>
+<tr><td>payReturnNum</td><td>Номер документа возврата.</td> </tr>
+<tr><td>payReturnDate</td><td>Дата документа возврата.</td> </tr>
+<tr><td>empReturnId</td><td>ID пользователя, который выполнял возврат.</td> </tr>
+<tr><td>payReturnComment</td><td>Комментарий к возврату.</td> </tr>
+<tr><td>isReturn</td><td>Выполнялся ли возврат.</td> </tr>
+<tr><td>marked</td><td>Промаркирована ли оплата.</td> </tr>
+<tr><td>dateMarked</td><td>Дата маркировки.</td> </tr>
+<tr><td>empMarkedId</td><td>Кем промаркирована оплата.</td> </tr>
+<tr><td>reasonMarked</td><td>Причина маркировки.</td> </tr>
+<tr><td>updated1c</td><td>Обновлена ли через 1С.</td> </tr>
+<tr><td>id1c</td><td>Идентификатор в 1С.</td> </tr>
+<tr><td>version1c</td><td>Версия документа оплаты от 1С.</td> </tr>
+<tr><td>externalPayment</td><td>Флаг Y/N: внешняя оплата или нет.</td> </tr>
+
+	</tbody>
+</table>
+
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

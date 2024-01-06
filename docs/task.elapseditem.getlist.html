@@ -1,0 +1,148 @@
+<html>
+        <head>
+            <title>task.elapseditem.getlist</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">task.elapseditem.getlist <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/tasks/task/elapseditem/getlist.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<p class="note_blue">
+Scope: <span class="bg_blue">task</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<div class="tab">
+
+<h3 class="tab-title">Описание</h3>
+<p>Возвращает список записей о затраченном времени по задаче.</p>
+ 
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+<table class="tnormal" width="100%"> 
+  <tbody> 
+    <tr><th width="15%">Параметр</th><th>Описание</th></tr>
+		<tr><td>TASKID</td>	<td>Идентификатор задачи. Необязательный параметр.</td>	</tr>
+		
+		<tr><td>ORDER</td>	<td>Массив для сортировки результата. Поле для сортировки может принимать значения:
+			<br>
+			<ul>
+				<li><b>ID</b> - идентификатор записи о затраченном времени;	</li>
+				<li><b>USER_ID</b> - идентификатор пользователя, от имени которого была сделана запись о затраченном времени;	</li>
+				<li><b>MINUTES</b> - затраченное время, минуты;	</li>
+				<li><b>SECONDS</b> - затраченное время, секунды;	</li>
+				<li><b>CREATED_DATE</b> - дата создания записи;	</li>
+				<li><b>DATE_START</b> - дата начала;	</li>				
+				<li><b>DATE_STOP</b> - дата конца.	</li>
+			</ul>
+			Направление сортировки может принимать значения:
+			<ul>
+				<li><b>asc</b> - по возрастанию;	</li>
+				<li><b>desc</b> - по убыванию;	</li>
+			</ul>
+			Необязательный. По умолчанию фильтруется по убыванию идентификатора записи о затраченном времени.
+		</td></tr>
+		
+		<tr><td>FILTER</td>	<td>Массив вида <i>{"фильтруемое_поле": "значение фильтра" [, ...]}</i>. Фильтруемое поле может принимать значения:  
+			<br>
+			<ul>
+				<li><b>ID</b> - идентификатор комментария;	</li>
+				<li><b>USER_ID</b> - идентификатор пользователя, от имени которого была сделана запись о затраченном времени;	</li>
+				<li><b>CREATED_DATE</b> - дата создания записи;	</li>
+			</ul>
+			Перед названием фильтруемого поля может указать тип фильтрации:
+			<ul>
+				<li> "!" - не равно;	</li>
+				<li>"&lt;" - меньше;	</li>
+				<li>"&lt;=" - меньше либо равно;	</li>
+				<li>"&gt;" - больше;	</li>
+				<li>"&gt;=" - больше либо равно.	</li>
+			</ul>
+			<i>"значения фильтра"</i> - одиночное значение или массив. 
+			<br><br>
+			Необязательный. По умолчанию записи не фильтруются.
+		</td></tr>
+
+<tr><td>SELECT</td><td>Массив полей записей, которые будут возвращены методом. Можно указать только те поля, которые необходимы. Если в массиве присутствует значение   <code>"*"</code>, то будут возвращены все доступные поля. <br><br>
+
+Значение по умолчанию - пустой массив <code>array()</code> - означает, что будут возвращены все поля основной таблицы запроса.</td></tr>
+
+			<tr><td>PARAMS</td><td>Массив для опций вызова. Элементом является массив NAV_PARAMS вида <i>{"опция вызова": 'значение' [, ...]}</i>, хранящий следующие опции:
+		<ul>
+<li><b>nPageSize</b> - количество элементов на странице.   В целях ограничения нагрузки на постраничную навигацию наложено ограничение в 50 записей.</li> 		 
+			<li><b>iNumPage</b> - номер страницы при постраничной навигации.</li>
+         	</ul>
+	</td></tr>
+
+	</tbody>
+</table>
+
+ <p></p><div class="note"><b>Внимание!</b> Соблюдение порядка следования параметров в запросе обязательно. При его нарушении запрос будет выполнен с ошибками.</div><p></p>
+
+<p></p><div class="note">Особенности ручного добавления информации о времени работы, которая было фактически выполнена несколько дней назад. В этом случае меняется значение некоторых полей:
+<ul>
+<li>CREATED_DATE - дата начала;</li>
+<li>DATE_START - дата создания записи;</li> 
+<li>DATE_STOP - дата создания записи;</li> 
+ </ul></div>
+<p></p>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Примеры</h3>
+<pre class="syntax" rel="example">// Получить все записи о затраченном времени с сортировкой по ID в нисходящем порядке. 
+// Будут отфильтрованы только те записи, ID которых имеет значение меньше 50.
+BX24.callMethod(
+	'task.elapseditem.getlist',
+	[1, {'ID': 'desc'}, {'&lt;ID': 50}],
+	function(result){
+		console.info(result.data());
+		console.log(result);
+	}
+);
+</pre>
+ 
+<p>Получение выборки по затраченному времени на основании общий условий фильтрации. Например, выбрать данные о трудозатратах с указанной даты:</p>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'task.elapseditem.getlist',
+	[{'ID': 'desc'}, {&gt;=CREATED_DATE': '2018-02-16'}],
+	function(result){
+		console.info(result.data());
+		console.log(result);
+	}
+);</pre>
+
+<p>Пример для работы с php:</p>
+
+<pre class="syntax">// Пример для работы с php
+// Получение GET-запроса на выборку данных.
+$appParams = array(
+	"auth" =&gt; '92006f4ae0c55d400f1e6e09428af64a',
+	"ORDER" =&gt; array("ID" =&gt; "DESC"),			// Сортировка по ID - по убыванию
+	"FILTER" =&gt; array("&gt;ID" =&gt; 1),				// Фильтр
+	"SELECT" =&gt; array('ID', 'TASK_ID'),			// Выборка - только ID записи и задачи
+	"PARAMS" =&gt; array('NAV_PARAMS' =&gt; array(	// Постраничка
+		"nPageSize" =&gt; 2,						// по 2 элемента на странице
+		'iNumPage' =&gt; 2							// страница номер 2
+	)),
+);
+$appRequestUrl = 'http://test-domain.ru/rest/task.elapseditem.getlist.xml?'.http_build_query($appParams);
+print(urldecode($appRequestUrl));;</pre>
+
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

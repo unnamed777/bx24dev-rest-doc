@@ -1,0 +1,71 @@
+<html>
+        <head>
+            <title>crm.timeline.note.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.timeline.note.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/timeline/note/crm_timeline_note_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax"><b>crm.timeline.note.get(</b>
+	{
+		ownerTypeId: number,
+		ownerId: number,
+		itemType: number,
+		itemId: number
+	}
+)</pre>
+
+<p>Информация о заметке.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> </tr>
+   
+    <tr> 	<td>ownerTypeId</td> 	<td>Идентификатор типа элемента (справочник доступных типов), к которому относится запись.</td></tr>
+   
+    <tr> 	<td>ownerId</td> 	<td>Идентификатор элемента, к которому относится запись</td></tr>
+   
+    <tr> 	<td>itemType</td> 	<td>Тип записи, к которой нужно применить заметку:
+<ol>
+<li> запись истории,</li>
+<li> дело</li> 
+ </ol></td></tr>
+   
+    <tr> 	<td>itemId</td> 	<td>Идентификатор записи, к которой нужно применить заметку: <br>
+Если itemType=1, то это идентификатор записи истории таймлайна,<br>
+Если itemType=2, то это идентификатор дела.</td></tr>
+   
+   </tbody>
+ </table>
+
+<p>Если заметка найдена, результат будет содержать:</p>
+
+<ul>
+<li><b>text </b> - текст заметки</li>
+<li><b>createdById</b> - идентификатор пользователя, создавшего заметку</li> 
+<li><b>createdTime</b> - дата и время создания заметки</li> 
+<li><b>updatedById</b> - идентификатор пользователя, изменившего заметку</li> 
+<li><b>updatedTime</b> - дата и время изменения заметки</li>
+ </ul>
+    
+<h4>Пример</h4>
+
+<p>Пример использования</p>
+<pre class="syntax">crm.timeline.note.get?ownerTypeId=1&amp;ownerId=1&amp;itemId=1&amp;itemType=2</pre>
+
+<p>Успешный результат:</p>
+
+<pre class="syntax">{
+	"text": "предложить скидочку",
+	"createdById": 1,
+	"createdTime": "2022-12-31T12:00:00+03:00",
+	"updatedById": 2,
+	"updatedTime": "2022-12-31T18:00:00+03:00"
+}</pre>
+<br><br>							
+        </div>
+        </body>
+        </html>

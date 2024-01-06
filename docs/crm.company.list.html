@@ -1,0 +1,67 @@
+<html>
+        <head>
+            <title>crm.company.list</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.company.list <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/company/crm_company_list.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Возвращает список компаний по фильтру. Является реализацией списочного метода для компаний. </p>
+
+<p>При выборке используйте маски:</p>
+
+<ul>
+<li>"*" - для выборки всех полей (без пользовательских и множественных)</li>
+<li>"UF_*"- для выборки всех пользовательских полей (без множественных)</li> 
+ </ul>
+<p>Маски для выборки множественных полей нет. Для выборки множественных полей укажите нужные в списке выбора ("PHONE", "EMAIL" и так далее).</p>
+
+<h4>Параметры</h4>
+
+<p>Cм. описание <a class="link" href="/rest_help/rest_sum/index.php">списочных методов</a>.</p>
+
+<h4>Пример</h4>
+<pre class="syntax" rel="example">//Поиск компаний по сфере деятельности и типу
+BX24.callMethod(
+	"crm.company.list",
+	{ 
+		order: { "DATE_CREATE": "ASC" },
+		filter: { "INDUSTRY": "MANUFACTURING", "COMPANY_TYPE": "CUSTOMER" },
+		select: [ "ID", "TITLE", "CURRENCY_ID", "REVENUE" ]
+	},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+		{
+			console.dir(result.data());
+			if(result.more())
+				result.next();
+		}
+	}
+);
+//Поиск компании по телефону
+BX24.callMethod(
+	"crm.company.list",
+	{ 
+		filter: { "PHONE": "555888" },
+		select: [ "ID", "TITLE" ]
+	},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+		{
+			console.dir(result.data());
+			if(result.more())
+				result.next();
+		}
+	}
+);
+</pre><br><br>							
+        </div>
+        </body>
+        </html>

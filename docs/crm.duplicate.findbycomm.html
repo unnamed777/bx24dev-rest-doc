@@ -1,0 +1,97 @@
+<html>
+        <head>
+            <title>crm.duplicate.findbycomm</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.duplicate.findbycomm <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/auxiliary/duplicates/crm_duplicate_findbycomm.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.duplicate.findbycomm()</pre>
+
+<p>Возвращает идентификаторы лидов, контактов и компаний содержащих телефоны или email-адреса из заданного списка.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+
+<tr>
+<td>type</td>
+<td>Тип коммуникации:
+<ul>
+<li><b>EMAIL</b> - email-адрес;</li>
+<li><b>PHONE</b> - телефон.</li>
+</ul>
+<p>Обязательный параметр.</p>
+</td>
+</tr>
+
+<tr>
+<td>values</td>
+
+<td>Массив email или телефонов (до 
+		<span class="learning-lesson-detail-block js-detail-info-block">
+			<span class="learning-lesson-detail-word js-detail-info-word">20 значений</span>
+			<span class="learning-lesson-detail-body js-detail-info-body">
+				<span class="learning-lesson-detail-body-inner  js-detail-info-body-inner">
+                    <button class="learning-lesson-detail-close-button  js-detail-close-button" type="button"></button>
+                    Ограничено с целью снижения нагрузки.
+                </span>
+			</span>
+		</span>
+		). Обязательный параметр. Метод возвращает не более 20 дублей по сущности, причем не 20 новых, а 20 старых.
+
+<p>Если в сущности 20 или более дублей, результаты по остальным сущностям возвращены не будут. Например, мы не указали <b>entity_type</b> и ожидаем дубли по всем трем сущностям, но у нас в лидах 20 или более дублей, сущности контакт и компания возвращены не будут. Если в сущности контакт будет 20 или более дублей, мы получим дубли по лидам и контактам, а компания будет отсутствовать в выборке.</p></td>
+</tr>
+<tr>
+<td>entity_type</td>
+<td>Необязательный параметр. Может быть опущен, в этом случае вернутся все три типа сущности. Если параметр используется, то можно оперировать только с одним из них. Если же задать массив или несуществующий параметр, то вернутся все типы.
+ Типы сущности:
+<ul>
+<li><b>LEAD</b> - лид;</li>
+<li><b>CONTACT</b> - контакт;</li>
+<li><b>COMPANY</b> - компания.</li>
+</ul>
+</td>
+</tr>
+	</tbody>
+</table>
+
+<p>Результат возвращается в виде объекта, содержащего массивы идентификаторов лидов, контактов и компаний.</p>
+
+<p>Доступ к массиву идентификаторов производится по имени типа. Пример:</p>
+<pre class="syntax">{'LEAD': [1, 2, 3], 'CONTACT': [4, 5, 6], 'COMPANY': [7, 8, 9]}
+</pre>
+
+<p>Пример поиска контакта по телефону:</p>
+
+<pre class="syntax" rel="example">//Поиск контакта по телефону
+BX24.callMethod(
+	"crm.duplicate.findbycomm", 
+	{
+		entity_type: "CONTACT",
+		type: "PHONE",
+		values: [ "8976543", "11223355" ],
+	},
+	function(result) 
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			{
+				console.dir(result.data());
+			}
+	}
+);</pre>
+
+
+<br>
+<br>							
+        </div>
+        </body>
+        </html>

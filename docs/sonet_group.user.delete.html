@@ -1,0 +1,42 @@
+<html>
+        <head>
+            <title>sonet_group.user.delete</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">sonet_group.user.delete <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/sonet_group/sonet_group_user_delete.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Позволяет удалить пользователя/пользователей из рабочей группы.</p>
+<p>Для осуществления операции текущий пользователь должен иметь права администратора соцсети.</p>
+
+<p>В случае, если текущая роль пользователя - владелец группы, он не может быть удален из группы этим методом.</p>
+
+<h4>Параметры вызова</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+
+<tr><th width="15%">Параметр</th><th>Описание</th></tr>
+  
+<tr><td>GROUP_ID</td><td>ID рабочей группы.</td></tr>
+<tr><td>USER_ID</td><td>ID пользователя (или массив ID), который/ые удаляются из группы.</td></tr>
+	
+	</tbody>
+</table>
+
+
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">// Удаляем пользователей с ID=10 и 21 из группы соцсети с ID=15
+BX24.callMethod('sonet_group.user.delete', {
+	GROUP_ID: 15,
+	USER_ID: [ 10, 21 ]
+});
+</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

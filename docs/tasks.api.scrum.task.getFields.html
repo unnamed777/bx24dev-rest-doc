@@ -1,0 +1,73 @@
+<html>
+        <head>
+            <title>tasks.api.scrum.task.getFields</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">tasks.api.scrum.task.getFields <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/tasks/task/scrum/task/tasks_api_scrum_task_getFields.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<p class="note_blue">
+Scope: <span class="bg_blue">task</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<div class="tab">
+<h3 class="tab-title">Описание и пример</h3>
+
+<pre class="syntax"><b>tasks.api.scrum.task.getFields(</b><b>)</b></pre>
+
+
+<p>Метод возвращает доступные поля задачи Скрама.</p>
+
+<h4>Параметры</h4>
+
+<p>Без параметров.</p>
+
+
+<h4>Примеры</h4>
+ <pre class="syntax" rel="example">BX24.callMethod(
+	'tasks.api.scrum.task.getFields',
+	{},
+	function(res)
+	{
+		console.log(res);
+	}
+);
+</pre> 
+
+</div>
+<!------->
+
+
+<div class="tab">
+<h3 class="tab-title">Доступные поля</h3>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Поле</th> 	<th>Описание</th></tr>
+   
+    <tr> 	<td>entityId</td> 	<td>Идентификатор бэклога или спринта</td></tr>
+
+    <tr> 	<td>storyPoints</td> 	<td>Стори Поинты (относительная оценка сложности задачи)</td></tr>
+
+    <tr> 	<td>epicId</td> 	<td>Идентификатор эпика</td></tr>
+
+    <tr> 	<td>sort</td> 	<td>Сортировка</td></tr>
+
+    <tr> 	<td>createdBy</td> 	<td>Кем создана</td></tr>
+
+    <tr> 	<td>modifiedBy</td> 	<td>Кем изменена</td></tr>
+
+
+   </tbody>
+ </table>
+
+</div>
+<!------->
+
+<br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,67 @@
+<html>
+        <head>
+            <title>documentgenerator.region.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">documentgenerator.region.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/documentgenerator/region/documentgenerator_region_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">documentgenerator</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<a class="link" name="register"></a>
+<pre class="syntax">documentgenerator.region.add(fields)</pre>
+
+<p>Добавляет новый регион. Возвращает те же данные, что и при вызове <a class="link" href="/rest_help/documentgenerator/region/documentgenerator_region_get.php">documentgenerator.region.get()</a> на новом регионе.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>      </tr>
+
+<tr><td>fields</td><td>Массив полей страны, среди которых:
+<ul>
+<li><code>title</code> - название страны (обязательное)</li>
+<li><code>languageId</code> - двухбуквенный идентификатор языка</li>
+<li><code>formatDate</code> - формат даты (обязательное)</li>
+<li><code>formatDatetime</code> - формат даты времени (обязательное)</li>
+<li><code>formatName</code> - формат имени (обязательное)</li>
+</ul>
+
+</td></tr>
+
+	</tbody>
+</table>
+
+
+<br><br>
+
+<h4>Ответ</h4>
+
+<pre class="syntax">"region": {
+	"id": "1",
+	"title": "Турция",
+	"languageId": "",
+	"formatDate": "YYYY-MM-DD",
+	"formatDatetime": "YYYY-MM-DD HH:MI:SS",
+	"formatName": "#LAST_NAME# #NAME# #SECOND_NAME#",
+	"phrases": {
+		"TAX_INCLUDED": "НДС включен в цену",
+		"TAX_NOT_INCLUDED": "НДС не включен в цену",
+		"TAX_INCLUDED_NOT_VAT": "Налог (не НДС) включен в цену",
+		"TAX_NOT_INCLUDED_NOT_VAT": "Налог (не НДС) не включен в цену",
+		"UF_TYPE_BOOLEAN_YES": "Да",
+		"UF_TYPE_BOOLEAN_NO": "Нет",
+	}
+}
+</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

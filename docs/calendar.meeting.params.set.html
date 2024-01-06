@@ -1,0 +1,65 @@
+<html>
+        <head>
+            <title>calendar.meeting.params.set</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">calendar.meeting.params.set <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/calendar/calendar_meeting_params_set.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Устанавливает параметры события для текущего пользователя, если он является его участником.</p>
+
+<h4>Параметры функции</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+<tr>
+<td>eventId</td>
+<td>Идентификатор события.</td>
+</tr>
+
+<tr>
+<td>accessibility</td>
+<td>Доступность на время события:
+<ul>
+    <li>busy (занят);</li>
+    <li>absent (отсутствую);</li>
+    <li>quest (под вопросом);</li>
+    <li>free (свободен).</li>
+</ul></td>
+</tr>
+
+<tr>
+<td>remind</td>
+<td> 	Напоминание о событии:
+<ul>
+    <li>type - временной тип напоминания (min, hour, day);</li>
+    <li>count - числовое значение временного промежутка.</li>
+</ul>
+</td>
+</tr>
+
+	</tbody>
+</table>
+
+<h4>Возвращаемое значение</h4>
+
+<p>Возвращает <b>true</b> в случае успешного выполнения.</p>
+
+<h4>Пример использования</h4>
+<pre class="syntax" rel="example">BX24.callMethod("calendar.meeting.params.set",
+	{
+		eventId: '651',
+		accessibility: 'free',
+		remind: [{type: 'min', count: 20}]
+	}
+);
+</pre>
+<br><br>							
+        </div>
+        </body>
+        </html>

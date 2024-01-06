@@ -1,0 +1,71 @@
+<html>
+        <head>
+            <title>voximplant.url.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">voximplant.url.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/scope_telephony/voximplant/voximplant_url_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Возвращает набор ссылок для навигации по страницам телефонии. Метод не имеет ограничений по <a class="link" href="https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=48&amp;LESSON_ID=1985" target="_blank">правам</a>.</p>
+
+<h4>Параметры функции</h4>
+Входных параметров нет.
+
+
+<h4>Описание результата</h4>
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+  
+		<tr>
+			<td>detail_statistics</td>
+			<td>Страница детальной статистики (таблица).</td>
+		</tr>
+		<tr>
+			<td>buy_connector</td>
+			<td>Страница для покупки SIP коннектора.</td>
+		</tr>
+		<tr>
+			<td>edit_config</td>
+			<td>Страница для настройки подключенной линии (SIP-номера), <code>#CONFIG_ID#</code> нужно заменить на необходимый идентификатор настройки.</td>
+		</tr>		
+	</tbody>
+</table>
+
+
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'voximplant.url.get',
+	{},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.info(result.data());
+	}
+);</pre>
+<!--
+<h4>Запрос:</h4>
+<pre class="syntax" rel="example">
+
+</pre>
+
+
+<h4>Ответ:</h4>
+<pre class="syntax" rel="example">
+
+</pre>
+-->
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

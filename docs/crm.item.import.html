@@ -1,0 +1,62 @@
+<html>
+        <head>
+            <title>crm.item.import</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.item.import <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/import/crm_item_import.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.item.import({entityTypeId: number, fields: ?{})</pre>
+
+<p>Импорт одной записи.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+<tr>
+
+<td>entityTypeId</td><td>идентификатор типа элемента (<a class="link" href="/rest_help/crm/import/index.php">Какие сущности поддерживаются?</a>)</td></tr>
+<tr><td>fields</td><td>значения полей элемента. Узнать набор этих полей можно используя REST метод <a class="link" href="/rest_help/crm/dynamic/methodscrmitem/crm_item_fields.php">crm.item.fields</a>, либо использовать методы для конкретных типов:  <a class="link" href="/rest_help/crm/leads/crm_lead_fields.php">crm.lead.fields</a>,  <a class="link" href="/rest_help/crm/cdeals/crm_deal_fields.php">crm.deal.fields</a>,  <a class="link" href="/rest_help/crm/contacts/crm_contact_fields.php">crm.contact.fields</a>,  <a class="link" href="/rest_help/crm/company/crm_company_fields.php">crm.company.fields</a>,  <a class="link" href="/rest_help/crm/komm_quote/crm_quote_fields.php">crm.quote.fields</a>.</td></tr>
+	</tbody>
+</table>
+
+<br>
+<p>Метод вернет массив <code>item</code> с идентификатором созданного элемента в случае успеха, либо сообщение об ошибке.</p><br>
+
+<p>Чтобы загрузить файл, в качестве значения пользовательского поля необходимо передать массив, где первый элемент - это имя файла, а второй - это закодированный в base64 контент файла.</p><br>
+
+<p>Более подробно об отличиях логики импорта от логики обычного добавления элементов написано <a class="link" href="/rest_help/crm/import/index.php">тут</a>.</p><br>
+
+<h4>Пример</h4>
+
+<p>Импорт сделки:</p>
+<br>
+
+<pre class="syntax" rel="example">{
+	"entityTypeId": 2,
+	"fields": {
+		"title": "Моя сделка",
+		"categoryId": 0
+	}
+}
+</pre>
+<br>
+<b>Успешный результат:</b>
+<pre class="syntax" rel="example">{
+	"result": {
+		"item": {
+			"id": 15
+		}
+	}
+}</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,49 @@
+<html>
+        <head>
+            <title>crm.userfield.types</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.userfield.types <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/userfields/crm_userfield_types.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.userfield.types</pre>
+
+<p>Возвращает список типов пользовательских полей.</p>
+<p>Содержит описания типов: </p>
+<ul>
+<li>string</li>
+<li>integer</li> 
+<li>double</li> 
+<li>boolean</li> 
+<li>datetime</li> 
+<li>enumeration</li> 
+<li>iblock_section</li> 
+<li>iblock_element</li> 
+<li>employee</li> 
+<li>crm_status</li> 
+<li>crm</li>
+<li>address</li>
+<li>money</li> 
+<li>url</li> 
+</ul>
+
+<p>Также будут возвращены <a class="link" href="/rest_help/application_embedding/user_field/index.php">типы</a> пользовательских полей, зарегистрированные текущим приложением.</p>
+
+<a class="link" name="example"></a>
+<h4>Пример</h4>
+<pre class="syntax" rel="example">BX24.callMethod(
+	"crm.userfield.types",
+	{},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.dir(result.data());
+	}
+);
+</pre><br><br>							
+        </div>
+        </body>
+        </html>

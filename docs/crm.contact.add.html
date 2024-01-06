@@ -1,0 +1,68 @@
+<html>
+        <head>
+            <title>crm.contact.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.contact.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/contacts/crm_contact_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.contact.add(fields, params)</pre>
+
+<p>Создаёт новый контакт.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+<tr>
+<td>fields</td>
+<td>Набор полей - массив вида array("поле"=&gt;"значение"[, ...]), содержащий значения полей контакта.
+<div class="note">
+	<b>Примечание</b>: чтобы узнать требуемый формат полей, выполните метод <a class="link" href="/rest_help/crm/contacts/crm_contact_fields.php">crm.contact.fields</a> и посмотрите формат пришедших значений этих полей.</div>
+</td>
+</tr>
+
+<tr>
+<td>params</td>
+<td>Набор параметров. REGISTER_SONET_EVENT - произвести регистрацию события добавления контакта в живой ленте. Дополнительно будет отправлено уведомление ответственному за контакт.</td>
+</tr>
+	</tbody>
+</table>
+
+<p class="note">Одно из полей: <b>NAME</b> или <b>LAST_NAME</b> обязательно должно быть заполнено.</p>
+
+<h4>Пример</h4>
+<pre class="syntax" rel="example">BX24.callMethod(
+	"crm.contact.add", 
+	{
+		fields:
+		{ 
+			"NAME": "Глеб", 
+			"SECOND_NAME": "Егорович", 
+			"LAST_NAME": "Титов", 
+			"OPENED": "Y", 
+			"ASSIGNED_BY_ID": 1, 
+			"TYPE_ID": "CLIENT",
+			"SOURCE_ID": "SELF",
+			"PHOTO": { "fileData": document.getElementById('photo') },
+			"PHONE": [ { "VALUE": "555888", "VALUE_TYPE": "WORK" } ] 	
+		},
+		params: { "REGISTER_SONET_EVENT": "Y" }	
+	}, 
+	function(result) 
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.info("Создан контакт с ID " + result.data());
+	}
+);
+</pre><br><br>							
+        </div>
+        </body>
+        </html>

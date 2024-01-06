@@ -1,0 +1,59 @@
+<html>
+        <head>
+            <title>sale.paymentItemBasket.update</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">sale.paymentItemBasket.update <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/sale/paymentitembasket/sale_paymentitembasket_update.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">sale</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<pre class="syntax">sale.paymentItemBasket.update(id, fields)</pre>
+
+<p>Метод для обновления полей привязки оплаты к корзине.</p>
+
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th><th>Тип</th>
+			<th>Описание</th>      </tr>
+
+<tr><td>id</td><td>integer</td> <td>Идентификатор привязки оплаты к корзине.</td></tr>
+
+<tr><td>fields</td><td>object</td> <td>Поля, соответствующие доступному списку полей <a class="link" href="/rest_help/sale/paymentitembasket/sale_paymentitembasket_getfields.php">fields</a>.</td></tr>
+
+	</tbody>
+</table>
+
+<br><br>
+
+<h4>Примеры</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'sale.paymentItemBasket.update', 
+	{
+		id: 105,
+		fields: {	      
+			quantity: 1,
+			xmlId: 111111111
+		}
+	}, 
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error().ex);
+		else
+			console.log(result.data());
+	}
+);
+</pre>
+<br>							
+        </div>
+        </body>
+        </html>

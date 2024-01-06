@@ -1,0 +1,50 @@
+<html>
+        <head>
+            <title>crm.automation.trigger.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.automation.trigger.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/automation/trigger_application/crm_automation_trigger_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Метод добавляет триггер. Возвращает <i>true</i> или ошибку с описанием.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Метод</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>CODE</td> 	<td>Внутренний уникальный (в рамках приложения) идентификатор триггера. Должен соответствовать маске [a-z0-9\.\-_]</td> <td></td></tr>
+   
+    <tr> 	<td>NAME</td> 	<td>Название триггера</td> <td></td></tr>
+
+   </tbody>
+ </table>
+
+<h4>Примеры</h4>
+
+<pre class="syntax" rel="example">function addTrigger(code, name)
+{
+	if (!name)
+		name = window.prompt('Enter trigger name:');
+	BX24.callMethod(
+		'crm.automation.trigger.add',
+		{
+			"CODE": code,
+			"NAME": name
+		},
+		function(result)
+		{
+			if (result.error())
+				alert("Error: " + result.error());
+			else
+			{
+				alert("Success: " + result.data());
+			}
+		}
+	);
+}</pre>							
+        </div>
+        </body>
+        </html>

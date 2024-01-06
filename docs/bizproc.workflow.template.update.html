@@ -1,0 +1,54 @@
+<html>
+        <head>
+            <title>bizproc.workflow.template.update</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">bizproc.workflow.template.update <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/bizproc/bizproc_workflow_template/bizproc_workflow_template_update.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">bizproc</span> Права на выполнение: <span class="bg_orange">администратор</span>
+</p>
+
+<p>Метод изменяет шаблон Бизнес-процесса. Требует прав администратора. Метод обновляет только те шаблоны, которые были созданы методом <a class="link" href="/rest_help/bizproc/bizproc_workflow_template/bizproc_workflow_template_add.php">bizproc.workflow.template.add</a>. Так как такие шаблоны привязываются к приложению и только их можно обновлять.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>ID</td> 	<td>Идентификатор изменяемого шаблона.</td> <td></td></tr>
+   
+    <tr> 	<td>FIELDS</td> 	<td>Массив изменяемых параметров. Обновить можно поля:<br>
+NAME, <br>
+DESCRIPTION,<br>
+AUTO_EXECUTE,<br>
+TEMPLATE_DATA.
+
+<p>При попытке обновить другие поля возвращаемые <a class="link" href="/rest_help/bizproc/bizproc_workflow_template/bizproc_workflow_template_list.php">bizproc.workflow.template.list</a> - ошибок не возникнет, но и обновлено ничего не будет.</p></td> <td></td></tr>
+     
+   </tbody>
+ </table>
+
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">function renameTemplate(id, name)
+{
+	BX24.callMethod(
+		'bizproc.workflow.template.update',
+		{ID: id, FIELDS: {'NAME': name}},
+		function(result)
+		{
+			if(result.error())
+				alert("Error: " + result.error());
+			console.log(result);
+		}
+	);
+}</pre>
+<br><br>							
+        </div>
+        </body>
+        </html>

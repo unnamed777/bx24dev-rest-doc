@@ -1,0 +1,98 @@
+<html>
+        <head>
+            <title>sale.propertyvalue.modify</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">sale.propertyvalue.modify <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/sale/propertyvalue/sale_propertyvalue_modify.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">sale</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<pre class="syntax">sale.propertyvalue.modify(fields.order.id, fields.order.propertyValues[])</pre>
+
+<p>Метод для изменения значения свойства.</p>
+
+<p>Если операция успешна, возвращается <a class="link" href="/rest_help/sale/propertyvalue/resource.php">ресурс значения свойства</a> в теле ответа.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th><th>Тип</th>
+			<th>Описание</th>      </tr>
+
+<tr><td>fields.order.id</td><td>int</td> <td>Номер заказа.</td></tr>
+
+<tr><td>fields.order.propertyValues[]</td><td>list</td> <td>Поля, соответствующие доступному списку полей <a class="link" href="/rest_help/sale/propertyvalue/sale_propertyvalue_getFields.php">fields</a>.</td></tr>
+
+	</tbody>
+</table>
+
+<br><br>
+
+<h4>Примеры</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'sale.propertyvalue.modify', 
+	{
+		fields: {
+			order: {
+				id: 33,
+				propertyValues: [
+				{
+					orderPropsId: 2,
+					value: 'bx@bx.bx2'
+				},
+				{
+					orderPropsId: 1,
+					value: 'Test'
+				},
+				{
+					orderPropsId: 3,
+					value: '77777777777'
+				},
+				{
+					orderPropsId: 4,
+					value: '101000'
+				},
+				{
+					orderPropsId: 6,
+					value: '0000073738'
+				},
+				{
+					orderPropsId: 7,
+					value: 'test'
+				},
+				{
+					orderPropsId: 20,
+					value: [
+					'code1',
+					'code2'
+					]
+				},
+				{
+					orderPropsId: 21,
+					value: 'code1'
+				}
+				],
+			},
+		}
+	}
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error().ex);
+		else
+			console.log(result.data());
+	}
+);
+</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,481 @@
+<html>
+        <head>
+            <title>sale.paysystem.handler.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">sale.paysystem.handler.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/paysystem/sale_paysystem_handler_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Описание</h3>
+
+<pre class="syntax">sale.paysystem.handler.add<b>(</b>
+	fields
+<b>)</b></pre>
+
+<p>Метод добавляет рест-обработчик.</p>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+	<tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+	<tr> 	<td>fields</td> 	<td>Набор полей(массив вида <code>array("поле":"значение"[, ...]))</code>, содержащий значения, описывающие обработчик. 
+Доступные поля: 
+<ul>
+<li>NAME - Название обработчика</li>
+<li>CODE - Уникальный код обработчика в системе</li> 
+<li>SETTINGS - Настройки обработчика</li> 
+<li>SORT - Сортировка</li> 
+ </ul>
+</td> <td></td></tr>
+
+   
+   </tbody>
+ </table>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Примеры</h3>
+
+<h4>Пример 1</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	"sale.paysystem.handler.add",
+	{
+		'NAME' : 'Обработчик.Rest', 	// Название обработчика
+		'SORT' : 100, 	// Сортировка
+		'CODE' : 'resthandlercode', 	// Уникальный код обработчика в системе
+		'SETTINGS' : { 		// Настройки обработчика
+			'CURRENCY' : {'RUB'}, 	// Список валют, которые поддерживает обработчик
+			'FORM_DATA' : { 	// Настройки формы
+				'ACTION_URI' : 'https://payment_service_url', 	// URL, на который будет отправляться форма
+				'METHOD' : 'POST', 	// Метод отправки формы
+				'PARAMS' : { 
+// Карта соответствия полей между полями формы и параметрами обработчика: массив вида array(код_поля =&gt; код_параметра_обработчика)
+					'serviceid' : 'REST_SERVICE_ID',
+					'invoiceNumber' : 'PAYMENT_ID',
+					'Sum' : 'PAYMENT_SHOULD_PAY',
+					'customer' : 'PAYMENT_BUYER_ID',
+				}
+			},
+			'CODES' : {		// Список параметров обработчика
+				"REST_SERVICE_ID" : {	// Код параметра
+					"NAME" : 'Номер магазина',	// Название параметра
+					"DESCRIPTION" : 'Номер магазина',	// Описание параметра
+					'SORT' : 100,	// Сортировка
+				},
+				"REST_SERVICE_KEY" : {
+					"NAME" : 'Секретный ключ',
+					"DESCRIPTION" : 'Секретный ключ',
+					'SORT' : 300,
+				},
+				"PAYMENT_ID" : {
+					"NAME" : 'Номер оплаты',
+					'SORT' : 400,
+					'GROUP' : 'PAYMENT',
+					'DEFAULT' : {
+						'PROVIDER_KEY' : 'PAYMENT',
+						'PROVIDER_VALUE' : 'ACCOUNT_NUMBER'
+					}
+				},
+				"PAYMENT_SHOULD_PAY" : {
+					"NAME" : 'Сумма оплаты',
+					'SORT' : 600,
+					'GROUP' : 'PAYMENT',
+					'DEFAULT' : {
+						'PROVIDER_KEY' : 'PAYMENT',
+						'PROVIDER_VALUE' : 'SUM'
+					}
+				},
+				"PS_CHANGE_STATUS_PAY" : {
+					"NAME" : 'Автоматическая смена статуса оплаты',
+					'SORT' : 700,
+					"INPUT" : {
+						'TYPE' : 'Y/N'
+					},
+				},
+				"PAYMENT_BUYER_ID" : {
+					"NAME" : 'Код покупателя',
+					'SORT' : 1000,
+					'GROUP' : 'PAYMENT',	// тип значения строка, чекбокс и т.д.
+					'DEFAULT' : {	// Значение по умолчанию
+						'PROVIDER_KEY' : 'ORDER',	// Тип значения(см. доступный список ниже)
+						'PROVIDER_VALUE' : 'USER_ID'	// Значение(см. доступный список ниже)
+					}
+				}
+			}
+		}
+	},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.info("Обработчик добавлен с ID " + result.data());
+	}
+);</pre>
+
+
+<h4>Пример 2</h4>
+
+<p>Начиная с версии <strong>20.5.0</strong> модуля <strong>sale</strong> добавлено новое значение  <strong>FIELDS</strong> вместо старого <strong>PARAMS</strong> (появилась возможность передавать произвольные поля для REST-обработчиков платёжных систем).</p>
+
+<p>Если значение ключа <code>CODE</code> - строка, то значение будет использоваться для поиска соответствия между полями формы и параметрами обработчика: массив вида <code>array('CODE' =&gt; 'код_параметра_обработчика')</code>. Название и значение будут получены из параметров обработчика (<code>'CODES'</code>).</p>
+
+<p>Если в ключе <code>CODE</code> передан объект, то в форме оплаты будет добавлено поле указанного типа.
+Поддерживаются типы:</p>
+
+<ul>
+<li><strong>STRING</strong> (строка)</li>
+<li><strong>Y/N</strong> (чекбокс)</li>
+<li><strong>ENUM</strong> (список)</li>
+</ul>
+
+<p>По умолчанию поля формы скрыты. Чтобы сделать поле видимым, необходимо передать <code>'VISIBLE' : 'Y'</code>.</p>
+
+<pre class="syntax">BX.rest.callMethod(
+	"sale.paysystem.handler.add",
+	{
+		'NAME' : 'Обработчик.Rest',
+		'SORT' : 100,
+		'CODE' : 'resthandlercodedoc',
+		'SETTINGS' : {
+			'CURRENCY' : ['RUB'],
+			'FORM_DATA' : {
+				'ACTION_URI' : 'https://payment_service_url',
+				'METHOD' : 'POST',
+				'FIELDS' : { 
+					'phone' : {
+						'CODE': {
+							'NAME' : 'Номер телефона',
+							'TYPE' : 'STRING',
+						}
+						'VISIBLE' : 'Y',
+					},
+					'paymentId' : {
+						'CODE' : 'PAYMENT_ID',
+						'VISIBLE' : 'Y'
+					},
+					'serviceid' : {
+						'CODE' : 'REST_SERVICE_ID'  
+					}
+				}
+			},
+			'CODES' : {
+				"REST_SERVICE_ID" : {
+					"NAME" : 'Номер магазина',
+					"DESCRIPTION" : 'Номер магазина',
+					'SORT' : 100,
+				},
+				"REST_SERVICE_KEY" : {
+					"NAME" : 'Секретный ключ',
+					"DESCRIPTION" : 'Секретный ключ',
+					'SORT' : 300,
+				},
+				"PAYMENT_ID" : {
+					"NAME" : 'Номер оплаты',
+					'SORT' : 400,
+					'GROUP' : 'PAYMENT',
+					'DEFAULT' : {
+						'PROVIDER_KEY' : 'PAYMENT',
+						'PROVIDER_VALUE' : 'ACCOUNT_NUMBER'
+					}
+				},
+				"PAYMENT_SHOULD_PAY" : {
+					"NAME" : 'Сумма оплаты',
+					'SORT' : 600,
+					'GROUP' : 'PAYMENT',
+					'DEFAULT' : {
+						'PROVIDER_KEY' : 'PAYMENT',
+						'PROVIDER_VALUE' : 'SUM'
+					}
+				},
+				"PS_CHANGE_STATUS_PAY" : {
+					"NAME" : 'Автоматическая смена статуса оплаты',
+					'SORT' : 700,
+					"INPUT" : {
+						'TYPE' : 'Y/N'
+					},
+				},
+				"PAYMENT_BUYER_ID" : {
+					"NAME" : 'Код покупателя',
+					'SORT' : 1000,
+					'GROUP' : 'PAYMENT',
+					'DEFAULT' : {
+						'PROVIDER_KEY' : 'ORDER',
+						'PROVIDER_VALUE' : 'USER_ID'
+					}
+				}
+			}
+		}
+	},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.info("Обработчик добавлен с ID " + result.data());
+	}
+);
+</pre>
+
+<p></p><div class="note"><strong>Примечание</strong>: Если передавать и <strong>FIELDS</strong>, и <strong>PARAMS</strong>, то будет использоваться только <strong>FIELDS</strong>.</div><p></p>
+
+<h4>Пример 3</h4>
+
+<p>Начиная с версии <b>21.700.0</b> модуля <b>sale</b> добавлены новые сценарии оплаты:</p>
+<ul>
+<li>Форма</li>
+<li>iFrame</li>
+<li>Checkout</li>
+</ul>
+
+<br>
+<p><b>Форма</b></p>  
+<p>При добавлении обработчика в <b>SETTINGS</b> нужно передать <b>FORM_DATA</b> (как в примерах выше).  
+Способ подходит если от покупателя ничего не нужно запрашивать, либо запрашивается небольшой набор данных. </p>
+
+<p>Поля формы автоматически выводятся в соответствии с дизайном страницы оплаты.</p>  
+
+<p>Данные формы (значения <b>FIELDS</b> из <b>FORM_DATA</b>) будут отправлены на <b>ACTION_URI</b>. </p>  
+
+<br>
+<p><b>iFrame</b></p>  
+<p>При добавлении обработчика в <b>SETTINGS</b> нужно передать <b>IFRAME_DATA</b> (вместо <b>FORM_DATA</b>).  
+По адресу из <b>ACTION_URI</b> должна располагаться страница, которая будет загружена в iframe на сайт продавца.</p>
+
+<p>При загрузке iframe через метод <a class="link external-link" href="https://developer.mozilla.org/ru/docs/Web/API/Window/postMessage" target="_blank">Window.postMessage()</a> на <b>ACTION_URI</b> будут переданы следующие данные:</p>
+<ul>
+<li>BX_SYSTEM_PARAMS:
+	<ul>
+	<li>RETURN_URL- текущая страница;</li>
+	<li>PAYSYSTEM_ID - идентификатор платежной системы;</li>
+	<li>PAYMENT_ID - идентификатор оплаты;</li>
+	<li>SUM - сумма платежа;</li>
+	<li>CURRENCY - валюта.</li>
+	</ul>
+</li>
+<li>BX_COMPUTED_STYLE (стили родительского элемента iframe, полученные методом <a class="link external-link" href="https://developer.mozilla.org/ru/docs/Web/API/Window/getComputedStyle" target="-_blank">window.getComputedStyle()</a></li>
+<li>значения FIELDS из IFRAME_DATA</li>
+</ul>
+
+<p>Получить значения в iframe можно через обработчик события <b>message</b>, например:</p>
+<pre class="syntax">//js
+document.addEventListener("DOMContentLoaded", function() {
+	window.addEventListener("message", function (event) {
+		// получение данных от сайта (от платёжной системы)
+		var paymentData = event.data;
+
+		// работа с BX_SYSTEM_PARAMS
+		if (paymentData.BX_SYSTEM_PARAMS)
+		{
+			// ...
+		}
+
+		// использование стилей сайта
+		if (paymentData.BX_COMPUTED_STYLE)
+		{
+			document.body.style.background = paymentData.BX_COMPUTED_STYLE.background;
+			document.body.style.color = paymentData.BX_COMPUTED_STYLE.color;
+		}
+	}, false);
+});
+</pre>
+
+<p>По умолчанию ширина iframe - 100% родительского элемента, а высота - 350px.</p>
+<p>Размеры iframe можно изменить. Для этого нужно из iframe передать высоту и/или ширину на сайт продавца. Например:</p>
+
+<pre class="syntax">//js
+document.addEventListener("DOMContentLoaded", function() {
+	var size = {
+		width: document.body.scrollWidth,
+		height: document.body.scrollHeight
+	};
+
+	// отправка данных на сайт продавца
+	parent.postMessage(size, "*");
+});
+</pre>
+
+<p><b>width</b> и <b>height</b> зарезервированные названия переменных и на сайте продавца обрабатываются только они.</p>
+
+<br>
+<p><b>Checkout</b></p>  
+<p>При добавлении обработчика в <b>SETTINGS</b> нужно передать <b>CHECKOUT_DATA</b> (вместо <b>FORM_DATA</b>).</p>
+<p>По адресу из <b>ACTION_URI</b> должен располагаться скрипт, который обработает полученные данные, создаст оплату и вернёт идентификатор созданной оплаты и url страницы оплаты.</p>
+
+<p>На <b>ACTION_URI</b> будут передаваться данные для оплаты:</p>
+<ul>
+<li>BX_SYSTEM_PARAMS:
+	<ul>
+	<li>RETURN_URL - текущая страница;</li>
+	<li>PAYSYSTEM_ID - идентификатор платежной системы;</li>
+	<li>PAYMENT_ID - идентификатор оплаты;</li>
+	<li>SUM - сумма платежа;</li>
+	<li>CURRENCY - валюта.</li>
+	</ul>
+</li>
+<li>значения FIELDS из CHECKOUT_DATA</li>
+</ul>
+
+<p>В ответ на запрос к <b>ACTION_URI</b>, скрипт должен вернуть идентификатор созданной оплаты и url страницы оплаты.</p> 
+<p>Например:</p>
+<pre class="syntax">//php
+// ... код обработки полученных данных и создания оплаты
+
+$result = [
+	'PAYMENT_URL' =&gt; '', // url страницы оплаты
+	'PAYMENT_ID' =&gt; '', // идентификатор оплаты
+];
+
+header('Content-Type:application/json; charset=UTF-8');
+echo json_encode($result);
+</pre>
+
+<p>Покупатель перейдёт на ссылку из <b>PAYMENT_URL</b> автоматически или по клику ну кнопку "Купить".</p>
+
+
+<p>C версии sale 22.200.0 можно вернуть массив ошибок в ключе <b>PAYMENT_ERRORS</b>. Ошибки менеджер увидит в таймлайне и может увидеть на странице оплаты (зависит от используемого шаблона).</p>
+
+<p>Пример:</p>
+
+<pre class="syntax">//php
+// ... код обработки полученных данных и создания оплаты
+
+$result = [
+	'PAYMENT_ERRORS' =&gt; [
+		'Some user custom error',
+		'Some error more',
+	]
+];
+
+header('Content-Type:application/json; charset=UTF-8');
+echo json_encode($result);</pre>
+
+
+<p>Если ничего не возвращать, то будет использоваться ошибка по умолчанию: <b>Ошибка регистрации заказа в платёжной системе</b> (Error registering order in payment system)</p>
+
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Возможные значения</h3>
+
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+			<tr><th colspan="2"><b>Возможные значения PROVIDER_KEY</b>
+			   </th></tr>
+					
+			<tr bgcolor="white"> <td><b>ORDER</b></td> <td>Параметры</td> </tr>
+		  
+			<tr bgcolor="#EEEEEE"> <td><b>PROPERTY</b></td> <td>Свойства счета</td> </tr>
+					
+			<tr bgcolor="white"> <td><b>PAYMENT</b></td> <td>Оплата</td> </tr>
+		  
+			<tr bgcolor="#EEEEEE"> <td><b>USER</b></td> <td>Пользователь</td> </tr>
+					
+			<tr bgcolor="white"> <td><b>VALUE</b></td> <td>Значение типа строка</td> </tr>
+		  
+			<tr bgcolor="#EEEEEE"> <td><b>Y\N</b></td> <td>Чекбокс</td> </tr>
+
+   </tbody>
+ </table>
+
+
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+			<tr><th colspan="2"><b>Возможные значения PROVIDER_VALUE</b>
+			   </th></tr>
+					
+			<tr bgcolor="white"> <td><b>ORDER</b></td> <td>
+
+ID: ID (для счетов соответствует ID счета), <br>
+ACCOUNT_NUMBER: Номер заказа  (для счетов соответствует номеру счета), <br>
+ORDER_TOPIC: Тема, <br>
+DATE_INSERT: Дата заказа (для счетов соответствует дате счета), <br>
+DATE_INSERT_DATE: Дата заказа (без времени) (для счетов соответствует дате счета (без времени)), <br>
+DATE_BILL: Дата и время выставления, <br>
+DATE_BILL_DATE: Дата выставления, <br>
+DATE_PAY_BEFORE: Срок оплаты, <br>
+SHOULD_PAY: Сумма счета (для счетов соответствует сумме счета), <br>
+CURRENCY: Валюта, <br>
+PRICE: Стоимость заказа (для счетов соответствует стоимости счета), <br>
+PRICE_DELIVERY: Стоимость доставки, <br>
+DISCOUNT_VALUE: Величина скидки, <br>
+USER_ID: Код покупателя, <br>
+PAY_SYSTEM_ID: Код платежной системы, <br>
+DELIVERY_ID: Код службы доставки, <br>
+TAX_VALUE: Налог, <br>
+USER_DESCRIPTION: Комментарий</td> </tr>
+		  
+			<tr bgcolor="#EEEEEE"> <td><b>PAYMENT
+	</b></td> <td>ID: ID <br>
+	ACCOUNT_NUMBER: Номер оплаты, <br>
+	DATE_BILL: Дата и время выставления, <br>
+	DATE_BILL_DATE: Дата выставления (без времени), <br>
+	SUM: Сумма оплаты, <br>
+	CURRENCY: Валюта <br></td> </tr>
+
+			<tr bgcolor="white"> <td><b>USER</b></td> <td>
+	ID: Код покупателя, <br>
+	LOGIN: Логин, <br>
+	NAME: Имя, <br>
+	SECOND_NAME: Отчество, <br>
+	LAST_NAME: Фамилия, <br>
+	EMAIL: EMail, <br>
+	PERSONAL_PROFESSION: Профессия, <br>
+	PERSONAL_WWW: Персональный веб-сайт, <br>
+	PERSONAL_ICQ: Номер ICQ, <br>
+	PERSONAL_GENDER: Пол, <br>
+	PERSONAL_FAX: Номер факса, <br>
+	PERSONAL_MOBILE: Номер телефона, <br>
+	PERSONAL_STREET: Адрес, <br>
+	PERSONAL_MAILBOX: Почтовый ящик, <br>
+	PERSONAL_CITY: Город, <br>
+	PERSONAL_STATE: Штат, <br>
+	PERSONAL_ZIP: Индекс, <br>
+	PERSONAL_COUNTRY: Страна, <br>
+	WORK_COMPANY: Компания, <br>
+	WORK_DEPARTMENT: Отдел, <br>
+	WORK_POSITION: Должность, <br>
+	WORK_WWW: Сайт компании, <br>
+	WORK_PHONE: Рабочий телефон, <br>
+	WORK_FAX: Рабочий факс, <br>
+	WORK_STREET: Адрес компании, <br>
+	WORK_MAILBOX: Рабочий почтовый ящик, <br>
+	WORK_CITY: Город компании, <br>
+	WORK_STATE: Штат компании, <br>
+	WORK_ZIP: Индекс компании, <br>
+	WORK_COUNTRY: Страна компании <br></td> </tr>
+
+   </tbody>
+ </table>
+
+</div>
+
+<!------->
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

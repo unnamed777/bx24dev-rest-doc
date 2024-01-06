@@ -1,0 +1,66 @@
+<html>
+        <head>
+            <title>messageservice.message.status.update</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">messageservice.message.status.update <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/messageservice/messageservice_message_status_update.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p><b>messageservice.message.status.update</b> - метод для управления статусами SMS для приложений.</p>
+
+<h4>Параметры</h4><table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+  
+		<tr>
+			<td>CODE</td>
+			<td>Код провайдера. Обязательный.</td>
+		</tr>
+
+<tr>
+			<td>MESSAGE_ID</td>
+			<td>Идентификатор сообщения. Обязательный.</td>
+		</tr>
+
+
+		<tr>
+			<td>STATUS</td>
+			<td>Статус сообщения. Обязательный. Допустимые статусы:
+
+<ul>
+<li><b>delivered</b> - доставлено</li>
+<li><b>undelivered</b> - не доставлено</li> 
+<li><b>failed</b> - ошибка доставки</li> 
+ </ul></td>
+		</tr>
+		
+</tbody>
+</table>
+
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'messageservice.message.status.update',
+	{
+		CODE: 'provider1',
+		message_id: 1,
+		status: 'delivered'
+	},
+	function(result)
+	{
+		if(result.error())
+			alert("Ошибка: " + result.error());
+		else
+			alert("Успешно: " + result.data());
+	}
+);</pre>
+
+<br>							
+        </div>
+        </body>
+        </html>

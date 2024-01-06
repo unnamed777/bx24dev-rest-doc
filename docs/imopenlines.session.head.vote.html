@@ -1,0 +1,86 @@
+<html>
+        <head>
+            <title>imopenlines.session.head.vote</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">imopenlines.session.head.vote <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/imopenlines/session/imopenlines_session_head_vote.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Метод для оценки диалога руководителем.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+	<tr> 	<th width="27%">Параметр</th><th>Пример</th><th>Обязательный</th><th>Описание</th>
+   
+	</tr><tr> 	<td>SESSION_ID</td><td>494</td><td>Да</td><td>Идентификатор сессии.</td></tr>
+	<tr> 	<td>RATING</td><td>5</td><td>Нет</td><td>Количество звёзд от 1 до 5.</td></tr>
+	<tr> 	<td>COMMENT</td><td>Молодец</td><td>Нет</td><td>Комментарий руководителя.</td></tr>
+   
+   </tbody>
+ </table>
+
+<p class="note"><b>Обратите внимание:</b> несмотря на то, что два параметра не обязательны, как минимум один из них должен быть заполнен.</p>
+
+<h4>Вызов метода и ответ</h4>
+
+<p>JavaScript для Битрикс24 в коробке:</p>
+
+<pre class="syntax" rel="example">BX.rest.callMethod(
+	'imopenlines.session.head.vote',
+	{
+		SESSION_ID: 2047,
+		RATING: 5,
+		COMMENT: 'Text of comment'
+	}
+)
+	.then(result =&gt; console.log(result.data()))
+	.catch(result =&gt; console.warn(result.error().ex))
+;
+</pre>
+
+<p>JavaScript для облачного Битрикс24:</p>
+
+<pre class="syntax">BX24.callMethod(
+	'imopenlines.session.head.vote',
+	{
+		CHAT_ID: 2024
+	},
+	function(result)
+	{
+		if(result.error())
+		{
+			console.warn(result.error().ex);
+			return false;
+		}
+
+		console.log(result.data());
+	}
+);</pre>
+
+
+
+<p>Пример ответа:</p>
+<pre class="syntax">true</pre>
+
+<h4>Возможные коды ошибок</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+	<tr> 	<th width="27%">Код</th><th>Описание</th>
+   
+	</tr><tr> 	<td>ACCESS_DENIED</td><td>У текущего пользователя нет доступа к указанному чату.</td></tr>
+	<tr> 	<td>CHAT_TYPE</td><td>Указанный чат не является открытой линией.</td></tr>
+	<tr> 	<td>CHAT_ID</td><td>Указан не корректный идентификатор чата.</td></tr>
+	<tr> 	<td>WRONG_PARAMETER</td><td>Как минимум один из необязательных параметров должен
+быть указан.</td></tr>
+  
+   </tbody>
+ </table>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

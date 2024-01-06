@@ -1,0 +1,34 @@
+<html>
+        <head>
+            <title>crm.vat.fields</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.vat.fields <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/auxiliary/vat/crm_vat_fields.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.vat.fields()</pre>
+
+<p>Возвращает описание полей ставки НДС.</p>
+
+<h4>Параметры</h4>
+
+<p>Без параметров.</p>
+
+<a class="link" name="example"></a>
+<h4>Пример</h4>
+<pre class="syntax" rel="example">	BX24.callMethod(
+		"crm.vat.fields",
+		{},
+		function(result)
+		{
+			if(result.error())
+				console.error(result.error());
+			else
+				console.dir(result.data());
+		}
+	);
+</pre><br><br>							
+        </div>
+        </body>
+        </html>

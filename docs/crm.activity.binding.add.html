@@ -1,0 +1,46 @@
+<html>
+        <head>
+            <title>crm.activity.binding.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.activity.binding.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/rest_activity/binding/crm_activity_binding_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.activity.binding.add({activityId: number, entityTypeId: number, entityId: number)</pre>
+
+<p>Добавление привязки.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+<tr>
+<td>activityId</td><td>идентификатор дела</td></tr>
+<tr><td>entityTypeId</td><td>идентификатор типа элемента (<a class="link" href="/rest_help/crm/constants.php">Справочник доступных типов</a>)</td></tr>
+<tr><td>entityId</td><td>идентификатор элемента</td></tr>
+	</tbody>
+</table>
+<br>
+<p>В случае успеха, метод вернет <code>true</code>.</p><br>
+<p>Привязка дела возможна только к элементу, к которому у текущего пользователя есть доступ на редактирование.</p><br>
+
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">crm.activity.binding.add?activityId=1&amp;entityTypeId=4&amp;entityId=1000
+</pre>
+<br>
+<b>Успешный результат:</b>
+                <pre class="syntax" rel="example">{
+	"result": true
+}</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

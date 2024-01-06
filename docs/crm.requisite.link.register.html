@@ -1,0 +1,53 @@
+<html>
+        <head>
+            <title>crm.requisite.link.register</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.requisite.link.register <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/requisite/methods/crm_requisite_link_register.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.requisite.link.register(fields)</pre>
+
+<p>Регистрирует связь реквизитов с сущностью. Для успешной регистрации  идентификаторы реквизитов должны принадлежать клиенту и продавцу, которые выбраны  в той сущности, для которой регистрируется связь. Если какого-то реквизита нет, то его идентификатор передаётся как 0. Можно даже указать все идентификаторы реквизитов нулевыми, тогда считается, что к сущности реквизиты не привязаны.</p>
+
+<h4>Параметры</h4>
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr><th width="15%">Параметр</th> <th>Описание</th></tr>
+
+<tr><td>fields</td><td>Набор полей - массив вида array("поле"=&gt;"значение"[, ...]), содержащий значения полей <a class="link" href="/rest_help/crm/requisite/methods/crm_requisite_link_list.php">связи реквизитов</a>.</td></tr>
+
+</tbody>
+</table>
+
+<a class="link" name="example"></a>
+<h4>Пример</h4>
+<pre class="syntax" rel="example">var entityId = prompt("Введите ID счёта");
+var requisiteId = prompt("Введите ID реквизита, принадлежащего покупателю");
+var bankDetailId = prompt("Введите ID банковского реквизита, принадлежащего покупателю");
+var mcRequisiteId = prompt("Введите ID реквизита, принадлежащего компании продавцу");
+var mcBankDetailId = prompt("Введите ID банковского реквизита, принадлежащего компании продавцу");
+BX24.callMethod(
+	"crm.requisite.link.register", {
+		fields: {
+			ENTITY_TYPE_ID: 5,
+			ENTITY_ID: entityId,
+			REQUISITE_ID: requisiteId,
+			BANK_DETAIL_ID: bankDetailId,
+			MC_REQUISITE_ID: mcRequisiteId,
+			MC_BANK_DETAIL_ID: mcBankDetailId
+		}
+	},
+	function (result)
+	{
+		if (result.error())
+			console.error(result.error());
+		else
+			console.dir(result.data());
+	}
+);
+</pre><br><br>							
+        </div>
+        </body>
+        </html>

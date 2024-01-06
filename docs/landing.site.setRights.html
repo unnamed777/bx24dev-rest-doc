@@ -1,0 +1,95 @@
+<html>
+        <head>
+            <title>landing.site.setRights</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">landing.site.setRights <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/landing/rights/expantion_model/landing_site_setRights.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Описание и пример</h3>
+
+
+<p>Устанавливает права доступа для сайта. Вернёт <i>true</i> или ошибку. Метод доступен только администратору портала, а в облаке в том числе только платным тарифам.</p>
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'landing.site.setRights',
+	{
+		id: 645,
+		rights: {
+			'U3': [
+				'edit', 'delete'
+			],
+			'U1': [
+				'edit', 'sett'
+			]
+		}
+	},
+	function(result)
+	{
+		if(result.error())
+		{
+			console.error(result.error());
+		}
+		else
+		{
+			console.info(result.data());
+		}
+	}
+);</pre>
+
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>id</td> 	<td>Идентификатор сайта.</td> <td></td></tr>
+   
+    <tr> 	<td>rights</td> 	<td>Объект с правами, ключами которого являются уникальные идентификаторы (пользователя, отдела, группы, ...), а значениями допустимые операции:
+
+<ul>
+<li><strong>denied</strong> – доступ закрыт (при установке данного права даже в составе других, другие права сбрасываются для конкретного объекта)</li>
+<li><strong>read</strong> – чтение (право автоматически ставится системой дополнительно при указании любого другого отличного от denied)</li> 
+<li><strong>edit</strong> – изменение (содержимого страниц)</li> 
+<li><strong>sett</strong> – изменение настроек</li>
+<li><strong>public</strong> – публикация</li> 
+<li><strong> delete</strong> – удаление (в корзину, и восстановление из корзины)</li> 
+ </ul>
+
+<p>Права независимы и могут даваться точечно. Например, пользователь может обладать только правом публикации без возможности любого изменения.</p>
+
+<p>В качестве ключей можно использовать значения:</p>
+
+<ul>
+<li><b><code>SG&lt;X&gt;</code> </b> - рабочая группа, например SG1 - рабочая группа с идентификатором 2;</li>
+<li><b><code>U&lt;X&gt;</code> </b> - пользователь, например U45 - пользователь с идентификатором 45;</li>
+<li><b><code>DR&lt;X&gt;</code></b> - отдел, включая подразделы, например DR23 - раздел с идентификатором 23;</li>
+<li><b><code>UA</code></b> - все авторизованные пользователи.</li>
+<li><b><code>G&lt;X&gt;</code></b> - группа пользователей, например G2 - группа пользователей с идентификатором 2.</li>
+ </ul></td> <td></td></tr>
+  
+   </tbody>
+ </table>
+
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

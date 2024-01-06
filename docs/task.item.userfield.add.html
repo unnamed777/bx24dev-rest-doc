@@ -1,0 +1,105 @@
+<html>
+        <head>
+            <title>task.item.userfield.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">task.item.userfield.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/tasks/task/userfield/add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">task</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<p>Метод создает новое свойство.</p>
+
+<p>Системное ограничение на название поля - 20 знаков. К названию пользовательского поля всегда добавляется префикс UF_TASK_, то есть реальная длина названия - 12 знаков.</p>
+
+<h4>Параметры метода</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr><th width="15%">Параметр</th><th>Описание</th></tr>
+
+<tr><td><i>auth</i></td><td>Токен авторизации.</td></tr>
+<tr><td><i>PARAMS</i></td><td>Массив с параметрами свойства вида array("параметр": 'значение' [, ...]), содержащий следующие параметры:
+<br>
+<ul><li><b>USER_TYPE_ID</b> - тип данных пользовательского поля. Допустимые значения:</li>
+<ul>
+
+
+<!--   
+<li><code>employee</code> (<b>Привязка к сотруднику</b>);</li>
+<li><code>crm</code> (<b>Привязка к элементам CRM</b>);</li>
+<li><code>crm_status</code> (<b>Привязка к справочникам CRM</b>);</li>
+<li><code>disk_file</code> (<b>Файл (Диск)</b>);</li>
+<li><code>hlblock</code> (<b>Привязка к элементам highload-блоков</b>);</li>
+ -->
+
+<li><code>string</code> (<b>Строка</b>);</li>
+
+<!--  <li><code>integer</code> (<b>Целое число</b>);</li>  -->
+
+<li><code>double</code> (<b>Число</b>);</li>
+
+<!--  <li><code>datetime</code> (<b>Дата со временем</b>);</li>  -->
+
+<li><code>date</code> (<b>Дата</b>);</li>
+<li><code>boolean</code> (<b>Да/Нет</b>);</li>
+
+<!--  <li><code>enumeration</code> (<b>Список</b>);</li>  -->
+
+</ul>
+
+<li><b>FIELD_NAME</b> - код поля;</li>
+<li><b>XML_ID</b> - внешний код;</li>
+<li><b>EDIT_FORM_LABEL</b> - подпись в форме форматирования (указывается на английском ('en') и русском ('ru") языках;</li>
+<li><b>LABEL</b> - заголовок поля.</li>
+</ul>
+
+
+
+</td></tr>
+ </tbody></table>
+<h4>Примеры вызова.</h4>
+
+<pre class="syntax">$appParams = array(
+	'auth' =&gt; 'q21g8vhcqmxdrbhqlbd2wh6ev1debppa',
+	'PARAMS' =&gt; array(
+		'USER_TYPE_ID' =&gt; 'string',
+		'FIELD_NAME' =&gt; 'NEW_TASKS_FIELD',
+		'XML_ID' =&gt; 'MY_TASK_FIELD',
+		'EDIT_FORM_LABEL' =&gt; array(
+			'en' =&gt; 'New task field',
+			'ru' =&gt; 'Новое поле задач'
+		),
+		'LABEL' =&gt; 'New task field'
+	 ),
+);
+$request = 'http://your-domain.ru/rest/task.item.userfield.add.xml?'.http_build_query($appParams);'
+</pre>
+
+<br>
+<pre class="syntax" rel="example">BX24.callMethod(
+	'task.item.userfield.add',
+	{
+		PARAMS:
+		{
+			'USER_TYPE_ID' : 'string',
+			'FIELD_NAME' : 'NEW_TASKS_FIELD',
+			'XML_ID' : 'MY_TASK_FIELD',
+			'EDIT_FORM_LABEL' : {'en':'New task field', 'ru':'Новое поле задач'},
+			'LABEL' : 'New task field'
+		}
+	},
+	function(result)
+	{
+		console.info(result.data());
+		console.log(result);
+	}
+);
+</pre>
+<br>							
+        </div>
+        </body>
+        </html>

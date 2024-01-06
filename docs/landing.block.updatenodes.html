@@ -1,0 +1,136 @@
+<html>
+        <head>
+            <title>landing.block.updatenodes</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">landing.block.updatenodes <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/landing/block/blocks/landing_block_updatenodes.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Описание</h3>
+<pre class="syntax">landing.block.updatenodes(lid, block,data)</pre>
+
+<p>Метод для изменения контента блока. Возвращает <i>true</i> или ошибку. Также метод применяется для <a class="link" href="#edit_params">обновления параметров динамических блоков</a>, таких как список товаров, детальный товар, и некоторых других.</p>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Метод</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>lid</td> 	<td>Идентификатор страницы</td> <td></td></tr>
+   
+    <tr> 	<td>block</td> 	<td>Идентификатор блока</td> <td></td></tr>
+   
+    <tr> 	<td>data</td> 	<td>Массив селекторов и новых значений. 
+<br>Например: <code>data: {'.landing-block-node-text@1': 'new text!'}</code>. Принцип тот же - селектор и его новое значение. Если вы уверены, что селектор в блоке один, то в данном случае вы можете отбросить счетчик <b>@1</b>.
+<br><br>
+Также data зависит от типов изменяемых нод. Подробнее смотрите пример ниже, за описанием типов обращайтесь к <a class="link" href="/rest_help/landing/block/nodes_type.php">отдельной странице</a>.</td> <td></td></tr>
+   
+   </tbody>
+ </table>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Пример</h3>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'landing.block.updatenodes',
+	{
+		lid: 311,
+		block: 6058,
+		data: {
+			'.landing-block-node-text': 'Текст, с html',
+			'.landing-block-node-img': {src: '/some/path/picture.png', alt: 'Моя картинка'},
+			'.landing-block-node-link': {text: 'Моя ссылка', href: 'https://bitrix24.com', target: '_blank'},
+			'.landing-block-node-icon': ['fa-telegram', 'fa-skype'],
+			'.landing-block-node-embed': {src: '//www.youtube.com/embed/q4d8g9Dn3ww?autoplay=1&amp;controls=0&amp;loop=1&amp;mute=1&amp;rel=0', source: 'https://www.youtube.com/watch?v=q4d8g9Dn3ww'},
+		},
+	function(result)
+	{
+		if(result.error())
+		{
+			console.error(result.error());
+		}
+		else
+		{
+			console.info(result.data());
+		}
+	}
+);</pre>
+<br>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Редактирование параметров динамических блоков</h3>
+
+<p>Есть ряд динамических блоков, параметры которых можно менять через REST. Например, количество товаров на странице. Сделать это можно следующим образом.</p>
+
+<ol>
+<li>Посредством метода <a class="link" href="/rest_help/landing/block/blocks/landing_block_getmanifest.php">landing.block.getmanifest</a> узнаем какие параметры у блока есть. Метод вернет массив манифеста, где нас интересует ключ attrs и параметры интересующего вас компонента динамического блока. В данном случае нам интересен bitrix:catalog.section.
+
+<pre class="syntax">attrs:
+bitrix:catalog.section: Array(24)
+0: {name: "ID раздела", style: false, original_type: "component", component_type: "STRING", attribute: "SECTION_ID", …}
+1: {name: "Недоступные товары", style: false, original_type: "component", component_type: "LIST", attribute: "HIDE_NOT_AVAILABLE", …}
+2: {name: "Недоступные торговые предложения", style: false, original_type: "component", component_type: "LIST", attribute: "HIDE_NOT_AVAILABLE_OFFERS", …}
+3: {name: "По какому полю сортируем элементы", style: false, original_type: "component", component_type: "LIST", attribute: "ELEMENT_SORT_FIELD", …}
+4: {name: "Порядок сортировки элементов", style: false, original_type: "component", component_type: "LIST", attribute: "ELEMENT_SORT_ORDER", …}
+5: {name: "Валюта, в которую будут сконвертированы цены", style: false, original_type: "component", component_type: "LIST", attribute: "CURRENCY_ID", …}
+6: {name: "Тип цены", style: false, original_type: "component", component_type: "LIST", attribute: "PRICE_CODE", …}
+...</pre></li>
+
+<li>Через метод <a class="link" href="/rest_help/landing/block/blocks/landing_block_updatenodes.php">landing.block.updatenodes</a> изменяем необходимые параметры. Так сложилось исторически, что динамические параметры (атрибуты) изменяются именно через этот метод
+<pre class="syntax" rel="example">BX24.callMethod(
+	'landing.block.updatenodes',
+	{
+		lid: 5597,
+		block: 44131,
+		data: {
+			'bitrix:catalog.section': {
+				attrs: {
+					'MESS_BTN_BUY': 'Add to my cart'
+				}
+			}
+		},
+		function(result)
+		{
+			if (result.error())
+			{
+				console.error(result.error());
+			}
+			else
+			{
+				console.info(result.data());
+			}
+		}
+	}
+);</pre>
+
+</li> 
+
+ </ol>
+
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

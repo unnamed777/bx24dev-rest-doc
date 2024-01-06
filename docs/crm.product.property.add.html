@@ -1,0 +1,243 @@
+<html>
+        <head>
+            <title>crm.product.property.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.product.property.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/products/crm_product_property_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.product.property.add(fields)</pre>
+
+<p>Создаёт новое свойство товаров.</p>
+
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+<tr>
+<td>fields</td>
+<td>Набор полей - массив вида array("поле"=&gt;"значение"[, ...]), содержащий описание свойства товаров.</td>
+</tr>
+
+
+	</tbody>
+</table>
+
+
+<h4>Пример 1</h4>
+<pre class="syntax" rel="example">// Создание свойства пользовательского типа S:HTML
+function addPropertyExample(catalogId)
+{
+	BX24.callMethod(
+		"crm.product.property.add",
+		{
+			fields: {
+				"ACTIVE": "Y",
+				"IBLOCK_ID": catalogId,
+				"NAME": "Свойство - HTML/текст",
+				"SORT": 500,
+				"DEFAULT_VALUE": {
+					"TYPE": "html",
+					"TEXT": "&lt;u&gt;&lt;b&gt;Вкусные&lt;/b&gt; \"&lt;span style=\"color: #00a650;\"&gt;африканские бананы&lt;/span&gt;\"&lt;/u&gt;"
+				},
+				"USER_TYPE_SETTINGS": {
+					"HEIGHT": 300
+				},
+				"USER_TYPE": "HTML",
+				"PROPERTY_TYPE": "S"
+			}
+		},
+		function(result)
+		{
+			if(result.error())
+				console.error(result.error());
+			else
+				console.dir(result.data());
+		}
+	);
+}
+
+function getCatalogId()
+{
+	BX24.callMethod(
+		"crm.catalog.list",
+		{filter: {"ORIGINATOR_ID": "", "ORIGIN_ID": ""}},
+		function(result)
+		{
+			if(result.error())
+			{
+				console.error(result.error());
+			}
+			else
+			{
+				var catalogId = 0;
+				if (result.total() !== 1)
+				{
+					catalogId = 0
+				}
+				else
+				{
+					data = result.data();
+					if (data &amp;&amp; data instanceof Array &amp;&amp; typeof(data[0]) === "object" &amp;&amp; data[0]["ID"])
+					{
+						catalogId = parseInt(data[0]["ID"]);
+					}
+				}
+				if (catalogId &lt;= 0)
+				{
+					console.error("Не удалось получить идентификатор товарного каталога CRM");
+				}
+				else
+				{
+					addPropertyExample(catalogId);
+				}
+			}
+		}
+	);
+}
+
+function start()
+{
+	getCatalogId();
+}
+
+start();
+
+
+</pre>
+
+<h4>Пример 2</h4>
+<pre class="syntax" rel="example">function addPropertyExample(catalogId)
+{
+	BX24.callMethod(
+		"crm.product.property.add",
+		{
+			fields: {
+				"ACTIVE": "Y",
+				"IBLOCK_ID": catalogId,
+				"NAME": "Свойство - Список",
+				"SORT": 510,
+				"MULTIPLE": "Y",
+				"ROW_COUNT": 7,
+				"LIST_TYPE": "L",
+				"PROPERTY_TYPE": "L",
+				"VALUES": {
+					"n0": {
+						"ID": "n0",
+						"VALUE": "Значение списка 1",
+						"SORT": 100,
+						"DEF": "Y"
+					},
+					"n1": {
+						"ID": "n1",
+						"VALUE": "Значение списка 2",
+						"SORT": 200,
+						"DEF": "N"
+					},
+					"n2": {
+						"ID": "n2",
+						"VALUE": "Значение списка 3",
+						"SORT": 300,
+						"DEF": "Y"
+					},
+					"n3": {
+						"ID": "n3",
+						"VALUE": "Значение списка 4",
+						"SORT": 400,
+						"DEF": "N"
+					},
+					"n4": {
+						"ID": "n4",
+						"VALUE": "Значение списка 5",
+						"SORT": 500,
+						"DEF": "N"
+					},
+					"n5": {
+						"ID": "n5",
+						"VALUE": "Значение списка 6",
+						"SORT": 600,
+						"DEF": "N"
+					},
+					"n6": {
+						"ID": "n6",
+						"VALUE": "Значение списка 7",
+						"SORT": 700,
+						"DEF": "N"
+					},
+					"n7": {
+						"ID": "n7",
+						"VALUE": "Значение списка 8",
+						"SORT": 800,
+						"DEF": "N"
+					}
+				}
+			}
+		},
+		function(result)
+		{
+			if(result.error())
+				console.error(result.error());
+			else
+				console.dir(result.data());
+		}
+	);
+}
+
+function getCatalogId()
+{
+	BX24.callMethod(
+		"crm.catalog.list",
+		{filter: {"ORIGINATOR_ID": "", "ORIGIN_ID": ""}},
+		function(result)
+		{
+			if(result.error())
+			{
+				console.error(result.error());
+			}
+			else
+			{
+				var catalogId = 0;
+				if (result.total() !== 1)
+				{
+					catalogId = 0
+				}
+				else
+				{
+					data = result.data();
+					if (data &amp;&amp; data instanceof Array &amp;&amp; typeof(data[0]) === "object" &amp;&amp; data[0]["ID"])
+					{
+						catalogId = parseInt(data[0]["ID"]);
+					}
+				}
+				if (catalogId &lt;= 0)
+				{
+					console.error("Не удалось получить идентификатор товарного каталога CRM");
+				}
+				else
+				{
+					addPropertyExample(catalogId);
+				}
+			}
+		}
+	);
+}
+
+function start()
+{
+	getCatalogId();
+}
+
+start();
+
+</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

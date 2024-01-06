@@ -1,0 +1,49 @@
+<html>
+        <head>
+            <title>crm.orderentity.getFields</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.orderentity.getFields <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/orderentity/crm_orderentity_getfields.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.orderentity.getFields()</pre>
+
+<p>Метод возвращает поля привязки заказа к сущности.</p>
+
+<h4>Возвращаемые поля</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Поле</th> 	<th>Описание</th><th>Тип</th><th>Примечание</th></tr>
+   
+    <tr> 	<td>ownerId</td> 	<td>Идентификатор сущности к которой привязываем заказ. Например, ID сделки.</td><td>integer</td><td>Неизменяемое, обязательное поле.</td></tr>
+    <tr> 	<td>orderId</td> 	<td>Идентификатор заказа.</td><td>integer</td><td>Неизменяемое, обязательное поле.</td></tr>
+    <tr> 	<td>ownerTypeId</td> 	<td>Идентификатор типа сущности, к которой привязываем заказ. Например, если тип сущности - Сделка, то идентификатор типа сущности - 2. Узнать идентификаторы доступных для привязки заказа типов можно с помощью метода <a class="link" href="/rest_help/crm/auxiliary/enum/crm_enum_getorderownertypes.php">crm.enum.getOrderOwnerTypes</a>.</td><td>integer</td><td>Неизменяемое, обязательное поле.</td></tr>
+   </tbody>
+ </table>
+
+<h4>Параметры</h4>
+
+<p>Без параметров.</p>
+
+<h4>Примеры</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'crm.orderentity.getFields',
+	{},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error().ex);
+		else
+			console.log(result.data());
+	}
+);
+</pre>
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

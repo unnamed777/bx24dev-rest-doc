@@ -1,0 +1,42 @@
+<html>
+        <head>
+            <title>calendar.resource.delete</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">calendar.resource.delete <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/calendar/calendar_resource_delete.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">calendar.resource.delete(resourceId)</pre>
+
+<p>Удаляет ресурс.</p>
+
+<h4>Возвращаемые значения</h4>
+
+<p>Возвращает true, если удаление успешно.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr><th width="15%">Параметр</th><th>Описание</th></tr>
+  
+		<tr><td>* resourceId</td><td>Идентификатор ресурса.</td> </tr>
+
+
+<tr><td colspan="2"><b>* - обязательные параметры</b></td></tr>
+
+	</tbody>
+</table>
+
+<h4>Пример использования</h4>
+<pre class="syntax" rel="example">BX24.callMethod("calendar.resource.delete",
+	{
+		resourceId: 521
+	}
+);
+</pre>
+<br><br>							
+        </div>
+        </body>
+        </html>

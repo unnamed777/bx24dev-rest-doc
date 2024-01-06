@@ -1,0 +1,63 @@
+<html>
+        <head>
+            <title>crm.activity.todo.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.activity.todo.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/rest_activity/todo/crm_activity_todo_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax"><b>crm.activity.todo.add(</b>
+	{
+		ownerTypeId: number,
+		ownerId: number,
+		description: string,
+		deadline: DateTime,
+		responsibleId: number
+	}
+<b>)</b></pre>
+
+<p>Добавить дело</p>
+
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> </tr>
+   
+    <tr> 	<td>ownerTypeId</td> 	<td>Идентификатор типа элемента (справочник доступных типов), к которому относится дело</td></tr>
+   
+    <tr> 	<td>ownerId</td> 	<td>Идентификатор элемента, к которому относится дело</td></tr>
+   
+    <tr> 	<td>description</td> 	<td>Текст дела</td></tr>
+   
+    <tr> 	<td>deadline</td> 	<td>Крайний срок дела</td></tr>
+   
+    <tr> 	<td>responsibleId</td> 	<td>Ответственный за дело</td></tr>
+   
+   
+   </tbody>
+ </table>
+
+
+<p>Результат будет содержать <b>id</b> -  идентификатор созданного дела.</p>
+
+<h4>Пример</h4>
+
+<p>Пример использования</p>
+
+<pre class="syntax">crm.activity.todo.add?ownerTypeId=2&amp;ownerId=1&amp;deadline=2022-12-31T15:00:00&amp;description=Связаться с клиентом</pre>
+
+<p>Успешный результат:</p>
+
+<pre class="syntax">{
+	"result": {
+		"id": 243
+	}
+}</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

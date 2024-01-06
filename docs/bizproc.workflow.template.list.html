@@ -1,0 +1,118 @@
+<html>
+        <head>
+            <title>bizproc.workflow.template.list</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">bizproc.workflow.template.list <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/bizproc/bizproc_workflow_template/bizproc_workflow_template_list.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<p class="note_blue">
+Scope: <span class="bg_blue">bizproc</span> Права на выполнение: <span class="bg_orange">администратор</span>
+</p>
+
+<div class="tab">
+
+<h3 class="tab-title">Описание</h3>
+<p><b>bizproc.workflow.template.list</b> - метод возвращает список шаблонов Бизнес-процессов, установленных на сайте. Использование метода требует прав администратора.</p>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Метод</th> 	<th>Описание</th></tr>
+   
+    <tr> 	<td>ID</td> 	<td>Идентификатор бизнес-процесса. </td></tr>
+   
+    <tr> 	<td>MODULE_ID</td> 	<td>Идентификатор модуля (по документу)</td></tr>
+   
+    <tr> 	<td>ENTITY</td> 	<td>Идентификатор сущности (по документу)</td></tr>
+   
+    <tr> 	<td>DOCUMENT_TYPE</td> 	<td>Тип документа</td></tr>
+   
+    <tr> 	<td>AUTO_EXECUTE</td> 	<td>правило автозапуска:<br>
+
+0 - без автозапуска<br>
+1 - при добавлении<br> 
+2- при изменении<br> 
+3 - добавление + изменение</td></tr>
+   
+    <tr> 	<td>NAME</td> 	<td>Название шаблона</td></tr>
+   
+    <tr> 	<td>TEMPLATE</td> 	<td>Шаблон БП (массив с описанием структуры действий).</td></tr>
+   
+    <tr> 	<td>PARAMETERS</td> 	<td>Параметры шаблона, массив с описанием свойств.</td></tr>
+   
+    <tr> 	<td>VARIABLES</td> 	<td>Переменные шаблона, массив с описанием свойств.</td></tr>
+   
+    <tr> 	<td>CONSTANTS</td> 	<td>Константы шаблона, массив с описанием свойств.</td></tr>
+   
+    <tr> 	<td>MODIFIED</td> 	<td>Дата последнего изменения.</td></tr>
+   
+    <tr> 	<td>IS_MODIFIED</td> 	<td>[Y\N] Флаг был ли изменен. Актуально для шаблонов, поставляемых "в коробке" (у которых есть системный код)</td></tr>
+   
+    <tr> 	<td>USER_ID</td> 	<td>идентификатор пользователя кто создал/изменил шаблон.</td></tr>
+   
+    <tr> 	<td>SYSTEM_CODE</td> 	<td>системный код шаблона. применяется для идентификации типовых шаблонов, Процессов в ленте, шаблонов автоматизации и т.п.</td></tr>
+   
+   </tbody>
+ </table>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Пример</h3>
+
+<pre class="syntax" rel="example">function getTemplates()
+{
+	BX24.callMethod(
+		'bizproc.workflow.template.list',
+		{
+			select: [
+				'ID',
+				// 'MODULE_ID',
+				// 'ENTITY',
+				// 'DOCUMENT_TYPE',
+				// 'AUTO_EXECUTE',
+				'NAME',
+				// 'TEMPLATE',
+				// 'PARAMETERS',
+				// 'VARIABLES',
+				// 'CONSTANTS',
+				'MODIFIED',
+				'IS_MODIFIED',
+				'USER_ID',
+				'SYSTEM_CODE'
+			],
+			filter: {MODULE_ID: 'crm', ENTITY: 'CCrmDocumentLead'}
+		},
+		function(result)
+		{
+			if(result.error())
+				alert("Error: " + result.error());
+			else
+			{
+				var templates = result.data();
+				console.log(templates);
+			}
+		}
+	);
+}</pre>
+
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

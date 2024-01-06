@@ -1,0 +1,42 @@
+<html>
+        <head>
+            <title>landing.repo.unregister</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">landing.repo.unregister <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/landing/partners_blocks/landing_repo_unregister.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">landing.repo.unregister(code) </pre>
+
+<p>Метод удаления блока. Возвращает <i>true</i> при удалении или <i>false</i>, если блок уже удален или его не было.</p>
+
+<h4>Пример</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Метод</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>code</td> 	<td>Уникальный код удаляемого блока.</td> <td></td></tr>
+   
+   </tbody>
+ </table>
+
+<h4>Пример</h4>
+
+ 
+<pre class="syntax" rel="example">BX24.callMethod(
+	'landing.repo.unregister',
+	{code: 'myblockx'},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.info(result.data());
+	}
+);</pre>
+<br><br>							
+        </div>
+        </body>
+        </html>

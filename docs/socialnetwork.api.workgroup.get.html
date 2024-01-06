@@ -1,0 +1,124 @@
+<html>
+        <head>
+            <title>socialnetwork.api.workgroup.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">socialnetwork.api.workgroup.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/sonet_group/socialnetwork_api_workgroup_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Метод возвращает данные по рабочей группе.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>groupId</td> 	<td>Идентификатор группы. Обязательный параметр, целое число.</td> <td></td></tr>
+   
+   </tbody>
+ </table>
+
+
+<h4>Поля</h4>
+
+<p>Доступные поля:</p>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Поле</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>ID</td> 	<td>Идентификатор группы</td> <td></td></tr>
+   
+    <tr> 	<td>ACTIVE</td> 	<td>Флаг Y/N - является ли группа активной.</td> <td></td></tr>
+   
+    <tr> 	<td>SUBJECT_ID</td> 	<td>Код темы (обязательное поле).</td> <td></td></tr>
+   
+    <tr> 	<td>SUBJECT_DATA</td> 	<td>Поля тематики группы.</td> <td></td></tr>
+   
+    <tr> 	<td>NAME</td> 	<td>Название группы</td> <td></td></tr>
+   
+    <tr> 	<td>DESCRIPTION</td> 	<td>Описание группы</td> <td></td></tr>
+   
+    <tr> 	<td>KEYWORDS</td> 	<td>Ключевые слова</td> <td></td></tr>
+   
+    <tr> 	<td>CLOSED</td> 	<td>Флаг Y/N - является ли группа архивной,</td> <td></td></tr>
+   
+    <tr> 	<td>VISIBLE</td> 	<td>Флаг Y/N - видна ли группа в списке групп,</td> <td></td></tr>
+   
+    <tr> 	<td>OPENED</td> 	<td>Флаг Y/N - открыта ли группа для свободного вступления,</td> <td></td></tr>
+   
+    <tr> 	<td>PROJECT</td> 	<td>Флаг Y/N - является ли группа проектом или нет. по умолчанию - не является. (С версии 18.0.0)</td> <td></td></tr>
+   
+    <tr> 	<td>LANDING</td> 	<td>Флаг Y/N - является ли группой для публикацией.</td> <td></td></tr>
+   
+    <tr> 	<td>DATE_CREATE</td> 	<td>Дата создания</td> <td></td></tr>
+      
+    <tr> 	<td>DATE_UPDATE</td> 	<td>Дата изменения</td> <td></td></tr>
+   
+    <tr> 	<td>DATE_ACTIVITY</td> 	<td>Дата активности</td> <td></td></tr>
+   
+    <tr> 	<td>IMAGE_ID</td> 	<td>Идентификатор файла аватара группы</td> <td></td></tr>
+   
+    <tr> 	<td>AVATAR</td> 	<td>URL аватара</td> <td></td></tr>
+   
+    <tr> 	<td>AVATAR_TYPES</td> 	<td>Данные о наборе существующих типов аватаров.</td> <td></td></tr>   
+
+    <tr> 	<td>AVATAR_TYPE</td> 	<td>Тип аватара группы (используется, если не задано значение IMAGE_ID). Допустимые значения: folder, checks, pie, bag, members.</td> <td></td></tr>
+   
+    <tr> 	<td>OWNER_ID</td> 	<td>Идентификатор владельца группы</td> <td></td></tr>
+   
+    <tr> 	<td>OWNER_DATA</td> 	<td>Поля владельца группы.</td> <td></td></tr>
+   
+    <tr> 	<td>NUMBER_OF_MEMBERS</td> 	<td>Количество членов группы</td> <td></td></tr>
+   
+    <tr> 	<td>NUMBER_OF_MODERATORS</td> 	<td>Количество модераторов группы.</td> <td></td></tr>
+   
+    <tr> 	<td>INITIATE_PERMS</td> 	<td>Кто имеет право на приглашение пользователей в группу (обязательное поле):
+
+<ul>
+<li>A - только владелец группы,</li>
+<li>E - владелец группы и модераторы группы,</li> 
+<li>K - все члены группы.</li> 
+ </ul></td> <td></td></tr>
+   
+    <tr> 	<td>PROJECT_DATE_START</td> 	<td>Дата начала проекта</td> <td></td></tr>
+   
+    <tr> 	<td>PROJECT_DATE_FINISH</td> 	<td>Дата завершения проекта</td> <td></td></tr>
+   
+    <tr> 	<td>SCRUM_OWNER_ID</td> 	<td>Идентификатор SCRUM</td> <td></td></tr>
+   
+    <tr> 	<td>SCRUM_MASTER_ID</td> 	<td>Идентификатор SCRUM мастера</td> <td></td></tr>
+   
+    <tr> 	<td>SCRUM_SPRINT_DURATION</td> 	<td>Длительность спринта в скраме в секундах</td> <td></td></tr>
+   
+    <tr> 	<td>SCRUM_TASK_RESPONSIBLE</td> 	<td>Ответственный по умолчанию в скрам проекте. доступные значения:
+<ul>
+<li>A - постановщик</li>
+<li>M - скрам-мастер</li> 
+ </ul>
+
+</td> <td></td></tr>
+   
+    <tr> 	<td>TAGS </td> 	<td>Теги группы</td> <td></td></tr>
+
+    <tr> 	<td>ACTIONS</td> 	<td>Данные о доступных текущему пользователю операциях над группой.</td> <td></td></tr>
+
+    <tr> 	<td>USER_DATA</td> 	<td>Данные о роли текущего пользователя в группе</td> <td></td></tr>
+
+   </tbody>
+ </table>
+
+
+<h4>Пример</h4>
+
+<pre class="syntax">BX.rest.callMethod('socialnetwork.api.workgroup.get', {
+	params: {
+		groupId: 424,
+		select: [ 'ID', 'NAME' ],
+	},
+});</pre>							
+        </div>
+        </body>
+        </html>

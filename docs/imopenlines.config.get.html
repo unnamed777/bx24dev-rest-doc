@@ -1,0 +1,52 @@
+<html>
+        <head>
+            <title>imopenlines.config.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">imopenlines.config.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/imconnector/setting_line/imopenlines_config_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Метод позволяет получить линию по её ID.</p>
+
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>CONFIG_ID</td> 	<td>ID линии (обязательный)</td> <td></td></tr>
+   
+    <tr> 	<td>WITH_QUEUE</td> 	<td>Выводить со списком операторов линии (Y/N, по-умолчанию: Y)</td> <td></td></tr>
+   
+    <tr> 	<td>SHOW_OFFLINE</td> 	<td>Показывать ли список вместе с операторами, которые не в сети (Y/N, по-умолчанию: Y)</td> <td></td></tr>
+   
+   </tbody>
+ </table>
+ 
+	
+<h4>Примеры</h4>	
+
+<pre class="syntax" rel="example">//imopenlines.config.get
+function configGet()
+{
+	var params = {
+		CONFIG_ID:    1,
+		WITH_QUEUE:   'Y',
+		SHOW_OFFLINE: 'Y'
+	};
+	BX24.callMethod(
+		'imopenlines.config.get',
+		params,
+		function (result) {
+			if (result.error())
+				alert("Error: " + result.error());
+			else
+				alert("Успешно: " + result.data());
+		}
+	);
+}</pre>							
+        </div>
+        </body>
+        </html>

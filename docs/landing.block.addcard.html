@@ -1,0 +1,60 @@
+<html>
+        <head>
+            <title>landing.block.addcard</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">landing.block.addcard <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/landing/block/blocks/landing_block_addcard.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">landing.block.addcard(lid, block, selector, content)</pre>
+
+<p>Метод полностью повторяет работу <a class="link" href="/rest_help/landing/block/blocks/landing_block_clonecard.php">landing.block.clonecard</a> но дает возможность вставить карточку сразу с измененным контентом.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Метод</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>lid</td> 	<td>Идентификатор страницы</td> <td></td></tr>
+   
+    <tr> 	<td>block</td> 	<td>Идентификатор блока</td> <td></td></tr>
+   
+    <tr> 	<td>selector</td> 	<td><a class="link" href="/rest_help/landing/block/manifest.php#cards">Селектор карточки</a>, взятый с манифеста, с добавленным идентификатором карточки.<br>Например: <code>'.landing-block-card@0'</code>. 0 в конце означает, что воздействуем на первую по порядку карточку.</td> <td></td></tr>
+
+    <tr> 	<td>content</td> 	<td>Содержимое новой карточки.</td> <td></td></tr>
+   
+   </tbody>
+ </table>
+
+
+<p class="note"><b>Обратите внимание</b>, что как только вы склонировали карточку, их счетчики поменялись.</p>
+
+<h4>Примеры</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'landing.block.addCard',
+	{
+		lid: 634,
+		block: 12079,
+		selector: '.landing-block-node-menu-list-item@0',
+		content: '&lt;li class="landing-block-node-menu-list-item nav-item g-mx-30--lg g-mb-7 g-mb-0--lg"&gt;' + '&lt;a href="#about" class="landing-block-node-menu-list-item-link nav-link g-color-white p-0"&gt;New card item&lt;/a&gt;' + '&lt;/li&gt;'
+	},
+	function(result)
+	{
+		if(result.error())
+		{
+			console.error(result.error());
+		}
+		else
+		{
+			console.info(result.data());
+		}
+	}
+);</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

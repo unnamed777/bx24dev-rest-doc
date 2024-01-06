@@ -1,0 +1,54 @@
+<html>
+        <head>
+            <title>crm.deal.recurring.delete</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.deal.recurring.delete <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/cdeals/crm_deal_recurring_delete.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.deal.recurring.delete(id)</pre>
+
+<p>Удаляет существующую настройку для шаблона регулярной сделки.
+</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+<tr><td>id</td><td>Идентификатор настройки шаблона регулярной сделки.</td></tr>
+
+
+	</tbody>
+</table>
+
+
+
+<h4>Пример:</h4>
+
+
+<pre class="syntax" rel="example">var id = prompt("Введите ID");
+BX24.callMethod(
+	"crm.deal.recurring.delete",
+	{ id: id },
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.info(result.data());
+	}
+);
+</pre>
+
+
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

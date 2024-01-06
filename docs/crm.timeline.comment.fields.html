@@ -1,0 +1,84 @@
+<html>
+        <head>
+            <title>crm.timeline.comment.fields</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.timeline.comment.fields <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/timeline/comment/crm_timeline_comment_fields.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Описание и пример</h3>
+
+<pre class="syntax">crm.timeline.comment.fields()</pre>
+
+<p>Возвращает список полей комментария таймлайна.</p>
+
+<h4>Параметры</h4>
+
+<p>Без параметров.</p>
+
+<h4>Пример</h4>
+<pre class="syntax" rel="example">BX24.callMethod(
+	"crm.timeline.comment.fields",
+	{},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.dir(result.data());
+	}
+);
+</pre>
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Поля</h3>
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Поле</th> 	<th>Описание</th><th>Тип</th><th>Примечание</th></tr>
+   
+    <tr> 	<td>ID</td> 	<td>Идентификатор.</td>       <td>integer</td>      <td>Только для чтения.</td></tr>
+
+    <tr> 	<td>CREATED</td> 	<td>Дата добавления.</td>       <td>datetime</td>      <td>Только для чтения.</td></tr>
+
+    <tr> 	<td>ENTITY_ID</td> 	<td>ID элемента, к которому привязан комментарий.</td>       <td>integer</td>      <td>Неизменяемое\Обязательное</td></tr>
+
+    <tr> 	<td>ENTITY_TYPE</td> 	<td>Тип элемента, к которому привязан комментарий.
+<br>Значения: 
+<ul>
+<li><code>lead</code> - лид;</li>
+<li><code>deal</code> - сделка;</li>
+<li><code>contact</code> - контакт;</li>
+<li><code>company</code> - компания;</li>
+<li><code>order</code> - заказ.</li>
+</ul>
+</td>       <td>string</td>      <td>Неизменяемое\Обязательное</td></tr>
+
+    <tr> 	<td>AUTHOR_ID</td> 	<td>Автор.</td>       <td>integer</td>      <td>Неизменяемое</td></tr>
+
+    <tr> 	<td>COMMENT</td> 	<td>Текст комментария.</td>       <td>string</td>      <td></td></tr>
+
+    <tr> 	<td>FILES</td> 	<td>Список файлов.</td>       <td>attached_diskfile</td>      <td>Массив значений, описанный по правилам, приведенным <a class="link" href="https://dev.1c-bitrix.ru/rest_help/js_library/rest/files.php" target="_blank">тут.</a></td></tr>
+
+   </tbody>
+ </table>
+
+
+</div>
+
+<!------->
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

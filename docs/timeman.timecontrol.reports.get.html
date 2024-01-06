@@ -1,0 +1,320 @@
+<html>
+        <head>
+            <title>timeman.timecontrol.reports.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">timeman.timecontrol.reports.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/timeman/timecontrol/timeman_timecontrol_reports_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Описание и параметры</h3>
+
+<p>Метод для получения отчета о выявленных отсутствиях.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr><th width="15%">Параметр</th><th>Пример</th><th>Обязательный</th><th>Описание</th></tr>
+<tr><td>USER_ID</td>
+<td>2</td>
+<td>Да</td>
+<td>Идентификатор пользователя.</td></tr>
+
+<tr><td>YEAR</td>
+<td>2018</td>
+<td>Да</td>
+<td>Год для формирования отчета.</td></tr>
+
+<tr><td>MONTH</td>
+<td>8</td>
+<td>Да</td>
+<td>Месяц для формирования отчета.</td></tr>
+
+<tr><td>WORKDAY_HOURS</td>
+<td>8</td>
+<td>Нет</td>
+<td>Необходимая продолжительность рабочего дня в часах (по-умолчанию 8 часов).</td></tr>
+
+<tr><td>IDLE_MINUTES</td>
+<td>15</td>
+<td>Нет</td>
+<td>Максимальное время отсутствия на рабочем месте, которое не будет учитываться как отсутствие.</td></tr>
+
+</tbody>
+</table>
+
+<p>Параметр <code>IDLE_MINUTES</code> доступен только, если вы руководитель или администратор. Если не указывать, время автоматически берется из настроек модуля.</p>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Пример вызова</h3>
+
+<p>JavaScript</p>
+
+<pre class="syntax" rel="example">BX24.callMethod('timeman.timecontrol.reports.get', {
+	user_id: 2,
+	year: 2018,
+	month: 8,
+	workday_hours: 8,
+	idle_minutes: 15
+}, function(result){
+	if(result.error())
+	{
+		console.error(result.error().ex);
+	}
+	else
+	{
+		console.log(result.data());
+	}
+});</pre>
+
+<p>PHP</p>
+
+<pre class="syntax">$result = restCommand('timeman.timecontrol.reports.get', Array(
+	'USER_ID =&gt; 2,
+	'YEAR' =&gt; 2018,
+	'MONTH' =&gt; 8,
+	'WORKDAY_HOURS' =&gt; 8,
+	'IDLE_MINUTES' =&gt; 15
+), $_REQUEST["auth"]);
+</pre>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Пример ответа</h3>
+
+<pre class="syntax">{
+	"result": {
+		report: {
+			month_title: 'Август',
+			date_start: "2018-08-01T00:00:00+03:00",
+			date_finish: "2018-08-31T23:59:59+03:00",
+			days: [
+				{
+					index: "20180816",
+					day_title: "16.08.2018",
+					workday_complete: false,
+					workday_date_start: "2018-08-16T14:08:35+03:00",
+					workday_date_finish: "2018-08-16T11:20:00+03:00",
+					workday_duration: 10115,
+					workday_duration_config: 28800,
+					workday_duration_final: 6914,
+					workday_time_leaks_user: 0,
+					workday_time_leaks_real: 3201,
+					workday_time_leaks_final: 21886,
+					reports: [
+						{
+							id: 459,
+							type: "TM_START",
+							date_start: "2018-08-16T14:08:35+03:00",
+							date_finish: "2018-08-16T14:08:35+03:00",
+							duration: 0,
+							active: false,
+							entry_id: 35,
+							report_type: "NONE",
+							report_text: null,
+							system_text: "",
+							source_start: "TM_EVENT",
+							source_finish: "TM_EVENT",
+							ip_start: "93.60.295.11",
+							ip_finish: "10.10.255.255",
+							ip_start_network: false,
+							ip_finish_network: {
+								ip: "10.10.255.255",
+								range: "10.0.0.0-10.255.255.255",
+								name: "Офисная сеть 10.x.x.x"
+							}
+						}
+					]
+				}
+			]
+		},
+		user: {
+			id:2,
+			name:"Мария Ившина",
+			first_name:"Мария",
+			last_name:"Ившина",
+			work_position:"IT-специалист",
+			avatar:"http://test.bitrix24.com/upload/resize_cache/main/072/100_100_2/42-17948709.gif",
+			last_activity_date:"2018-08-15T16:25:34+03:00"
+		}
+
+	}
+}</pre>
+
+<h4>Описание ключей</h4>
+
+<ul>
+<li><b>report</b> - информация об отчете.
+<ul>
+<li><b>month_title</b> -  название месяца.</li>
+<li><b>date_start</b> - дата начала периода выборки в формате АТОМ.</li>
+<li><b>date_finish</b> - дата окончания периода выборки в формате АТОМ.</li>
+<li><b>days</b> - список отработанных дней.
+<ul>
+<li><b>index</b> - индекс дня недели.</li> 
+<li><b>day_title</b> - дата (в формате сайте).</li> 
+<li><b>workday_complete</b> - рабочий день завершен (true / false).</li> 
+<li><b>workday_date_start</b> - дата начала рабочего дня в формате АТОМ.</li> 
+<li><b>workday_date_finish</b> - дата окончания рабочего дня в формате АТОМ (если <code>workday_complete = false</code>, в данном поле указывается дата на момент формирования отчета).</li> 
+<li><b>workday_duration</b> - продолжительность рабочего дня по табелю в секундах (с учетом установленного пользователем перерыва).</li> 
+<li><b>workday_duration_final</b> - продолжительность рабочего дня по фактической выработке в секундах (с учетом установленного пользователем перерыва, не подтвержденных отсутствий и отсутствий по личным делам).</li> 
+<li><b>workday_duration_config</b> - необходимая продолжительность рабочего дня в секундах.</li>
+<li><b>workday_time_leaks_user</b> - продолжительность перерыва установленного пользователем в секундах.</li> 
+<li><b>workday_time_leaks_real</b> - продолжительность перерыва установленного автоматической системой фиксации (не подтвержденные отсутствий и отсутствий по личным делам).</li>
+<li><b>workday_time_leaks_final</b> - если число положительное: количество не доработанного времени в секундах; если число отрицательное: количество времени отработанных сверх положенного времени (переработка).</li>
+<li><b>reports</b> - список записей выявленных отсутствий (значения доступны только на уровне детализации head и full).
+<ul>
+<li><b>id</b> - идентификатор записи, необходим для использования метода <a class="link" href="/rest_help/timeman/timecontrol/timeman_timecontrol_report_add.php">timeman.timecontrol.report.add</a>.</li> 
+<li><b>type</b> - тип записи (справочник типов описан ниже).</li> 
+<li><b>active</b> - активность записи.</li> 
+<li><b>date_start</b>- дата начала фиксации в формате АТОМ.</li> 
+<li><b>date_finish</b> - дата окончания фиксации в формате АТОМ (если active = true в данном поле указывается дата на момент формирования отчета).</li>
+<li><b>report_type</b> - тип отсутствия (work - по рабочим вопросам, private - личные дела, none - не задан, приравнивается к private).</li>
+<li><b>report_text</b> - описание причины отсутствия.</li>
+<li><b>system_text</b> - системное описание причины отсутствия (параметр доступен только на уровне детализации head).</li>
+<li><b>source_start</b> - поставщик данных начала записи (справочник типов описан ниже).</li>
+<li><b>source_finish</b> - поставщик данных окончания записи (справочник типов описан ниже).</li>
+<li><b>ip_start</b> - ip-адрес на момент начала записи (параметр доступен только на уровне детализации head).</li> 
+<li><b>ip_start_network</b> - расшифровка ip-адреса на момент начала записи, если ip-адрес не входит в офисную сеть - false (параметр доступен только на уровне детализации head).
+<ul>
+<li><b>ip</b> - ip-адрес на момент начала записи .</li> 
+<li><b>range</b> - диапазон, в который входит указанный IP-адрес.</li> 
+<li><b>name</b> - название диапазона, в который входит указанный IP-адрес.</li> 
+</ul></li> 
+<li><b>ip_finish</b> - ip-адрес на момент окончания записи (параметр доступен только на уровне детализации head).</li>
+<li><b>ip_finish_network</b> - расшифровка ip-адрес на момент окончания записи, если ip-адрес не входит в офисную сеть - false (параметр доступен только на уровне детализации head).
+<ul>
+<li><b>ip</b> - ip-адрес на момент окончания записи.</li>
+<li><b>range</b> - диапазон, в который входит указанный IP-адрес.</li>
+<li><b>name</b> - название диапазона, в который входит указанный IP-адрес.</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+
+<li><b>user</b> - информация о пользователе. 
+<ul>
+<li><b>id</b> - идентификатор пользователя.</li>
+<li><b>name</b> - имя и фамилия пользователя.</li>
+<li><b>first_name</b> - имя пользователя.</li> 
+<li><b>last_name</b> - фамилия пользователя.</li> 
+<li><b>work_position</b> - должность.</li> 
+<li><b>avatar</b> - ссылка на аватар (если пусто, значит аватар не задан).</li> 
+<li><b>personal_gender</b> - пол пользователя.</li>
+<li><b>last_activity_date</b> - дата последнего действия пользователя в формате АТОМ.</li>
+</ul></li>
+</ul>
+
+<br>
+<p><b>Возможные типы записей (type)</b></p>
+
+<ul>
+    <li><code>IDLE</code> - Отошел (фиксируется с помощью десктоп приложения).</li>
+    <li><code>OFFLINE</code> - Офлайн.</li>
+    <li><code>DESKTOP_ONLINE</code> - Зафиксирован запуск десктоп приложения (тип доступен только на уровне детализации head).</li>
+    <li><code>DESKTOP_OFFLINE</code> - Зафиксирован выключенное десктоп приложение (тип доступен только на уровне детализации head).</li>
+    <li><code>DESKTOP_START</code> - Зафиксирован запуск десктоп приложения (тип доступен только на уровне детализации head).</li>
+    <li><code>TM_START</code> - Начал рабочий день.</li>
+    <li><code>TM_PAUSE</code> - Ушел на перерыв.</li>
+    <li><code>TM_CONTINUE</code> - Продолжил день.</li>
+    <li><code>TM_END</code> - Завершил рабочий день.</li>
+</ul>
+
+<br>
+<p><b>Возможные источники записей (source_start, source_finish)</b></p>
+<ul>
+    <li><code>ONLINE_EVENT</code> - Событие авторизации пользователя.</li>
+    <li><code>OFFLINE_AGENT</code> - Агент проставляющий статус офлайн.</li>
+    <li><code>DESKTOP_OFFLINE_AGENT</code> - Агент проставляющий признак выключенного десктоп приложения.</li>
+    <li><code>DESKTOP_ONLINE_EVENT</code> - Событие проставляющий признак включенного десктоп приложения.</li>
+    <li><code>DESKTOP_START_EVENT</code> - Событие проставляющий признак включенного десктоп приложения.</li>
+    <li><code>IDLE_EVENT</code> - Событие изменение стаса отошел (фиксируется с помощью десктоп приложения).</li>
+    <li><code>TM_EVENT</code> - Событие изменения рабочего дня (начало, перерыв, окончание).</li>
+</ul>
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Пример ответа при возникновении ошибки</h3>
+
+<pre class="syntax">{
+	"error": "ACCESS_ERROR",
+	"error_description": "You don't have access to this method"
+}</pre>
+
+<ul>
+<li>Ключ <b>error</b> - код возникшей ошибки.</li>
+<li>Ключ <b>error_description</b> - краткое описание возникшей ошибки.</li>
+
+</ul>
+
+<h4>Возможные коды ошибок</h4>
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr><th width="15%">Код</th><th>Описание</th></tr>
+<tr><td>ACCESS_ERROR</td><td>Указанный метод не доступен пользователю.</td></tr>
+<tr><td>USER_ACCESS_ERROR</td><td>Нет доступа к указанному пользователю.</td></tr>
+
+</tbody>
+</table>
+</div>
+
+<!------->
+
+<div class="tab">
+
+<h3 class="tab-title">Если возвращает пустой days</h3>
+
+<p>Если возвращается пустой массив days, то сначала выставьте нужные опции, для доступа к отчету и сбору данных (необходимо быть администратором и на любой странице портала выполнить в консоли):</p>
+
+<pre class="syntax">BX.rest.callMethod('timeman.timecontrol.settings.set', {
+	active: true,
+	REPORT_SIMPLE_TYPE: 'all',
+	REPORT_FULL_TYPE: 'all',
+	report_request_type: 'user',
+	report_request_users: [BX.message.USER_ID],
+}, function(result){
+	if(result.error())
+	{
+		console.error(result.error().ex);
+	}
+	else
+	{
+		console.log(result.data());
+	}
+});</pre>
+
+<p>После этого откройте или закройте рабочий день, после этого в отчете для этого пользователя будут данные:</p>
+
+<pre class="syntax">BX.rest.callMethod('timeman.timecontrol.reports.get', {
+	user_id: BX.message.USER_ID,
+	year: 2019,
+	month: 1,
+	workday_hours: 8,
+	idle_minutes: 15
+}).then(e =&gt; console.log(e))</pre>
+
+</div>
+
+<!------------->
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

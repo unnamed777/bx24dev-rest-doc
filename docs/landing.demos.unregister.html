@@ -1,0 +1,52 @@
+<html>
+        <head>
+            <title>landing.demos.unregister</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">landing.demos.unregister <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/landing/demos/landing_demos_unregister.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">landing.demos.unregister(
+	code
+)</pre>
+
+<p>Метод удаляет зарегистрированный партнерский шаблон. Возвращает <i>true</i> или ошибку. В случае, если шаблон уже был удален, или не найден, вернет <i>false</i>.</p>
+
+<p class="note"><b>Обратите внимание!</b> Удаляется как шаблон сайта с данным кодом, так и все шаблоны страниц с данным кодом. Созданные сайты и страниц по этим шаблонам остаются нетронутыми.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>code </td> 	<td>Символьный код шаблона.</td> <td></td></tr>
+
+   
+   </tbody>
+ </table>
+
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'landing.demos.unregister',
+	{
+		code: 'myfirstsite'
+	},
+	function(result)
+	{
+		if(result.error())
+		{
+			console.error(result.error());
+		}
+		else
+		{
+			console.info(result.data());
+		}
+	}
+);</pre>							
+        </div>
+        </body>
+        </html>

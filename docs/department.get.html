@@ -1,0 +1,50 @@
+<html>
+        <head>
+            <title>department.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">department.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/departments/department_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Получение фильтрованного списка подразделений.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+<tbody><tr><th width="15%">Параметр</th><th>Описание</th></tr>
+ 
+<tr><td>sort</td><td> поле, по которому сортируются результаты</td></tr>
+
+<tr><td>order</td><td> направление сортировки 
+<ul>
+<li>ASC - по возрастанию</li>
+<li>DESC - по убыванию</li>  
+ </ul></td></tr>
+
+<tr><td>ID</td><td> фильтр по идентификатору подразделения</td></tr>
+
+<tr><td>NAME</td><td> фильтр по имени подразделения</td></tr>
+
+<tr><td>PARENT</td><td> фильтр по родительскому подразделению</td></tr>
+
+<tr><td>UF_HEAD</td><td> фильтр по руководителю подразделения</td></tr>
+
+</tbody></table>
+
+<p>Параметры фильтрации могут принимать значение массивов.</p>
+
+
+<p><b>Вызов</b></p>
+
+<pre class="syntax" rel="example">BX24.callMethod('department.get', {"ID": 222});</pre>
+
+<p><b>Запрос</b></p>
+
+<pre class="syntax">https://my.bitrix24.ru/rest/department.get.json?ID=222&amp;auth=b961afd4148963c5d54ebeb17123d1fc</pre>
+
+<p><b>Ответ</b></p>
+<pre class="syntax">{"result":[{"ID":"222","NAME":"\u0421\u0442\u0430\u0440\u043e\u0435 \u043f\u043e\u0434\u0440\u0430\u0437\u0434\u0435\u043b\u0435\u043d\u0438\u0435","SORT":500,"PARENT":"114","UF_HEAD":"11"}],"total":1}</pre>							
+        </div>
+        </body>
+        </html>

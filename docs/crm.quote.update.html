@@ -1,0 +1,61 @@
+<html>
+        <head>
+            <title>crm.quote.update</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.quote.update <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/komm_quote/crm_quote_update.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.quote.update(id, fields, params)</pre>
+
+<p>Обновляет существующее предложение.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+<tr>
+<td>id</td>
+<td>Идентификатор предложения.</td>
+</tr>
+
+<tr>
+<td>fields</td>
+<td><a class="link" href="/rest_help/crm/komm_quote/crm_quote_add.php">Набор полей</a> - массив вида array("обновляемое поле"=&gt;"значение"[, ...]), где "обновляемое поле" может принимать значения из возвращаемых методом <a class="link" href="/rest_help/crm/komm_quote/crm_quote_fields.php">crm.quote.fields</a>.
+<div class="note">
+	<b>Примечание</b>: чтобы узнать требуемый формат полей, выполните метод <a class="link" href="/rest_help/crm/komm_quote/crm_quote_fields.php">crm.quote.fields</a> и посмотрите формат пришедших значений этих полей.</div>
+</td>
+</tr>
+
+<tr>
+<td>params</td>
+<td>Набор параметров. REGISTER_HISTORY_EVENT - создать запись в истории, значение по умолчанию: "Y". Дополнительно будет отправлено уведомление ответственному за предложение.</td>
+</tr>
+	</tbody>
+</table>
+
+<h4>Пример</h4>
+<pre class="syntax" rel="example">var id = prompt("Введите ID");
+BX24.callMethod(
+	"crm.quote.update", 
+	{ 
+		id: id,
+		fields: { "STATUS_ID": "SENT" }	
+	}, 
+	function(result) 
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.info(result.data());
+	}
+);
+</pre><br><br>							
+        </div>
+        </body>
+        </html>

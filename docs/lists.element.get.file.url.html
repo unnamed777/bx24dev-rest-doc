@@ -1,0 +1,87 @@
+<html>
+        <head>
+            <title>lists.element.get.file.url</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">lists.element.get.file.url <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/lists/elements/lists_element_get_file_url.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Описание</h3>
+
+
+<pre class="syntax"><b>lists.element.get.file.url (</b>
+	params
+<b>)</b></pre>
+
+<p>Метод возвращает путь к файлу. В случае успеха будет возвращен массив со списком url для нужного поля типа Файл или Файл (Диск).</p>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Метод</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>params</td> 	<td>Все поля обязательные
+<ul>
+<li>IBLOCK_TYPE_ID - id типа инфоблока:
+<ul>
+<li>lists - тип инфоблока списка;</li>
+<li>bitrix_processes - тип инфоблока процессов; </li> 
+<li>lists_socnet - тип инфоблока списков групп. В этом случае обязательно передавать параметр SOCNET_GROUP_ID - id группы.</li> 
+ </ul> </li>
+<li>IBLOCK_ID - id инфоблока</li> 
+<li>ELEMENT_ID - id элемента</li> 
+<li>FIELD_ID - id поля (свойства инфоблока) Файл или Файл (Диск), без префикса "PROPERTY_"</li>
+<li>SEF_FOLDER: '/my_section/lists/' - путь до папки, с которой работает компонент. Параметр не обязательный. По умолчанию будет выбираться значение в зависимости от одного из системных типов инфоблока.</li>
+ </ul>
+</td> <td></td></tr>
+   <tr><td>SOCNET_GROUP_ID</td><td>id группы (обязательно, если список создается для группы);</td></tr>
+   </tbody>
+ </table>
+
+
+
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Пример</h3>
+<pre class="syntax" rel="example">var params = {
+	'IBLOCK_TYPE_ID': 'lists',
+	'IBLOCK_ID': '41',
+	'ELEMENT_ID': '683',
+	'FIELD_ID': '120'
+};
+BX.rest.callMethod(
+	'lists.element.get.file.url',
+	params,
+	function(result)
+	{
+		if(result.error())
+			alert("Error: " + result.error());
+		else
+			console.log(result.data());
+	}
+)</pre>
+
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

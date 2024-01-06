@@ -1,0 +1,126 @@
+<html>
+        <head>
+            <title>crm.entity.mergeBatch</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.entity.mergeBatch <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/auxiliary/duplicates/crm_entity_mergeBatch.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Объединение дубликатов</h3>
+
+<br>
+<pre class="syntax">crm.entity.mergeBatch({params: {entityTypeId: number, entityIds: number[]}})</pre>
+<br>
+<code>params</code> - ассоциативный массив, содержащий ключи:
+
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Ключ</th>
+			<th>Описание</th>
+		</tr>
+
+<tr>
+<td>entityTypeId</td>
+<td>идентификатор типа сущности. Может принимать значения <code>1</code> (лид), <code>2</code> (сделка), <code>3</code> (контакт) или <code>4</code> (компания)
+</td>
+</tr>
+
+<tr>
+<td>entityIds</td><td>массив идентификаторов элементов, которые необходимо объединить</td></tr>
+	</tbody>
+</table>
+<br>
+<p>Метод вернет ассоциативный массив вида:</p>
+
+<pre class="syntax">{
+	"STATUS": "SUCCESS",
+	"ENTITY_IDS": [
+		"1" 
+	]
+}
+</pre>
+
+
+<p>Здесь:</p>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+
+<tr>
+<td>STATUS</td>
+<td>может принимать значения:
+<ul>
+		<li><code>SUCCESS</code> - объединение прошло успешно.</li>
+		<li><code>CONFLICT</code> - при объединении возник конфликт.</li>
+		<li><code>ERROR</code> - при объединении произошла ошибка. Например, если у текущего пользователя нет прав на изменение или удаление записей.</li>
+</ul>
+</td>
+</tr>
+
+<tr>
+<td>ENTITY_IDS</td><td>содержит идентификаторы элементов, которые были объединены, кроме идентификатора элемента, оставшегося после объединения.
+</td>
+</tr>
+	</tbody>
+</table>
+
+<h4>Пример вызова:</h4>
+
+<pre class="syntax">BX24.callMethod(
+	'crm.entity.mergeBatch',
+	{
+		params: {
+			entityTypeId: 3,
+			entityIds: [1, 2, 3],
+		}
+	},
+	(result) =&gt; {
+		console.log(result);
+	}
+);</pre>
+<br>
+<br>
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Ручное объединение для случаев, когда возник конфликт</h3>
+<br>
+<p>Для продолжения объединения вручную, в привычном пользователю интерфейсе <b>Битиркс24</b>, достаточно перенаправить его в раздел ручного объединения по соответствующей ссылке:</p>
+<br>
+<ul>
+
+		<li>Контакты: <code>/crm/contact/merge/?id=1,2,3</code></li>
+
+		<li>Компании: <code>/crm/company/merge/?id=1,2,3</code></li>
+
+	 <li> Лиды: <code>/crm/lead/merge/?id=1,2,3</code></li>
+
+		<li>Сделки: <code>/crm/deal/merge/?id=1,2,3</code></li>
+</ul>
+
+<p>где параметр <code>id</code> содержит указанные через запятую идентификаторы объединяемых записей.</p>
+<br>
+<br>
+</div>
+
+<!------->
+
+
+<br>
+<br>							
+        </div>
+        </body>
+        </html>

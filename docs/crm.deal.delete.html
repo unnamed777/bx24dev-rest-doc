@@ -1,0 +1,46 @@
+<html>
+        <head>
+            <title>crm.deal.delete</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.deal.delete <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/cdeals/crm_deal_delete.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.deal.delete(id)</pre>
+
+<p>Удаляет <a class="link" href="/rest_help/crm/cdeals/crm_deal_add.php">сделку</a> и все связанные с ней объекты: дела, история, дела Таймлайна и другие. Объекты удаляются, если они не привязаны к другим сущностям/элементам. А если привязаны, то удалится только привязка к удаляемой сделке.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+<tr>
+<td>id</td>
+<td>Идентификатор сделки.</td>
+</tr>
+
+</tbody>
+</table>
+
+<h4>Пример</h4>
+<pre class="syntax" rel="example">var id = prompt("Введите ID");
+BX24.callMethod(
+	"crm.deal.delete",
+	{ id: id },
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.info(result.data());
+	}
+);
+</pre><br><br>							
+        </div>
+        </body>
+        </html>

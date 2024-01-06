@@ -1,0 +1,65 @@
+<html>
+        <head>
+            <title>crm.contact.company.items.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.contact.company.items.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/contacts/crm_contact_company_items_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.contact.company.items.get(id)</pre>
+
+<p>Возвращает набор компаний, связанных с указанным контактом.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+<tr>
+<td>id</td>
+<td>Идентификатор контакта.</td>
+</tr>
+	</tbody>
+</table>
+
+
+<p>Результат возвращается в виде массива объектов, каждый из которых содержит следующие <a class="link" href="/rest_help/crm/contacts/crm_contact_company_fields.php">поля</a>:</p>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Поле</th>
+			<th>Описание</th>
+		</tr>
+  
+		<tr><td>COMPANY_ID</td><td>Идентификатор компании</td></tr>
+<tr><td>SORT</td><td>Индекс сортировки</td></tr>
+	<tr><td>ROLE_ID</td><td>Идентификатор роли (зарезервировано)</td></tr>
+	<tr><td>IS_PRIMARY</td><td>Флаг первичной компании</td></tr>
+	
+	</tbody>
+</table>
+
+<h4>Пример вызова</h4>
+<pre class="syntax" rel="example">var id = prompt("Введите ID");
+BX24.callMethod(
+	"crm.contact.company.items.get",
+	{
+		id: id 
+	}, 
+	function(result) 
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.dir(result.data());
+	}
+);
+</pre><br><br>							
+        </div>
+        </body>
+        </html>

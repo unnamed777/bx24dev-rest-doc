@@ -1,0 +1,45 @@
+<html>
+        <head>
+            <title>entity.item.property.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">entity.item.property.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/entity/entity_item_property_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Получение списка дополнительных свойств элементов хранилища.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+<tbody><tr>
+	<th width="20%">Параметр</th>
+	<th>Описание</th>
+</tr>
+<tr>
+	<td>ENTITY</td>
+	<td>Обязательный. Строковой идентификатор хранилища.</td>
+</tr>
+<tr>
+	<td>PROPERTY</td>
+	<td>Строковой идентификатор требуемого свойства.</td>
+</tr>
+</tbody></table>
+
+<h4>Пример</h4>
+
+<p>Вызов
+<br></p><pre class="syntax" rel="example">BX24.callMethod('entity.item.property.get', {ENTITY: 'menu_new'}, function(r){
+	console.log(r.data());
+});</pre><p></p>
+
+<p>Запрос
+<br></p><pre>https://my.bitrix24.ru/rest/entity.item.property.get.json?ENTITY=menu_new&amp;auth=340bf57f35ee95e0debf98399632999c</pre><p></p>
+
+<p>Ответ
+<br></p><pre>{"result":[{"PROPERTY":"test","NAME":"\u0422\u0435\u0441\u0442\u043e\u0432\u043e\u0435 \u0441\u0432\u043e\u0439\u0441\u0442\u0432\u043e","TYPE":"S"},{"PROPERTY":"test1","NAME":"\u0412\u0442\u043e\u0440\u043e\u0435 \u0442\u0435\u0441\u0442\u043e\u0432\u043e\u0435 \u0441\u0432\u043e\u0439\u0441\u0442\u0432\u043e","TYPE":"N"},{"PROPERTY":"test_file","NAME":"\u0424\u0430\u0439\u043b\u043e","TYPE":"F"}]}</pre><p></p>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

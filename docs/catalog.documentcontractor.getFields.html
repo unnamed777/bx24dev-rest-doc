@@ -1,0 +1,50 @@
+<html>
+        <head>
+            <title>catalog.documentcontractor.getFields</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">catalog.documentcontractor.getFields <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/catalog/documentcontractor/catalog_documentcontractor_getfields.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">catalog.documentcontractor.getFields()</pre>
+
+<p>Метод возвращает массив полей с привязками CRM-поставщиков к складским документам.</p>
+
+<h4>Параметры</h4>
+
+<p>Без параметров.</p>
+
+<h4>Примеры</h4>
+
+<pre class="syntax" rel="example">BX.rest.callMethod(
+	'catalog.documentcontractor.getFields',
+	{},
+	function(result) {
+		if (result.error())
+			console.error(result.answer.error_description);
+		else 
+			console.log(result.data());
+	}
+);
+</pre>
+
+<h4>Возвращаемые поля</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Поле</th> 	<th>Описание</th><th>Тип</th><th>Примечание</th></tr>
+   
+    <tr> 	<td>documentId</td> 	<td>Идентификатор документа, к которому привязан поставщик.</td> 	<td>integer</td> 	<td>Обязательное поле.</td></tr>
+    <tr> 	<td>entityTypeId</td> 	<td>Идентификатор типа CRM-сущности (Контакт или Компания).</td> 	<td>integer</td> 	<td>Обязательное поле.</td></tr>
+    <tr> 	<td>entityId</td> 	<td>Идентификатор CRM-сущности.</td> 	<td>integer</td> 	<td>Обязательное поле.</td></tr>
+    <tr> 	<td>id</td> 	<td>Идентификатор привязки сущности к документу.</td> 	<td>integer</td> 	<td>Только для чтения.</td></tr>
+
+   </tbody>
+ </table>
+
+
+<br>							
+        </div>
+        </body>
+        </html>

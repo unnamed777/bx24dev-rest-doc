@@ -1,0 +1,59 @@
+<html>
+        <head>
+            <title>crm.activity.binding.list</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.activity.binding.list <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/rest_activity/binding/crm_activity_binding_list.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.activity.binding.list({activityId: number)</pre>
+
+<p>Получить список привязок.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+<tr>
+<td>activityId</td><td>идентификатор дела</td></tr>
+	</tbody>
+</table>
+<br>
+<p>Метод вернет массив, элементами которого будут массивы, содержащие:</p><br>
+<ul>
+<li><code>entityTypeId</code> - идентификатор типа элемента (<a class="link" href="/rest_help/crm/constants.php">Справочник доступных типов</a>);</li>
+<li><code>entityId</code> - идентификатор элемента.</li>
+</ul>
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">crm.activity.binding.list?activityId=1
+</pre>
+<br>
+<b>Успешный результат:</b>
+                <pre class="syntax" rel="example">{
+	"result": [
+		{
+			"entityTypeId": 1,
+			"entityId": 123
+		},
+		{
+			"entityTypeId": 2,
+			"entityId": 456
+		},
+		{
+			"entityTypeId": 3,
+			"entityId": 789
+		}
+	]
+}</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

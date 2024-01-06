@@ -1,0 +1,62 @@
+<html>
+        <head>
+            <title>crm.lead.contact.items.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.lead.contact.items.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/management_communication/crm_lead_contact_items_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.lead.contact.items.get(id)</pre>
+
+<p>Возвращает набор контактов, связанных с указанным лидом.</p>
+
+<h4>Параметр</h4>
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>id</td> 	<td>Идентификатор лида.</td> <td></td></tr>
+
+   </tbody>
+ </table>
+
+<p>Результат возвращается в виде массива объектов, каждый из которых содержит следующие поля:</p>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Поле</th> 	<th>Описание</th> </tr>
+   
+    <tr> 	<td>CONTACT_ID</td> 	<td>Идентификатор контакта.</td></tr>
+   
+    <tr> 	<td>SORT</td> 	<td>Индекс сортировки</td></tr>
+   
+    <tr> 	<td>ROLE_ID</td> 	<td>Идентификатор роли (зарезервировано)</td></tr>
+   
+    <tr> 	<td>IS_PRIMARY</td> 	<td>Флаг первичного контакта</td></tr>
+
+   </tbody>
+ </table>
+
+
+<h4>Пример</h4>
+
+<pre class="syntax">var id = prompt("Введите ID лида");
+BX24.callMethod(
+	"crm.lead.contact.items.get",
+	{
+		id: id
+	},
+	function(result)
+	{
+		if (result.error())
+			console.error(result.error());
+		else
+			console.dir(result.data());
+	}
+);</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

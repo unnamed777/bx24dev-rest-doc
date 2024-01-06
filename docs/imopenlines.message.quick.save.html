@@ -1,0 +1,58 @@
+<html>
+        <head>
+            <title>imopenlines.message.quick.save</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">imopenlines.message.quick.save <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/imopenlines/message/imopenlines_message_quick_save.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Метод для сохранения сообщения в быстрые ответы.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th><th>Пример</th><th>Обязательный</th><th>Описание</th>
+   
+    </tr><tr> 	<td>CHAT_ID</td><td>2014</td><td>Да</td><td>Идентификатор чата.</td></tr>
+    <tr> 	<td>MESSAGE_ID</td><td>18715</td><td>Да</td><td>Идентификатор сообщения.</td></tr>
+
+   
+   </tbody>
+ </table>
+
+<h4>Вызов метода и ответ</h4>
+
+<p>JavaScript</p>
+<pre class="syntax" rel="example">BX.rest.callMethod(
+	'imopenlines.message.quick.save',
+	{
+		CHAT_ID: 2014,
+		MESSAGE_ID: 18715
+	}
+)
+	.then(result =&gt; console.log(result.data()))
+	.catch(result =&gt; console.warn(result.error().ex))
+;
+</pre>
+
+<p>Пример ответа:</p>
+<pre class="syntax">true</pre>
+
+<h4>Возможные коды ошибок</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Код</th><th>Описание</th>
+   
+    </tr><tr> 	<td>ACCESS_DENIED</td><td>У текущего пользователя нет доступа к указанному методу.</td></tr>
+    <tr> 	<td>CANT_SAVE_QUICK_ANSWER</td><td>Ошибка сохранения быстрого ответа.</td></tr>
+  
+   </tbody>
+ </table>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

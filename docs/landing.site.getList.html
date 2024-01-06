@@ -1,0 +1,64 @@
+<html>
+        <head>
+            <title>landing.site.getList</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">landing.site.getList <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/landing/site/methods/landing_site_getList.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">landing.site.getList(params)</pre>
+
+<p>Метод для получения списка сайтов.</p>
+
+<p class="note"><b>Обратите внимание</b>, помеченные как удаленные страницы не фигурируют в выборках. Чтобы получить их явно, необходимо при фильтрации указать ключ <code>DELETED</code> со значением Y или N.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Метод</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>params</td> 	<td>Опциональный массив, с опциональными ключами: <b>select</b>, <b>filter</b>, <b>order</b>, <b>group</b>, которые содержат значения таблицы <a class="link" href="/rest_help/landing/site/base_field.php">основных полей</a> сущности.</td> <td></td></tr>
+   
+   </tbody>
+ </table>
+<br>
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'landing.site.getList',
+	{
+		params: {
+			select: [
+				'ID', 'TITLE', 'DOMAIN.DOMAIN'
+			],
+			filter: {
+				TITLE: '%услуги%'
+			},
+			order: {
+				ID: 'DESC'
+			}
+		}
+	},
+	function(result)
+	{
+		if(result.error())
+		{
+			console.error(result.error());
+		}
+		else
+		{
+			console.info(result.data());
+		}
+	}
+);</pre>
+
+
+
+<br>
+<br>							
+        </div>
+        </body>
+        </html>

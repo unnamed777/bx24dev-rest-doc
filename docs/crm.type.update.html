@@ -1,0 +1,148 @@
+<html>
+        <head>
+            <title>crm.type.update</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.type.update <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/dynamic/methodscrmtype/crm_type_update.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<div class="tab">
+<h3 class="tab-title">Описание и параметры</h3>
+
+<pre class="syntax">crm.type.update({id: number, fields: {}})</pre>
+
+<p>Метод обновит существующие настройки смарт-процесса с идентификатором <code>id</code>.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr><th width="15%">Параметр</th> <th>Описание</th></tr>
+
+<tr><td>id</td><td>Идентификатор смарт-процесса.</td></tr>
+
+<tr><td>fields</td><td>Состоит из полей настроек смарт-процесса, а также настроек связей, привязок к пользовательскому полю и настройки показа вне CRM.</td></tr>
+</tbody>
+</table>
+
+</div>
+
+<!------->
+
+<div class="tab">
+<h3 class="tab-title">Изменить только собственные поля настроек смарт-процесса</h3>
+
+
+<p>Чтобы изменить только поля настроек смарт-процесса необходимо передать только изменяемые значения полей. Например, необходимо отключить функционал печати документов.</p>
+
+<pre class="syntax">{
+	"id": 128,
+	"fields": {
+		"isDocumentsEnabled": "N"
+	}
+}
+</pre>
+
+</div>
+
+<!------->
+
+<div class="tab">
+<h3 class="tab-title">Изменить настройки связей</h3>
+
+<p>Подробнее о связях можно <a class="link" href="https://dev.1c-bitrix.ru/api_d7/bitrix/crm/relation.php" target="_blank">прочитать тут.</a></p>
+
+<p>Чтобы изменить настройки связей смарт-процесса надо передать данные по ключу <code>relations</code>.</p>
+<ul>
+		<li>Настройки необходимо передавать целиком, они полностью перезаписываются.</li>
+		<li>Нельзя изменить настройки предустановленных связей (<code>iPredefined: true</code>). Эти настройки можно не передавать в запросе.</li>
+</ul>
+
+<p><i>Включение комплексного поля "Клиент" создает предустановленные привязки к Компании и Контактам.</i></p>
+
+<pre class="syntax">{
+	"id": 128,
+	"fields": {
+		"relations": {
+			"parent": [
+				{
+					"entityTypeId": 130
+				}
+			],
+			"child": [
+				{
+					"entityTypeId": 130,
+					"isChildrenListEnabled": "N"
+				}
+			]
+		}
+	}
+}
+</pre>
+
+
+<p>Если не передать настройку <code>isChildrenListEnabled</code>, то по умолчанию туда запишется <code>false</code>. Ключ <code>iPredefined</code> можно не передавать.</p>
+
+<p><i>Если при попытке сохранить переданные настройки связей возникнет ошибка, она не будет выведена. Настройки просто не сохранятся.</i></p>
+
+</div>
+
+<!------->
+
+<div class="tab">
+<h3 class="tab-title">Изменить настройки показа вне CRM</h3>
+
+
+<p>Про показ вне CRM можно <a class="link" href="https://dev.1c-bitrix.ru/api_d7/bitrix/crm/dynamic/custom_section.php" target="_blank">прочитать тут</a>.</p><p>
+
+</p><p>Набор дополнительных разделов необходимо передавать целиком.</p>
+
+<p>Допустим, на текущий момент набор разделов выглядит следующим образом (в ответ на <code>crm.type.get</code>):</p>
+
+<pre class="syntax">{
+	"type": {
+		"customSections": [
+			{
+				"id": 18,
+				"title": "Manufacturing",
+				"iSelected": "N"
+			},
+			{
+				"id": 20,
+				"title": "HR",
+				"iSelected": "N"
+			}
+		]
+	}
+}
+</pre>
+
+<p>Необходимо раздел "HR" поставить на первое место, раздел "Manufacturing" удалить, а вместо него создать новый "Consuming", к которому сразу привязать смарт-процесс.</p>
+
+<p>В этом случае запрос будет выглядеть следующим образом:</p>
+
+<pre class="syntax">{
+	"id": 128,
+	"fields": {
+		"customSections": [
+			{
+				"id": 20,
+				"title": "HR"
+			},
+			{
+				"id": "new_1",
+				"title": "Consuming"
+			}
+		],
+		"customSectionId": "new_1"
+	}
+}
+</pre>
+
+</div>
+
+<!------->							
+        </div>
+        </body>
+        </html>

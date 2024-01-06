@@ -1,0 +1,73 @@
+<html>
+        <head>
+            <title>catalog.price.modify</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">catalog.price.modify <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/catalog/price/catalog_price_modify.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">catalog.price.modify(fields)</pre>
+
+<p>Метод для изменения элементов коллекции цен товара.</p>
+
+<p class="note"><b>Внимание!</b> Все сущности, которые не переданы или у которых не указаны ID, будут удалены.</p>
+
+<p>Если операция успешна, возвращается <a class="link" href="/rest_help/catalog/price/resource.php">ресурс цены</a> в теле ответа.</p>
+
+<h4>Параметры</h4>
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th><th>Тип</th>
+			<th>Описание</th>      </tr>
+<tr><td>fields.product.id</td><td>string</td> <td>Номер цены.</td></tr>
+<tr><td>fields.product.prices[]</td><td>list</td> <td>Поля, соответствующие доступному списку полей <a class="link" href="/rest_help/catalog/price/catalog_price_getfields.php">fields</a>.</td></tr>
+	</tbody>
+</table>
+
+<h4>Примеры</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'catalog.price.modify', 
+	{
+		fields: {
+			product: {
+				id: 8
+				prices: [
+				{
+					catalogGroupId: 1,
+					currency: RUB,
+					price: 2001,
+					quantityFrom: 1,
+					quantityTo: 2
+				},
+				{
+					catalogGroupId: 1,
+					currency: RUB,
+					price: 2001,				
+					quantityFrom: 3,
+					quantityTo: 4
+				},
+				{
+					catalogGroupId: 1,
+					currency: RUB,
+					price: 2001,				
+					quantityFrom: 5,
+					id:122
+				},]
+			},
+		}
+	},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error().ex);
+		else
+			console.log(result.data());
+	}
+);
+</pre>							
+        </div>
+        </body>
+        </html>

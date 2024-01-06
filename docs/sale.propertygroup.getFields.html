@@ -1,0 +1,59 @@
+<html>
+        <head>
+            <title>sale.propertygroup.getFields</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">sale.propertygroup.getFields <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/sale/propertygroup/sale_propertygroup_getFields.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">sale</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<pre class="syntax">sale.propertygroup.getFields()</pre>
+
+<p>Метод возвращает поля группы свойств.</p>
+
+<p>Возвращаемые поля:</p>
+
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Поле</th>
+			<th>Описание</th>      </tr>
+
+<tr><td>id</td><td>Идентификатор группы свойств.</td> </tr>
+<tr><td>personTypeId</td><td>Идентификатор типа плательщика.</td> </tr>
+<tr><td>name</td><td>Название.</td> </tr>
+<tr><td>sort</td><td>Сортировка.</td> </tr>
+
+	</tbody>
+</table>
+
+
+<h4>Параметры</h4>
+
+<p>Без параметров.</p>
+
+
+<br><br>
+<h4>Примеры</h4>
+<pre class="syntax" rel="example">BX24.callMethod(
+	'sale.propertygroup.getFields', 
+	{}, 
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error().ex);
+		else
+			console.log(result.data());
+	}
+);
+</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

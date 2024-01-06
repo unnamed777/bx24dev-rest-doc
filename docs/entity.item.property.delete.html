@@ -1,0 +1,43 @@
+<html>
+        <head>
+            <title>entity.item.property.delete</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">entity.item.property.delete <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/entity/entity_item_property_delete.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Удаление дополнительного свойства элементов хранилища. Пользователь должен обладать правами на управление (<b>Х</b>) хранилищем.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+<tbody><tr>
+	<th width="20%">Параметр</th>
+	<th>Описание</th>
+</tr>
+<tr>
+	<td>ENTITY</td>
+	<td>Обязательный. Строковой идентификатор хранилища.</td>
+</tr>
+<tr>
+	<td>PROPERTY</td>
+	<td>Обязательный. Строковой идентификатор свойства.</td>
+</tr>
+</tbody></table>
+
+<h4>Пример</h4>
+
+<p>Вызов
+<br></p><pre class="syntax" rel="example">BX24.callMethod('entity.item.property.delete', {ENTITY: 'menu_new', PROPERTY: 'new_prop'});</pre><p></p>
+
+<p>Запрос
+<br></p><pre>https://my.bitrix24.ru/rest/entity.item.property.delete.json?ENTITY=menu_new&amp;PROPERTY=new_prop&amp;auth=d92dd12b9b9b904254776104eed2bb76</pre><p></p>
+
+<p>Ответ
+<br></p><pre>{"result":true}</pre><p></p>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,91 @@
+<html>
+        <head>
+            <title>crm.item.productrow.list</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.item.productrow.list <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/productrow/crm_item_productrow_list.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.item.productrow.list({order: ?{} = null, filter: {}, start: ?number = 0})</pre>
+
+<p>Метод вернет массив товарных позиций</p>
+
+<pre class="syntax">{
+	"productRows": []
+}</pre>
+
+<p>где каждый элемент массива — это структура, аналогичная результату метода <a class="link" href="/rest_help/crm/productrow/crm_item_productrow_get.php">crm.item.productrow.get</a>.</p>
+
+<p>В каждой строке результата есть поле <b>type</b>, которое означает следующее:
+</p><pre class="syntax">TYPE_PRODUCT = 1; // Простой товар
+TYPE_SET = 2; // Комплект 
+TYPE_SKU = 3; // Товар с торговыми предложениями
+TYPE_OFFER = 4; // Торговое предложение
+TYPE_FREE_OFFER = 5; // Торговое предложение, у которого нет товара (не указан или удален)
+TYPE_EMPTY_SKU = 6; // Специфический тип, означает невалидный товар с торговыми предложениями
+</pre>
+
+<p></p>С товаром можно работать через <a class="link" href="/rest_help/crm/products/index.php">crm.product.*</a>. С вариациями - только через <a class="link" href="/rest_help/catalog/product/index.php">catalog.product.*</a> (Можно и с товарами использовать.) При этом, <a class="link" href="/rest_help/catalog/product/catalog_product_get.php">catalog.product.get</a> требует только id товара/вариации. (В выдаче отличаются по <b>iblockId</b> для товара и по наличию <b>parentId</b> для вариации.) А вот <a class="link" href="/rest_help/catalog/product/catalog_product_list.php">catalog.product.list</a> уже требует указания в фильтре <b>iblockId</b>, который чаще всего в облаке 25 - товары, 27 - вариации. (Необходимо проверять в каждом конкретном случае).<p></p>
+
+<p>Получить значение <code>ownerType</code> для смарт-процесса можно с помощью <a class="link" href="/rest_help/crm/auxiliary/enum/crm_enum_ownertype.php">crm.enum.ownertype</a> - значение <b>SYMBOL_CODE_SHORT</b>.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>order </td> 	<td>Список для сортировки, где ключ — поле, а значение - ASC или DESC.</td> <td></td></tr>
+   
+    <tr> 	<td>filter </td> 	<td>Список для фильтрации. Примеры фильтров ниже. Ключи =ownerType и =ownerId являются обязательными.</td> <td></td></tr>
+   
+    <tr> 	<td>start </td> 	<td>Сдвиг для постраничной навигации.</td> <td></td></tr>
+
+   
+   </tbody>
+ </table>
+
+    
+<h4>Примеры</h4>
+    
+<p>Найти все товарные позиции, привязанные к предложению с идентификатором 1</p>
+
+<pre class="syntax">{
+	"filter": {
+		"=ownerType": "Q",
+		"=ownerId": 1
+	}
+}</pre>
+
+<p>Найти все товарные позиции, привязанные к смарт-процессу с entityTypeId = 128 и с идентификатором 9, у которых скидка больше 10% или цена ниже 1000</p>
+
+<pre class="syntax">{
+	"filter": {
+		"=ownerType": "T80",
+		"=ownerId": 9,
+		"0": {
+			"logic": "OR",
+			"0": {
+				"&gt;discountRate": 10
+			},
+			"1": {
+				"&lt;price": 1000
+			}
+		}
+	}
+}</pre>
+
+<p>Найти все товарные позиции, привязанные к предложению с идентификатором 2, которые привязаны к товарам из каталога</p>
+
+<pre class="syntax">{
+	"filter": {
+		"=ownerType": "Q",
+		"=ownerId": 2,
+		"!=productId": 0
+	}
+}</pre>
+<br><br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,151 @@
+<html>
+        <head>
+            <title>crm.deal.recurring.fields</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.deal.recurring.fields <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/cdeals/crm_deal_recurring_fields.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Описание и пример</h3>
+
+<pre class="syntax">crm.deal.recurring.fields()</pre>
+
+<p>Возвращает список полей настройки шаблона регулярной сделки c описанием.</p>
+
+<h4>Параметры</h4>
+
+<p>Без параметров.</p>
+
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	"crm.deal.recurring.fields",
+	{},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.dir(result.data());
+	}
+);
+</pre>
+
+
+</div>
+
+<!------->
+
+<div class="tab">
+
+<h3 class="tab-title">Поля</h3>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Поле</th> 	<th>Описание</th><th>Тип</th><th>Примечание</th></tr>
+   
+    <tr> 	<td>ID</td> 	<td>Идентификатор записи в таблице настроек регулярной сделки</td><td>integer</td><td>Только для чтения</td></tr>
+   
+    <tr> 	<td>DEAL_ID</td> 	<td>ID шаблона сделки</td><td>integer</td><td>Неизменяемое</td></tr>
+
+    <tr> 	<td>BASED_ID</td> 	<td>ID сделки, на основании которой был создан шаблон</td><td>integer</td><td>Неизменяемое</td></tr>
+ 
+    <tr> 	<td>ACTIVE</td> 	<td>Флаг активности. Значения: Y/N</td><td>char</td><td></td></tr>
+   
+    <tr> 	<td>NEXT_EXECUTION</td> 	<td>Дата следующего создания новой сделки из шаблона. Рассчитывается системой по указанным параметрам. Если значение пустое, новые сделки не создаются</td><td>date</td><td>Только для чтения. </td></tr>
+  
+    <tr> 	<td>LAST_EXECUTION</td> 	<td>Дата последнего создания новой сделки из шаблона</td><td>date</td><td>Только для чтения</td></tr>
+   
+    <tr> 	<td>COUNTER_REPEAT</td> 	<td>Количество созданных из шаблона сделок</td><td>integer</td><td>Только для чтения</td></tr>
+  
+    <tr> 	<td>START_DATE</td> 	<td>Дата начала отсчета при расчете даты следующего создания новой сделки. Если значение пустое, рассчитывается от текущей даты</td><td>date</td><td></td></tr>
+   
+    <tr> 	<td>CATEGORY_ID</td> 	<td>Категория, которая будет задана у сделки, созданной из шаблона</td><td>char</td><td></td></tr>
+   
+    <tr> 	<td>IS_LIMIT</td> 	<td>Есть ли ограничения по созданию новых сделок. Значения: N - без ограничений, D - установлено ограничение по дате, T - установлено ограничение по количеству новых сделок</td><td>char</td><td></td></tr>
+   
+    <tr> 	<td>LIMIT_REPEAT</td> 	<td>Максимальное число сделок, которое можно создать из этого шаблона</td><td>integer</td><td>Учитывается, если IS_LIMIT равно T</td></tr>
+   
+    <tr> 	<td>LIMIT_DATE</td> 	<td>Дата, до достижения которой можно создавать сделки из этого шаблона</td><td>date</td><td>Учитывается, если IS_LIMIT равно D</td></tr>
+    
+    <tr> 	<td>PARAMS</td> 	<td>Набор параметров для расчета - recurring_params:
+
+<ul>
+
+<li><b>MODE</b> - режим повторения:
+<ul>
+<li>single - единичный (будет создана одна сделка из шаблона, смещение рассчитывается до значения START_DATE);</li>
+<li>multiple - множественный</li>
+</ul>
+</li>
+
+<li><b>MULTIPLE_TYPE</b> - тип повторения в множественном режиме [MODE равен multiple]:
+<ul>
+<li>day - день</li>
+<li>week - неделя</li>
+<li>month - месяц</li>
+<li>year - год</li>
+</ul>
+</li>
+
+<li><b>MULTIPLE_INTERVAL</b> - значение смещения [MODE равен multiple]
+</li>
+
+<li><b>SINGLE_BEFORE_START_DATE_TYPE</b> - тип смещения до даты начала [MODE равен single]:
+<ul>
+<li>day - день</li>
+<li>week - неделя</li>
+<li>month - месяц</li>
+<li>year - год</li>
+</ul>
+</li>
+
+<li><b>SINGLE_BEFORE_START_DATE_VALUE</b> - значение смещения до даты начала, если не установлено - смещения нет [MODE равен single]
+</li>
+
+<li><b>OFFSET_BEGINDATE_TYPE</b> - тип смещения для расчета поля "даты начала сделки", расчет ведется от момента создания новой сделки из шаблона:
+<ul>
+<li>day - день</li>
+<li>week - неделя</li>
+<li>month - месяц</li>
+<li>year - год</li>
+</ul>
+</li>
+
+<li><b>OFFSET_BEGINDATE_VALUE</b> - значение смещения для расчета поля "даты начала сделки", расчет ведется от момента создания новой сделки из шаблона
+</li>
+
+<li><b>OFFSET_CLOSEDATE_TYPE</b> - значение смещения для расчета поля "даты завершения сделки", расчет ведется от момента создания новой сделки из шаблона:
+<ul>
+<li>day - день</li>
+<li>week - неделя</li>
+<li>month - месяц</li>
+<li>year - год</li>
+</ul>
+</li>
+
+<li><b>OFFSET_CLOSEDATE_VALUE</b> - значение смещения для расчета поля "даты завершения сделки", расчет ведется от момента создания новой сделки из шаблона</li>
+</ul>
+
+</td><td></td><td></td></tr>
+
+
+   </tbody>
+ </table>
+
+
+</div>
+
+<!------->
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

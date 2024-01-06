@@ -1,0 +1,45 @@
+<html>
+        <head>
+            <title>catalog.storeproduct.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">catalog.storeproduct.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/catalog/storeproduct/catalog_storeproduct_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">catalog.storeproduct.get(id)</pre>
+
+<p>Метод для доступа к значениям полей остатков по складам.</p>
+
+
+<h4>Параметры</h4>
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th><th>Тип</th>
+			<th>Описание</th>      </tr>
+<tr><td>id</td><td>integer</td> <td>Первичный ключ записи.</td></tr>
+	</tbody>
+</table>
+
+<h4>Примеры</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'catalog.storeproduct.get',
+	{
+		id: 1
+	},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error().ex);
+		else
+			console.log(result.data());
+	}
+);
+</pre>
+
+<br>							
+        </div>
+        </body>
+        </html>

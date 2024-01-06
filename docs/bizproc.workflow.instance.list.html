@@ -1,0 +1,43 @@
+<html>
+        <head>
+            <title>bizproc.workflow.instance.list</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">bizproc.workflow.instance.list <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/bizproc/bizproc_workflow_instance/bizproc_workflow_instance_list.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">bizproc</span> Права на выполнение: <span class="bg_orange">администратор</span>
+</p>
+
+<p><b>bizproc.workflow.instance.list</b> - метод возвращает список запущенных бизнес-процессов. Алиас метода <a class="link" href="/rest_help/bizproc/bizproc_workflow_instance/instances.php">bizproc.workflow.instance</a>, параметры и ограничения полностью совпадают.</p>
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'bizproc.workflow.instance.list',
+	{
+		select: [
+			'ID',
+			'STARTED',
+			'STARTED_BY',
+			'TEMPLATE_ID',
+			'DOCUMENT_ID'
+		],
+		order: {MODIFIED: 'DESC'},
+		filter: {MODULE_ID: 'crm', ENTITY: 'CCrmDocumentLead'}
+	},
+	function(result)
+	{
+		if(result.error())
+			alert("Error: " + result.error());
+		else
+		{
+			console.log(result.data());
+		}
+	}
+)</pre>							
+        </div>
+        </body>
+        </html>

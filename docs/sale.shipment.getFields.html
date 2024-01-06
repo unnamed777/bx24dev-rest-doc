@@ -1,0 +1,109 @@
+<html>
+        <head>
+            <title>sale.shipment.getFields</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">sale.shipment.getFields <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/sale/shipment/sale_shipment_getFields.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<p class="note_blue">
+Scope: <span class="bg_blue">sale</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<div class="tab">
+
+<h3 class="tab-title">Описание и пример</h3>
+<pre class="syntax">sale.shipment.getFields()</pre>
+
+<p>Метод возвращает поля отгрузки.</p>
+
+<h4>Параметры</h4>
+
+<p>Без параметров.</p>
+
+<h4>Примеры</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'sale.shipment.getFields', 
+	{}, 
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error().ex);
+		else
+			console.log(result.data());
+	}
+);
+</pre>
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Возвращаемые поля</h3>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Поле</th>
+			<th>Описание</th>      </tr>
+
+<tr><td>id</td><td>ID отгрузки.</td> </tr>
+<tr><td>orderId</td><td>ID заказа.</td> </tr>
+<tr><td>statusId</td><td>Статус отгрузки.</td> </tr>
+<tr><td>basePriceDelivery</td><td>Базовая стоимость доставки.</td> </tr>
+<tr><td>priceDelivery</td><td>Стоимость доставки.</td> </tr>
+<tr><td>customPriceDelivery</td><td>Флаг, установлена ли цена вручную.</td> </tr>
+<tr><td>currency</td><td>Валюта.</td> </tr>
+<tr><td>discountPrice</td><td>Сумма итоговой скидки/наценки для отгрузки.</td> </tr>
+<tr><td>allowDelivery</td><td>Флаг разрешения доставки: Y/N.</td> </tr>
+<tr><td>dateAllowDelivery</td><td>Дата разрешения доставки.</td> </tr>
+<tr><td>empAllowDeliveryId</td><td>ID пользователя, который разрешал доставку.</td> </tr>
+<tr><td>deducted</td><td>Флаг отгрузки: Y/N.</td> </tr>
+<tr><td>dateDeducted</td><td>Дата отгрузки.</td> </tr>
+<tr><td>empDeductedId</td><td>ID пользователя, который отгружал отгрузку.</td> </tr>
+<tr><td>reasonUndoDeducted</td><td>Причина отмены отгрузки.</td> </tr>
+<tr><td>deliveryId</td><td>ID службы доставки.</td> </tr>
+<tr><td>deliveryDocNum</td><td>Номер документа отгрузки.</td> </tr>
+<tr><td>deliveryDocDate</td><td>Дата документа отгрузки.</td> </tr>
+<tr><td>trackingNumber</td><td>Трэк-номер.</td> </tr>
+<tr><td>trackingStatus</td><td>Статус отправления.</td> </tr>
+<tr><td>trackingDescription</td><td>Описание статуса отправления.</td> </tr>
+<tr><td>trackingLastCheck</td><td>Дата последней проверки статуса отправления.</td> </tr>
+<tr><td>xmlId</td><td>Внешний идентификатор.</td> </tr>
+<tr><td>deliveryName</td><td>Название службы доставки.</td> </tr>
+<tr><td>canceled</td><td>Отменена ли отгрузка.</td> </tr>
+<tr><td>dateCanceled</td><td>Дата отмены отгрузки.</td> </tr>
+<tr><td>empCanceledId</td><td>ID пользователя, который отменил отгрузку.</td> </tr>
+<tr><td>marked</td><td>Промаркирована ли отгрузка.</td> </tr>
+<tr><td>dateMarked</td><td>Дата маркировки.</td> </tr>
+<tr><td>empMarkedId</td><td>ID пользователя, который промаркировал отгрузку.</td> </tr>
+<tr><td>reasonMarked</td><td>Причина маркировки.</td> </tr>
+<tr><td>system</td><td>Флаг, устанавливающий, системная это отгрузка или нет.</td> </tr>
+<tr><td>responsibleId</td><td>ID пользователя, ответственного за отгрузку.</td> </tr>
+<tr><td>empResponsibleId</td><td>ID пользователя, который назначил ответственного.</td> </tr>
+<tr><td>dateResponsibleId</td><td>Дата назначения ответственного.</td> </tr>
+<tr><td>comments</td><td>Комментарий.</td> </tr>
+<tr><td>companyId</td><td>ID компании, занимающейся отгрузкой.</td> </tr>
+<tr><td>updated1c</td><td>Обновлена ли отгрузка через 1С</td> </tr>
+<tr><td>id1c</td><td>ID отгрузки в 1С.</td> </tr>
+<tr><td>version1c</td><td>Версия документа отгрузки от 1С.</td> </tr>
+<tr><td>externalDelivery</td><td>Флаг Y/N: доставка из внешней системы или нет.</td> </tr>
+
+
+	</tbody>
+</table>
+
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

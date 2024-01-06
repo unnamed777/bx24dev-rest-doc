@@ -1,0 +1,46 @@
+<html>
+        <head>
+            <title>crm.deal.details.configuration.forceCommonScopeForAll</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.deal.details.configuration.forceCommonScopeForAll <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/custom_form/crm_deal_details_configuration_forceCommonScopeForAll.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Метод принудительно устанавливает общую карточку сделок для всех пользователей.</p> 
+
+<p class="note">Обратите внимание, что настройки карточки сделок разных направлений (или воронок) могут отличаться друг от друга.
+Для переключения между настройками карточек сделок разных направлений применяется параметр <strong>dealCategoryId</strong>.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>extras</td> 	<td>Дополнительные параметры. Здесь для сделок может быть задан параметр <code>dealCategoryId</code>.</td> <td></td></tr>
+   
+   </tbody>
+ </table>
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">//---
+//Установить общую карточку сделок общего направления для всех пользователей.
+BX24.callMethod(
+	"crm.deal.details.configuration.forceCommonScopeForAll",
+	{},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.dir(result.data());
+	}
+);
+//---</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

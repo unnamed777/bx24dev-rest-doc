@@ -1,0 +1,59 @@
+<html>
+        <head>
+            <title>task.item.userfield.getlist</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">task.item.userfield.getlist <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/tasks/task/userfield/getlist.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">task</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<p>Метод возвращает список свойств.</p>
+
+<h4>Параметры метода</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr><th width="15%">Параметр</th><th>Описание</th></tr>
+   <tr><td><i>auth</i></td><td>Токен авторизации.</td></tr>
+<tr><td><i>ORDER</i></td><td>Массив для сортировки результата. Массив вида array("поле сортировки"=&gt;"направление сортировки" [, ...]).</td></tr>
+<tr><td><i>FILTER</i></td><td>Массив фильтрации результата вида array("фильтруемое поле"=&gt;"значение фильтра" [, ...]). Обязательный параметр.</td></tr>
+ </tbody></table>
+
+<h4>Пример</h4>
+
+<pre class="syntax">$appParams = array(
+	'auth' =&gt; 'q21g8vhcqmxdrbhqlbd2wh6ev1debppa',
+	'ORDER' =&gt; array('ID' =&gt; 'asc'),
+	'FILTER' =&gt; array('USER_TYPE_ID' =&gt; 'string')
+);
+</pre>
+<h4>Примеры вызова</h4>
+<pre class="syntax">$request = 'http://your-domain.ru/rest/task.item.userfield.getlist.xml?'.http_build_query($appParams);
+</pre>
+
+<br>
+<pre class="syntax" rel="example">BX24.callMethod(
+	"task.item.userfield.getlist",
+	{
+		order:
+		{
+			"ID": "ASC"
+		},
+		filter:
+		{
+			"EDIT_IN_LIST": "Y"
+		}
+	},
+	function(result)
+	{ 
+	}
+);
+</pre>
+<br>							
+        </div>
+        </body>
+        </html>

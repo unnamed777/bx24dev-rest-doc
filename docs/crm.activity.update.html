@@ -1,0 +1,72 @@
+<html>
+        <head>
+            <title>crm.activity.update</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.activity.update <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/rest_activity/crm_activity_update.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note">С версии CRM 22.1350.0 метод устарел. Используйте методы <a class="link" href="/rest_help/crm/rest_activity/todo/crm_activity_todo_updateDeadline.php">crm.activity.todo.updateDeadline</a> и <a class="link" href="/rest_help/crm/rest_activity/todo/crm_activity_todo_updateDescription.php">crm.activity.todo.updateDescription</a>.</p>
+
+<pre class="syntax">crm.activity.update(id, fields)</pre>
+
+<p>Обновляет существующую активность.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+<tr>
+<td>id</td>
+<td>Идентификатор активности.</td>
+</tr>
+
+<tr>
+<td>fields</td>
+<td>Набор полей - массив вида array("обновляемое поле"=&gt;"значение"[, ...]), где "обновляемое поле" может принимать значения из возвращаемых методом <a class="link" href="/rest_help/crm/rest_activity/crm_activity_fields.php">crm.activity.fields</a>.
+<div class="note">
+	<b>Примечание</b>: чтобы узнать требуемый формат полей, выполните метод <a class="link" href="/rest_help/crm/rest_activity/crm_activity_fields.php">crm.activity.fields</a> и посмотрите формат пришедших значений этих полей.</div>
+</td>
+</tr>
+	</tbody>
+</table>
+
+<h4>Пример</h4>
+<pre class="syntax" rel="example">var d = new Date();
+d.setSeconds(0);
+var dateStr = d.getFullYear() + '-' + paddatepart(1 + d.getMonth()) + '-' + paddatepart(d.getDate()) + 'T' + paddatepart(d.getHours()) + ':' + paddatepart(d.getMinutes()) + ':' + paddatepart(d.getSeconds()) + '+00:00';
+var paddatepart = function(part)
+{
+	return part &gt;= 10 ? part.toString() : '0' + part.toString();
+}
+var id = prompt("Введите ID");
+BX24.callMethod(
+	"crm.activity.update", 
+	{ 
+		id: id,
+		fields:
+		{
+			"START_TIME": dateStr,
+			"END_TIME": dateStr,
+			COMPLETED: 'Y'
+		}
+	},
+	function(result) 
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+		{
+			console.info(result.data());
+		}
+	}
+);
+</pre><br><br>							
+        </div>
+        </body>
+        </html>

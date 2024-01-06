@@ -1,0 +1,54 @@
+<html>
+        <head>
+            <title>sale.paysystem.settings.invoice.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">sale.paysystem.settings.invoice.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/paysystem/sale_paysystem_settings_invoice_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">sale.paysystem.settings.invoice.get<b>(</b>
+	invoice_id,
+	bx_rest_handler,
+	PAY_SYSTEM_ID
+<b>)</b>
+</pre>
+
+<p>Метод для получения настроек платежной системы для конкретного счета.</p> 
+
+<h4>Параметры:</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>invoice_id</td> 	<td>Идентификатор счета</td> <td></td></tr>
+   
+    <tr> 	<td>bx_rest_handler</td> 	<td>Код рест обработчика. Если платёжных систем несколько, то вместо этого параметра используйте PAY_SYSTEM_ID.</td> <td></td></tr>
+      
+    <tr> 	<td>PAY_SYSTEM_ID</td> 	<td>Идентификатор платёжной системы.</td> <td></td></tr>
+   </tbody>
+ </table>
+
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">var id = prompt("Введите ID счета");
+var handler_code = prompt("Введите код рест обработчика");
+
+BX24.callMethod('sale.paysystem.settings.invoice.get', {"invoice_id": id, "bx_rest_handler": handler_code},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+		{
+			console.dir(result.data());
+		}
+	}
+);</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

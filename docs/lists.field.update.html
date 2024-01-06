@@ -1,0 +1,135 @@
+<html>
+        <head>
+            <title>lists.field.update</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">lists.field.update <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/lists/fields/lists_field_update.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Описание</h3>
+<pre class="syntax">lists.field.update (params, fields)</pre>
+
+<p>Метод обновляет поле списка. В случае успешного обновления поля ответ true, иначе Exception.</p> 
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr><th width="15%">Параметр</th><th>Описание</th></tr>
+<tr><td>IBLOCK_TYPE_ID</td><td>id типа инфоблока (обязательно):
+<ul>
+<li><b>lists</b> - тип инфоблока списка</li>
+<li><b>bitrix_processes</b> - тип инфоблока процессов</li> 
+<li><b>lists_socnet</b> - тип инфоблока списков групп</li></ul></td></tr>
+<tr><td>IBLOCK_CODE/IBLOCK_ID</td><td>код или id инфоблока (обязательно)</td></tr>
+<tr><td>SOCNET_GROUP_ID</td><td>id группы (обязательно, если список создается для группы);</td></tr>
+<tr><td>FIELD_ID</td><td>ID поля. (обязательно. Если поле свойство инфоблока, то формат: "PROPERTY_propertyId")</td></tr>
+<tr><td>FIELDS</td><td> (ключи такие же как при создании поля из интерфейса <i>Битрикс24</i>)
+<ul>
+<li><b>NAME</b> название (обязательно)</li>
+<li><b>IS_REQUIRED</b> метка обязательности</li> 
+<li><b>MULTIPLE</b> метка множественности</li> 
+<li><b>TYPE</b> тип (обязательно)</li>
+<li><b>SORT</b> сортировка</li> 
+<li><b>DEFAULT_VALUE</b> значение по умолчанию</li> 
+<li><b>LIST</b> - может использоваться для добавления значений поля типа "Список".
+   <ul>
+      <li>n0 - строка пункта  
+         <ul>
+            <li>SORT - значение сортировки</li>
+            <li>VALUE - значение пункта</li> 
+        </ul>
+      </li>
+    </ul>
+</li> 
+<li><b>LIST_TEXT_VALUES</b> - может использоваться для добавления значений поля типа "Список" с помощью строки.(Каждая уникальная строчка станет отдельным значением списка)</li>
+<li><b>LIST_DEF</b> - значение по умолчанию для поля типа "Список"(Формат: массив с значением, где значение id пункта списка)</li> 
+<li><b>CODE</b> код (обязательно, если поле является свойством инфоблока)</li>
+<li><b>SETTINGS</b> все ключи должны присутствовать, иначе будет происходить затирание значениями по умолчанию
+<ul>
+<li>SHOW_ADD_FORM - показывать в форме добавления</li>
+<li>SHOW_EDIT_FORM - показывать в форме редактирования</li> 
+<li>ADD_READ_ONLY_FIELD - только для чтения (форма добавления)</li> 
+<li>EDIT_READ_ONLY_FIELD - только для чтения (форма редактирования)</li> 
+<li>SHOW_FIELD_PREVIEW - показать поле при формировании ссылки на элемент списка</li> 
+ </ul>
+</li> 
+<li><b>USER_TYPE_SETTINGS</b> - ключ для передачи пользовательских настроек</li>
+<li><b>ROW_COUNT/COL_COUNT</b> - настройка для полей textarea</li> 
+<li><b>LINK_IBLOCK_ID</b> - id привязываемого раздела</li> 
+</ul></td></tr>
+</tbody>
+</table>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Пример</h3>
+
+<pre class="syntax" rel="example">var params = {
+	'IBLOCK_TYPE_ID': 'lists_socnet',
+	'IBLOCK_CODE': 'rest_1',
+	'FIELD_ID': 'PROPERTY_61',
+	'FIELDS': {
+		'NAME': 'List field (Update)',
+		'IS_REQUIRED': 'N',
+		'MULTIPLE': 'N',
+		'TYPE': 'L',
+		'SORT': '20',
+		'CODE': 'fieldList',
+		'LIST': {
+			'58': {
+				'SORT': '10',
+				'VALUE': 'one'
+			},
+			'59': {
+				'SORT': '20',
+				'VALUE': 'two'
+			},
+			'60': {
+				'SORT': '30',
+				'VALUE': 'three'
+			}
+		},
+		'LIST_DEF': {
+			'0': '59'
+		},
+		'SETTINGS': {
+			'SHOW_ADD_FORM': 'Y',
+			'SHOW_EDIT_FORM': 'Y',
+			'ADD_READ_ONLY_FIELD': 'N',
+			'EDIT_READ_ONLY_FIELD': 'Y',
+			'SHOW_FIELD_PREVIEW': 'N'
+		}
+	}
+};
+BX24.callMethod(
+	'lists.field.update',
+	params,
+	function(result)
+	{
+		if(result.error())
+			alert("Error: " + result.error());
+		else
+			alert("Success: " + result.data());
+	}
+);</pre>
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

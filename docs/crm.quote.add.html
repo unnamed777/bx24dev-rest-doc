@@ -1,0 +1,70 @@
+<html>
+        <head>
+            <title>crm.quote.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.quote.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/komm_quote/crm_quote_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.quote.add(fields)</pre>
+
+<p>Создаёт новое коммерческое предложение. Если необходимо в предложении указать какие реквизиты покупателя/продавца (т.к. их может быть несколько у компании), то используйте метод <a class="link" href="/rest_help/crm/requisite/methods/crm_requisite_link_register.php">crm.requisite.link.register</a>.</p>
+
+<p>В создаваемом предложении обязательно должны быть указаны компании продавца и покупателя:<br>
+<code>COMPANY_ID</code>, если покупатель - компания или <code>CONTACT_ID</code>, если покупатель - контакт.<br>
+<code>MYCOMPANY_ID</code> - продавец.</p>
+
+<p>Идентификаторы указанные в <b>crm.requisite.link.register</b> и в создаваемом предложении должны соответствовать покупателю и продавцу.</p>
+
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+
+<tr>
+<td>fields</td>
+<td>Набор полей - массив вида array("поле"=&gt;"значение"[, ...]), содержащий значения полей предложения, где "поле" может принимать значения из возвращаемых методом <a class="link" href="/rest_help/crm/komm_quote/crm_quote_fields.php">crm.quote.fields</a>.
+<div class="note">
+	<b>Примечание</b>: чтобы узнать требуемый формат полей, выполните метод <a class="link" href="/rest_help/crm/komm_quote/crm_quote_fields.php">crm.quote.fields</a> и посмотрите формат пришедших значений этих полей.</div>
+</td>
+</tr>
+	</tbody>
+</table>
+
+<a class="link" name="example"></a>
+<h4>Пример</h4>
+<pre class="syntax" rel="example">BX24.callMethod(
+	"crm.quote.add",
+	{
+		fields:
+		{
+			"TITLE": "Черновик",
+			"STATUS_ID": "DRAFT",
+			"OPENED": "Y", 
+			"ASSIGNED_BY_ID": 1,
+			"CURRENCY_ID": "USD",
+			"OPPORTUNITY": 5000,
+			"COMPANY_ID": 1,
+			"COMMENTS": "Новое коммерческое предложение.",
+			"BEGINDATE": "2016-03-01T12:00:00",
+			"CLOSEDATE": "2016-04-01T12:00:00"
+		}
+	},
+	function(result) 
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.info("Создано предложение с ID " + result.data());
+	}
+);
+</pre><br><br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,44 @@
+<html>
+        <head>
+            <title>crm.requisite.link.unregister</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.requisite.link.unregister <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/requisite/methods/crm_requisite_link_unregister.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.requisite.link.unregister(entityTypeId, entityId)</pre>
+
+<p>Удаляет связь реквизитов с сущностью.</p>
+
+<h4>Параметры</h4>
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr><th width="15%">Параметр</th> <th>Описание</th></tr>
+
+<tr><td>entityTypeId</td><td>Идентификатор типа сущности (см. метод <a class="link" href="/rest_help/crm/auxiliary/enum/crm_enum_ownertype.php">crm.enum.ownertype</a>). Для связей реквизитов может быть только сделка, предложение или счёт.</td></tr>
+<tr><td>entityId</td><td>Идентификатор сущности (сделки, предложения или счёта).</td></tr>
+
+</tbody>
+</table>
+
+<a class="link" name="example"></a>
+<h4>Пример</h4>
+<pre class="syntax" rel="example">var id = prompt("Введите ID счёта");
+BX24.callMethod(
+	"crm.requisite.link.unregister", {
+		entityTypeId: 5,
+		entityId: id
+	},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.dir(result.data());
+	}
+);
+</pre><br><br>							
+        </div>
+        </body>
+        </html>

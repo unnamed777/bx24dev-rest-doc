@@ -1,0 +1,34 @@
+<html>
+        <head>
+            <title>placement.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">placement.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/application_embedding/metods/placement_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Метод для получения списка зарегистрированных обработчиков мест встраивания.</p>
+
+<h4>Параметры</h4>
+
+<p>Без параметров.</p>
+
+<h4>Пример</h4>
+
+<pre class="syntax">GET https://sometestportal.bitrix24.com/rest/placement.get?auth=7e623a5a0000cd710000cd5b00000001000000a8b1dbe022e2de93198634e9526b00f7 HTTP/1.1
+HTTP/1.1 200 OK
+{
+	"result": [
+		{
+			"description": "", 
+			"handler": "https://www.myapplicationhost.com/placement/", 
+			"placement": "CRM_LEAD_DETAIL_TAB", 
+			"title": "My test handler"
+		}
+	]
+}
+</pre>
+<br><br>							
+        </div>
+        </body>
+        </html>

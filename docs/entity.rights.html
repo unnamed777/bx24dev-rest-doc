@@ -1,0 +1,41 @@
+<html>
+        <head>
+            <title>entity.rights</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">entity.rights <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/entity/entity_rights.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Получение или изменение прав доступа к хранилищу. Возвращает текущий набор прав доступа.</p>
+
+<p>Для изменения набора прав достуа пользователь должен обладать правами на управление (<b>Х</b>) хранилищем. Пользователь не может отнять у себя права на управление.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+<tbody><tr>
+	<th width="20%">Параметр</th>
+	<th>Описание</th>
+</tr>
+<tr>
+	<td>ENTITY</td>
+	<td>Обязательный. Строковой идентификатор обновляемого хранилища.</td>
+</tr>
+<tr>
+	<td>ACCESS</td>
+	<td>Описание нового набора прав доступа к хранилищу. <br>
+Должно иметь вид ассоциативного массива, ключами которого являются идентификаторы прав доступа, значением - <b>R</b> (чтение),  <b>W</b> (запись) или <b>X</b> (управление).</td>
+</tr>
+</tbody></table>
+
+<h4>Пример</h4>
+
+<p></p><pre class="syntax" rel="example">BX24.callMethod('entity.rights', {'ENTITY': 'dish'});</pre>
+Ответ<br><br>
+<pre>{"result":{"AU":"R","U254":"W","D115":"W","U255":"W","U260":"W"}}</pre><p></p>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

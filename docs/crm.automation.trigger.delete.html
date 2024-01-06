@@ -1,0 +1,46 @@
+<html>
+        <head>
+            <title>crm.automation.trigger.delete</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.automation.trigger.delete <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/automation/trigger_application/crm_automation_trigger_delete.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Метод удаляет триггер. Возвращает <i>true</i> или ошибку с описанием.</p>
+
+<h4>Параметры</h4>
+
+<p><table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Метод</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>CODE</td> 	<td>Внутренний уникальный (в рамках приложения) идентификатор триггера. Должен соответствовать маске [a-z0-9\.\-_]</td> <td></td></tr>
+    
+   </tbody>
+ </table>
+</p>
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">function deleteTrigger(code)
+{
+	BX24.callMethod(
+		'crm.automation.trigger.delete',
+		{
+			"CODE": code
+		},
+		function(result)
+		{
+			if(result.error())
+				alert("Error: " + result.error());
+			else
+			{
+				alert("Success: " + result.data());
+			}
+		}
+	);
+}</pre>							
+        </div>
+        </body>
+        </html>

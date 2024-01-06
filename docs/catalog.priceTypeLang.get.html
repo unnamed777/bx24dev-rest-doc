@@ -1,0 +1,44 @@
+<html>
+        <head>
+            <title>catalog.priceTypeLang.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">catalog.priceTypeLang.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/catalog/pricetypelang/catalog_pricetypelang_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">catalog.priceTypeLang.get(id)</pre>
+
+<p>Метод для доступа к значению полей перевода названия типа цен.</p>
+
+<h4>Параметры</h4>
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th><th>Тип</th>
+			<th>Описание</th>      </tr>
+<tr><td>id</td><td>integer</td> <td>Идентификатор перевода названия типа цен.</td></tr>
+	</tbody>
+</table>
+
+<h4>Примеры</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'catalog.priceTypeLang.get', 
+	{
+		id: 537
+	}, 
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error().ex);
+		else
+			console.log(result.data());
+	}
+);
+</pre>
+
+<br>							
+        </div>
+        </body>
+        </html>

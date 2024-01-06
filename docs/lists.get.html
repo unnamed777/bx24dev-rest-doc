@@ -1,0 +1,74 @@
+<html>
+        <head>
+            <title>lists.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">lists.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/lists/lists/lists.get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Описание</h3>
+
+<pre class="syntax">lists.get (params)</pre>
+
+<p>Метод возвращает данные инфоблока. В случае успеха будут возвращены данные инфоблока, иначе пустой массив.
+С помощью метода можно получить список данных сразу всех инфоблоков указанного типа инфоблока. 
+При работе с группами соц сети обязательно необходимо указывать ID группы, иначе произойдёт ошибка доступа.</p>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr><th width="15%">Параметр</th><th>Описание</th></tr>
+<tr><td>IBLOCK_TYPE_ID</td><td> id типа инфоблока (обязательное):
+<ul>
+<li><b>lists</b> - тип инфоблока списка</li>
+<li><b>bitrix_processes</b> - тип инфоблока процессов</li> 
+<li><b>lists_socnet</b> - тип инфоблока списков групп</li></ul></td></tr>
+<tr><td>IBLOCK_CODE/IBLOCK_ID</td><td>код или id инфоблока (если не указан в ответе будут данные по всем спискам указанного типа инфоблока)</td></tr>
+<tr><td>SOCNET_GROUP_ID</td><td>id группы, обязателен, если список находится в группах.</td></tr>
+<tr><td>IBLOCK_ORDER</td><td>Сортировка. Массив <a class="link" href="https://dev.1c-bitrix.ru/api_help/iblock/fields.php#fsection" title="Список полей разделов в API документации" target="_blank">полей разделов информационного блока</a>. Направление сортировки: <b>asc</b> (по возрастания) или <b>desc</b> (по убыванию) Пример:<br>
+<pre class="syntax">'IBLOCK_ORDER': { "ID": "DESC" } </pre>
+
+</td></tr>
+</tbody>
+</table>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Пример</h3>
+
+<pre class="syntax" rel="example">var params = {
+	'IBLOCK_TYPE_ID': 'lists',
+	'IBLOCK_CODE': 'rest_1'
+};
+BX24.callMethod(
+	'lists.get',
+	params,
+	function(result)
+	{
+		if(result.error())
+			alert("Error: " + result.error());
+		else
+			console.log(result.data());
+	}
+);</pre>
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,67 @@
+<html>
+        <head>
+            <title>documentgenerator.document.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">documentgenerator.document.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/documentgenerator/documents/documentgenerator_document_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">documentgenerator</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<a class="link" name="register"></a>
+<pre class="syntax">documentgenerator.document.add(templateId, value, values = [], stampsEnabled = 0, fields = [])</pre>
+
+<p>Метод создает новый документ на основании шаблона. В случае успешного выполнения в результате придёт структура, аналогичная методу <a class="link" href="/rest_help/documentgenerator/documents/documentgenerator_document_get.php">documentgenerator.document.get()</a> на новом документе.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>      </tr>
+
+<tr><td>templateId</td><td>ID шаблона.</td></tr>
+<tr><td>value</td><td>Внешний идентификатор. Параметр value нужен только для интерфейса приложения, как идентификатор внешнего источника. Это строковый параметр, в него можно передать полноценный внешний код. Например, <code>"PARTNER_APP_10_BILL_133”</code>.</td></tr>
+<tr><td>values</td><td>Набор значений полей документа. В простом случае это одномерный массив, где ключ -
+название поля, а значение - строка для вставки в документ.</td></tr>
+<tr><td>stampsEnabled</td><td>1 (поставить), 0 (убрать) печати и подписи.</td></tr>
+<tr><td>fields</td><td>Описание полей документа. Данный параметр - массив, где ключ - название поля, а значение - описание.
+<p>Коды типов простых полей:</p>
+<ul>
+<li><b>TYPE</b> — тип поля;</li>
+<li><b>FORMAT</b> — формат;</li>
+<li><b>PROVIDER</b> — провайдер;</li>
+<li><b>TITLE</b> — заголовок;</li>
+<li><b>IMAGE</b> — изображение;</li>
+<li><b>STAMP</b> — печать / подпись;</li>
+<li><b>DATE</b> — дата / время;</li>
+<li><b>NAME</b> — имя;</li>
+<li><b>PHONE</b> — номер телефона.</li>
+</ul></td></tr>
+
+
+
+	</tbody>
+</table>
+
+<br><br>
+
+<h4>Примеры</h4>
+
+<p>Здесь можно посмотреть <a class="link" href="https://dev.1c-bitrix.ru/rest_help/documentgenerator/example.php">пример генерации документа</a>. </p>
+<br><br>
+
+<h4>Почему в результате document.add нет ссылки на pdf?</h4>
+
+<p>Конвертация в <b>pdf</b> - операция асинхронная. На момент окончания генерации документа ещё нет pdf-файла.</p>
+<p>Если для документа очень нужен pdf, то сейчас единственный вариант - сделать повторный запрос <b>documentgenerator.document.get</b> через 20-30 секунд, чтобы считать ссылку на pdf. Если она там не появилась -
+попробовать повторить.</p>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

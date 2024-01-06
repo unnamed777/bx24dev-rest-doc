@@ -1,0 +1,47 @@
+<html>
+        <head>
+            <title>sonet_group.user.groups</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">sonet_group.user.groups <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/sonet_group/sonet_group_user_groups.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Возвращает массив групп соцсети текущего пользователя, осуществляя вызов <a class="link" href="/api_help/socialnetwork/classes/CSocNetUserToGroup/GetList.php">CSocNetUserToGroup::GetList()</a>.</p>
+
+
+
+<p>Каждая из групп представляет собой массив с полями:</p>
+<ul>
+<li><b>GROUP_ID</b> - ID группы соцсети</li>
+<li><b>GROUP_NAME</b> - название группы соцсети</li>
+<li><b>ROLE</b> - роль пользователя в группе:
+<ul>
+<li><b>SONET_ROLES_OWNER (A)</b> - владелец, </li>
+<li><b>SONET_ROLES_MODERATOR (E)</b> - модератор,</li> 
+<li><b>SONET_ROLES_USER (K)</b> - пользователь</li>
+</ul>
+</li>
+</ul>
+
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">// Получаем список групп текущего пользователя
+
+BX24.callMethod('sonet_group.user.groups', {});
+</pre>
+
+<h4>Запрос:</h4>
+<pre class="syntax">https://mydomain.bitrix24.ru/rest/sonet_group.user.groups.json?auth=52423d4a5f19f5f964f9b4e96a925cfa
+</pre>
+
+
+<h4>Ответ:</h4>
+<pre class="syntax">{"result":[{"GROUP_ID":"1","GROUP_NAME":"\u041c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433 \u0438 \u0440\u0435\u043a\u043b\u0430\u043c\u0430","ROLE":"A"},{"GROUP_ID":"3","GROUP_NAME":"\u041f\u0440\u043e\u0434\u0430\u0436\u0438","ROLE":"A"},{"GROUP_ID":"5","GROUP_NAME":"\u041e\u0442\u0434\u044b\u0445","ROLE":"A"},{"GROUP_ID":"7","GROUP_NAME":"\u0422\u0435\u0445\u043d\u043e\u043b\u043e\u0433\u0438\u0438","ROLE":"A"},{"GROUP_ID":"9","GROUP_NAME":"\u0424\u0440\u0438\u043b\u0430\u043d\u0441","ROLE":"A"},{"GROUP_ID":"13","GROUP_NAME":"Test sonet group","ROLE":"A"},{"GROUP_ID":"15","GROUP_NAME":"Test sonet group","ROLE":"A"}]}
+</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,44 @@
+<html>
+        <head>
+            <title>telephony.externalCall.attachRecord</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">telephony.externalCall.attachRecord <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/scope_telephony/telephony/telephony_externalCall_attachRecord.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Метод прикрепляет запись к завершенному звонку и к Делу звонка. (Должен вызываться после  <a class="link" href="/rest_help/scope_telephony/telephony/telephony_externalcall_finish.php">telephony.external.finish</a>, если запись на момент вызова finish еще не готова.) Запись прикрепляется только одна. Если вызвать метод несколько раз, то следующий вызов перетрет предыдущую запись.</p>
+
+<h4>Параметры функции</h4>
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th><th>Тип значения</th>
+		</tr>
+		<tr>
+			<td>CALL_ID</td>
+			<td>Идентификатор звонка из метода <a class="link" href="/rest_help/scope_telephony/telephony/telephony_externalcall_register.php">telephony.externalcall.register</a>. Обязательный.</td><td>string</td>
+		</tr>	
+		<tr>
+			<td>FILENAME</td>
+			<td>Имя файла, обязательный. Имя файла должно заканчиваться на wav или mp3.</td><td>string</td>
+		</tr>	
+		<tr>
+			<td>FILE_CONTENT</td>
+			<td>base64-кодированное содержимое файла. Необязательный. Если  параметр не указать, метод вернет параметр <code>uploadUrl</code> - урл, на который  можно за'upload'ить содержимое <a class="link" href="/rest_help/js_library/rest/files.php">файла</a>.</td><td>string</td>
+		</tr>	
+		<tr>
+			<td>RECORD_URL</td>
+			<td>Ссылка на запись на сервере клиента. Если указано, то будет осуществлена попытка скачать запись по указанному адресу, вместо ожидания загрузки записи на портал клиента.<br>
+<p>Во время выполнения метода, портал осуществит одну попытку скачать запись по указанному адресу. В случае неудачи, метод вернет ошибку.</p>
+Так как возможность скачивания зависит от множества независящих от портала факторов, использование данного параметра не рекомендуется.
+</td><td>string</td>
+		</tr>	
+
+	</tbody>
+</table>
+<br><br>							
+        </div>
+        </body>
+        </html>

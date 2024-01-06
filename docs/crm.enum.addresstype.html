@@ -1,0 +1,67 @@
+<html>
+        <head>
+            <title>crm.enum.addresstype</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.enum.addresstype <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/auxiliary/enum/crm_enum_addresstype.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.enum.addresstype()</pre>
+
+<p>Возвращает элементы перечисления "Тип адреса".</p>
+<h4>Возможные значения</h4>
+
+<pre class="syntax">{
+    "result": [
+       {
+           "ID": 1,
+           "NAME": "Фактический адрес"
+       },
+       {
+           "ID": 4,
+           "NAME": "Адрес регистрации"
+       },
+       {
+           "ID": 6,
+           "NAME": "Юридический адрес"
+       },
+       {
+           "ID": 9,
+           "NAME": "Адрес бенефициара"
+       }
+   ],
+   "time": {
+       "start": 1561544164.224608,
+       "finish": 1561544164.245065,
+       "duration": 0.020457029342651367,
+       "processing": 0.008939027786254883,
+       "date_start": "2019-06-26T13:16:04+03:00",
+       "date_finish": "2019-06-26T13:16:04+03:00"
+   }
+}
+</pre>
+
+<h4>Параметры</h4>
+
+<p>Без параметров.</p>
+
+<a class="link" name="example"></a>
+<h4>Пример</h4>
+<pre class="syntax" rel="example">
+
+    BX24.callMethod(
+        "crm.enum.addresstype", 
+        {}, 
+        function(result) 
+        {
+            if(result.error())
+                console.error(result.error());
+            else
+                console.dir(result.data());
+        }
+    );	
+</pre><br><br>							
+        </div>
+        </body>
+        </html>

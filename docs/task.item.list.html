@@ -1,0 +1,208 @@
+<html>
+        <head>
+            <title>task.item.list</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">task.item.list <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/tasks/task/item/list.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<p class="note_blue">
+Scope: <span class="bg_blue">task</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<div class="tab">
+
+<h3 class="tab-title">Описание</h3>
+
+<p></p><div class="note"><font color="red"><strong>Внимание!</strong></font> Метод устарел и не поддерживается. Рекомендуется использовать методы <a class="link" href="/rest_help/tasks/task/tasks/index.php">tasks.task.*</a>.</div><p></p>
+
+<p>Возвращает массив задач, каждая из которых содержит массив полей (аналогичен массиву, возвращаемому <a class="link" href="http://dev.1c-bitrix.ru/rest_help/tasks/task/item/getdata.php">task.item.getdata</a>).</p>	
+
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+<table class="tnormal" width="100%"> 
+  <tbody> 
+    <tr><th width="15%">Параметр</th><th>Описание</th></tr>
+    <tr><td>ORDER</td><td>Массив для сортировки результата. Массив вида <i>{"поле_сортировки": 'направление сортировки' [, ...]}</i>. 
+        <br>
+       		Поле для сортировки может принимать значения: 		 
+        <ul> 			 
+          <li><b>TITLE</b> - название задачи;</li>
+          <li><b>DATE_START</b> - дата старта;</li>
+          <li><b>DEADLINE</b> - крайний срок;</li>
+          <li><b>STATUS</b> - статус;</li>
+          <li><b>PRIORITY</b> - приоритет;</li>
+          <li> <b>MARK</b> - оценка;</li>
+          <li> <b>CREATED_BY</b> - постановщик;&nbsp;</li>
+          <li> <b>RESPONSIBLE_ID </b>- ответственный;&nbsp;</li>
+          <li> <b>GROUP_ID </b>- рабочая группа.&nbsp;</li>
+        </ul>
+       		Направление сортировки может принимать значения: 		 
+        <ul> 		 
+          <li><b>asc</b> - по возрастанию;</li>
+          <li><b>desc</b> - по убыванию;</li>
+        </ul>
+       &nbsp;Необязательный. По умолчанию фильтруется по убыванию идентификатора задачи.
+		
+	</td></tr>
+	
+	<tr><td>FILTER</td><td>Массив вида <i> {"фильтруемое_поле": "значение фильтра" [, ...]}</i>. Фильтруемое поле может принимать значения: 		 
+        <ul> 		 
+          <li><b>ID</b> - идентификатор задачи;</li>
+          <li><b>PARENT_ID</b> - идентификатор родительской задачи;</li>
+          <li><b>GROUP_ID</b> - идентификатор рабочей группы;</li>
+          <li><b>CREATED_BY</b> - постановщик;</li>
+          <li><b>STATUS_CHANGED_BY</b> - пользователь, последним изменивший статус задачи;</li>
+          <li><b>PRIORITY</b> - приоритет;</li>
+          <li><b>FORUM_TOPIC_ID</b> - идентификатор темы форума;</li>
+          <li><b>RESPONSIBLE_ID</b> - ответственный;</li>
+          <li><b>TITLE</b> - название задачи (можно искать по шаблону [%_]) ;</li>
+          <li><b>TAG</b> - &nbsp;тэг;</li>
+           <li><b>REAL_STATUS</b> - статус задачи. Константы отражающие статусы задач:
+			<ul>
+				<li>STATE_NEW = 1;</li>
+				<li>STATE_PENDING = 2;</li> 
+				<li>STATE_IN_PROGRESS = 3;</li> 
+				<li>STATE_SUPPOSEDLY_COMPLETED = 4;</li>
+				<li>STATE_COMPLETED = 5;</li> 
+				<li>STATE_DEFERRED = 6;</li> 
+				<li>STATE_DECLINED = 7;</li> 
+			</ul>
+		  </li>
+
+          <li><b>STATUS</b> - статус для сортировки. Аналогичен <b>REAL_STATUS</b>, но имеет дополнительно два мета статуса:
+			<ul>
+				<li><b>-2</b> - не просмотренная задача;</li>
+				<li><b>-1</b> - просроченная задача.</li> 
+			</ul>
+		  </li>
+	 
+          <li><b>MARK</b> - оценка;</li>
+              <li><b>SITE_ID</b> - идентификатор сайта;</li>
+          <li><b>ADD_IN_REPORT</b> - задача в отчете (Y|N); </li>
+          <li> <b>DATE_START</b> - дата начала выполнения; </li>
+          <li> <b>DEADLINE</b> - крайний срок; </li>
+          <li> <b>CREATED_DATE</b> - дата создания; </li>
+          <li> <b>CLOSED_DATE</b> - дата завершения; </li>
+          <li> <b>CHANGED_DATE</b> - дата последнего изменения; </li>
+          <li> <b>ACCOMPLICE</b> - идентификатор соисполнителя;</li>
+          <li> <b>AUDITOR</b> - идентификатор аудитора; </li>
+          <li> <b>DEPENDS_ON</b> - идентификатор предыдущей задачи;&nbsp;</li>
+          <li> <b>ONLY_ROOT_TASKS</b> - &nbsp;только задачи, которые не являются подзадачами (корневые задачи), а также подзадачи родительской задачи, к которой текущий пользователь доступа не имеет (Y|N).</li>
+  
+          
+         </ul>
+		 
+		 Перед названием фильтруемого поля может указать тип фильтрации: 		 
+			<ul> 		 
+				<li>"!" - не равно</li>
+				<li>"&lt;" - меньше</li>
+				<li>"&lt;=" - меньше либо равно</li>
+				<li>"&gt;" - больше</li>
+				<li>"&gt;=" - больше либо равно</li>
+         	</ul>
+       
+        <br>
+       "<i>значения фильтра</i>" - одиночное значение или массив. 
+        <br>
+       
+        <br>
+		Необязательный. По умолчанию записи не фильтруются.
+
+ <p></p><div class="note"><font color="red"><b>Внимание!</b></font> Для метода <b>task.item.list</b> <i>обязательно</i> нужно указывать сортировку для фильтрации. Фильтрация без сортировки возвращает все задачи.</div><p></p>
+	</td></tr>
+	
+	<tr><td>PARAMS</td><td>Массив для опций вызова. Элементом является массив NAV_PARAMS вида <i>{"опция вызова": 'значение' [, ...]}</i>, хранящий следующие опции:
+		<ul>
+<li><b>nPageSize</b> - количество элементов на странице.   В целях ограничения нагрузки на постраничную навигацию наложено ограничение в 50 задач.</li> 		 
+			<li><b>iNumPage</b> - номер страницы при постраничной навигации.</li>
+         	</ul>
+	</td></tr>
+<tr><td>SELECT</td><td>Массив полей записей, которые будут возвращены методом. Можно указать только те поля, которые необходимы. Если в массиве присутствует значение   <code>"*"</code>, то будут возвращены все доступные поля. <br><br>
+
+Значение по умолчанию - пустой массив <code>array()</code> - означает, что будут возвращены все поля основной таблицы запроса.</td></tr>
+
+  </tbody>
+</table>  
+
+ <p></p><div class="note"><b>Внимание!</b> Соблюдение порядка следования параметров в запросе обязательно. При его нарушении запрос будет выполнен с ошибками.
+<br><br>
+Однако, если какие-то параметры нужно пропустить, то их все равно нужно передать, но в виде пустых массивов: ORDER[]=&amp;FILTER[]=&amp;PARAMS[]=&amp;SELECT[]=.</div><p></p>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Примеры</h3>
+<pre class="syntax" rel="example">// Пример для работы с JavaScript
+// Получим список всех задач (по умолчанию сработает ограничение — постраничка по 50 элементов)
+BX24.callMethod(
+	'task.item.list',
+	[],
+	function(result)
+	{
+		console.info(result.data());
+		console.log(result);
+	}
+);
+</pre>
+
+<pre class="syntax" rel="example">// Пример для работы с JavaScript
+// Получим список задач с идентификаторами 1,2,3,4,5,6. Причем выберем только поля ID и TITLE.
+// Режим постранички — по 2 элемента на странице, 2-ая страница.
+// Сортировка по ID — по убыванию.
+BX24.callMethod(
+	'task.item.list',
+	[
+		{ID : 'desc'},		// Сортировка по ID — по убыванию.
+		{ID: [1,2,3,4,5,6]},	// Фильтр
+		{	
+            NAV_PARAMS: { // постраничка
+		        nPageSize : 2,	// по 2 элемента на странице.
+		        iNumPage  : 2	// страница номер 2        
+			}
+		}
+	],
+	function(result)
+	{
+		console.info(result.data());
+		console.log(result);
+	}
+);
+</pre>
+
+<pre class="syntax" rel="example">// Пример для работы с php
+// Получение GET-запроса на выборку данных.
+$appParams = array(
+	"auth" =&gt; '92006f4ae0c55d400f1e6e09428af64a',
+	"ORDER" =&gt; array("DEADLINE" =&gt; "desc"),
+	"FILTER" =&gt; array("&gt;ID" =&gt; 1),
+	"PARAMS" =&gt; array('NAV_PARAMS' =&gt; array("nPageSize" =&gt; 2, 'iNumPage' =&gt; 2)),
+);
+
+$appRequestUrl = 'http://test-domain.ru/rest/task.item.list.xml?'.http_build_query($appParams);
+
+print(urldecode($appRequestUrl));;
+</pre>
+
+<p>Метод отдаёт теги, если передать ему параметр LOAD_TAGS:</p>
+
+<pre class="syntax">/rest/task.item.list.xml?auth=31r0ckfy3r2u96yttz4k70g5kv2w534h&amp;O[]=&amp;F[]=&amp;P[LOAD_TAGS]=Y</pre>
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

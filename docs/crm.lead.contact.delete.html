@@ -1,0 +1,59 @@
+<html>
+        <head>
+            <title>crm.lead.contact.delete</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.lead.contact.delete <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/management_communication/crm_lead_contact_delete.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.lead.contact.delete(id, fields)</pre>
+
+<p>Удаляет контакт из указанного лида.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>id</td> 	<td>Идентификатор лида.</td> <td></td></tr>
+   
+    <tr> 	<td>fields</td> 	<td>Объект со следующими полями:
+<ul>
+<li>CONTACT_ID - идентификатор контакта (обязательное поле)</li>
+ </ul></td> <td></td></tr>
+
+   </tbody>
+ </table>
+
+<h4>Пример</h4>
+
+<pre class="syntax">var id = prompt("Введите ID лида");
+BX24.callMethod(
+	"crm.lead.contact.delete",
+	{
+		id: id,
+		fields:
+		{
+			"CONTACT_ID": 1010
+		},
+	},
+	function(result)
+	{
+		if (result.error())
+		{
+			console.info("Не удалось отвязать контакт от лида");
+			console.error(result.error());
+		}
+		else
+		{
+			console.info("Контакт успешно отвязан от лида");
+			console.dir(result.data());
+		}
+	}
+);</pre>
+<br><br>							
+        </div>
+        </body>
+        </html>

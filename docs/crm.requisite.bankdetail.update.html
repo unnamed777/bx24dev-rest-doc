@@ -1,0 +1,56 @@
+<html>
+        <head>
+            <title>crm.requisite.bankdetail.update</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.requisite.bankdetail.update <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/requisite/methods/crm_requisite_bankdetail_update.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.requisite.bankdetail.update(id, fields, params)</pre>
+
+<p>Обновляет существующий банковский реквизит.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr><th width="15%">Параметр</th> <th>Описание</th></tr>
+<tr><td>id </td><td>Идентификатор реквизита.</td></tr>
+
+<tr><td>fields</td><td>Набор полей - массив вида array("обновляемое поле"=&gt;"значение"[, ...]), где "обновляемое поле" может принимать значения из возвращаемых методом <a class="link" href="/rest_help/crm/requisite/methods/crm_requisite_bankdetail_fields.php">crm.requisite.bankdetail.fields</a>.
+<div class="note">
+	<b>Примечание</b>: чтобы узнать требуемый формат полей, выполните метод <a class="link" href="/rest_help/crm/requisite/methods/crm_requisite_bankdetail_fields.php">crm.requisite.bankdetail.fields</a> и посмотрите формат пришедших значений этих полей.</div>
+</td></tr>
+
+</tbody>
+</table>
+
+<a class="link" name="example"></a>
+<h4>Пример</h4>
+<pre class="syntax" rel="example">var id = prompt("Введите ID");
+BX24.callMethod(
+	"crm.requisite.bankdetail.update",
+	{
+		id: id,
+		fields:
+		{
+			"NAME": "Банковский реквизит (архив)",
+			"SORT" : 200,
+			"ACTIVE": "N"
+		}
+	},
+	function(result) 
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+		{
+			console.info(result.data());
+		}
+	}
+);
+</pre><br><br>							
+        </div>
+        </body>
+        </html>

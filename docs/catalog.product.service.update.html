@@ -1,0 +1,58 @@
+<html>
+        <head>
+            <title>catalog.product.service.update</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">catalog.product.service.update <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/catalog/product/service/catalog_product_service_update.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">catalog.product.service.update(id, fields)</pre>
+
+<p>Метод для обновления полей услуги.</p>
+
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th><th>Тип</th>
+			<th>Описание</th>      </tr>
+
+<tr><td>id</td><td>integer</td> <td>Идентификатор услуги.</td></tr>
+
+<tr><td>fields</td><td>object</td> <td>Поля, соответствующие доступному списку полей <a class="link" href="/rest_help/catalog/product/service/catalog_product_service_getfieldsbyfilter.php">getFieldsByFilter</a> .</td></tr>
+
+
+	</tbody>
+</table>
+
+<br><br>
+
+<h4>Примеры</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'catalog.product.service.update', 
+	{
+		id : 44,
+		fields:
+		{
+			active: 'N',
+			iblockId: 15,
+		}
+	},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error().ex);
+		else
+			console.log(result.data());
+	}
+);
+</pre>
+
+<br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,50 @@
+<html>
+        <head>
+            <title>catalog.documentcontractor.delete</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">catalog.documentcontractor.delete <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/catalog/documentcontractor/catalog_documentcontractor_delete.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">catalog.documentcontractor.delete(id)</pre>
+
+<p>Метод удаляет привязку CRM-сущности (Контакта/Компании) к документу по идентификатору привязки.</p>
+
+<p>Если операция успешна, возвращается <code>true</code> в теле ответа.</p>
+
+<p>Случаи, когда могут вернуться ошибки:</p>
+
+<ul>
+<li>если нет доступа к складскому учету, нет доступа на просмотр документов прихода или нет доступа на редактирование документа прихода (добавление/удаление привязки – это редактирование документа);</li>
+<li>не найдена привязка с заданным id.</li>
+</ul>
+
+<h4>Параметры</h4>
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th><th>Тип</th>
+			<th>Описание</th>      </tr>
+<tr><td>id</td><td>integer</td> <td>Идентификатор привязки CRM-сущности (Контакта/Компании) к документу.</td></tr>
+	</tbody>
+</table>
+
+<h4>Примеры</h4>
+
+<pre class="syntax" rel="example">BX.rest.callMethod(
+	'catalog.documentcontractor.delete',
+	{ id: 20 },
+	function(result) {
+		if (result.error())
+			console.error(result.answer.error_description);
+		else
+			console.log(result.data());
+	}
+);
+</pre>
+
+<br>							
+        </div>
+        </body>
+        </html>

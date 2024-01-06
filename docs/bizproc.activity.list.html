@@ -1,0 +1,32 @@
+<html>
+        <head>
+            <title>bizproc.activity.list</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">bizproc.activity.list <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/bizproc/bizproc_activity/list.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">bizproc</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<p><b>bizproc.activity.list</b> - возвращает список установленных приложением действий.</p>
+
+<p><b>Пример</b></p>
+<pre class="syntax" rel="example">BX24.callMethod(
+	'bizproc.activity.list',
+	{},
+	function(result)
+	{
+		if(result.error())
+			alert("Ошибка: " + result.error());
+		else
+			alert("Успешно: " + result.data().join(', '));
+	}
+);
+</pre>
+<br>							
+        </div>
+        </body>
+        </html>

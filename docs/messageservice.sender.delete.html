@@ -1,0 +1,51 @@
+<html>
+        <head>
+            <title>messageservice.sender.delete</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">messageservice.sender.delete <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/messageservice/messageservice_sender_delete.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p><b>messageservice.sender.delete</b> - метод удаляет зарегистрированного SMS-провайдера.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+  
+		<tr>
+			<td>CODE</td>
+			<td>Идентификатор провайдера.</td>
+		</tr>
+		
+</tbody>
+</table> 
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">function uninstallProvider(provider)
+{
+	BX24.callMethod(
+		'messageservice.sender.delete',
+		{
+			'CODE': provider
+		},
+		function(result)
+		{
+			if(result.error())
+				alert('Error: ' + result.error());
+			else
+				alert("Успешно: " + result.data());
+		}
+	);
+}
+</pre>
+<br>							
+        </div>
+        </body>
+        </html>

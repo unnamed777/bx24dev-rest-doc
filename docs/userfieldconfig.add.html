@@ -1,0 +1,131 @@
+<html>
+        <head>
+            <title>userfieldconfig.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">userfieldconfig.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/userfieldconfig/userfieldconfig/userfieldconfig_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<p class="note_blue">
+Scope: <span class="bg_blue">userfieldconfig, scope модуля</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<div class="tab">
+
+<h3 class="tab-title">Описание и параметры</h3>
+
+<pre class="syntax">userfieldconfig.add({moduleId: string, field: {}})</pre>
+
+<p>Метод добавит новое пользовательского поле.</p>
+
+<p></p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>moduleId</td> 	<td>Строковый идентификатор модуля. Обязательный.</td> <td></td></tr>
+   
+    <tr> 	<td>field</td> 	<td>Список с полями настройки нового поля:
+
+<ul>
+<li><a class="link" href="/rest_help/userfieldconfig/entityId.php">entityId</a> - строковый идентификатор сущности. Обязательное.</li>
+<li>fieldName - код поля. Должен быть сформирован по шаблону <code>UF_ + {идентификатор сущности} + _ + {произвольная строка в UPPER_CASE}</code>. Код поля не может быть больше 50 символов. Обязательное.</li> 
+<li>userTypeId - строковый идентификатор 
+		<span class="learning-lesson-detail-block js-detail-info-block">
+			<span class="learning-lesson-detail-word js-detail-info-word">типа поля</span>
+			<span class="learning-lesson-detail-body js-detail-info-body">
+				<span class="learning-lesson-detail-body-inner  js-detail-info-body-inner">
+                    <button class="learning-lesson-detail-close-button  js-detail-close-button" type="button"></button>
+                    Типы полей идентичны полям для главного модуля <br><a class="link" href="https://dev.1c-bitrix.ru/api_d7/bitrix/main/userfield/settings/types.php" title="" target="_blank">Подробнее</a>...
+                </span>
+			</span>
+		</span>
+		. Обязательное.</li> 
+<li>xmlId - внешний идентификатор.</li>
+<li>sort - индекс сортировки.</li> 
+<li>multiple - флаг множественности (N или Y), по умолчанию N. Этот флаг можно указать только при создании поля.</li> 
+<li>mandatory - флаг обязательности (N или Y), по умолчанию N.</li>
+<li>showFilter - флаг показа поля в фильтре (N или Y), по умолчанию N.</li> 
+<li>showInList - флаг показа поля в списке (N или Y), по умолчанию Y.</li> 
+<li>editInList - флаг разрешения редактирования поля в списке (N или Y), по умолчанию Y.</li>
+<li>isSearchable - флаг наличия значения поля в 
+		<span class="learning-lesson-detail-block js-detail-info-block">
+			<span class="learning-lesson-detail-word js-detail-info-word">полнотекстовом индексе</span>
+			<span class="learning-lesson-detail-body js-detail-info-body">
+				<span class="learning-lesson-detail-body-inner  js-detail-info-body-inner">
+                    <button class="learning-lesson-detail-close-button  js-detail-close-button" type="button"></button>
+                    Добавляйте в поиск только нужные поля. На построение индекса уходит время при изменении каждого значения поля, что может существенно замедлить работы при большом количестве таких полей.
+                </span>
+			</span>
+		</span>
+		 (N или Y), по умолчанию N.</li> 
+<li>settings - список с дополнительными настройками поля.</li> 
+<li>editFormLabel - список с языкозависимыми названиями поля, где ключ - идентификатор языка, а значение - фраза.</li>
+<li>enum - массив с вариантами значений для свойств типа "список":
+            <ul>
+            <li>value - значение варианта. Обязательное</li>
+            <li>def - флаг значения по умолчанию (N или Y), по умолчанию N. Только один может быть вариантом по умолчанию</li> 
+            <li>sort - индекс сортировки. Если не задан, генерируется автоматически на основе порядка передачи вариантов значений</li> 
+            <li>xmlId - внешний идентификатор варианта</li> 
+             </ul>
+ </li> 
+ </ul></td> <td></td></tr>
+
+   
+   </tbody>
+ </table>
+
+</div>
+
+<!------->
+
+<div class="tab">
+
+<h3 class="tab-title">Возвращаемое значение и пример</h3>
+
+<h4>Возвращаемое значение</h4>
+
+<p>Метод вернет такие же данные, как метод <a class="link" href="/rest_help/userfieldconfig/userfieldconfig/userfieldconfig_get.php">userfieldconfig.get</a> на только что созданном поле.</p>
+
+<h4>Примеры</h4>
+
+<p>Пример простого запроса. Этого запроса достаточно для создания поля типа "строка".</p>
+
+<pre class="syntax">{
+	"moduleId": "rpa",
+	"field": {
+		"entityId": "RPA_1",
+		"fieldName": "UF_RPA_1_NEW_REST_STRING",
+		"userTypeId": "string",
+	} 
+}</pre>
+
+<p>Создание поля типа "список"</p>
+
+<pre class="syntax">{
+	"moduleId": "rpa",
+	"field": {
+		"entityId": "RPA_1",
+		"fieldName": "UF_RPA_1_NEW_REST_STRING",
+		"userTypeId": "enumeration"
+	} 
+}</pre>
+
+</div>
+
+<!------->
+
+
+
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

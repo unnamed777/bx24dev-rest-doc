@@ -1,0 +1,77 @@
+<html>
+        <head>
+            <title>crm.lead.update</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.lead.update <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/leads/crm_lead_update.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.lead.update(id, fields, params)</pre>
+
+<p>Обновляет существующий лид.</p>
+<p class="note"><b>Важно! </b>Настоятельно рекомендуется при обновлении адреса передавать полный набор полей адреса в метод обновления. Особенности обновления полей адреса описаны <a class="link" href="http://dev.1c-bitrix.ru/rest_help/crm/fields.php#important">здесь</a>.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+<tr>
+<td>id</td>
+<td>Идентификатор лида.</td>
+</tr>
+
+<tr>
+<td>fields</td>
+<td><a class="link" href="/rest_help/crm/leads/crm_lead_fields.php">Набор полей</a> - массив вида array("обновляемое поле"=&gt;"значение"[, ...]), где "обновляемое поле" может принимать значения из возвращаемых методом <a class="link" href="/rest_help/crm/leads/crm_lead_fields.php">crm.lead.fields</a>.
+<div class="note">
+	<b>Примечание</b>: чтобы узнать требуемый формат полей, выполните метод <a class="link" href="/rest_help/crm/leads/crm_lead_fields.php">crm.lead.fields</a> и посмотрите формат пришедших значений этих полей.</div></td>
+</tr>
+
+<tr>
+<td>params</td>
+<td>Набор параметров. REGISTER_SONET_EVENT - произвести регистрацию события изменения лида в живой ленте. Дополнительно будет отправлено уведомление ответственному за лид.</td>
+</tr>
+	</tbody>
+</table>
+
+<h4>Пример</h4>
+<pre class="syntax" rel="example">var id = prompt("Введите ID");
+BX24.callMethod(
+	"crm.lead.update", 
+	{ 
+		id: id,
+		fields:
+		{ 
+			"STATUS_ID": "IN_PROCESS",
+			"CURRENCY_ID": "USD", 
+			"OPPORTUNITY": 15500
+		},
+		params: { "REGISTER_SONET_EVENT": "Y" }
+	}, 
+	function(result) 
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+		{
+			console.info(result.data());
+		}
+	}
+);
+</pre>
+
+<h4>Дополнительно</h4>
+
+<ul>
+<li><a class="link" href="/rest_help/calendar/calendar_resource_booking_list.php">Как обновить поле с типом "бронирование ресурсов"</a></li>
+ </ul>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

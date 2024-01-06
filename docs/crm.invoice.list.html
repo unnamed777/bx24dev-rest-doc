@@ -1,0 +1,144 @@
+<html>
+        <head>
+            <title>crm.invoice.list</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.invoice.list <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/invoice/crm_invoice_list.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Описание</h3>
+<p>Возвращает список счетов. Является реализацией списочного метода для счетов.</p>
+
+<p>При выборке используйте маски:</p>
+
+<ul>
+<li>"*" - для выборки всех полей (без пользовательских)</li>
+<li>"UF_*"- для выборки всех пользовательских полей.</li> 
+ </ul>
+
+<p>Свойства и товарные позиции счёта метод crm.invoice.list не возвращает.</p>
+<p>Для получения свойств и товарных позиций нужно использовать метод <a class="link" href="/rest_help/crm/invoice/crm_invoice_get.php">crm.invoice.get</a>.</p>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+
+<p>См. описание <a class="link" href="/rest_help/rest_sum/index.php">списочных методов</a>.</p>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> </tr>
+   
+    <tr> 	<td>filter</td> 	<td>Фильтр записей.  По умолчанию отдаются все записи, без фильтрации.</td></tr>
+   
+    <tr> 	<td>order</td> 	<td>Сортировка записей. Поддерживается сортировка по тем же полям, что и в фильтре. </td></tr>
+   
+   </tbody>
+ </table>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Пример</h3>
+
+<p>Пример выводит данные в консоль. Если нужно вывести данные по другому, то реализуйте свою обработку данных, возвращенных вызовами <b>result.data()</b> и <b>result.error()</b>.</p>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	"crm.invoice.list",
+	{
+		"order": { "DATE_INSERT": "ASC" },
+		"filter": { "&gt;PRICE": 100 },
+		"select": [ "ID", "ACCOUNT_NUMBER", "ORDER_TOPIC", "DATE_INSERT", "STATUS_ID", "PRICE", "CURRENCY_ID" ]
+	},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+		{
+			console.dir(result.data());
+			if(result.more())
+				result.next();
+		}
+	}
+);
+</pre>
+<br><br>
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Поля, возвращаемые методом</h3>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Поле</th> 	<th>Описание</th><th>Тип</th><th>Примечание</th></tr>
+   
+    <tr> 	<td>ID</td> 	<td>Идентификатор</td><td>interger</td><td>Только для чтения</td></tr>
+    <tr> 	<td>ACCOUNT_NUMBER</td> 	<td>Номер</td><td>string</td><td>Обязательное</td></tr>
+  <tr> 	<td>COMMENTS</td> 	<td>Комментарий менеджера</td><td>text</td><td></td></tr>
+ <tr> 	<td>CREATED_BY</td> 	<td>Создано пользователем</td><td>integer</td><td>Только для чтения</td></tr>
+  <tr> 	<td>CURRENCY</td> 	<td>Идентификатор валюты</td><td>crm_currency</td><td>Только для чтения</td></tr>
+  <tr> 	<td>DATE_BILL</td> 	<td>Дата выставления</td><td>date</td><td></td></tr>
+  <tr> 	<td>DATE_INSERT</td> 	<td>Дата создания</td><td>datetime</td><td></td></tr>
+  <tr> 	<td>DATE_MARKED</td> 	<td>Дата отклонения</td><td>datetime</td><td>Указывается, если счёт отклонён</td></tr>
+  <tr> 	<td>DATE_PAY_BEFORE</td> 	<td>Срок оплаты</td><td>date</td><td></td></tr>
+ <tr> 	<td>DATE_PAYED</td> 	<td>Дата перевода в состояние оплаты</td><td>datetime</td><td>Только для чтения</td></tr>
+ <tr> 	<td>DATE_STATUS</td> 	<td>Дата изменения статуса</td><td>datetime</td><td>Только для чтения</td></tr>
+ <tr> 	<td>DATE_UPDATE</td> 	<td>Дата изменения</td><td>datetime</td><td>Только для чтения</td></tr>
+
+ <tr> 	<td>EMP_PAYED_ID</td> 	<td>Идентификатор пользователя, который последним перевёл счёт в состояние "оплачен"</td><td>integer</td><td>Только для чтения</td></tr>
+ <tr> 	<td>EMP_STATUS_ID</td> 	<td>Идентификатор пользователя, который последним поменял статус счёта</td><td>integer</td><td>Только для чтения</td></tr>
+ <tr> 	<td>LID</td> 	<td>Идентификатор сайта</td><td>integer</td><td>Только для чтения</td></tr>
+ <tr> 	<td>IS_RECURRING</td> 	<td>Флаг шаблона регулярной сделки (если стоит Y, то это не сделка, а шаблон)</td><td>char</td><td></td></tr>
+ <tr> 	<td>XML_ID</td> 	<td>Внешний код</td><td>string</td><td></td></tr>
+ <tr> 	<td>ORDER_TOPIC</td> 	<td>Тема</td><td>string</td><td>Обязательное</td></tr>
+ <tr> 	<td>PAY_SYSTEM_ID</td> 	<td>Идентификатор печатной формы</td><td>integer</td><td>Обязательное</td></tr> 
+<tr> 	<td>PAY_VOUCHER_DATE</td> 	<td>Дата оплаты</td><td>date</td><td>Указывается, если счёт оплачен</td></tr>
+<tr> 	<td>PAY_VOUCHER_NUM</td> 	<td>Номер документа оплаты</td><td>string</td><td>Указывается, если счёт оплачен</td></tr>
+    <tr> 	<td>PAYED</td> 	<td>Признак оплаченности</td><td>char</td><td>Только для чтения</td></tr>
+ <tr> 	<td>PERSON_TYPE_ID</td> 	<td>Идентификатор типа плательщика</td><td>integer</td><td>Обязательное</td></tr> 
+    <tr> 	<td>PRICE</td> 	<td>Сумма</td><td>double</td><td>Только для чтения</td></tr>
+<tr> 	<td>REASON_MARKED</td> 	<td>Комментарий статуса</td><td>string</td><td>Указывается, если счёт оплачен или отклонён</td></tr>
+    <tr> 	<td>RESPONSIBLE_EMAIL</td> 	<td>E-mail ответственного</td><td>string</td><td>Только для чтения</td></tr>
+ <tr> 	<td>RESPONSIBLE_ID</td> 	<td>Идентификатор ответственного</td><td>integer</td><td></td></tr>
+    <tr> 	<td>RESPONSIBLE_LAST_NAME</td> 	<td>Фамилия ответственного</td><td>string</td><td>Только для чтения</td></tr>
+    <tr> 	<td>RESPONSIBLE_LOGIN</td> 	<td>Логин ответственного</td><td>string</td><td>Только для чтения</td></tr>
+    <tr> 	<td>RESPONSIBLE_NAME</td> 	<td>Имя ответственного</td><td>string</td><td>Только для чтения</td></tr>
+    <tr> 	<td>RESPONSIBLE_PERSONAL_PHOTO</td> 	<td>Идентификатор фото ответственного</td><td>integer</td><td>Только для чтения</td></tr>
+    <tr> 	<td>RESPONSIBLE_SECOND_NAME</td> 	<td>Отчество ответственного</td><td>string</td><td>Только для чтения</td></tr>
+    <tr> 	<td>RESPONSIBLE_WORK_POSITION</td> 	<td>Должность ответственного</td><td>string</td><td>Только для чтения</td></tr>
+  <tr> 	<td>STATUS_ID</td> 	<td>Идентификатор статуса</td><td>crm_status</td><td>Идентификатор справочника "INVOICE_STATUS"</td></tr>
+    <tr> 	<td>TAX_VALUE</td> 	<td>Сумма налога</td><td>double</td><td>Только для чтения</td></tr>
+ <tr> 	<td>UF_COMPANY_ID</td> 	<td>Идентификатор компании</td><td>integer</td><td>Указывается, если плательщик "Юридическое лицо"</td></tr>
+ <tr> 	<td>UF_CONTACT_ID</td> 	<td>Идентификатор контакта</td><td>integer</td><td>Указывается, если плательщик "Физическое лицо", либо в качестве контактного лица компании</td></tr>
+ <tr> 	<td>UF_MYCOMPANY_ID</td> 	<td>Идентификатор своей компании</td><td>integer</td><td>Указывается в качестве компании с реквизитами счёта (привязка к реквизитам устанавливается отдельно)</td></tr>
+ <tr> 	<td>UF_DEAL_ID</td> 	<td>Идентификатор связанной сделки</td><td>integer</td><td></td></tr>
+ <tr> 	<td>UF_QUOTE_ID</td> 	<td>Идентификатор связанного коммерческого предложения</td><td>integer</td><td></td></tr>
+ <tr> 	<td>USER_DESCRIPTION</td> 	<td>Комментарий</td><td>string</td><td></td></tr>
+ 
+   
+    
+
+   </tbody>
+ </table>
+
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

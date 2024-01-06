@@ -1,0 +1,115 @@
+<html>
+        <head>
+            <title>landing.block.updateattrs</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">landing.block.updateattrs <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/landing/block/blocks/landing_block_updateattrs.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Описание</h3>
+<pre class="syntax">landing.block.updateattrs(lid, block,data)</pre>
+
+<p>Метод для изменения атрибутов ноды блока. Возвращает <i>true</i> или ошибку.</p>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Метод</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>lid</td> 	<td>Идентификатор страницы</td> <td></td></tr>
+   
+    <tr> 	<td>block</td> 	<td>Идентификатор блока</td> <td></td></tr>
+   
+    <tr> 	<td>data</td> 	<td>Массив селектора и новых значений дата-атрибутов. <br>
+Например, <code>data: {'.bitrix24forms': {'data-b24form': 'tratrata'}}</code>. <br><br>
+Манифест должен содержать в себе <a class="link" href="/rest_help/landing/block/manifest.php#attrs">атрибуты</a>, которые вы хотите изменять таким образом.</td> <td></td></tr>
+   
+   </tbody>
+ </table>
+
+<p>Если атрибут относится в карточке (то есть может иметь различное содержимое от карточки к карточке, селектор необходимо передавать с разделителем @:</p>
+
+<pre class="syntax">data: {
+	'.container-fluid@1': {//влияние произойдет на атрибут второй карточки (отсчет от нуля)
+		'data-test-checkbox': [1, 2, 3]
+	}
+}</pre>
+
+
+
+
+<br>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Типы изменяемого контента</h3>
+
+<p>Каждый тип атрибута обладает тем или иным форматом сохранения. В примерах даны значения по-умолчанию для каждого <a class="link" href="/rest_help/landing/block/attributes.php#type">типа</a>. Передача нового значения происходит по аналогичному формату. Например, сохранение в атрибут типа <b>image</b>:</p>
+<pre class="syntax">data: {
+	'.container-fluid': {
+		'data-test-image': {src: 'https://i.img.com/images/i/291626458734-0-1/s-l1000.jpg', alt: 666}
+	}
+}</pre>
+
+<p>Отдельные пояснения для типа <b>checkbox</b> и <b>multiselect</b>: для сохранения нового значения необходимо отправлять значения выделенных элементов:</p>
+<pre class="syntax">data: {
+	'.container-fluid': {
+		'data-test-checkbox': [1, 2, 3]
+	}
+}</pre>
+<br>
+<p>Редактирование параметров динамических блоков производится через метод <a class="link" href="/rest_help/landing/block/blocks/landing_block_updatenodes.php">landing.block.updatenodes</a>.</p>
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Пример</h3>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'landing.block.updateattrs',
+	{
+		lid: 313,
+		block: 6134,
+		data: {
+			'.bitrix24forms': {
+				'data-b24form': 'tratrata'
+			}
+		}
+	},
+	function(result)
+	{
+		if(result.error())
+		{
+			console.error(result.error());
+		}
+		else
+		{
+			console.info(result.data());
+		}
+	}
+);</pre>
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

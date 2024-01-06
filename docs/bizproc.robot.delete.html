@@ -1,0 +1,50 @@
+<html>
+        <head>
+            <title>bizproc.robot.delete</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">bizproc.robot.delete <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/bizproc/bizproc_robot/bizproc_robot_delete.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">bizproc</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<p><b>bizproc.provider.delete</b> - метод удаляет зарегистрированного робота.</p>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+  
+		<tr>
+			<td>CODE</td>
+			<td>Идентификатор робота.</td>
+		</tr>
+		
+</tbody>
+</table> 
+
+<p><b>Пример</b></p>
+<pre class="syntax" rel="example">var params = {
+	'CODE': 'robot'
+};
+BX24.callMethod(
+	'bizproc.robot.delete',
+	params,
+	function(result)
+	{
+		if(result.error())
+			alert('Error: ' + result.error());
+		else
+			alert("Успешно: " + result.data());
+	}
+);
+</pre>
+<br>							
+        </div>
+        </body>
+        </html>

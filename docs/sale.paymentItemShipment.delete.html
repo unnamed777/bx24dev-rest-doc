@@ -1,0 +1,50 @@
+<html>
+        <head>
+            <title>sale.paymentItemShipment.delete</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">sale.paymentItemShipment.delete <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/sale/paymentitemshipment/sale_paymentitemshipment_delete.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">sale</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<pre class="syntax">sale.paymentItemShipment.delete(id)</pre>
+
+<p>Метод удаляет привязку оплаты к отгрузке.</p>
+
+<p>Если операция успешна, возвращается <code>true</code> в теле ответа.</p>
+
+<h4>Параметры</h4>
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th><th>Тип</th>
+			<th>Описание</th>      </tr>
+<tr><td>id</td><td>integer</td> <td>Идентификатор привязки оплаты к отгрузке.</td></tr>
+	</tbody>
+</table>
+
+<h4>Примеры</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'sale.paymentItemShipment.delete', 
+	{
+		id: 113
+	}, 
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error().ex);
+		else
+			console.log(result.data());
+	}
+);
+</pre>
+
+<br>							
+        </div>
+        </body>
+        </html>

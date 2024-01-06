@@ -1,0 +1,68 @@
+<html>
+        <head>
+            <title>sale.tradePlatform.getFields</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">sale.tradePlatform.getFields <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/sale/tradePlatform/sale_tradePlatform_getFields.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">sale</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<pre class="syntax">sale.tradePlatform.getFields()</pre>
+
+<p>Возвращает поля торговых платформ.</p>
+
+
+<p>Возвращаемые поля:</p>
+
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Поле</th>
+			<th>Описание</th>      </tr>
+
+
+<tr><td>active</td><td>Флаг активности.</td> </tr>
+<tr><td>catalogSectionTabClassName</td><td>Служебное поле.</td> </tr>
+<tr><td>class</td><td>Наименование php-класса обработчика.</td> </tr>
+<tr><td>code</td><td>Код торговой платформы.</td> </tr>
+<tr><td>description</td><td>Описание торговой платформы.</td> </tr>
+<tr><td>id</td><td>Идентификатор торговой платформы.</td> </tr>
+<tr><td>name</td><td>Наименование торговой платформы.</td> </tr>
+<tr><td>settings</td><td>Настройки торговой платформы.</td> </tr>
+<tr><td>xmlId</td><td>Внешний идентификатор торговой платформы.</td> </tr>
+
+	</tbody>
+</table>
+
+
+
+
+<h4>Параметры</h4>
+
+<p>Без параметров.</p>
+
+
+
+<h4>Примеры</h4>
+<pre class="syntax" rel="example">BX24.callMethod(
+	'sale.tradePlatform.getFields', 
+	{}, 
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error().ex);
+		else
+			console.log(result.data());
+	}
+);
+</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

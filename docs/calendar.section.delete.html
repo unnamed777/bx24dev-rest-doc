@@ -1,0 +1,62 @@
+<html>
+        <head>
+            <title>calendar.section.delete</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">calendar.section.delete <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/calendar/calendar_section_delete.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Удаляет календарь. Здесь и в дальнейшем <b>section</b> будет именоваться как "календарь".</p>
+
+<h4>Параметры функции</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+  
+		<tr>
+			<td>* type</td>
+			<td>Тип календаря:
+<ul>
+<li>user;</li>
+
+<li>group.</li>
+</ul>
+</td>
+		</tr>
+		<tr>
+			<td>* ownerId</td>
+			<td>Идентификатор владельца календаря.</td>
+		</tr>	
+
+<tr>
+			<td>* id</td>
+			<td>Идентификатор календаря.</td>
+		</tr>	
+
+<tr><td colspan="2"><b>* - обязательные параметры</b></td></tr>
+	</tbody>
+</table>
+
+<h4>Возвращаемые значения</h4>
+
+<p>Возвращает <b>true</b> в случае успешного удаления.</p>
+
+
+<h4>Пример использования</h4>
+<pre class="syntax" rel="example">BX24.callMethod("calendar.section.delete",
+	{
+		type: 'user',
+		ownerId: '2',
+		id: 521
+	}
+);
+</pre>
+<br><br>							
+        </div>
+        </body>
+        </html>

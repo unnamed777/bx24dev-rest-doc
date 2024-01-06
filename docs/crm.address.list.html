@@ -1,0 +1,137 @@
+<html>
+        <head>
+            <title>crm.address.list</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.address.list <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/requisite/methods/crm_address_list.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.address.list</pre>
+
+<p>Возвращает список адресов по фильтру. Является реализацией <a class="link" href="/rest_help/general/lists.php">списочного метода</a> для адресов.</p>
+
+<p>Адреса перемещены в реквизиты (но в карточке CRM они имеют отображение в виде отдельного поля) - см. <a class="link" href="https://dev.1c-bitrix.ru/rest_help/crm/requisite/requisite_fields.php" target="_blank">описание полей реквизитов.</a>  К сущности CRM могут быть привязаны несколько реквизитов. Внутри реквизита может быть несколько <strong>Общих реквизитов</strong> по шаблонам, <strong>Банковских реквизитов</strong> и <strong>Адресов</strong>.</p>
+
+<h4>Параметры</h4>
+
+<p>Cм. описание списочных <a class="link" href="/rest_help/rest_sum/index.php">методов</a>.</p>
+
+<a class="link" name="example"></a>
+<h4>Пример</h4>
+<pre class="syntax" rel="example">
+//Поиск адресов по привязке к типу - Реквизит
+BX24.callMethod(
+	"crm.address.list",
+	{
+		order: { "TYPE_ID": "ASC" },
+		filter: { "ENTITY_ID": 8},
+		select: [ "TYPE_ID", "ADDRESS_1", "ADDRESS_2" ]
+	},
+	function(result) 
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+		{
+			console.dir(result.data());
+			if(result.more())
+				result.next();
+		}
+	}
+);
+
+</pre>
+
+<h4>Примеры ответов</h4>
+
+<ul>
+<li>Если адрес привязан к сущности без реквизита (обычно создаётся при конвертации из Лида, у которого заполнен Адрес в карточке):
+
+<p>
+</p><pre class="syntax">[result] =&gt; Array
+(
+	[1] =&gt; Array
+	(
+		[TYPE_ID] =&gt; 1
+		[ENTITY_TYPE_ID] =&gt; 3
+		[ENTITY_ID] =&gt; 17192
+		[ADDRESS_1] =&gt;
+		[ADDRESS_2] =&gt;
+		[CITY] =&gt;
+		[POSTAL_CODE] =&gt;
+		[REGION] =&gt;
+		[PROVINCE] =&gt;
+		[COUNTRY] =&gt;
+		[COUNTRY_CODE] =&gt;
+		[LOC_ADDR_ID] =&gt; 0
+		[ANCHOR_TYPE_ID] =&gt; 3
+		[ANCHOR_ID] =&gt; 17192
+	)
+)
+</pre>
+<p></p>
+
+</li>
+
+<li>Если у контакта 2 разных реквизита, к которым привязаны адреса:
+
+<p>
+</p><pre class="syntax">[result] =&gt; Array
+(
+	[2] =&gt; Array
+	(
+		[TYPE_ID] =&gt; 1
+		[ENTITY_TYPE_ID] =&gt; 8
+		[ENTITY_ID] =&gt; 7335
+		[ADDRESS_1] =&gt; Ленина 2
+		[ADDRESS_2] =&gt; 701
+		[CITY] =&gt; Тюмень
+		[POSTAL_CODE] =&gt; 625003
+		[REGION] =&gt; Тюменская обл
+		[PROVINCE] =&gt; Тюменская обл
+		[COUNTRY] =&gt; Россия
+		[COUNTRY_CODE] =&gt;
+		[LOC_ADDR_ID] =&gt; 479
+		[ANCHOR_TYPE_ID] =&gt; 3
+		[ANCHOR_ID] =&gt; 17192
+	)
+)
+</pre>
+<p></p>
+
+<p>
+</p><pre class="syntax">[result] =&gt; Array
+(
+	[3] =&gt; Array
+	(
+		[TYPE_ID] =&gt; 1
+		[ENTITY_TYPE_ID] =&gt; 8
+		[ENTITY_ID] =&gt; 8191
+		[ADDRESS_1] =&gt; Ленина
+		[ADDRESS_2] =&gt; 2
+		[CITY] =&gt; Тюмень
+		[POSTAL_CODE] =&gt; 666000
+		[REGION] =&gt; Тюменская область рег
+		[PROVINCE] =&gt; Тюменская область
+		[COUNTRY] =&gt; Россия
+		[COUNTRY_CODE] =&gt;
+		[LOC_ADDR_ID] =&gt; 129
+		[ANCHOR_TYPE_ID] =&gt; 3
+		[ANCHOR_ID] =&gt; 17192
+	)
+)
+</pre>
+<p></p>
+
+<p>Поле <strong>ANCHOR_TYPE_ID</strong> заполнено значением из <a class="link" href="/rest_help/crm/auxiliary/enum/crm_enum_ownertype.php">crm.enum.ownertype</a> (в примере это Контакты), а поле <strong>ANCHOR_ID</strong> содержит ID сущности (в данном случае Контакта). Поля <strong>ANCHOR_TYPE_ID</strong> и <strong>ANCHOR_ID</strong> в двух вышеуказанных примерах одинаковы, следовательно, оба адреса относятся к одному Контакту.</p>
+
+
+</li>
+</ul>
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

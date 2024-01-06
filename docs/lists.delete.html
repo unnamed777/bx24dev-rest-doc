@@ -1,0 +1,49 @@
+<html>
+        <head>
+            <title>lists.delete</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">lists.delete <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/lists/lists/lists.delete.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">lists.delete (params)</pre>
+
+<p>Метод удаляет список. В случае успешного удаления ответ true, иначе false.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr><th width="15%">Параметр</th><th>Описание</th></tr>
+<tr><td>IBLOCK_TYPE_ID</td><td> id типа инфоблока (обязательное):
+<ul>
+<li><b>lists</b> - тип инфоблока списка</li>
+<li><b>bitrix_processes</b> - тип инфоблока процессов</li> 
+<li><b>lists_socnet</b> - тип инфоблока списков групп</li></ul></td></tr>
+<tr><td>IBLOCK_CODE/IBLOCK_ID</td><td>код или id инфоблока (обязательное);</td></tr>
+<tr><td>SOCNET_GROUP_ID</td><td>id группы (обязательно, если список создается для группы);</td></tr>
+</tbody>
+</table>
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">var params = {
+	'IBLOCK_TYPE_ID': 'lists_socnet',
+	'IBLOCK_CODE': 'rest_1'
+};
+BX24.callMethod(
+	'lists.delete',
+	params,
+	function(result)
+	{
+		if(result.error())
+			alert("Error: " + result.error());
+		else
+			alert("Success: " + result.data());
+	}
+);</pre>
+<br><br>							
+        </div>
+        </body>
+        </html>

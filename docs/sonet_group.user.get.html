@@ -1,0 +1,66 @@
+<html>
+        <head>
+            <title>sonet_group.user.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">sonet_group.user.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/sonet_group/sonet_group_user_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Возвращает массив участников группы соцсети, осуществляя вызов&nbsp;<a class="link" href="/api_help/socialnetwork/classes/CSocNetUserToGroup/GetList.php">CSocNetUserToGroup::GetList()</a>, при этом проверяются права на доступ текущего пользователя к группе.<br>
+Метод не возвращает неактивных пользователей (уволенных сотрудников).
+</p>
+
+<p>Каждый из участников представляет собой массив с полями:</p>
+<ul>
+<li><b>USER_ID</b> - ID пользователя</li>
+<li><b>ROLE</b> - роль пользователя в группе:
+<ul>
+<li><b>SONET_ROLES_OWNER (A)</b> - владелец, </li>
+<li><b>SONET_ROLES_MODERATOR (E)</b> - модератор,</li> 
+<li><b>SONET_ROLES_USER (K)</b> - пользователь</li>
+</ul>
+</li>
+</ul>
+
+<h4>Параметры функции</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+  
+		<tr>
+			<td>ID</td>
+			<td>ID группы, участников которой необходимо получить.</td>
+		</tr>
+	
+	</tbody>
+</table>
+
+
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">// Получаем список участников группы соцсети с ID=15
+
+BX24.callMethod('sonet_group.user.get', {
+	'ID': 15
+});
+</pre>
+
+<h4>Запрос:</h4>
+<pre class="syntax">https://mydomain.bitrix24.ru/rest/sonet_group.user.get.json?auth=67df5afc8ce59732e4a21ed3e336979f&amp;ID=15
+</pre>
+
+
+<h4>Ответ:</h4>
+<pre class="syntax">{"result":[{"USER_ID":"1","ROLE":"A"}]}
+</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

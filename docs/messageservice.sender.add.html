@@ -1,0 +1,157 @@
+<html>
+        <head>
+            <title>messageservice.sender.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">messageservice.sender.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/messageservice/messageservice_sender_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p><b>messageservice.sender.add</b> - регистрирует новый SMS-провайдер. Успешное выполнение метода возможно только в рамках созданного приложения.</p>
+
+<h4>Параметры</h4><table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+  
+		<tr>
+			<td>CODE</td>
+			<td>Внутренний идентификатор провайдера. <br>Допустимые символы a-z, A-Z, 0-9, точка, дефис и нижнее подчеркивание. </td>
+		</tr>
+
+<tr>
+			<td>TYPE</td>
+			<td>Тип провайдера.</td>
+		</tr>
+
+
+		<tr>
+			<td>HANDLER</td>
+			<td>URL приложения, на который будут отправлены данные.</td>
+		</tr>
+		
+		
+		<tr>
+			<td>NAME</td>
+			<td>Название провайдера. Может быть строкой или ассоциативным массивом локализированных строк.</td>
+		</tr>
+
+		
+		<tr>
+			<td>DESCRIPTION</td>
+			<td>Описание провайдера. Может быть строкой или ассоциативным массивом локализированных строк.
+</td>
+		</tr>
+		
+</tbody>
+</table>
+
+<p>На HANDLER приходят данные:</p>
+
+<ul>
+<li><b>module_id</b> - модуль-инициатор. <b>crm</b> - значит сообщение отправлено из карточки (в будущем могут быть и другие варианты), <b>bizproc</b> - отправлено из Бизнес Процессов или робота.</li>
+<li><b>bindings</b> - параметр, актуальный только для module_id = crm. В нем содержится массив привязок сообщения к сущностям CRM (к чему привяжется дело).</li> 
+<li><b>workflow_id</b>, <b>document_id</b>, <b>document_type</b> - параметры, актуальные только для module_id = bizproc. Параметры приходят не всегда: если отправляем из карточки, то их не будет)</li>
+<li><b>message_id</b> - уникальный идентификатор сообщения. По нему можно обращаться к <a class="link" href="/rest_help/messageservice/messageservice_message_status_update.php">messageservice.message.status.update</a>.</li>
+<li><b>message_to</b> - номер получателя сообщения</li> 
+<li><b>message_body</b> - текст сообщения</li> 
+ </ul>
+
+
+
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">var params = {
+	CODE: 'provider1',
+	TYPE: 'SMS',
+	HANDLER: 'http:///',
+	NAME: 'Провайдер ***.ru',
+	DESCRIPTION: 'Провайдер ***.ru'
+};
+BX24.callMethod(
+	'messageservice.sender.add',
+	params,
+	function(result)
+	{
+		if(result.error())
+			alert("Error: " + result.error());
+		else
+			alert("Успешно: " + result.data());
+	}
+);
+</pre>
+
+<p>Отправление из карточки CRM</p>
+
+<pre class="syntax">Array
+(
+	[module_id] =&gt; crm
+	[bindings] =&gt; Array
+		(
+			[0] =&gt; Array
+				(
+					[OWNER_TYPE_ID] =&gt; 1
+					[OWNER_ID] =&gt; 98
+				)
+
+		)
+
+	[properties] =&gt; Array
+		(
+			[phone_number] =&gt; +7*********
+			[message_text] =&gt; test message
+		)
+
+	[type] =&gt; SMS
+	[code] =&gt; example
+	[message_id] =&gt; 72dd742c8270db0ddbbab92f98877537
+	[message_to] =&gt; +7**********
+	[message_body] =&gt; test message
+	[ts] =&gt; 1506687055
+	[auth] =&gt; /*auth*/
+
+)</pre>
+
+<p>Отправление из Бизнес-процесса или робота.</p>
+
+<pre class="syntax">Array
+(
+	[module_id] =&gt; bizproc
+	[workflow_id] =&gt; 59ce38567ff2a5.26351167
+	[document_id] =&gt; Array
+		(
+			[0] =&gt; crm
+			[1] =&gt; CCrmDocumentLead
+			[2] =&gt; LEAD_98
+		)
+
+	[document_type] =&gt; Array
+		(
+			[0] =&gt; crm
+			[1] =&gt; CCrmDocumentLead
+			[2] =&gt; LEAD
+		)
+
+	[properties] =&gt; Array
+		(
+			[phone_number] =&gt; +7*********
+			[message_text] =&gt; test message
+		)
+
+	[type] =&gt; SMS
+	[code] =&gt; example
+	[message_id] =&gt; 8b3fc6cd0cb4a7b91f6632889cdf46e0
+	[message_to] =&gt; +7*********
+	[message_body] =&gt; test message
+	[ts] =&gt; 1506687103
+	[auth] =&gt; /*auth*/
+
+)</pre>
+
+<br>							
+        </div>
+        </body>
+        </html>

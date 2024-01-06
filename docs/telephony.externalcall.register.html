@@ -1,0 +1,156 @@
+<html>
+        <head>
+            <title>telephony.externalcall.register</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">telephony.externalcall.register <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/scope_telephony/telephony/telephony_externalcall_register.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Метод регистрирует звонок в Битрикс24, для чего ищет в CRM соответствующий номеру объект. Если находит, то добавляет звонок в привязке к найденному объекту. Если не находит, то может автоматически создать лид.</p>
+
+<p>При использовании <i>telephony.externalCall.register</i> ответственным за новый лид будет автоматически назначен первый ответственный за данного клиента ранее. Сменить такого ответственного можно в дальнейшем через <a class="link" href="/rest_help/scope_telephony/telephony/telephony_externalcall_finish.php">telephony.externalcall.finish</a>.</p>
+
+<p>Одновременно с регистрацией звонка метод опционально может показать пользователю карточку звонка. Пользователь, которому показывается карточка, идентифицируется либо по USER_ID, либо по USER_PHONE_INNER. (То есть, поля помечены как обязательные, но фактически, нужно только одно из двух.)
+</p>
+
+<p>Не нужно повторно вызывать этот метод для звонков, полученных на событии <a class="link" href="/rest_help/scope_telephony/telephony/events_telephone/index.php">OnExternalCallStart</a>. Эти звонки уже зарегистрированы в системе и для них надо вызывать только <i>telephony.externalcall.finish</i> в конце звонка.</p>
+
+<p class="note"><b>Внимание!</b> Повторный вызов <i>telephony.externalcall.register</i> с теми же параметрами, без закрытия предыдущего звонка методом <i>telephony.externalcall.finish</i>, выдает тот же CALL_ID в течение 30 минут.</p>
+
+<p>Для создания дела "звонок" необходимо также вызывать метод telephony.externalcall.finish.</p>
+
+<h4>Возвращаемое значение</h4>
+
+<p>Метод возвращает массив:</p>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th><th width="10%">Тип значения</th>
+		</tr>
+		<tr>
+			<td>CALL_ID</td>
+			<td>Идентификатор звонка внутри Битрикс24.</td><td>string</td>
+		</tr>	
+		<tr>
+			<td>CRM_CREATED_LEAD</td>
+			<td>Идентификатор созданного лида (создается, если в CRM не найден объект по входящему номеру)</td><td>int</td>
+		</tr>	
+		<tr>
+			<td>CRM_ENTITY_ID</td>
+			<td>Идентификатор найденного в CRM объекта.</td><td>int</td>
+		</tr>	
+		<tr>
+			<td>CRM_ENTITY_TYPE</td>
+			<td>Тип найденного в CRM объекта по входящему номеру CONTACT | COMPANY | LEAD.</td><td>string</td>
+		</tr>	
+		<tr>
+			<td>CRM_CREATED_ENTITIES</td>
+			<td>Массив автоматически созданных в CRM сущностей при регистрации звонка. Формат:
+<ul>
+<li>ENTITY_TYPE - тип созданной сущности</li>
+<li>ENTITY_ID - идентификатор созданной сущности</li> 
+ </ul>
+
+</td><td>array</td>		</tr>	
+	<!--	<tr>
+			<td>CRM_ACTIVITY_ID</td>
+			<td>Идентификатор созданного дела, в котором зафиксировался звонок.</td><td>int</td>
+		</tr>	-->
+		<tr>
+			<td>LEAD_CREATION_ERROR</td>
+			<td>Текст ошибки, возникшей при попытке создания лида в CRM.</td><td>string</td>
+		</tr>	
+
+
+	</tbody>
+</table>
+
+
+<h4>Параметры функции</h4>
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th><th width="10%">Тип значения</th>
+		</tr>
+		<tr>
+			<td>USER_PHONE_INNER</td>
+			<td>Внутренний номер пользователя. Обязательный.</td><td>string</td>
+		</tr>	
+		<tr>
+			<td>USER_ID</td>
+			<td>Идентификатор пользователя. Обязательный.</td><td>int</td>
+		</tr>	
+		<tr>
+			<td>PHONE_NUMBER</td>
+			<td>Номер телефона. Обязательный</td><td>string</td>
+		</tr>	
+		<tr>
+			<td>CALL_START_DATE</td>
+			<td>Дата/время звонка в формате iso8601. Обратите внимание, что в дате необходимо передавать часовой пояс, для избежания искажения времени звонка. Пример: <code>2021-02-03T18:25:10+03:00
+</code>.</td><td>string</td>
+		</tr>	
+		<tr>
+			<td>CRM_CREATE</td>
+			<td>[0/1] - Автоматическое создание в CRM сущности, связанной со звонком. При необходимости, создает в CRM лид или сделку, в зависимости от 
+		<span class="learning-lesson-detail-block js-detail-info-block">
+			<span class="learning-lesson-detail-word js-detail-info-word">настроек и режима работы CRM</span>
+			<span class="learning-lesson-detail-body js-detail-info-body">
+				<span class="learning-lesson-detail-body-inner  js-detail-info-body-inner">
+                    <button class="learning-lesson-detail-close-button  js-detail-close-button" type="button"></button>
+                    Существует: <br> 
+- простой режим (без лидов) - при котором будет создаваться сделка, а не лид; <br>
+- режим повторных продаж, при котором будет создавать сделка/лид даже если сущность в сrm найдена. (Но не будет создаваться если есть активная сделка/лид или номер внесен в черный список crm).
+                </span>
+			</span>
+		</span>
+		. Обратите внимание, что дело звонка создается при любом значении этого параметра, если создание возможно.</td><td>int</td>
+		</tr>	
+		<tr>
+			<td>CRM_SOURCE</td>
+			<td>STATUS_ID источника из справочника источников. Получить список источников можно методом <a class="link" href="/rest_help/crm/auxiliary/status/crm_status_entity_items.php">crm.status.list</a> с фильтром по <code>"ENTITY_ID": "SOURCE"</code>.</td><td>string</td>
+		</tr>	
+		<tr>
+			<td>CRM_ENTITY_TYPE</td>
+			<td>Тип объекта CRM, из карточки которого совершается звонок - CONTACT | COMPANY | LEAD.</td><td>string</td>
+		</tr>	
+		<tr>
+			<td>CRM_ENTITY_ID</td>
+			<td>Идентификатор объекта CRM, тип которого указан в CRM_ENTITY_TYPE</td><td>int</td>
+		</tr>	
+		<tr>
+			<td>SHOW</td>
+			<td>[0/1] Показывать ли карточку звонка (по умолчанию 1).</td><td>int</td>
+		</tr>	
+		<tr>
+			<td>CALL_LIST_ID</td>
+			<td>Идентификатор списка обзвона, к которому должен быть привязан звонок.</td><td>int</td>
+		</tr>	
+
+		<tr>
+			<td>LINE_NUMBER</td>
+			<td>Номер внешней линии, через который совершался звонок (см. <a class="link" href="/rest_help/scope_telephony/telephony/telephony_externalLine_add.php">telephony.externalLine.add</a>). Необязательный.<br>
+
+<p class="note"><strong>Важно</strong>! Значения из этого параметра используются в сценариях сквозной аналитики Битрикс24. Поэтому решения <u>по интеграции с телефонией</u> для каталога Приложения24 в обязательном порядке должны передавать здесь номер, на который был совершён регистрируемый входящий звонок.</p>
+</td><td>string</td>
+		</tr>	
+
+		<tr>
+			<td>TYPE</td>
+			<td>Обязательный. Тип звонка:<br> 1 - исходящий<br>
+2 - входящий<br> 
+3 - входящий с перенаправлением<br> 
+4 - обратный<br> 
+</td><td>integer</td>
+		</tr>	
+	</tbody>
+</table>
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

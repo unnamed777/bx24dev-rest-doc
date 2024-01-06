@@ -1,0 +1,40 @@
+<html>
+        <head>
+            <title>task.stages.movetask</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">task.stages.movetask <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/tasks/task/kanban/task_stages_movetask.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">task</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<p>Метод перемещения задачи из одной стадии в другую.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Метод</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>id</td> 	<td>Идентификатор  задачи</td> <td></td></tr>
+   
+    <tr> 	<td>stageId</td> 	<td>ID стадии, в которую надо переместить задачу</td> <td></td></tr>
+   
+    <tr> 	<td>before</td> 	<td>ID задачи, перед которой надо поставить задачу в стадии. </td> <td></td></tr>
+   
+    <tr> 	<td>after</td> 	<td>ID задачи, после которой надо поставить задачу в стадии. </td> <td></td></tr>
+
+   </tbody>
+ </table>
+
+<p class="note"><b>Примечание</b>. Если параметры before и after не переданы одновременно, то задача добавляется в колонке согласно настройкам проекта/моего плана. В ином случае before и after взаимоисключающие. Указывается по необходимости или тот или другой параметр.</p>
+
+<p>Метод работает следующим образом. Если передана стадия группы, перемещение происходит в рамках Канбана группы. Если передана стадия Моего плана, перемещение происходит в нем. Перед перемещением происходит проверка прав. </p>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,101 @@
+<html>
+        <head>
+            <title>sonet_group.create</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">sonet_group.create <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/sonet_group/sonet_group_create.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Описание</h3>
+<p>Создает группу соцсети, используя метод API <a class="link" href="/api_help/socialnetwork/classes/CSocNetGroup/CreateGroup.php">CSocNetGroup::CreateGroup()</a>, указывая владельцем группы текущего пользователя.</p>
+
+<h4>Запрос:</h4>
+<pre class="syntax">https://mydomain.bitrix24.ru/rest/sonet_group.create.json?auth=803f65e30340ff39703f8061c8b63a10&amp;NAME=Test%20sonet%20group&amp;VISIBLE=Y&amp;OPENED=N&amp;INITIATE_PERMS=K
+</pre>
+
+
+<h4>Ответ:</h4>
+<pre class="syntax">{"result":11}
+</pre>
+<br>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+
+<table class="tnormal" width="100%">
+	<tbody><tr>
+		<th width="15%">Параметр</th>
+		<th>Описание</th>
+		<th>С версии</th>
+	</tr>
+		<tr>
+		<td>arFields</td>
+		<td>Массив параметров новой группы. Допустимые ключи массива:<br>
+<b>NAME</b> - название группы (обязательное поле),<br>
+<b>DESCRIPTION</b> - описание группы,<br>
+<b>VISIBLE</b> - флаг Y/N - видна ли группа в списке групп,<br>
+<b>OPENED</b> - флаг Y/N - открыта ли группа для свободного вступления,<br>
+<b>KEYWORDS</b> - ключевые слова,<br>
+<b>INITIATE_PERMS</b> - кто имеет право на приглашение пользователей в группу (обязательное поле):
+<ul>
+<li><strong>A</strong> - только владелец группы,</li>
+<li><strong>E</strong> - владелец группы и модераторы группы,</li> 
+<li><strong>K</strong> - все члены группы.</li> 
+ </ul>
+<br>
+<b>CLOSED</b> - флаг Y/N - является ли группа архивной,<br>
+<b>SPAM_PERMS</b> - кто имеет право на отправку сообщений в группу (обязательное поле). Значения аналогичны параметру INITIATE_PERMS.<br>
+<b>PROJECT</b> - флаг Y/N - является ли группа проектом или нет. по умолчанию - не является. (С версии 18.0.0)<br>
+<b>PROJECT_DATE_FINISH</b> - задаётся окончание проекта. (С версии 18.0.0)<br>
+<b>PROJECT_DATE_START</b> - задаётся начало проекта. (С версии 18.0.0)<br>
+<b>SCRUM_MASTER_ID</b> - если заполнен идентификатором пользователя, то этот проект станет скрамом. (С версии 22.300)
+
+</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>bAutoSubscribe</td>
+		<td>Автоподписывание на созданную тему. Необязательный параметр. По умолчанию имеет значение True.</td>
+		<td>10.0.0</td>
+	</tr>
+</tbody></table>
+
+<p>В случае успешного создания группы, возвращает ее ID, иначе - текст ошибки.</p>
+
+<br>
+<p></p><div class="note"><b>Примечание</b>: Создавать экстранет-группы с помощью REST API пока нельзя.</div><p></p>
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Пример</h3>
+<pre class="syntax" rel="example">// Создадим видимую и открытую для вступления группу соцсети с именем 'Test sonet group' с правом приглашать новых членов группы для всех текущих членов группы
+
+BX24.callMethod('sonet_group.create', {
+	'NAME': 'Test sonet group',
+	'VISIBLE': 'Y',
+	'OPENED': 'N',
+	'INITIATE_PERMS': 'K'
+});
+</pre>
+
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

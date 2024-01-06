@@ -1,0 +1,63 @@
+<html>
+        <head>
+            <title>crm.status.delete</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.status.delete <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/auxiliary/status/crm_status_delete.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.status.delete(id, params)</pre>
+
+<p>Удаляет элемент справочника.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+<tbody><tr><th width="15%">Параметр</th><th>Описание</th></tr>
+ 
+<tr><td>id</td><td>Идентификатор элемента справочника. (Обязательный)</td></tr>
+<tr><td>params</td><td>Набор параметров. FORCED - флаг принудительного удаления системных элементов. По умолчанию - N. Если удаляемый элемент является системным, то он не будет удалён. Если будет передано значение Y, то этот элемент будет удалён в любом случае. Для удаления системного элемента используйте второй пример в описании.</td></tr>
+</tbody></table>
+
+
+<h4>Пример</h4>
+
+<p>Пример удаления простого элемента</p>
+
+<pre class="syntax" rel="example">	var id = prompt("Введите ID пользовательского элемента");
+	BX24.callMethod(
+		"crm.status.delete", 
+		{ id: id }, 
+		function(result) 
+		{
+			if(result.error())
+				console.error(result.error());
+			else
+				console.info(result.data());
+		}
+	);	
+</pre>
+<br>
+<p>Пример удаления системного элемента</p>
+
+<pre class="syntax" rel="example">var id = prompt("Введите ID пользовательского или системного элемента");
+BX24.callMethod(
+    "crm.status.delete", 
+    { id: id, params:{ FORCED: "Y" } }, 
+    function(result) 
+    {
+       if(result.error())
+            console.error(result.error());
+       else
+            console.info(result.data());
+    }
+);</pre>
+
+
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,30 @@
+<html>
+        <head>
+            <title>user.userfield.update</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">user.userfield.update <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/users/userfield/user_userfield_update.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Метод обновляет пользовательское поле. </p>
+
+<p class="note"><strong>Внимание!</strong> Поля MULTIPLE не редактируемые.</p>
+
+<h4>Пример</h4>
+
+<pre class="syntax">CRest::call(
+	'user.userfield.update',
+	[
+		'id' =&gt; 42,
+		'fields' =&gt; [
+			'LIST_FILTER_LABEL' =&gt; 'Title',
+			'LIST_COLUMN_LABEL' =&gt; 'List Title',
+		],
+	]
+);
+</pre>
+<br><br>							
+        </div>
+        </body>
+        </html>

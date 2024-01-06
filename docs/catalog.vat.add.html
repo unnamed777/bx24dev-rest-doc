@@ -1,0 +1,48 @@
+<html>
+        <head>
+            <title>catalog.vat.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">catalog.vat.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/catalog/vat/catalog_vat_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">catalog.vat.add(fields)</pre>
+
+<p>Метод добавляет ставку НДС.</p>
+
+
+<h4>Параметры</h4>
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th><th>Тип</th>
+			<th>Описание</th>      </tr>
+<tr><td>fields</td><td>object</td> <td>Поля, соответствующие доступному списку полей <a class="link" href="/rest_help/catalog/vat/catalog_vat_getfields.php">fields</a>.</td></tr>
+	</tbody>
+</table>
+
+<h4>Примеры</h4>
+<pre class="syntax" rel="example">BX24.callMethod(
+	'catalog.vat.add',
+	{
+		fields: {
+			name: "Налог 13%",
+			rate: 13,
+			sort: 10,
+			active: "Y"
+		}
+	},
+	function(result) {
+		if (result.error())
+			console.error(result.error().ex);
+		else
+			console.log(result.data());
+	}
+);
+</pre>
+
+<br>							
+        </div>
+        </body>
+        </html>

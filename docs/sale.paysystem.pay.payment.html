@@ -1,0 +1,49 @@
+<html>
+        <head>
+            <title>sale.paysystem.pay.payment</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">sale.paysystem.pay.payment <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/paysystem/sale_paysystem_pay_payment.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">sale.paysystem.pay.payment<b>(</b>
+	payment_id,
+	pay_system_id
+<b>)</b></pre>
+
+<p>Метод для оплаты заказа с использованием конкретной платёжной системы (вызывается после обработки ответа от платёжной системы).</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+	<tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+	<tr> 	<td>payment_id</td> 	<td>ID оплаты.</td> <td></td></tr>
+   
+	<tr> 	<td>pay_system_id</td> 	<td>ID платёжной системы.</td> <td></td></tr>
+   
+   </tbody>
+ </table>
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">var paymentId = prompt("Введите ID оплаты");
+var paySystemId = prompt("Введите ID платёжной системы");
+
+BX24.callMethod('sale.paysystem.pay.payment', {"payment_id": paymentId, "pay_system_id": paySystemId},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+		{
+			console.dir(result.data());
+		}
+	}
+);</pre>
+<br><br>							
+        </div>
+        </body>
+        </html>

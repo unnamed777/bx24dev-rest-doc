@@ -1,0 +1,53 @@
+<html>
+        <head>
+            <title>landing.site.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">landing.site.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/landing/site/methods/landing_site_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">landing.site.add(fields)</pre>
+
+<p>Метод для добавления Сайта. Возвращает ID созданного сайта или ошибку.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>fields</td> 	<td><a class="link" href="/rest_help/landing/site/base_field.php">Поля сущности</a></td> <td></td></tr>
+   </tbody>
+ </table>
+<br>
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'landing.site.add',
+	{
+		fields: {
+			TITLE: 'My first site!',
+			CODE: 'firstsite',
+			DOMAIN_ID: 'my.bitrix24.site'
+		}
+	},
+	function(result)
+	{
+		if(result.error())
+		{
+			console.error(result.error());
+		}
+		else
+		{
+			console.info(result.data());
+		}
+	}
+);</pre>
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

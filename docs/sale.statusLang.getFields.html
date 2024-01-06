@@ -1,0 +1,60 @@
+<html>
+        <head>
+            <title>sale.statusLang.getFields</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">sale.statusLang.getFields <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/sale/statusLang/sale_statusLang_getFields.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">sale</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<pre class="syntax">sale.statusLang.getFields()</pre>
+
+<p>Метод возвращает поля локализации статусов.</p>
+
+<p>Возвращаемые поля:</p>
+
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Поле</th>
+			<th>Описание</th>      </tr>
+
+<tr><td>description</td><td>Описание.</td> </tr>
+<tr><td>lid</td><td>Привязка к языку.</td> </tr>
+<tr><td>name</td><td>Название.</td> </tr>
+<tr><td>statusId</td><td>Код статуса.</td> </tr>
+
+
+	</tbody>
+</table>
+
+
+<h4>Параметры</h4>
+
+<p>Без параметров.</p>
+
+
+<h4>Примеры</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+		'sale.statusLang.getFields', 
+		{}, 
+		function(result)
+		{
+			if(result.error())
+				console.error(result.error().ex);
+			else
+				console.log(result.data());
+		}
+);
+</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

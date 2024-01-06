@@ -1,0 +1,62 @@
+<html>
+        <head>
+            <title>documentgenerator.role.fillaccesses</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">documentgenerator.role.fillaccesses <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/documentgenerator/role/documentgenerator_role_fillaccesses.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">documentgenerator</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<a class="link" name="register"></a>
+<pre class="syntax">documentgenerator.role.fillaccesses(accesses = [])</pre>
+
+<p>Метод установит набор ролей и их привязок.</p>
+<br><br>
+<div class="note">
+	<b>Внимание!</b> Данный метод не обновляет существующие привязки. Он всегда перезаписывает полную карту.
+</div>
+
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>      </tr>
+
+<tr><td>accesses</td><td>Массив привязок ролей.
+<ul>
+<li><code>accesses[roleId]</code> - идентификатор роли.</li>
+<li><code>accesses[accessCode]</code> - символьный код для привязки.</li>
+</ul>
+
+</td></tr>
+
+	</tbody>
+</table>
+
+<br><br>
+
+<h4>Пример</h4>
+
+<pre class="syntax">"accesses": [
+	{
+		"roleId": "1",
+		"accessCode" : "U1", // привязать к пользователю с ИД 1
+	},
+	{
+		"roleId": "2",
+		"accessCode" : "D1", // привязать к отделу с ИД 1
+	}
+]
+</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

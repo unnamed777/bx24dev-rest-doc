@@ -1,0 +1,70 @@
+<html>
+        <head>
+            <title>catalog.priceType.list</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">catalog.priceType.list <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/catalog/pricetype/catalog_pricetype_list.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">catalog.priceType.list(select, filter, order, start)</pre>
+
+<p>Метод получает список типов цен по фильтру.</p>
+
+<p>Если операция успешна, возвращается список типов цен в теле ответа.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th><th>Тип</th>
+			<th>Описание</th>      </tr>
+
+<tr><td>select</td><td>object</td> <td>Поля, соответствующие доступному списку полей <a class="link" href="/rest_help/catalog/pricetype/catalog_pricetype_getfields.php">fields</a>.</td></tr>
+
+<tr><td>filter</td><td>object</td> <td>Поля, соответствующие доступному списку полей <a class="link" href="/rest_help/catalog/pricetype/catalog_pricetype_getfields.php">fields</a>.</td></tr>
+
+<tr><td>order</td><td>object</td> <td>Поля, соответствующие доступному списку полей <a class="link" href="/rest_help/catalog/pricetype/catalog_pricetype_getfields.php">fields</a>.</td></tr>
+<tr><td>start</td><td>string</td> <td>Номер страницы вывода. Работает для https запросов.</td></tr>
+
+
+	</tbody>
+</table>
+
+
+<br><br>
+<h4>Примеры</h4>
+
+<p>Для JS</p>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'catalog.priceType.list', 
+	{
+		select:{
+			id
+		},
+		filter:{
+			modifiedBy: 1
+		},
+		order:{
+			id: ASC
+		},
+	},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error().ex);
+		else
+			console.log(result.data());
+		result.next();
+	}
+);
+</pre>
+
+<p>Для HTTPS</p>
+
+<pre class="syntax">https://ваш_портал/rest/catalog.priceType.list?auth=_ключ_авторизации_&amp;start=50</pre>							
+        </div>
+        </body>
+        </html>

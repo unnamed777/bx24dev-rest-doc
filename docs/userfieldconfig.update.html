@@ -1,0 +1,136 @@
+<html>
+        <head>
+            <title>userfieldconfig.update</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">userfieldconfig.update <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/userfieldconfig/userfieldconfig/userfieldconfig_update.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<p class="note_blue">
+Scope: <span class="bg_blue">userfieldconfig, scope модуля</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<div class="tab">
+
+<h3 class="tab-title">Описание и параметры</h3>
+
+<pre class="syntax">userfieldconfig.update({moduleId: string, id: number, field: {}})</pre>
+
+<p>Метод изменяет значение поля.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>moduleId </td> 	<td>Строковый идентификатор модуля. Обязательный.</td> <td></td></tr>
+   
+    <tr> 	<td>id</td> 	<td>Идентификатор настроек поля. Обязательный.</td> <td></td></tr>
+   
+    <tr> 	<td>field</td> 	<td>Список с полями настройки нового поля. Аналогично методу <a class="link" href="/rest_help/userfieldconfig/userfieldconfig/userfieldconfig_add.php">userfieldconfig.add</a>, но:
+
+<ul>
+<li>fieldName - не может быть изменен</li>
+<li>userTypeId - не может быть изменен</li> 
+<li><a class="link" href="/rest_help/userfieldconfig/entityId.php">entityId</a> - не может быть изменен</li> 
+<li>editInList - не может быть изменен</li>
+<li>multiple - не может быть изменен</li>
+<li>isSearchable - изменение этого флага не вызовет автоматическое перестроение поискового индекса. Перестроение происходит при изменении сущностей, к которым привязаны поля</li> 
+<li>enum - полный список всех вариантов значений для свойства типа "список". Чтобы это поле учитывалось, в fields должен присутствовать <b>userTypeId</b>
+           <ul>
+           <li>id - идентификатор варианта. Должен присутствовать, если надо обновить вариант</li>
+            </ul>
+ </li> 
+ </ul></td> <td></td></tr>
+
+   </tbody>
+ </table>
+
+<p class="note">Будьте внимательны при работе с вариантами значений для списков.</p>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Возвращаемое значение и пример</h3>
+
+<h4>Возвращаемое значение</h4>
+
+<p>Метод вернет такие же данные, как метод <a class="link" href="/rest_help/userfieldconfig/userfieldconfig/userfieldconfig_get.php">userfieldconfig.get</a> на измененном поле.</p>
+
+<h4>Примеры</h4>
+
+<p>Обновление флагов и языковых фраз, без изменения вариантов значений</p>
+
+<pre class="syntax">{
+	"moduleId": "rpa",
+	"id": 170,
+	"field": {
+		"mandatory": "Y",
+		"editFormLabel": {
+			"ru": "Новое название поля"
+		}	 
+	} 
+}</pre>
+
+<p>Пример удаление всех вариантов значений.</p>
+
+<pre class="syntax">{
+	"moduleId": "rpa",
+	"id": 170,
+	"field": {
+		"userTypeId": "enumeration",
+		"enum": [
+			[""]
+		]	 
+	}
+}</pre>
+
+<p>Пример частичного обновления вариантов значений.</p>
+
+<pre class="syntax">{
+	"moduleId": "rpa",
+	"id": 170,
+	"field": {
+		"userTypeId": "enumeration",
+		"enum": [
+			{
+				"id": 29,
+			},
+			{
+				"id": 30,
+				"value": "Обновленное значение"
+			},
+			{
+				"value": "Новое значение"
+			}
+		]	 
+	}
+}</pre>
+
+<p>В этом примере:</p>
+
+<ul>
+<li>вариант значения с id=29 останется без изменений,</li>
+<li>у варианта с id=30 поменяется значение</li> 
+<li>добавится новый вариант "Новое значение"</li> 
+<li>все остальные варианты будут удалены</li> 
+ </ul>
+
+</div>
+
+<!------->
+
+
+
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

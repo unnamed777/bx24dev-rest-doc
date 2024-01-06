@@ -1,0 +1,63 @@
+<html>
+        <head>
+            <title>documentgenerator.template.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">documentgenerator.template.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/documentgenerator/templates/documentgenerator_template_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">documentgenerator</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<a class="link" name="register"></a>
+<pre class="syntax">documentgenerator.template.get(id)</pre>
+
+<p>Возвращает информацию о шаблоне по его идентификатору.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>      </tr>
+
+<tr><td>id</td><td>ID шаблона</td></tr>
+
+	</tbody>
+</table>
+
+
+
+<h4>Ответ</h4>
+
+<pre class="syntax">"template": {
+	"id": "202", // id шаблона
+	"name": "Rest Template", // название
+	"region": "ru", // страна
+	"code": "", // код
+	"download": '', // ссылка на скачивание для пользователя
+	"downloadMachine": '', // ссылка на скачивание для приложения
+	"active": "Y", // активность
+	"moduleId": "rest", // ид модуля
+	"numeratorId": "20", // ид нумератора
+	"withStamps": "N", // ставить печати по умолчанию
+	"isDeleted": "N" // удален или нет
+	"sort": "100", // сортировка
+	"createTime": "2018-06-05T13:07:12+02:00"
+	"updateTime": "2018-09-06T14:26:24+02:00"
+	"providers": [ // провайдеры
+		"bitrix\documentgenerator\dataprovider\rest": "bitrix\documentgenerator\dataprovider\rest"
+	],
+	"users" [ // привязанные пользователи
+		"0": "UA"
+	]
+}
+</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

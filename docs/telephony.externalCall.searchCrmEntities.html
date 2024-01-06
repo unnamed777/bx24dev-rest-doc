@@ -1,0 +1,74 @@
+<html>
+        <head>
+            <title>telephony.externalCall.searchCrmEntities</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">telephony.externalCall.searchCrmEntities <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/scope_telephony/telephony/telephony_externalCall_searchCrmEntities.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Метод позволяет получить одним запросом по номеру телефона информацию о клиенте из CRM. Информация позволяет принять решение кому из сотрудников перенаправить входящий звонок на пользователя прямо в этот момент. Метод возвращает подходящий список CRM-объектов с сортировкой по внутренним приоритетам. Если за сущности связанные с номером отвечают разные сотрудники (за лид отвечает один сотрудник, за компанию - другой), то рекомендуется брать тот объект, который метод вернул первым в списке. Если интеграция предполагает собственную логику, то возможен выбор, так как отдаются все объекты.</p>
+
+<p>В списке объектов CRM сразу сообщается вся информация об ответственном сотруднике за каждый объект (чтобы не приходилось получать эти данных дополнительными запросами REST). Возвращаются все заданные у пользователя контактные телефоны: внутренний телефон сотрудника, мобильный, рабочий и т.д..</p>
+
+<p>Возвращается и статус рабочего дня сотрудника (если в Битрикс24 включен учет рабочего времени). Интеграция может проверить, находится ли сотрудник на рабочем месте (или у него перерыв), и либо перенаправить входящий звонок в очередь, либо направить звонок на мобильник сотрудника и т.д.</p>
+
+<p>Рекомендуется вызывать метод до вызова <a class="link" href="/rest_help/scope_telephony/telephony/telephony_externalcall_register.php">telephony.externalcall.register</a>.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>PHONE_NUMBER</td> 	<td>Номер клиента. Обязательный.</td> <td></td></tr>
+
+   </tbody>
+ </table>
+
+
+<h4>Пример </h4>
+
+<p>Пример возвращаемых данных </p>
+
+<pre class="syntax">Array
+(
+	[0] =&gt; Array
+	(
+		[CRM_ENTITY_TYPE] =&gt; CONTACT
+		[CRM_ENTITY_ID] =&gt; 1
+		[ASSIGNED_BY_ID] =&gt; 1
+		[ASSIGNED_BY] =&gt; Array
+			(
+				[ID] =&gt; 1
+				[TIMEMAN_STATUS] =&gt; CLOSED
+				[USER_PHONE_INNER] =&gt; 102
+				[WORK_PHONE] =&gt; 
+				[PERSONAL_PHONE] =&gt; 
+				[PERSONAL_MOBILE] =&gt; 79062195047
+			)
+
+	)
+
+	[1] =&gt; Array
+	(
+		[CRM_ENTITY_TYPE] =&gt; COMPANY
+		[CRM_ENTITY_ID] =&gt; 4
+		[ASSIGNED_BY_ID] =&gt; 1
+		[ASSIGNED_BY] =&gt; Array
+			(
+				[ID] =&gt; 1
+				[TIMEMAN_STATUS] =&gt; CLOSED
+				[USER_PHONE_INNER] =&gt; 102
+				[WORK_PHONE] =&gt; 
+				[PERSONAL_PHONE] =&gt; 
+				[PERSONAL_MOBILE] =&gt; 79062195047
+			)
+
+	)
+
+)</pre>
+<br><br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,53 @@
+<html>
+        <head>
+            <title>bizproc.activity.log</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">bizproc.activity.log <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/bizproc/bizproc_activity/log.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">bizproc</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<p><b>bizproc.activity.log</b> - записывает информацию в лог бизнес-процесса.</p>
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+  
+		<tr>
+			<td>EVENT_TOKEN</td>
+			<td>Уникальный ключ, который необходимо использовать при отправке события бизнес-процессу. </td>
+		</tr>
+		<tr>
+			<td>LOG_MESSAGE</td>
+			<td>Сообщения для записи в лог.</td>
+		</tr>
+		</tbody>
+</table>
+
+<p><b>Пример</b></p>
+<pre class="syntax" rel="example">var params = {
+	event_token: '55c1dc1c3f0d75.78875596|A51601_82584_96831_81132|hsyUws1j4XiwqPqN45eH66CcQtEvpUIP.47dd5d888e8e549d2c984713e12a4268e6e87d0208ca1f093ba1075e77f92e90',
+	log_message: 'Please wait for answer!'
+};
+BX24.callMethod(
+	'bizproc.activity.log',
+	params,
+	function(result)
+	{
+		if(result.error())
+			alert("Error: " + result.error());
+		else
+			alert("Success: " + result.data());
+	}
+);
+</pre>
+<br>							
+        </div>
+        </body>
+        </html>

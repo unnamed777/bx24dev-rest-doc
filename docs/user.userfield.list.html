@@ -1,0 +1,41 @@
+<html>
+        <head>
+            <title>user.userfield.list</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">user.userfield.list <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/users/userfield/user_userfield_list.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Метод позволяет получить список пользовательских полей. Доступен только пользователю с правами администратора. Доступны только фильтр и сортировка.</p>
+
+<p>Фильтр доступен по ключам:</p>
+
+<ul>
+<li><strong>ID</strong></li>
+<li><strong>FIELD_NAME</strong></li> 
+<li><strong>USER_TYPE_ID</strong></li> 
+<li><strong>XML_ID</strong></li>
+<li><strong>SORT</strong></li> 
+<li><strong>MULTIPLE</strong></li> 
+<li><strong>MANDATORY</strong></li>
+<li><strong>SHOW_FILTER</strong></li> 
+<li><strong>SHOW_IN_LIST</strong></li> 
+<li><strong>EDIT_IN_LIST</strong></li>
+<li><strong>IS_SEARCHABLE</strong></li> 
+<li><strong>LANG</strong></li> 
+ </ul>
+
+<h4>Пример</h4>
+
+<pre class="syntax">CRest::call(
+	'user.userfield.list',
+	[
+		'order' =&gt; ['ID' =&gt; 'desc'],
+		'filter' =&gt; ['ID' =&gt; 42],
+	]
+);</pre>
+<br><br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,39 @@
+<html>
+        <head>
+            <title>crm.automation.trigger.list</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.automation.trigger.list <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/automation/trigger_application/crm_automation_trigger_list.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Метод для получения списка приложений и триггеров. Возвращает массив добавленных приложением триггеров с полями <code>NAME</code> и <code>CODE</code>.</p>
+
+<h4>Праметры</h4>
+
+<p>Без параметров</p>
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">function getList()
+{
+	BX24.callMethod(
+		'crm.automation.trigger.list',
+		{},
+		function(result)
+		{
+			if(result.error())
+				alert("Error: " + result.error());
+			else
+			{
+				alert("Success: data is in console");
+				console.log(result.data());
+			}
+		}
+	);
+}</pre>
+
+<br>							
+        </div>
+        </body>
+        </html>

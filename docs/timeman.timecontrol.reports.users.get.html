@@ -1,0 +1,102 @@
+<html>
+        <head>
+            <title>timeman.timecontrol.reports.users.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">timeman.timecontrol.reports.users.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/timeman/timecontrol/timeman_timecontrol_reports_users_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Описание и параметры</h3>
+
+
+<p>Метод для получения списка пользователей, относящихся к указанному подразделению.</p>
+
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr><th width="15%">Параметр</th><th>Пример</th><th>Обязательный</th><th>Описание</th></tr>
+<tr><td>DEPARTMENT_ID</td>
+<td>52</td>
+<td>Да*</td>
+<td>Идентификатор подразделения.</td></tr>
+
+</tbody>
+</table>
+
+<p>* - параметр <code>DEPARTMENT_ID</code> необходимо указывать только, если пользователь - руководитель или администратор.</p>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Пример вызова</h3>
+<p>JavaScript</p>
+
+<pre class="syntax" rel="example">BX24.callMethod('timeman.timecontrol.reports.users.get', {
+	'DEPARTMENT_ID': 52
+}, function(result){
+	if(result.error())
+	{
+		console.error(result.error().ex);
+	}
+	else
+	{
+		console.log(result.data());
+	}
+});</pre>
+
+<p>PHP</p>
+
+<pre class="syntax">$result = restCommand('timeman.timecontrol.reports.users.get', Array(
+	'DEPARTMENT_ID' =&gt; 52
+), $_REQUEST["auth"]);	
+</pre>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Пример ответа</h3>
+<pre class="syntax">{
+	"result": [
+		{
+			"id":2,
+			"name":"Мария Ившина",
+			"first_name":"Мария",
+			"last_name":"Ившина",
+			"work_position":"IT-специалист",
+			"avatar":"http://test.bitrix24.com/upload/resize_cache/main/072/100_100_2/42-17948709.gif",
+			"last_activity_date":"2018-08-15T16:25:34+03:00"
+		}
+	]
+}</pre>
+
+<h4>Описание ключей</h4>
+
+<ul>
+    <li><b>id</b> - идентификатор пользователя.</li>
+    <li><b>name</b> - имя и фамилия пользователя.</li>
+    <li><b>first_name</b> - имя пользователя.</li>
+    <li><b>last_name</b> - фамилия пользователя.</li>
+    <li><b>work_position</b> - должность.</li>
+    <li><b>avatar</b> - ссылка на аватар (если пусто, значит аватар не задан).</li>
+    <li><b>personal_gender</b> - пол пользователя.</li>
+    <li><b>last_activity_date</b> - дата последнего действия пользователя в формате АТОМ.</li>
+</ul>
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

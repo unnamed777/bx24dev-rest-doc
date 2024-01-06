@@ -1,0 +1,68 @@
+<html>
+        <head>
+            <title>catalog.product.offer.update</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">catalog.product.offer.update <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/catalog/product/offer/catalog_product_offer_update.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">catalog.product.offer.update(id, fields)</pre>
+
+<p>Метод для обновления полей торгового предложения.</p>
+
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th><th>Тип</th>
+			<th>Описание</th>      </tr>
+
+<tr><td>id</td><td>integer</td> <td>Идентификатор торгового предложения.</td></tr>
+
+<tr><td>fields</td><td>object</td> <td>Поля, соответствующие доступному списку полей <a class="link" href="/rest_help/catalog/product/offer/catalog_product_offer_getfieldsbyfilter.php">getFieldsByFilter</a>.:
+<ul>
+<li><b>iblockId</b> - тип информационного блока;</li>
+<li><b>productType</b> - тип товара;</li>
+<li><b>iblockSectionId</b> - идентификатор раздела;</li>
+<li><b>name</b> - название.</li>
+</ul>
+ Все поля обязательные
+ .</td></tr>
+
+
+	</tbody>
+</table>
+
+<br><br>
+
+<h4>Примеры</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'catalog.product.offer.update', 
+	{
+		id: 8,
+		fields: {
+			iblockId: 27
+			active: "N",
+			code: "t-shirt2",
+			detailText: "Замечательная футболка",
+			sort: 350
+		}
+	},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error().ex);
+		else
+			console.log(result.data());
+	}
+);
+</pre>
+
+<br>							
+        </div>
+        </body>
+        </html>

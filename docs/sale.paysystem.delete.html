@@ -1,0 +1,47 @@
+<html>
+        <head>
+            <title>sale.paysystem.delete</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">sale.paysystem.delete <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/paysystem/sale_paysystem_delete.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">sale.paysystem.delete<b>(</b>
+	id
+<b>)</b></pre>
+
+<p>Метод удаляет платежную систему. </p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>id</td> 	<td>Идентификатор платежной системы</td> <td></td></tr>
+
+   </tbody>
+ </table>
+
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">var id = prompt("Введите ID");
+
+BX24.callMethod('sale.paysystem.delete', {"id": id},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+		{
+			console.info("Платежная система удалена");
+		}
+	}
+);</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,383 @@
+<html>
+        <head>
+            <title>tasks.task.list</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">tasks.task.list <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_list.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<p class="note_blue">
+Scope: <span class="bg_blue">task</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<div class="tab">
+
+<h3 class="tab-title">Описание</h3>
+
+<p>Возвращает массив задач, каждая из которых содержит массив полей. В отличие от <a class="link" href="/rest_help/tasks/task/item/list.php">task.item.list</a> параметры в запросе <strong>tasks.task.list</strong> можно указывать в любом порядке, а также можно не указывать ненужные параметры.</p>	
+
+<p>Для получения данных по всем задачам пользователь должен обладать админскими правами. Руководитель подразделения получит доступ только к задачам в своей ветке иерархии.</p>
+
+<p>Также можно получить задачи в "Избранном", установив фильтрацию по параметру <code>$filter[::SUBFILTER-PARAMS][FAVORITE]=Y</code>.  </p>
+
+<p></p><div class="note"><b>Внимание!</b> Необходимо указать поля в <strong>select</strong>, т.к. поля по умолчанию могут быть изменены в будущем.</div><p></p>
+
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+<table class="tnormal" width="100%"> 
+  <tbody> 
+    <tr><th width="15%">Параметр</th><th>Описание</th></tr>
+    <tr><td>order</td><td>Массив для сортировки результата. Массив вида <i>{"поле_сортировки": 'направление сортировки' [, ...]}</i>. 
+        <br>
+       		Поле для сортировки может принимать значения: 		 
+        <ul> 	
+          <li><b>ID</b> - идентификатор задачи;</li>
+	 <li><b>TITLE</b> - название задачи;</li>
+	 <li><b>TIME_SPENT_IN_LOGS</b> - затраченное время из истории изменений;</li>
+          <li><b>DATE_START</b> - дата старта;</li>
+          <li><b>CREATED_DATE</b> - дата создания;</li>
+          <li><b>CHANGED_DATE</b> - дата последнего изменения;</li>
+          <li><b>CLOSED_DATE</b> - дата завершения;</li>
+          <li><b>START_DATE_PLAN</b> - плановое начало;</li>
+          <li><b>END_DATE_PLAN</b> - плановое завершение;</li>
+          <li><b>DEADLINE</b> - крайний срок;</li>
+           <li><b>REAL_STATUS</b> - статус задачи. Константы отражающие статусы задач:
+			<ul>
+				<li>STATE_NEW = 1;</li>
+				<li>STATE_PENDING = 2;</li> 
+				<li>STATE_IN_PROGRESS = 3;</li> 
+				<li>STATE_SUPPOSEDLY_COMPLETED = 4;</li>
+				<li>STATE_COMPLETED = 5;</li> 
+				<li>STATE_DEFERRED = 6;</li> 
+				<li>STATE_DECLINED = 7;</li> 
+			</ul>
+		  </li>
+         <li><b>STATUS_COMPLETE</b> - флаг завершенности задачи;</li>   
+          <li><b>PRIORITY</b> - приоритет;</li>
+          <li> <b>MARK</b> - оценка;</li>
+          <li> <b>CREATED_BY_LAST_NAME</b> - постановщик;&nbsp;</li>
+          <li> <b>RESPONSIBLE_LAST_NAME</b> - ответственный;&nbsp;</li>
+          <li> <b>GROUP_ID </b> - рабочая группа.&nbsp;</li>
+          <li> <b>TIME_ESTIMATE</b> - затраченное время;</li>
+          <li> <b>ALLOW_CHANGE_DEADLINE</b> - флаг "Разрешить ответственному менять крайний срок";</li>
+          <li> <b>ALLOW_TIME_TRACKING</b> - флаг включения учета затраченного времени по задаче;</li>
+          <li> <b>MATCH_WORK_TIME</b> - пропустить выходные дни;</li>
+          <li> <b>FAVORITE</b> - Избранное;</li>
+          <li> <b>SORTING</b> - индекс сортировки;</li>
+          <li> <b>MESSAGE_ID</b> - идентификатор поискового индекса;</li>
+
+        </ul>
+
+<p></p><div class="note"><b>Примечание:</b> В коробочной версии этот список полей для сортировки можно вернуть методом <a class="link" href="https://dev.1c-bitrix.ru/api_help/tasks/classes/ctasks/getavailableorderfields.php" target="_blank">CTasks::getAvailableOrderFields()</a>.</div><p></p>
+
+       		Направление сортировки может принимать значения: 		 
+        <ul> 		 
+          <li><b>asc</b> - по возрастанию;</li>
+          <li><b>desc</b> - по убыванию;</li>
+        </ul>
+       &nbsp;Необязательный. По умолчанию фильтруется по убыванию идентификатора задачи.
+		
+	</td></tr>
+	
+	<tr><td>filter</td><td>Массив вида <i> {"фильтруемое_поле": "значение фильтра" [, ...]}</i>. Фильтруемое поле может принимать значения: 		 
+        <ul> 		 
+          <li><b>ID</b> - идентификатор задачи;</li>
+          <li><b>PARENT_ID</b> - идентификатор родительской задачи;</li>
+          <li><b>GROUP_ID</b> - идентификатор рабочей группы;</li>
+          <li><b>CREATED_BY</b> - постановщик;</li>
+          <li><b>STATUS_CHANGED_BY</b> - пользователь, последним изменивший статус задачи;</li>
+          <li><b>PRIORITY</b> - приоритет;</li>
+          <li><b>FORUM_TOPIC_ID</b> - идентификатор темы форума;</li>
+          <li><b>RESPONSIBLE_ID</b> - ответственный;</li>
+          <li><b>TITLE</b> - название задачи (можно искать по шаблону [%_]) ;</li>
+          <li><b>TAG</b> - &nbsp;тэг;</li>
+           <li><b>REAL_STATUS</b> - статус задачи. Константы отражающие статусы задач:
+			<ul>
+				<li>STATE_NEW = 1;</li>
+				<li>STATE_PENDING = 2;</li> 
+				<li>STATE_IN_PROGRESS = 3;</li> 
+				<li>STATE_SUPPOSEDLY_COMPLETED = 4;</li>
+				<li>STATE_COMPLETED = 5;</li> 
+				<li>STATE_DEFERRED = 6;</li> 
+				<li>STATE_DECLINED = 7;</li> 
+			</ul>
+		  </li>
+
+          <li><b>STATUS</b> - статус для сортировки. Аналогичен <b>REAL_STATUS</b>, но имеет дополнительно три мета-статуса:
+			<ul>
+				<li><b>-3</b> - задача почти просрочена;</li>
+				<li><b>-2</b> - не просмотренная задача;</li>
+				<li><b>-1</b> - просроченная задача.</li> 
+			</ul>
+		  </li>
+	 
+          <li><b>MARK</b> - оценка;</li>
+              <li><b>SITE_ID</b> - идентификатор сайта;</li>
+          <li><b>ADD_IN_REPORT</b> - задача в отчете (Y|N); </li>
+          <li> <b>DATE_START</b> - дата начала выполнения; </li>
+          <li> <b>DEADLINE</b> - крайний срок; </li>
+          <li> <b>CREATED_DATE</b> - дата создания; </li>
+          <li> <b>CLOSED_DATE</b> - дата завершения; </li>
+          <li> <b>CHANGED_DATE</b> - дата последнего изменения; </li>
+          <li> <b>ACCOMPLICE</b> - идентификатор соисполнителя;</li>
+          <li> <b>AUDITOR</b> - идентификатор наблюдателя; </li>
+          <li> <b>DEPENDS_ON</b> - идентификатор предыдущей задачи;&nbsp;</li>
+          <li> <b>ONLY_ROOT_TASKS</b> - &nbsp;только задачи, которые не являются подзадачами (корневые задачи), а также подзадачи родительской задачи, к которой текущий пользователь доступа не имеет (Y|N).</li>
+          <li> <b>STAGE_ID </b>- стадия;</li>  
+          <li> <b>UF_CRM_TASK</b> - элементы CRM;</li>            
+         </ul><br>
+		 
+		 Перед названием фильтруемого поля может указать тип фильтрации: 		 
+			<ul> 		 
+				<li>"!" - не равно</li>
+				<li>"&lt;" - меньше</li>
+				<li>"&lt;=" - меньше либо равно</li>
+				<li>"&gt;" - больше</li>
+				<li>"&gt;=" - больше либо равно</li>
+         	</ul>
+       
+<p>       "<i>значения фильтра</i>" - одиночное значение или массив. </p>
+
+<p>		Необязательный. По умолчанию записи не фильтруются.</p>
+
+	</td></tr>
+	
+
+
+<tr><td>select</td><td>Массив полей записей, которые будут возвращены методом. Можно указать только те поля, которые необходимы. 
+
+<p>Поле сортировки может принимать значения: 	</p>	 
+        
+
+        <ul> 		
+          <li><b>ID</b> - идентификатор задачи;</li>
+          <li><b>PARENT_ID</b> - идентификатор родительской задачи;</li>
+          <li><b>TITLE</b> - название задачи;</li>
+          <li><b>DESCRIPTION</b> - описание;</li>
+          <li> <b>MARK</b> - оценка;</li>
+          <li> <b>PRIORITY</b> - приоритет:
+			<ul>
+				<li><strong>0</strong> - низкий;</li> 
+				<li><strong>1</strong> - средний;</li> 
+				<li><strong>2</strong> - высокий.</li> 
+			</ul>
+	</li>
+          <li><b>STATUS</b> - статус;</li>
+          <li><b>MULTITASK</b> - множественная задача;</li>
+          <li><b>NOT_VIEWED</b> - непросмотренная задача;</li>
+          <li><b>REPLICATE</b> - повторяемая задача;</li>	 
+          <li> <b>GROUP_ID </b>- рабочая группа.&nbsp;</li>
+          <li> <b>STAGE_ID </b>- стадия;</li>
+          <li><b>CREATED_BY</b> - постановщик;</li>
+          <li><b>CREATED_DATE</b> - дата создания;</li>
+          <li><b>RESPONSIBLE_ID</b> - исполнитель;</li>
+          <li> <b>ACCOMPLICES</b> - идентификатор соисполнителя;</li>
+          <li> <b>AUDITORS</b> - идентификатор аудитора; </li>
+          <li><b>CHANGED_BY</b> - кем изменена задача;</li>
+          <li><b>CHANGED_DATE</b> - дата изменения;</li>
+          <li><b>STATUS_CHANGED_DATE</b> - дата изменения статуса;</li>
+          <li><b>CLOSED_BY</b> - кто закрыл задачу;</li>
+          <li><b>CLOSED_DATE</b> - дата закрытия задачи;</li>
+          <li><b>DATE_START</b> - дата начала;</li>
+          <li><b>DEADLINE</b> - крайний срок;</li>
+          <li><b>START_DATE_PLAN</b> - плановое начало;</li>
+          <li><b>END_DATE_PLAN</b> - плановое завершение;</li>
+          <li><b>GUID</b> - GUID (статистически уникальный 128-битный идентификатор);</li>
+          <li><b>XML_ID</b> - внешний код;</li>
+          <li><b>COMMENTS_COUNT</b> - количество комментариев;</li>
+          <li><b>NEW_COMMENTS_COUNT</b> - количество новых комментариев;</li>
+          <li><b>TASK_CONTROL</b> - принять в работу;</li>
+          <li><b>ADD_IN_REPORT</b> - добавить в отчет;</li>
+          <li><b>FORKED_BY_TEMPLATE_ID</b> - создано из шаблона;</li>
+          <li><b>TIME_ESTIMATE</b> - затраченное время;</li>
+          <li><b>TIME_SPENT_IN_LOGS</b> - затраченное время из истории изменений;</li>
+          <li><b>MATCH_WORK_TIME</b> - пропустить выходные дни;</li>
+          <li><b>FORUM_TOPIC_ID</b> - идентификатор темы форума;</li>
+          <li><b>FORUM_ID</b> - идентификатор форума;</li>
+          <li><b>SITE_ID</b> - идентификатор сайта;</li>
+          <li><b>SUBORDINATE</b> - задача подчиненного;</li>
+          <li><b>FAVORITE</b> - Избранное;</li>
+          <li><b>VIEWED_DATE</b> - дата последнего просмотра;</li>
+          <li><b>SORTING</b> - индекс сортировки;</li>
+          <li><b>DURATION_PLAN</b> - затрачено (план);</li>
+          <li><b>DURATION_FACT</b> - затрачено (фактически);</li>
+          <li><b>DURATION_TYPE</b> - тип единицы измерения в планируемой длительности: days, hours или minutes</li>
+
+</ul> 	
+<p>По умолчанию будут возвращены все <strong>невычисляемые</strong> поля основной таблицы запроса.</p>
+
+<p>Список полей можно уточнить, отправив запрос <strong>tasks.task.getFields</strong>.</p>
+
+</td></tr>
+
+
+
+<tr><td>limit</td><td>Число записей. Параметр указывается, если нужно получить число записей более значения по умолчанию (50). Все записи одним запросом вернуть нет возможности, это ограничение всех методов REST API. Вы можете несколькими запросами по 50 записей в ответе получить все лиды. Для этого просто передавайте параметр start со значением, кратным 50. Пример:
+<pre class="syntax">start=0
+start=50
+start=100</pre></td></tr>
+
+<tr><td>start</td><td>Сколько первых записей пропускать в результате. В связи с техническими ограничениями значение этого параметра всегда должно быть кратно 50. Например, при значении <code>50</code> в результате будут отображаться 51-я запись и последующие, а первые 50 записей будут пропущены. 
+
+<p>При значении <code>-1</code> будет отключён подсчёт количества.</p>
+</td></tr>
+
+
+  </tbody>
+</table>  
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Примеры</h3>
+
+
+<ol>
+<li>Вывод всех задач с названием "task for test", отбор по полям <code>ID</code>, <code>TITLE</code>, <code>STATUS</code>, сортировка по полю <code>ID</code> (сортировка по возрастанию):
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'tasks.task.list', 
+	{filter:{TITLE:'task for test'}, select: ['ID','TITLE','STATUS'], order:{ID:'asc'}}, 
+	function(res){console.log(res.answer.result);}
+);
+</pre>
+
+<p>Результат:</p>
+
+<img src="/images/screens/tasks_task_list-2.png">
+</li>
+
+<br>
+
+<li>Вывод всех неповторяющихся задач, добавленных в "Избранное", у которых статус больше 2:
+<pre class="syntax" rel="example">BX24.callMethod(
+	'tasks.task.list', 
+	{filter:{'&gt;STATUS':2, REPLICATE:'N', '::SUBFILTER-PARAMS':{FAVORITE:'Y'}}}, 
+	function(res){console.log(res.answer.result);}
+);
+</pre>
+
+<p>Результат:</p>
+<pre class="syntax">result: {
+	tasks: [
+		{
+			id: "117",
+			parentId: null,
+			title: "123",
+			description: "Opisanie.   Ghhhhh",
+			mark: null,
+			priority: "0",
+			status: "6",
+			multitask: "N",
+			notViewed: "N",
+			replicate: "N",
+			groupId: "0",
+			stageId: "0",
+			createdBy: "1",
+			createdDate: "2019-03-15T15:41:27+02:00",
+			responsibleId: "1",
+			changedBy: "1",
+			changedDate: "2019-03-18T14:06:18+02:00",
+			statusChangedBy: "1",
+			statusChangedDate: "2019-03-18T14:05:54+02:00",
+			closedBy: null,
+			closedDate: null,
+			dateStart: null,
+			deadline: null,
+			startDatePlan: null,
+			endDatePlan: null,
+			guid: "{aef54f9d-8157-464b-9069-6ded9745e26d}",
+			xmlId: null,
+			commentsCount: null,
+			taskControl: "Y",
+			addInReport: "N",
+			forkedByTemplateId: null,
+			timeEstimate: "0",
+			timeSpentInLogs: null,
+			matchWorkTime: "N",
+			forumTopicId: null,
+			forumId: null,
+			siteId: "s1",
+			subordinate: "Y",
+			favorite: "Y",
+			exchangeModified: null,
+			exchangeId: null,
+			outlookVersion: "7",
+			viewedDate: "2019-03-18T14:07:08+02:00",
+			sorting: "2564.0000000",
+			durationPlan: "0",
+			durationFact: null,
+			durationType: "days",
+			descriptionInBbcode: "Y",
+			ufCrmTask: [ ],
+			ufTaskWebdavFiles: [
+				22
+			],
+			ufAuto915658270214: null,
+			ufAuto244510721805: null,
+			ufAuto637823431651: "0",
+			ufMailMessage: null,
+			ufAuto226929532613: "",
+			ufAuto187628303463: null,
+			auditors: [ ],
+			accomplices: [ ],
+			newCommentsCount: 0,
+			subStatus: "6",
+			creator: {
+				id: "1",
+				name: "Гречушников Максим",
+				link: "/company/personal/user/1/",
+				icon: "/upload/resize_cache/main/9b0/58_58_2/p2dVDwA46Nw.png",
+			},
+			responsible: {
+				id: "1",
+				name: "Гречушников Максим",
+				link: "/company/personal/user/1/",
+				icon: "/upload/resize_cache/main/9b0/58_58_2/p2dVDwA46Nw.png",
+			},
+		}
+	]
+},
+</pre>
+</li>
+</ol>
+
+<p>Пример отключения постраничной навигации:</p>
+
+<pre class="syntax">$result = CRest::call(
+	'tasks.task.list',
+	[
+		'filter' =&gt; [
+			'&gt;ID' =&gt; 50
+		],
+		'start' =&gt; -1,
+	]
+);</pre>
+
+
+
+<p>В rest-методе <b>tasks.task.list</b> фиксированное число выбранных элементов - 50. К сожалению, на данный момент это значение нельзя изменить. Чтобы пропустить первые N записей необходимо передать параметр start: N. Пример:</p>
+
+<pre class="syntax">BX24.callMethod('tasks.task.list',{start: 1150})</pre>
+
+
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

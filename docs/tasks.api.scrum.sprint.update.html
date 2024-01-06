@@ -1,0 +1,66 @@
+<html>
+        <head>
+            <title>tasks.api.scrum.sprint.update</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">tasks.api.scrum.sprint.update <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/tasks/task/scrum/sprint/tasks_api_scrum_sprint_update.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">task</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<pre class="syntax"><b>tasks.api.scrum.sprint.update(</b>fields<b>)</b></pre>
+
+<p>Метод изменяет спринт.</p>
+
+<p>Все поля спринта доступны для обновления. Необновляемые поля можно не передавать.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+<tbody>
+<tr>
+	<th width="15%">Параметр</th>	<th>Описание</th></tr>
+
+<tr>	<td>fields</td>	<td>Поля, соответствующие доступному списку полей <a class="link" href="/rest_help/tasks/task/scrum/sprint/tasks_api_scrum_sprint_getFields.php">tasks.api.scrum.sprint.getFields</a>. 
+
+<p>Доступные значения для полей дат <b>dateStart</b> и <b>dateEnd</b>: ('ISO 8601', timestamp).</p>
+
+<p>Доступные значения для поля <b>status</b>: ('active', 'planned', 'completed').</p>
+
+</td></tr>
+
+</tbody>
+</table>
+
+
+<h4>Примеры</h4>
+ <pre class="syntax" rel="example">const sprintId = 2;
+const groupId = 1;
+const name = 'Sprint 2';
+const dateStart = '2021-11-22T00:00:00+02:00';
+const dateEnd = '2021-11-29T00:00:00+02:00';
+BX24.callMethod(
+	'tasks.api.scrum.sprint.update',
+	{
+		id: sprintId,
+		fields:{
+			name: name,
+			groupId: groupId,
+			dateStart: dateStart,
+			dateEnd: dateEnd,
+		}
+	},
+	function(res)
+	{
+		console.log(res);
+	}
+);
+</pre> 
+
+<br>							
+        </div>
+        </body>
+        </html>

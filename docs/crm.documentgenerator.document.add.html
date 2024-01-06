@@ -1,0 +1,72 @@
+<html>
+        <head>
+            <title>crm.documentgenerator.document.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.documentgenerator.document.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/documentgenerator/documents/crm_documentgenerator_document_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<a class="link" name="register"></a>
+<pre class="syntax">crm.documentgenerator.document.add(templateId, entityTypeId, entityId, values = [])</pre>
+
+<p>Метод создает новый документ на основании шаблона и данных из соответствующей сущности. В <code>values</code> можно передать массив дополнительных значений полей. В случае успешного выполнения в результате придёт структура, аналогичная методу <a class="link" href="/rest_help/crm/documentgenerator/documents/crm_documentgenerator_document_get.php">crm.documentgenerator.document.get()</a> на новом документе.</p>
+
+
+<div class="learnin-post-text"> 
+  <table class="learning-spoiler"> <thead onclick="LearningInitSpoiler(this)"> 
+      <tr><th> 
+          <div>Почему в результате <b>crm.documentgenerator.document.add</b> нет ссылки на <b>pdf</b>?</div>
+         </th></tr>
+    </thead> 
+    <tbody style="display: none;" class="learning-spoiler"> 
+      <tr><td> 
+         <ul><li>Конвертация в <b>pdf</b> - операция асинхронная. На момент окончания генерации документа еще нет <b>pdf</b>-файла. Минимальное время конвертации - 8 секунд. </li>
+<li>Если для документа очень нужен <b>pdf</b>, то сейчас единственный вариант - сделать повторный запрос <b>crm.documentgenerator.document.get</b> через 20-30 секунд, чтобы считать ссылку на <b>pdf</b>. Если она там не появилась - попробовать повторить. </li>
+
+</ul>
+           
+        </td></tr>
+     </tbody>
+   </table>
+</div>
+
+
+
+
+
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>      </tr>
+
+<tr><td>templateId</td><td>ID шаблона.</td></tr>
+<tr><td>entityTypeId</td><td>ID типа сущности CRM.</td></tr>
+<tr><td>entityId</td><td>ID сущности.</td></tr>
+<tr><td>values</td><td> дополнительные значения полей.</td></tr>
+<tr><td>stampsEnabled</td><td>1 (поставить), 0 (убрать) печати и подписи.</td></tr>
+
+</tbody>
+</table>
+
+<br><br>
+
+
+<h4>Смотри также</h4>
+
+<ul>
+<li><a class="link" href="/rest_help/documentgenerator/example.php">Примеры генерации документа</a></li>
+<li><a class="link" href="https://dev.1c-bitrix.ru/upload/doc_gen_04_10_2019.pdf">Презентация по генератору документов</a></li>
+<li><a class="link external-link" href="https://helpdesk.bitrix24.ru/open/7622241/">Шаблоны документов</a></li>
+
+ </ul>
+
+<br><br>
+<br><br>							
+        </div>
+        </body>
+        </html>

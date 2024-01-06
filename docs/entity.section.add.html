@@ -1,0 +1,82 @@
+<html>
+        <head>
+            <title>entity.section.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">entity.section.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/entity/entity_section_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Описание и пример</h3>
+
+<p>Добавление раздела хранилища. Пользователь должен обладать хотя бы правами на запись (<b>W</b>) в хранилище.</p>
+
+<h4>Пример</h4>
+
+<p>Вызов<br>
+</p><pre class="syntax" rel="example">BX24.callMethod('entity.section.add', {ENTITY: 'menu_new', 'NAME': 'Тестовый раздел'});</pre><p></p>
+
+<p>Запрос<br>
+</p><pre>https://my.bitrix24.ru/rest/entity.section.add.json?ENTITY=menu_new&amp;NAME=%D0%A2%D0%B5%D1%81%D1%82%D0%BE%D0%B2%D1%8B%D0%B9%20%D1%80%D0%B0%D0%B7%D0%B4%D0%B5%D0%BB&amp;auth=9affe382af74d9c5caa588e28096e872</pre><p></p>
+
+<p>Ответ<br>
+</p><pre>{"result":220}</pre><p></p>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+
+<table class="tnormal" width="100%">
+<tbody><tr>
+	<th width="20%">Параметр</th>
+	<th>Описание</th>
+</tr>
+<tr>
+	<td>ENTITY</td>
+	<td>Обязательный. Строковой идентификатор хранилища.</td>
+</tr>
+<tr>
+	<td>NAME</td>
+	<td>Обязательный. Наименование раздела.</td>
+</tr>
+<tr>
+	<td>DESCRIPTION</td>
+	<td>Описание раздела.</td>
+</tr>
+<tr>
+	<td>ACTIVE</td>
+	<td>Флаг активности раздела (Y|N).</td>
+</tr>
+<tr>
+	<td>SORT</td>
+	<td>Сортировочный параметр раздела.</td>
+</tr>
+<tr>
+	<td>PICTURE</td>
+	<td>Картинка раздела.</td>
+</tr>
+<tr>
+	<td>DETAIL_PICTURE</td>
+	<td>Детальная картинка раздела.</td>
+</tr>
+<tr>
+	<td>SECTION</td>
+	<td>Идентификатор родительского раздела.</td>
+</tr>
+</tbody></table>
+
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,124 @@
+<html>
+        <head>
+            <title>telephony.call.attachTranscription</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">telephony.call.attachTranscription <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/scope_telephony/telephony/telephony_call_attachtranscription.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Описание</h3>
+
+<p>Метод добавляет расшифровку записи к звонку.</p>
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">Тип</th></tr>
+   
+    <tr> 	<td>CALL_ID</td> 	<td>Идентификатор звонка</td> <td>string</td></tr>
+   
+    <tr> 	<td>COST</td> 	<td>Стоимость расшифровки</td> <td>float</td></tr>
+   
+    <tr> 	<td>COST_CURRENCY</td> 	<td>валюта стоимости расшифровки</td> <td>string</td></tr>
+   
+    <tr> 	<td>MESSAGES</td> 	<td>расшифровка звонка. Массив объектов типа <strong>TranscriptMessage</strong>.</td> <td></td></tr>
+   
+   </tbody>
+ </table>
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Поля класса TranscriptMessage</h3>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Поля</th> 	<th>Описание</th> <th width="8%">Тип</th></tr>
+   
+    <tr> 	<td>SIDE</td> 	<td>Участник разговора. Варианты значения: <strong>User</strong> - пользователь портала, <strong>Client</strong> - внешний участник.</td> <td>string</td></tr>
+   
+    <tr> 	<td>START_TIME</td> 	<td>Время начала фразы в секундах, считая от начала разговора.</td> <td>int</td></tr>
+   
+    <tr> 	<td>STOP_TIME</td> 	<td>Время окончания фразы в секундах, считая от начала разговора.</td> <td>int</td></tr>
+   
+    <tr> 	<td>MESSAGE</td> 	<td>Текст фразы</td> <td>string</td></tr>
+   
+   </tbody>
+ </table>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Пример</h3>
+
+<pre class="syntax" rel="example">var callId = '&lt;Id of the call&gt;';
+var messages = [
+	{
+		SIDE: "User",
+		START_TIME: 1,
+		STOP_TIME: 3,
+		MESSAGE: "Добрый день, чем могу помочь"
+	},
+	{
+		SIDE: "Client",
+		START_TIME: 4,
+		STOP_TIME: 8,
+		MESSAGE: "Здравствуйте, вы продаете пылесосы?"
+	},
+	{
+		SIDE: "User",
+		START_TIME: 9,
+		STOP_TIME: 11,
+		MESSAGE: "К сожалению, нет"
+	},
+	{
+		SIDE: "Client",
+		START_TIME: 11,
+		STOP_TIME: 13,
+		MESSAGE: "Понятно, до свидания"
+	},
+	{
+		SIDE: "User",
+		START_TIME: 13,
+		STOP_TIME: 15,
+		MESSAGE: "До свидания"
+	},
+];
+
+BX24.callMethod(
+	"telephony.call.attachTranscription", 
+	{
+		CALL_ID: callId,
+		MESSAGES: messages
+	},
+	function(response)
+	{
+		console.log(response.data())
+	}
+);</pre>
+
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

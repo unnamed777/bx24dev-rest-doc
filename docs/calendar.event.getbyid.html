@@ -1,0 +1,45 @@
+<html>
+        <head>
+            <title>calendar.event.getbyid</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">calendar.event.getbyid <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/calendar/calendar_event_getbyid.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Метод возвращает событие календаря по идентификатору. </p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>id</td> 	<td>Обязательный параметр, число. Возвращает массив с полями сущности события или <i>null</i></td> <td></td></tr>
+   
+   </tbody>
+ </table>
+
+
+<h4>Пример</h4>
+
+<pre class="syntax">BX24.callMethod("calendar.event.getbyid", {id: 324});
+/*
+	* Returns event by it id
+	*
+	* @param array $params - incomoning params:
+	* $params['id'] - int, (required) calendar event id
+	* @return event or null
+	* @throws \Bitrix\Rest\RestException
+	*
+	* @example (Javascript)
+	* BX24.callMethod("calendar.event.getbyid",
+	* {
+	* 	id: 324
+	* });
+	*
+	*/</pre>
+<br><br>							
+        </div>
+        </body>
+        </html>

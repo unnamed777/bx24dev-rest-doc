@@ -1,0 +1,53 @@
+<html>
+        <head>
+            <title>imopenlines.crm.chat.user.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">imopenlines.crm.chat.user.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/imconnector/methods/imopenlines_crm_chat_user_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Метод добавляет пользователя в чат, полученый по CRM-сущности.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>CRM_ENTITY_TYPE</td> 	<td>Тип CRM сущности (LEAD/DEAL/COMPANY/CONTACT, обязательный)</td> <td></td></tr>
+   
+    <tr> 	<td>CRM_ENTITY</td> 	<td>Идентификатор CRM сущности (обязательный)</td> <td></td></tr>
+   
+    <tr> 	<td>USER_ID</td> 	<td>Идентификатор пользователя или бота, которого мы хотим добавить в чат (обязательный)</td> <td></td></tr>
+
+   </tbody>
+ </table>
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">//imopenlines.crm.chat.user.add
+function crmChatUserAdd()
+{
+	var params = {
+		CRM_ENTITY_TYPE: 'LEAD', //LEAD|DEAL|COMPANY|CONTACT
+		CRM_ENTITY: 1,
+		USER_ID: 1
+	};
+	BX24.callMethod(
+		'imopenlines.crm.chat.user.add',
+		params,
+		function (result) {
+			if (result.error())
+				alert("Error: " + result.error());
+			else
+				alert("Успешно: " + result.data());
+		}
+	);
+}
+</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

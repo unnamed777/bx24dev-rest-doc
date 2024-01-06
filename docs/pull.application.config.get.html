@@ -1,0 +1,222 @@
+<html>
+        <head>
+            <title>pull.application.config.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">pull.application.config.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/pull_push/pull_application_config_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<p class="note_blue">
+Scope: <span class="bg_blue">pull</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<div class="tab">
+
+<h3 class="tab-title">Описание</h3>
+<p>Метод для получения информации о подключении к real-time серверам и организации мгновенных коммуникаций в рамках приложений.</p>
+
+<p>Благодаря подключению к RT-серверам вы сможете:</p>
+<ul>
+<li>создать действительно интерактивное приложение,</li>
+<li>менять состояния,</li> 
+<li>мгновенно обновлять интерфейс без необходимости обновления страницы в режиме реального времени.</li> 
+ </ul>
+
+<p class="note"><strong>Обратите внимание</strong>: метод вернет данные о подключении к каналам, созданных специально для вашего rest-приложения. В рамках этих каналов вы будете получать только ваши события.</p>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th width="8%">Пример 	</th> <th width="8%">Обязательный</th><th>Описание</th></tr>
+   
+    <tr> 	<td>CACHE</td> 	<td>Y / N </td> <td>Нет 	</td> <td>Возвращать кешированные данные или нет, по умолчанию Y.</td></tr>
+      
+   </tbody>
+ </table>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Примеры</h3>
+
+<p><strong>JavaScript</strong></p>
+
+<pre class="syntax" rel="example">BX24.callMethod('pull.application.config.get', {
+	'CACHE': 'Y',
+}, function(result){
+	if(result.error())
+	{
+		console.error(result.error().ex);
+	}
+	else
+	{
+		console.log(result.data());
+	}
+});</pre>
+
+<p><strong>PHP</strong></p>
+
+<pre class="syntax">$result = restCommand('pull.application.config.get', [
+	'CACHE': 'Y',
+], $_REQUEST["auth"]);</pre>
+
+<h4>Пример ответа</h4>
+
+<pre class="syntax">{
+	"result": {
+		"server": {
+			"version": 4,
+			"server_enabled": true,
+			"long_polling": "http://rt.bitrix24.com/sub/",
+			"long_polling_secure": "https://rt.bitrix24.com/sub/",
+			"websocket_enabled": true,
+			"websocket": "ws://rt.bitrix24.com/sub/",
+			"websocket_secure": "wss://rt.bitrix24.com/sub/"
+			"publish_enabled": true,
+			"publish": "http://rt.bitrix24.com/pubweb/",
+			"publish_secure": "https://rt.bitrix24.com/pubweb/"
+		},
+		"channels": {
+			"shared": {
+				"id": "46a437d2336d4a88e4e9b3cd956ecf45.7910bb25e660bf211fdec15e33c5e25e4c3b644a",
+				"start": "2017-06-28T12:04:00+02:00",
+				"end": "2017-06-29T00:04:00+02:00",
+				"type": "shared"
+			},
+			"private": {
+				"id": "925153cd80b6b5a4dbf8659d5be21d1:abe9e6964532000ab8b7acf092ba627b.605ea91793ad24be3f9745d662713b23a5803a94",
+				"public_id": "abe9e6964532000ab8b7acf092ba627b.057ac8625ae4ac0da4ed093a19950f9dab7e29d0",
+				"start": "2017-06-28T09:57:48+02:00",
+				"end": "2017-06-28T21:57:48+02:00",
+				"type": "private"
+			}
+		}
+	}
+}</pre>
+
+<p>Объект <strong>server</strong> описывает конфигурацию сервера и пути для подключения к real-time каналу. Ключи объекта:</p>
+
+<ul>
+<li><strong>version</strong> - версия установленного сервера,</li>
+<li><strong>server_enabled</strong> - активирована или нет работа с сервером,</li> 
+<li><strong>websocket_enabled</strong> - доступна или нет работа с веб сокетами.</li> 
+<li><strong> long_pooling</strong> и <strong>websocket</strong> - пути подключения,</li>
+<li><strong>long_pooling_secure</strong> и <strong>websocket_secure</strong> - пути подключения при использовании протокола https,</li>
+<li><strong>publish_enabled</strong> - доступна или нет 
+		<span class="learning-lesson-detail-block js-detail-info-block">
+			<span class="learning-lesson-detail-word js-detail-info-word">возможность публикации сообщения</span>
+			<span class="learning-lesson-detail-body js-detail-info-body">
+				<span class="learning-lesson-detail-body-inner  js-detail-info-body-inner">
+                    <button class="learning-lesson-detail-close-button  js-detail-close-button" type="button"></button>
+                    Доступно начиная с 4-й версии сервера очередей.
+                </span>
+			</span>
+		</span>
+		 со стороны клиента,</li>
+<li><strong>publish</strong> и <strong>publish_secure</strong> - пути для публикации сообщений со стороны клиента.</li>
+<li><strong>clientId</strong> - уникальный идентификатор портала на облачном push-сервере. Возвращается в случае, если на портале используется 
+		<span class="learning-lesson-detail-block js-detail-info-block">
+			<span class="learning-lesson-detail-word js-detail-info-word">облачный push-сервер</span>
+			<span class="learning-lesson-detail-body js-detail-info-body">
+				<span class="learning-lesson-detail-body-inner  js-detail-info-body-inner">
+                    <button class="learning-lesson-detail-close-button  js-detail-close-button" type="button"></button>
+                    Push-уведомления – это небольшие всплывающие окна, которые появляются на экране мобильного телефона или обычного компьютера и сообщают о важных событиях и обновлениях. То есть инициатором уведомлений являются сайты, на которые подписан пользователь. Противоположностью Push-технологии является технология Pull, где информация запрашивается самим пользователем. <br><br><a class="link" href="https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=41&amp;CHAPTER_ID=011757&amp;LESSON_PATH=3911.11757" title="" target="_blank">Подробнее</a>...
+                </span>
+			</span>
+		</span>
+		.</li>
+
+ </ul>
+
+
+<p>Объект <strong>channels</strong> описывает данные для подключения пользователя к каналам. Ключи:</p>
+
+<ul>
+<li><strong>shared</strong> - общий канал портала. На этом канале публикуются команды для всех пользователей портала (в том числе пользователей экстранет).</li>
+<li><strong>private</strong> - приватный канал пользователя. На этом канале публикуются команды только для текущего пользователя.</li> 
+ </ul>
+
+<p>Массив канала, содержит:</p>
+
+<ul>
+<li><strong>id</strong> - идентификатор канала;</li>
+<li><strong>public_id</strong> - публичный 
+		<span class="learning-lesson-detail-block js-detail-info-block">
+			<span class="learning-lesson-detail-word js-detail-info-word">идентификатор канала</span>
+			<span class="learning-lesson-detail-body js-detail-info-body">
+				<span class="learning-lesson-detail-body-inner  js-detail-info-body-inner">
+                    <button class="learning-lesson-detail-close-button  js-detail-close-button" type="button"></button>
+                    Доступен только для 4-й версии сервера очередей и только для приватных каналов
+                </span>
+			</span>
+		</span>
+		;</li> 
+<li><strong>start</strong> - время создания канала (в формате ATOM);</li> 
+<li><strong>end</strong> - время окончания работы канала (в формате ATOM);</li> 
+<li><strong>type</strong> - тип канала.</li> 
+ </ul>
+
+      
+
+<h4>Пример ответа при возникновения ошибки</h4>
+
+<pre class="syntax">{
+	"error": "SERVER_ERROR",
+	"error_description": "Push &amp; Pull server is not configured"
+}
+</pre>
+<p>Ключи:</p>
+
+<ul>
+<li><strong>error</strong> - код возникшей ошибки</li>
+<li><strong>error_description</strong> - краткое описание возникшей ошибки</li> 
+ </ul>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Возможные коды ошибок</h3>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Код</th> 	<th>Описание</th></tr>
+   
+    <tr> 	<td>SERVER_ERROR</td> 	<td>На портале не настроен модуль <strong>Push &amp; Pull</strong> на работу с сервером очередей.</td></tr>
+   
+    <tr> 	<td>WRONG_AUTH_TYPE</td> 	<td>Метод можно использовать только в рамках <a class="link" href="https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=99&amp;LESSON_ID=2486&amp;LESSON_PATH=8771.5380.5379.2486" title="" target="_blank">OAuth 2.0</a> или через <a class="link" href="https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=99&amp;LESSON_ID=8581&amp;LESSON_PATH=8771.8583.8581" title="" target="_blank">веб-хуки</a>.</td></tr>
+   
+   </tbody>
+ </table>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Смотрите также</h3>
+
+
+<ul>
+<li><a class="link" href="https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=99&amp;CHAPTER_ID=012565" title="" target="_blank">Интерактивность в приложениях</a></li>
+ </ul>
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

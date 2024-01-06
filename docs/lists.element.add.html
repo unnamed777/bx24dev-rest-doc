@@ -1,0 +1,139 @@
+<html>
+        <head>
+            <title>lists.element.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">lists.element.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/lists/elements/lists_element_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Описание</h3>
+
+<pre class="syntax">lists.element.add (params, fields)</pre>
+
+<p>Метод создаёт элемент списка. В случае успешного создания элемента ответ true, иначе Exception.</p>
+
+<p>Чтобы загрузить файлы в поле типа Файл (Диск) необходимо:</p>
+
+<ol>
+<li> использовать rest api модуля disk: <a class="link" href="/rest_help/disk/folder/disk_folder_uploadfile.php">disk.folder.uploadfile</a> и <a class="link" href="/rest_help/disk/storage/disk_storage_uploadfile.php">disk.storage.uploadfile</a>. В ответе при загрузке этих файлов, вы будете получать  "FILE_ID": 290.</li>
+<li>Получить список ID загруженных файлов. </li> 
+<li>Затем с помощью rest api модуля lists добавлять файлы в нужное поле:
+<pre class="syntax" rel="example">var params = {
+	'IBLOCK_TYPE_ID': 'lists',
+	'IBLOCK_ID': '41',
+	'ELEMENT_CODE': 'element1',
+	'FIELDS': {
+		'NAME': 'Test element 1',
+		'PROPERTY_121': { 'n0':["n1582"]}
+	}
+};
+BX.rest.callMethod(
+	'lists.element.add',
+	params,
+	function(result)
+	{
+		if(result.error())
+			alert("Error: " + result.error());
+		else
+			alert("Success: " + result.data());
+	}
+);</pre>
+
+</li> 
+ </ol>
+
+
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr><th width="15%">Параметр</th> <th>Описание</th></tr>
+<tr><td>IBLOCK_TYPE_ID</td><td>id типа инфоблока (обязательно):
+<ul>
+<li><b>lists</b> - тип инфоблока списка</li>
+<li><b>bitrix_processes</b> - тип инфоблока процессов</li> 
+<li><b>lists_socnet</b> - тип инфоблока списков групп</li></ul></td></tr>
+<tr><td>IBLOCK_CODE/IBLOCK_ID</td><td>код или id инфоблока (обязательно)</td></tr>
+<tr><td>ELEMENT_CODE</td><td>код элемента инфоблока (обязательно)</td></tr>
+<tr><td>LIST_ELEMENT_URL</td><td>шаблон адреса к элементам списка</td></tr>
+<tr><td>FIELDS</td><td>массив полей и значений</td></tr>
+<tr><td>SOCNET_GROUP_ID</td><td>id группы (обязательно, если список создается для группы);</td></tr>
+</tbody>
+</table>
+
+	
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Пример</h3>
+	
+<pre class="syntax" rel="example">var params = {
+	'IBLOCK_TYPE_ID': 'lists_socnet',
+	'IBLOCK_CODE': 'rest_1',
+	'ELEMENT_CODE': 'element_1',
+	'LIST_ELEMENT_URL': '#list_id#/element/#section_id#/#element_id#/',
+	'FIELDS': {
+		'NAME': 'Test element',
+		'PROPERTY_62': 'Text string',
+		'PROPERTY_63': {
+			'0': '7',
+			'1': '9',
+			'2': '10'
+		}
+	}
+};
+BX24.callMethod(
+	'lists.element.add',
+	params,
+	function(result)
+	{
+		if(result.error())
+			alert("Error: " + result.error());
+		else
+			alert("Success: " + result.data());
+	}
+);</pre>
+
+<p>Пример добавления файла:</p>
+
+<pre class="syntax" rel="example">var params = {
+	'IBLOCK_TYPE_ID': 'lists',
+	'IBLOCK_ID': '41',
+	'ELEMENT_CODE': 'element1',
+	'FIELDS': {
+		'NAME': 'Test element 1',
+		'PROPERTY_122': document.getElementById('fileInputId') // PROPERTY_122 - Пользовательское свойство типа "Файл"
+	}
+};
+BX.rest.callMethod(
+	'lists.element.add',
+	params,
+	function(result)
+	{
+		if(result.error())
+			alert("Error: " + result.error());
+		else
+			alert("Success: " + result.data());
+	}
+);</pre>
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

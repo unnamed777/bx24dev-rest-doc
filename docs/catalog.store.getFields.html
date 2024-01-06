@@ -1,0 +1,177 @@
+<html>
+        <head>
+            <title>catalog.store.getFields</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">catalog.store.getFields <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/catalog/store/catalog_store_getfields.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">catalog.store.getFields()</pre>
+
+<p>Метод возвращает поля складов.</p>
+
+<h4>Параметры</h4>
+
+<p>Без параметров.</p>
+
+<h4>Примеры</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'catalog.store.getFields',
+	{},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error().ex);
+		else
+			console.log(result.data());
+	}
+);
+</pre>
+
+<h4>Возвращаемые поля</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Поле</th> 	<th>Описание</th><th>Тип</th><th>Примечание</th></tr>
+<tr>
+<td>active</td>
+<td>Активность</td>
+<td>char</td>
+<td></td>
+</tr>
+<tr>
+<td>address</td>
+<td>Адрес</td>
+<td>string</td>
+<td>Обязательное поле</td>
+</tr>
+<tr>
+<td>code</td>
+<td>Символьный код</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>dateCreate</td>
+<td>Дата создания</td>
+<td>datetime</td>
+<td></td>
+</tr>
+<tr>
+<td>dateModify</td>
+<td>Дата изменения</td>
+<td>datetime</td>
+<td></td>
+</tr>
+<tr>
+<td>description</td>
+<td>Описание</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>email</td>
+<td>Email</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>gpsN</td>
+<td>GPS широта</td>
+<td>double</td>
+<td></td>
+</tr>
+<tr>
+<td>gpsS</td>
+<td>GPS долгота</td>
+<td>double</td>
+<td></td>
+</tr>
+<tr>
+<td>id</td>
+<td>Идентификатор склада</td>
+<td>integer</td>
+<td>Только для чтения.</td>
+</tr>
+<tr>
+<td>imageId</td>
+<td>Идентификатор изображения</td>
+<td>integer</td>
+<td></td>
+</tr>
+<tr>
+<td>issuingCenter</td>
+<td>Пункт выдачи</td>
+<td>char</td>
+<td></td>
+</tr>
+<tr>
+<td>locationId</td>
+<td>Идентификатор местоположения</td>
+<td>integer</td>
+<td></td>
+</tr>
+<tr>
+<td>modifiedBy</td>
+<td>Кем изменен</td>
+<td>integer</td>
+<td></td>
+</tr>
+<tr>
+<td>phone</td>
+<td>Телефон</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>schedule</td>
+<td>График работы</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>shippingCenter</td>
+<td>Для отгрузки</td>
+<td>char</td>
+<td></td>
+</tr>
+<tr>
+<td>siteId</td>
+<td>Идентификатор сайта</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>sort</td>
+<td>Сортировка</td>
+<td>integer</td>
+<td></td>
+</tr>
+<tr>
+<td>title</td>
+<td>Название</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>userId</td>
+<td>Кем создан</td>
+<td>integer</td>
+<td></td>
+</tr>
+<tr>
+<td>xmlId</td>
+<td>Внешний код</td>
+<td>string</td>
+<td></td>
+</tr>
+
+   </tbody>
+ </table>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

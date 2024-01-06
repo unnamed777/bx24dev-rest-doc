@@ -1,0 +1,60 @@
+<html>
+        <head>
+            <title>task.checklistitem.getlist</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">task.checklistitem.getlist <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/tasks/task/checklistitem/getlist.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">task</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<p>Возвращает список элементов чек-листа в задаче.</p>
+ 
+<h4>Параметры функции</h4>
+<table class="tnormal" width="100%"> 
+  <tbody> 
+    <tr><th width="15%">Параметр</th><th>Описание</th></tr>
+		<tr><td>TASKID</td>	<td>Идентификатор задачи. Обязательный параметр.</td>	</tr>
+		
+		<tr><td>ORDER</td>	<td>Массив для сортировки результата. Поле для сортировки может принимать значения:
+			<br>
+			<ul>
+				<li><b>ID</b> - идентификатор элемента чек-листа;	</li>
+				
+				<li><b>CREATED_BY</b> - идентификатор пользователя, создавшего элемент;	</li>
+				<li><b>TOGGLED_BY</b> - идентификатор пользователя, изменившего состояние элемента чек-листа;	</li>
+				<li><b>TOGGLED_DATE</b> - время, когда было изменено состояние элемента чек-листа;	</li>
+				<li><b>TITLE</b> - заголовок элемента чек-листа;	</li>
+				<li><b>SORT_INDEX</b> - индекс сортировки элемента;	</li>
+				<li><b>IS_COMPLETE</b> - элемент отмечен как выполненный;	</li>
+			</ul>
+			Направление сортировки может принимать значения:
+			<ul>
+				<li><b>asc</b> - по возрастанию;	</li>
+				<li><b>desc</b> - по убыванию;	</li>
+			</ul>
+			Необязательный. По умолчанию фильтруется по убыванию идентификатора элемента чек-листа.
+		</td></tr>
+
+	</tbody>
+</table>
+
+ <p></p><div class="note"><b>Внимание!</b> Соблюдение порядка следования параметров в запросе обязательно. При его нарушении запрос будет выполнен с ошибками.</div><p></p>
+<h4>Пример</h4>
+<pre class="syntax" rel="example">BX24.callMethod(
+	'task.checklistitem.getlist',
+	[13, {'TOGGLED_DATE': 'desc'}],
+	function(result){
+		console.info(result.data());
+		console.log(result);
+	}
+);
+</pre>
+ 
+<br><br>							
+        </div>
+        </body>
+        </html>

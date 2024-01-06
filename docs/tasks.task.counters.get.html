@@ -1,0 +1,126 @@
+<html>
+        <head>
+            <title>tasks.task.counters.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">tasks.task.counters.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_counters_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<p class="note_blue">
+Scope: <span class="bg_blue">task</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<div class="tab">
+
+<h3 class="tab-title">Описание</h3>
+
+<pre class="syntax"><strong>tasks.task.counters.get(</strong>userId, groupId, type<strong>)</strong></pre>
+
+<p>Метод получения счетчиков пользователя.</p>
+
+<p>Можно отфильтровать по:</p>
+
+<ul>
+<li>userId</li>
+<li>groupId</li>
+<li>type</li>
+</ul>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+<tr>
+<td>userId</td>
+<td>Идентификатор пользователя (пространство имен). Если <code>userId</code> не указан, то берется текущий пользователь.</td>
+</tr>
+
+<tr>
+<td>groupId</td>
+<td>Идентификатор группы пользователя.</td>
+</tr>
+
+
+<tr>
+<td>type</td>
+<td>Роль счетчиков:
+<ul>
+<li><strong>view_all</strong> - все роли;</li>
+<li><strong>view_role_responsible</strong> - роль "Делаю";</li>
+<li><strong>view_role_accomplice</strong> - роль "Помогаю";</li>
+<li><strong>view_role_auditor</strong> - роль "Наблюдаю";</li>
+<li><strong>view_role_originator</strong> - роль "Поручил".</li>
+</ul>
+
+</td>
+</tr>
+	</tbody>
+</table>
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Примеры</h3>
+
+<pre class="syntax" rel="example">BX24.callMethod('tasks.task.counters.get', {userId:1, groupId:0,type:'vew_all'}, (res)=&gt;{console.log(res.answer.result);});
+</pre>
+
+<p>Результат:</p>
+
+<pre class="syntax">{
+	"result": {
+		"wo_deadline": {
+			"counter": 0,
+			"code": 10485760
+		},
+		"expired": {
+			"counter": 1,
+			"code": 6291456
+		},
+		"expired_soon": {
+		"counter": 0,
+		"code": 9437184
+		},
+		"not_viewed": {
+			"counter": 0,
+			"code": 1048576
+		},
+		"wait_ctrl": {
+			"counter": 0,
+			"code": 8388608
+		}
+	},
+	"total": 1,
+	"time": {
+		"start": 1552383141.526606,
+		"finish": 1552383141.576861,
+		"duration": 0.05025482177734375,
+		"processing": 0.002279996871948242,
+		"date_start": "2019-03-12T11:32:21+02:00",
+		"date_finish": "2019-03-12T11:32:21+02:00"
+	}
+}
+</pre>
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,94 @@
+<html>
+        <head>
+            <title>mailservice.update</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">mailservice.update <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/mailservice/mailservice_update.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Описание</h3>
+
+<pre class="syntax">mailservice.update<b>(</b>
+	ID,
+	ACTIVE,
+	NAME,
+	SERVER,
+	PORT,
+	ENCRYPTION,
+	LINK,
+	SORT
+<b>)</b></pre>
+
+<p>Обновляет параметры почтового сервиса.</p>
+ 
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+<table width="100%" class="tnormal"> 
+  <tbody> 
+	 <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+ 
+	 <tr> 	<td>ID</td> 	<td>Идентификатор почтового сервиса</td> <td></td></tr>
+	 <tr> 	<td>ACTIVE</td> 	<td>Активность сервиса (Y / N)</td> <td></td></tr>
+	 <tr> 	<td>NAME</td> 	<td>Имя добавляемого почтового сервиса</td> <td></td></tr>
+	 <tr> 	<td>SERVER</td> 	<td>Адрес добавляемого сервера</td> <td></td></tr>
+	 <tr> 	<td>PORT</td> 	<td>Номер порта</td> <td></td></tr>
+	 <tr> 	<td>ENCRYPTION</td> 	<td>Необходимость шифрования (Y / N)</td> <td></td></tr>
+	 <tr> 	<td>LINK</td> 	<td>Ссылка на почтовый сервис</td> <td></td></tr>
+	 <tr> 	<td>SORT</td> 	<td>Индекс сортировки</td> <td></td></tr>
+  
+	</tbody>
+ </table>
+
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Пример</h3>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	"mailservice.update",
+	{
+		'ID': 5,
+		'ACTIVE': 'N',
+		'NAME': 'Почтовый сервис Yandex',
+		'SERVER': 'imap.yandex.ru',
+		'PORT': '993',
+		'ENCRYPTION': 'Y',
+		'LINK': 'https://mail.yandex.ru/',
+		'SORT': '666'
+	},
+	function(result)
+	{
+		if(result.error())
+		{
+			console.error(result.error());
+		}
+		else
+		{
+			console.info(result.data());
+		}
+	}
+);
+</pre>
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

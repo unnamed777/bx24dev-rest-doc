@@ -1,0 +1,42 @@
+<html>
+        <head>
+            <title>bizproc.robot.update</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">bizproc.robot.update <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/bizproc/bizproc_robot/bizproc_robot_update.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">bizproc</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<p>Метод обновляет поля робота. В массив <strong>FIELDS</strong> передаются параметры, описанные в <a class="link" href="/rest_help/bizproc/bizproc_robot/bizproc_robot_add.php">bizproc.robot.add</a>.</p>
+
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">function updateRobot1()
+{
+	var params = {
+		'CODE': 'hash',
+		'FIELDS': {
+			'DOCUMENT_TYPE': '',
+			'FILTER': ''
+		},
+	};
+	BX24.callMethod(
+		'bizproc.robot.update',
+		params,
+		function(result)
+		{
+			if(result.error())
+				alert("Error: " + result.error());
+			else
+				alert("Успешно: " + result.data());
+		}
+	);
+}</pre>							
+        </div>
+        </body>
+        </html>

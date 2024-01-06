@@ -1,0 +1,76 @@
+<html>
+        <head>
+            <title>catalog.document.element.getFields</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">catalog.document.element.getFields <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/catalog/catalogdocument/catalogdocumentelement/catalog_document_element_getfields.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+<h3 class="tab-title">Описание и пример</h3>
+
+<pre class="syntax">catalog.document.element.getFields()</pre>
+
+<p>Метод возвращает список полей товаров документа складского учёта.</p>
+
+
+
+<h4>Параметры</h4>
+
+<p>Без параметров.</p>
+
+<h4>Примеры</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'catalog.document.element.getFields',
+	{},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.log(result.data());
+	}
+);
+</pre>
+
+
+</div>
+<!------->
+
+
+<div class="tab">
+<h3 class="tab-title">Возвращаемые поля</h3>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Поле</th> 	<th>Описание</th><th>Тип</th><th>Примечание</th></tr>
+   
+    <tr> 	<td>amount</td> 	<td>Количество.</td><td>double</td><td></td></tr>
+
+    <tr> 	<td>docId</td> 	<td>Идентификатор документа.</td><td>integer</td><td>Неизменяемое поле.</td></tr>
+
+    <tr> 	<td>elementId</td> 	<td>Идентификатор товара (catalog.product.list).</td><td>integer</td><td>Неизменяемое поле.</td></tr>
+
+    <tr> 	<td>id</td> 	<td>Идентификатор товара документа.</td><td>integer</td><td>Только для чтения.</td></tr>
+
+    <tr> 	<td>purchasingPrice</td> 	<td>Закупочная цена.</td><td>double</td><td></td></tr>
+
+    <tr> 	<td>storeFrom</td> 	<td>Склад-отправитель.</td><td>integer</td><td></td></tr>
+
+    <tr> 	<td>storeTo</td> 	<td>Склад-получатель.</td><td>integer</td><td></td></tr>
+
+
+   </tbody>
+ </table>
+
+</div>
+<!------->
+
+<br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,67 @@
+<html>
+        <head>
+            <title>landing.role.setAccessCodes</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">landing.role.setAccessCodes <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/landing/rights/role_model/landing_role_setaccesscodes.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note"><strong>Важно!</strong> Функционал доступен только администратору.</p>
+
+
+<p>Метод устанавливает для роли  коды доступа, для которых будет действовать данная роль (и ее ограничения на сайты). На вход методу передается идентификатор роли и массив кодов доступа. Если массив будет пуст, коды для роли будут сброшены. </p>
+
+<p>Права независимы и могут даваться точечно. Например, пользователь может обладать только правом публикации без возможности любого изменения.</p>
+
+<p>В качестве ключей можно использовать значения:</p>
+
+<ul>
+<li><b><code>SG&lt;X&gt;</code> </b> - рабочая группа, например SG1 - рабочая группа с идентификатором 2;</li>
+<li><b><code>U&lt;X&gt;</code> </b> - пользователь, например U45 - пользователь с идентификатором 45;</li>
+<li><b><code>DR&lt;X&gt;</code></b> - отдел, включая подразделы, например DR23 - раздел с идентификатором 23;</li>
+<li><b><code>UA</code></b> - все авторизованные пользователи.</li>
+<li><b><code>G&lt;X&gt;</code></b> - группа пользователей, например G2 - группа пользователей с идентификатором 2.</li>
+ </ul>
+
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal">
+  <tbody>
+    <tr><th width="15%">Параметр</th><th>Описание</th><th width="10%">Версия</th></tr>
+    <tr><td>id</td><td>Идентификатор роли.</td><td></td></tr>
+    <tr><td>codes</td><td>Массив кодов доступа.</td><td></td></tr>
+  </tbody>
+</table>
+
+
+
+<a class="link" name="example"></a>
+<h4>Примеры</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'landing.role.setAccessCodes',
+	{
+		id: 11,
+		codes: [
+			'SG3_A', 'G4'
+		]
+	},
+	function(result)
+	{
+		if(result.error())
+		{
+			console.error(result.error());
+		}
+		else
+		{
+			console.info(result.data());
+		}
+	}
+);</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

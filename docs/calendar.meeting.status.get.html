@@ -1,0 +1,44 @@
+<html>
+        <head>
+            <title>calendar.meeting.status.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">calendar.meeting.status.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/calendar/calendar_meeting_status_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Возвращает статус участия текущего пользователя в событии.</p>
+
+<h4>Параметры функции</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+  
+		<tr>
+			<td>* eventId</td>
+			<td>Идентификатор события</td>
+		</tr>
+		<tr><td colspan="2"><b>* - обязательные параметры</b></td></tr>
+	</tbody>
+</table>
+
+<h4>Возвращаемые значения</h4>
+
+<p>Возвращает статус ("Y", "N", "Q").</p>
+
+
+<h4>Пример использования</h4>
+<pre class="syntax" rel="example">BX24.callMethod("calendar.meeting.status.get",
+	{
+		eventId: '651'
+	}
+);
+</pre>
+<br><br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,67 @@
+<html>
+        <head>
+            <title>calendar.resource.booking.list</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">calendar.resource.booking.list <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/calendar/calendar_resource_booking_list.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">calendar.resource.booking.list(filter)</pre>
+<p>Предоставляет возможность выбрать бронирования ресурсов.  </p>
+
+<h4>Возвращаемые значения</h4>
+
+<p>Возвращает данные о каждом бронировании. Бронирования имеют идентичные событиям поля, т.к. являются, по сути, событиями.</p>
+
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr><th width="15%">Параметр</th><th>Описание</th></tr>
+  
+		<tr><td>* filter</td><td>Поля фильтра.</td> </tr>
+
+
+<tr><td colspan="2"><b>* - обязательные параметры</b></td></tr>
+
+	</tbody>
+</table>
+
+
+<h4>Примеры использования</h4>
+
+<p>Первый вариант: для возможности оценить бронирования (занятость) определенных ресурсов на какой-то период. Может использоваться для создания собственных представлений занятости или для использования в логике. </p>
+
+<pre class="syntax" rel="example">BX24.callMethod("calendar.resource.booking.list", {
+	filter: {
+		resourceTypeIdList: [10852, 10888, 10873, 10871, 10853] // передается список id ресурсов, которые можно выбрать методом <a class="link" href="/rest_help/calendar/calendar_resource_list.php">calendar.resource.list</a>
+		from: '2018-06-20',
+		to: '2018-08-20',
+	}
+});
+</pre>
+
+<p>Второй вариант: возможность выбрать бронирования по их id (это значения 
+		<span class="learning-lesson-detail-block js-detail-info-block">
+			<span class="learning-lesson-detail-word js-detail-info-word">UF-поля</span>
+			<span class="learning-lesson-detail-body js-detail-info-body">
+				<span class="learning-lesson-detail-body-inner  js-detail-info-body-inner">
+                    <button class="learning-lesson-detail-close-button  js-detail-close-button" type="button"></button>
+                    Маска "UF_*"- для выборки всех пользовательских полей (без множественных)
+                </span>
+			</span>
+		</span>
+		, привязанного к CRM сущности). </p>
+
+<pre class="syntax" rel="example">BX24.callMethod("calendar.resource.booking.list", {
+	filter: {
+		resourceIdList: [10, 18, 17] // эти ID берутся из значения UF-поля типа resourcebooking у CRM сущностей LEAD|DEAL
+	}
+});
+</pre>
+<br><br>							
+        </div>
+        </body>
+        </html>

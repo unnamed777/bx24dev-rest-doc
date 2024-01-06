@@ -1,0 +1,41 @@
+<html>
+        <head>
+            <title>scope</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">scope <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/general/scope.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre>BX24.callMethod('scope', {});
+</pre>
+
+<p>Если метод вызван без параметров, то он вернет все разрешения, доступные для данного приложения.</p>
+
+<p>Если же метод вызван с параметром <i>full=true</i>, то он вернет полный <a class="link" href="https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=99&amp;LESSON_ID=2280" title="" target="_blank">список разрешений</a>.</p>
+
+<h4>Пример:</h4>
+
+<p>Запрос<br>
+</p><pre>https://my.bitrix24.ru/rest/scope?auth=d161f25928c3184678924ec127edd29a</pre><p></p>
+
+<p>Ответ JSON
+<br>
+</p><pre>{"result":["entity","user","log","department"]}</pre><p></p>
+
+<p>Ответ XML
+<br>
+</p><pre>&lt;response&gt;
+	&lt;result&gt;
+		&lt;item&gt;entity&lt;/item&gt;
+		&lt;item&gt;user&lt;/item&gt;
+		&lt;item&gt;log&lt;/item&gt;
+		&lt;item&gt;department&lt;/item&gt;
+	&lt;/result&gt;
+&lt;/response&gt;
+</pre><p></p>
+<br>
+<br>							
+        </div>
+        </body>
+        </html>

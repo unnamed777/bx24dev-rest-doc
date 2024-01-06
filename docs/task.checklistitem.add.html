@@ -1,0 +1,55 @@
+<html>
+        <head>
+            <title>task.checklistitem.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">task.checklistitem.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/tasks/task/checklistitem/add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">task</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<p>Добавление нового элемента чек-листа к задаче. Возвращает идентификатор добавленного элемента. Метод не добавляет права на задачу указанному в массиве <code>FIELDS</code> пользователю, как это делается через интерфейс Б24. Если у пользователя не было прав на просмотр, то появление его в чек-листе в любой роли не сделает задачу доступной.</p>
+ 
+<h4>Параметры функции</h4>
+<table class="tnormal" width="100%"> 
+  <tbody> 
+    <tr><th width="15%">Параметр</th><th>Описание</th></tr>
+		<tr><td>TASKID</td>	<td>Идентификатор задачи. Обязательный параметр.</td>	</tr>
+		<tr><td>FIELDS</td>	<td>Массив полей элемента чек-листа (<b>TITLE</b>, <b>SORT_INDEX</b>, <b>IS_COMPLETE</b>). Обязательный параметр.</td>	</tr>
+	</tbody>
+</table>
+ 	 
+ <p></p><div class="note"><b>Внимание!</b> Соблюдение порядка следования параметров в запросе обязательно. При его нарушении запрос будет выполнен с ошибками.</div><p></p>
+
+<h4>Пример</h4>
+<pre class="syntax" rel="example">// Добавляем к задаче с ID=13 новый "выполненный" элемент чек-листа с текстом "Пункт выполнен"
+BX24.callMethod(
+	'task.checklistitem.add',
+	[13, {'TITLE': 'Пункт выполнен', 'IS_COMPLETE': 'Y'}], 
+	function(result){
+		console.info(result.data());
+		console.log(result);
+	}
+);
+</pre>
+
+<p>Для добавления пользователя к элементу чек-листа:</p>
+
+<pre class="syntax">$fields = [
+	'TITLE' =&gt; "Заголовок пункта Имя Пользователя",//$user['NAME']." ".$user['LAST_NAME'], порядок в зависимости от настроек портала.
+	'IS_COMPLETE' =&gt; 'N',
+	'IS_IMPORTANT' =&gt; 'N',
+	'MEMBERS' =&gt; [13 =&gt; ['TYPE' =&gt; 'A']], //TYPE - роль_в_чеклисте: A - соисполнитель, U - наблюдатель
+	'PARENT_ID' =&gt; '$result[0]' // для вызова в batch, иначе просто ID вышестоящего элемента
+];</pre>
+
+
+
+ 
+<br><br>							
+        </div>
+        </body>
+        </html>

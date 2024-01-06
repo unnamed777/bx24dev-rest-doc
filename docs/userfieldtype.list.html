@@ -1,0 +1,52 @@
+<html>
+        <head>
+            <title>userfieldtype.list</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">userfieldtype.list <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/application_embedding/user_field/userfieldtype_list.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Получение списка зарегистрированных приложением типов пользовательских полей. Списочный метод. На выход отдается список типов полей с постраничной навигацией.</p>
+
+<h4>Параметры</h4>
+
+<p>Входных параметров нет.</p> 
+
+<h4>Примеры</h4>
+
+<p>Пример вызова:</p>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'userfieldtype.list', 
+	{}, 
+	function(result)
+	{
+		console.log(result.data());
+	}
+);</pre>
+
+<p>Пример запроса</p>
+
+<pre class="syntax">POST https://sometestportal.bitrix24.com/rest/userfieldtype.list HTTP/1.1
+
+auth=63t6r4z9cugaciaxocrh2r47zlodp12y
+
+HTTP/1.1 200 OK
+
+{
+	"result": [
+		{
+			"DESCRIPTION": "Test userfield type for documentation", 
+			"HANDLER": "https://www.myapplication.com/handler/", 
+			"TITLE": "Test type", 
+			"USER_TYPE_ID": "test"
+		}
+	], 
+	"total": 1
+}</pre>
+
+<br>							
+        </div>
+        </body>
+        </html>

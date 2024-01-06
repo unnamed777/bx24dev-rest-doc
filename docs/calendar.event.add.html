@@ -1,0 +1,244 @@
+<html>
+        <head>
+            <title>calendar.event.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">calendar.event.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/calendar/calendar_event_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Описание</h3>
+<p>Добавляет новое событие.</p>
+
+<h4>Возвращаемое значение</h4>
+
+<p>Возвращает id нового события.</p>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+  
+		<tr>
+			<td>* type</td>
+			<td>Тип календаря:
+<ul>
+<li>user;</li>
+
+<li>group.</li>
+</ul>
+</td>
+		</tr>
+		<tr>
+			<td>* ownerId</td>
+			<td>Идентификатор владельца календаря.</td>
+		</tr>	
+
+
+		
+		<tr>
+			<td>* from</td>
+			<td>Дата начала выборки.</td>
+		</tr>
+
+		
+		<tr>
+			<td>* to</td>
+			<td>Дата окончания выборки.</td>
+		</tr>
+
+<tr>
+			<td>from_ts</td>
+			<td>Может быть установлен вместо <b>from</b>.</td>
+		</tr>
+
+<tr>
+			<td>to_ts</td>
+			<td>Может быть установлен вместо <b>to</b>.</td>
+		</tr>
+
+<tr>
+			<td>* section</td>
+			<td>Идентификатор раздела.</td>
+		</tr>
+
+<tr>
+			<td>* name</td>
+			<td>Наименование события.</td>
+		</tr>
+
+
+<tr>
+			<td>skip_time</td>
+			<td><b>[Y|N]</b> Указывает, что значение даты передается без времени. Формат даты по стандарту ISO-8601.</td>
+		</tr>
+
+<tr>
+			<td>timezone_from</td>
+			<td>Часовой пояс даты и времени начала события. Значение по умолчанию - таймзона текущего пользователя. Указывается в строковом виде, например: Europe/Riga. </td>
+		</tr>
+<tr>
+			<td>timezone_to</td>
+			<td>Часовой пояс даты и времени окончания события. Значение по умолчанию - таймзона текущего пользователя. Указывается в строковом виде, например: Europe/Riga.</td>
+		</tr>
+
+
+<tr>
+			<td>description</td>
+			<td>Описание события.</td>
+		</tr>
+
+<tr>
+			<td>color</td>
+			<td>Цвет фона события. При передачи цвета добавляемого события символ <code>#</code> необходимо передавать в unicode, как <code>%23</code>.</td>
+		</tr>
+
+<tr>
+			<td>text_color</td>
+			<td>Цвет текста события. При передачи цвета добавляемого события символ <code>#</code> необходимо передавать в unicode, как <code>%23</code>.</td>
+		</tr>
+
+<tr>
+			<td>accessibility</td>
+			<td>Доступность на время события:
+<ul>
+<li>busy (занят);</li>
+
+<li>absent (отсутствую);</li>
+
+<li>quest (под вопросом);</li>
+
+<li>free (свободен).</li>
+</ul>
+</td>
+		</tr>
+
+<tr>
+			<td>importance</td>
+			<td>Важность события:
+<ul>
+<li>high (высокая);</li>
+
+<li>normal (средняя);</li>
+
+<li>low (низкая).</li>
+</ul>
+</td>	</tr>
+
+<tr>
+			<td>private_event</td>
+			<td><b>[Y|N]</b> Отметка частного события.</td>
+	</tr>
+
+<tr>
+			<td>rrule</td>
+			<td>Повторяемость события.</td>
+	</tr>
+
+<tr>
+			<td>is_meeting</td>
+			<td><b>[Y|N]</b> Признак встречи с участниками события.</td>
+	</tr>
+
+<tr>
+			<td>location</td>
+			<td>Место проведения.</td>
+	</tr>
+
+<tr>
+			<td>remind</td>
+			<td>Напоминание о событии:
+<ul>
+<li>type - временной тип напоминания (min, hour, day);</li>
+<li>count - числовое значение временного промежутка.</li>
+</ul>
+</td>
+	</tr>
+
+<tr>
+			<td>attendees</td>
+			<td>Список участников события (если <b>is_meeting</b> == "Y").</td>
+	</tr>
+
+<tr>
+			<td>host</td>
+			<td>Организатор события (если <b>is_meeting</b> == "Y").</td>
+	</tr>
+
+<tr>
+			<td>meeting</td>
+			<td>Массив параметров, включающий в себя:
+<ul>
+<li>text - текст приглашения;</li>
+
+<li>open - признак открытой встречи;</li>
+
+<li>notify - флаг оповещения о подтверждении\отказе участников;</li>
+
+<li>reinvite - флаг запроса повторного подтверждения участия (при редактировании события).</li>
+</ul>
+</td>
+	</tr>
+
+<tr><td colspan="2"><b>* - обязательные параметры</b></td></tr>
+
+	</tbody>
+</table>
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Пример</h3>
+<pre class="syntax" rel="example">BX24.callMethod("calendar.event.add",
+	{
+		type: 'user',
+		ownerId: '2',
+		name: 'New Event Name',
+		description: 'Description for event',
+		from: '2013-06-14',
+		to: '2013-06-14',
+		skipTime: 'Y',
+		section: 5,
+		color: '#9cbe1c',
+		text_color: '#283033',
+		accessibility: 'absent',
+		importance: 'normal',
+		is_meeting: 'Y',
+		private_event: 'N',
+		remind: [{type: 'min', count: 20}],
+		location: 'Kaliningrad',
+		attendees: [1, 2, 3],
+		host: 2,
+		meeting: {
+			text: 'inviting text',
+			open: true,
+			notify: true,
+			reinvite: false
+		}
+	}
+);
+</pre></div>
+
+<!------->
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

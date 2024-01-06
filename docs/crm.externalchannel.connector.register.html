@@ -1,0 +1,90 @@
+<html>
+        <head>
+            <title>crm.externalchannel.connector.register</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.externalchannel.connector.register <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/externalchannel/externalchannel_connector.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Описание</h3>
+<a class="link" name="register"></a>
+<pre class="syntax">crm.externalchannel.connector.register</pre>
+
+<p>Регистрирует коннектор внешнего канала.</p>
+
+<h4>Параметры</h4>
+
+<p>См. <a class="link" href="/rest_help/crm/externalchannel/index.php">параметры функций</a>. </p>
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Пример вызова для регистрации коннектора</h3>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	"crm.externalchannel.connector.register",
+	{
+		fields:{
+			"NAME":"Коннектор 1С",
+			"ORIGINATOR_ID":"1C",
+			"EXTERNAL_SERVER_HOST":"localhost:9090\/"
+			}
+	},
+	function(result) 
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.dir(result.data());
+	}
+);
+</pre>
+
+<p>В зависимости от того, является ли контрагент Контактом или Компанией, внешним сервисом вызываются команды:</p>
+
+<pre class="syntax"><a class="link" href="/rest_help/crm/externalchannel/crm_externalchannel_company.php">crm.externalchannel.company</a>
+<a class="link" href="/rest_help/crm/externalchannel/crm_externalchannel_contact.php">crm.externalchannel.contact</a>
+<a class="link" href="/rest_help/crm/externalchannel/crm_externalchannel_activity_company.php">crm.externalchannel.activity.company</a>
+<a class="link" href="/rest_help/crm/externalchannel/crm_externalchannel_activity_contact.php">crm.externalchannel.activity.contact</a>
+</pre>
+
+
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Коды ошибок</h3>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr><th width="15%">Код </th><th>Статус</th><th>Текст по умолчанию</th>		<th>Описание</th>   </tr>
+<tr><td>ERROR_IMPORT_BATCH</td><td>400 Bad Request</td><td>Batch is not defined.</td><td>В запросе отсутствует пакет данных.</td></tr>
+<tr><td>ERROR_CONNECTOR_NOT_FOUND</td><td>404 Not Found</td><td>Connector not found!</td><td>Коннектор не зарегистрирован.</td></tr>
+<tr><td>ERROR_CONNECTOR_CREATE</td><td>500 Internal Server Error</td><td>Connector not created.</td><td>Ошибка создания.</td></tr>
+<tr><td>ERROR_CONNECTOR_REGISTRATION</td><td>400 Bad Request</td><td> </td><td>Ошибки в переданных данных.</td></tr>
+<tr><td>ERROR_CONNECTOR_INVALID</td><td>403 Forbidden</td><td>Connector is invalid!</td><td>Ошибка загрузки коннектора.</td></tr>
+<tr><td>ERROR_PRESET_NOT_FOUND</td><td>403 Forbidden</td><td>Preset is not defined.</td><td>Пресет не найден.</td></tr>
+
+
+	</tbody>
+</table>
+
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

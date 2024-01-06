@@ -1,0 +1,173 @@
+<html>
+        <head>
+            <title>batch</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">batch <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/general/batch.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Описание</h3>
+
+<p>Выполнение пакета запросов.</p>
+
+<p>В некоторых случаях возникает необходимость отправить несколько запросов подряд. Для оптимизации процесса можно использовать пакетное выполнение запросов.</p>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+
+<table class="tnormal" width="100%">
+<tbody><tr>
+	<th width="20%">Параметр</th>
+	<th>Описание</th>
+</tr>
+<tr>
+	<td>halt</td>
+	<td>Определяет прерывать ли последовательность запросов в случае ошибки.</td>
+</tr>
+<tr>
+	<td>cmd</td>
+	<td>Массив запросов стандартного вида (следует помнить про квотирование данных запросов; получается, что данные для подзапросов должны пройти двойное квотирование).</td>
+</tr>
+</tbody></table>
+
+<p class="note"><b>Примечание</b>: Количество запросов в пакете ограничено 50.</p>
+
+<p>Массив запросов может быть как с числовыми ключами, так и ассоциативным. В параметрах каждого последующего запроса можно использовать данные предыдущих запросов в таком виде:</p>
+<pre>$result[идентификатор_запроса][поле_ответа]</pre>
+
+<p>где идентификатором запроса служит его ключ в массиве запросов.</p>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Пример</h3>
+
+<p></p><pre>https://my.bitrix24.ru/rest/batch.xml?auth=d161f25928c3184678924ec127edd29a&amp;halt=0&amp;cmd[get_user]=user.current%3F&amp;cmd[get_department]=department.get%3FID%3D%2524result%255Bget_user%255D%255BUF_DEPARTMENT%255D</pre><p></p>
+
+<p class="note"><strong>Обратите внимание</strong>, что параметры URL-кодированы. Рекомендация кодировать параметры - обязательна, в противном случае корректность результата не гарантируется.</p>
+
+<p>Ответ XML
+<br>
+</p><pre>&lt;response&gt;
+	&lt;result&gt;
+		&lt;result&gt;
+			&lt;get_user&gt;
+				&lt;ID&gt;1&lt;/ID&gt;
+				&lt;LOGIN&gt;admin&lt;/LOGIN&gt;
+				&lt;ACTIVE&gt;1&lt;/ACTIVE&gt;
+				&lt;EMAIL&gt;sigurd@example.com&lt;/EMAIL&gt;
+				&lt;NAME&gt;Одмин&lt;/NAME&gt;
+				&lt;LAST_NAME/&gt;
+				&lt;SECOND_NAME/&gt;
+				&lt;PERSONAL_GENDER/&gt;
+				&lt;PERSONAL_PROFESSION/&gt;
+				&lt;PERSONAL_WWW/&gt;
+				&lt;PERSONAL_BIRTHDAY&gt;1955-04-10T00:00:00+03:00&lt;/PERSONAL_BIRTHDAY&gt;
+				&lt;PERSONAL_PHOTO&gt;/upload/main/80c/44169_C5_PrimalWaterE500CC.jpg&lt;/PERSONAL_PHOTO&gt;
+				&lt;PERSONAL_ICQ/&gt;
+				&lt;PERSONAL_PHONE/&gt;
+				&lt;PERSONAL_FAX/&gt;
+				&lt;PERSONAL_MOBILE/&gt;
+				&lt;PERSONAL_PAGER/&gt;
+				&lt;PERSONAL_STREET/&gt;
+				&lt;PERSONAL_CITY/&gt;
+				&lt;PERSONAL_STATE/&gt;
+				&lt;PERSONAL_ZIP/&gt;
+				&lt;PERSONAL_COUNTRY&gt;0&lt;/PERSONAL_COUNTRY&gt;
+				&lt;WORK_COMPANY/&gt;
+				&lt;WORK_POSITION/&gt;
+				&lt;UF_DEPARTMENT&gt;
+				&lt;item&gt;128&lt;/item&gt;
+				&lt;/UF_DEPARTMENT&gt;
+				&lt;UF_INTERESTS/&gt;
+				&lt;UF_SKILLS/&gt;
+				&lt;UF_WEB_SITES/&gt;
+				&lt;UF_XING/&gt;
+				&lt;UF_LINKEDIN/&gt;
+				&lt;UF_FACEBOOK/&gt;
+				&lt;UF_TWITTER/&gt;
+				&lt;UF_SKYPE/&gt;
+				&lt;UF_DISTRICT/&gt;
+				&lt;UF_PHONE_INNER/&gt;
+			&lt;/get_user&gt;
+			&lt;get_department&gt;
+				&lt;item&gt;
+					&lt;ID&gt;128&lt;/ID&gt;
+					&lt;NAME&gt;ИТ-отдел&lt;/NAME&gt;
+					&lt;SORT&gt;500&lt;/SORT&gt;
+					&lt;PARENT&gt;114&lt;/PARENT&gt;
+					&lt;UF_HEAD&gt;255&lt;/UF_HEAD&gt;
+				&lt;/item&gt;
+			&lt;/get_department&gt;
+		&lt;/result&gt;
+		&lt;result_error/&gt;
+		&lt;result_total&gt;
+			&lt;get_department&gt;1&lt;/get_department&gt;
+		&lt;/result_total&gt;
+		&lt;result_next/&gt;
+	&lt;/result&gt;
+&lt;/response&gt;
+</pre><p></p>
+
+
+<p>Пример строки json для помещения в тело POST запроса для метода batch.</p>
+
+<pre>BX24.callMethod(
+	'batch',
+	{
+		'halt': 0,
+		'cmd': {
+			'user': 'user.get?ID=1',
+			'first_lead': 'crm.lead.add?fields[TITLE]=Test Title',
+			'user_by_name': 'user.search?NAME=Test2',
+			'user_lead': 'crm.lead.add?fields[TITLE]=Test Assigned&amp;fields[ASSIGNED_BY_ID]=$result[user_by_name][0][ID]',
+		}
+	},
+	function(result)
+	{
+		console.log(result.answer);
+	}
+);</pre>
+
+<p>В результате:</p>
+
+<ul>
+<li><strong>user</strong> - вернёт пользователя с ID = 1</li>
+<li><strong>first_lead</strong> - создаст лид</li> 
+<li><strong>user_by_name</strong> - найдёт пользователя с именем "Test2"</li> 
+<li><strong>user_lead</strong> - создаст лид с ответственным пользователем, найденным в user_by_name</li> 
+ </ul>
+
+<p>На PHP рекомендуется использовать <a class="link external-link" href="https://github.com/bitrix-tools/crest" title="" target="_blank">CRest::callBatch()</a></p>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Смотрите также</h3>
+
+<ul>
+<li><a class="link" href="/rest_help/js_library/rest/callBatch.php">BX24.callBatch</a></li> 
+
+ </ul>
+
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

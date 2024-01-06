@@ -1,0 +1,106 @@
+<html>
+        <head>
+            <title>documentgenerator.template.list</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">documentgenerator.template.list <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/documentgenerator/templates/documentgenerator_template_list.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<p class="note_blue">
+Scope: <span class="bg_blue">documentgenerator</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<div class="tab">
+
+<h3 class="tab-title">Описание и пример</h3>
+<pre class="syntax">documentgenerator.template.list(select = ['*'], filter = [], order = [], start = 0)</pre>
+
+<p>Возвращает список шаблонов по фильтру.</p>
+
+<h4>Пример</h4>
+<pre class="syntax">templates: {
+	202: {
+		"id": "202",
+		"active": "Y",
+		"name": "Rest Template",
+		"code": "",
+		"region": "ru",
+		"sort": "100",
+		"createTime": "2018-06-05T13:07:12+02:00",
+		"updateTime": "2018-09-06T14:26:24+02:00",
+		"moduleId": "rest",
+		"numeratorId": "20",
+		"withStamps": "N",
+		"isDeleted": "N",
+		"download": "",
+		"downloadMachine": "",
+		"providers": [
+			"bitrix\documentgenerator\dataprovider\rest": "bitrix\documentgenerator\dataprovider\rest"
+		],
+		"users" [
+			"0": "UA"
+		]
+	}
+}
+</pre>
+
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>      </tr>
+
+<tr><td>select</td><td>массив полей для вывода. По умолчанию выводит все поля шаблона, кроме <i>users</i> и <i>providers</i>. Чтобы они появились, надо добавить дополнительно. Например, <code>['*', 'providers', 'users']</code>.</td></tr>
+
+<tr><td>order</td><td>массив для указания порядка вывода <code>{"id": "desc"}</code>.</td></tr>
+<tr><td>filter</td><td>массив для фильтрации.</td></tr>
+<tr><td>start</td><td>offset для постраничной навигации.</td></tr>
+
+
+
+	</tbody>
+</table>
+
+
+
+<h4>Примеры фильтра</h4>
+
+<pre class="syntax">filter: {
+  "numeratorId": "20",
+  "region": "ru",
+  "active": "Y"
+}
+</pre>
+
+<p>По умолчанию фильтр имеет следующие значения:</p>
+
+<pre class="syntax">filter: {
+  "moduleId": "rest", // изменить нельзя, метод всегда вернет шаблоны только для реста
+  "isDeleted": "N" // если нужен список шаблонов без учета isDeleted, необходимо передать "@isDeleted": ["Y", "N"]
+}
+</pre>
+
+<p>Метод вернет список шаблонов с их полями.</p>
+
+
+</div>
+
+<!------->
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,146 @@
+<html>
+        <head>
+            <title>imopenlines.config.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">imopenlines.config.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/imconnector/setting_line/imopenlines_config_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Описание и пример</h3>
+
+<p>Метод для добавления линии.</p>
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">//imopenlines.config.add
+function configAdd()
+{
+	var params = {
+		PARAMS: {
+			LINE_NAME: 'New line name',
+			...
+		}
+	};
+	BX24.callMethod(
+		'imopenlines.config.add',
+		params,
+		function (result) {
+			if (result.error())
+				alert("Error: " + result.error());
+			else
+				alert("Успешно: " + result.data());
+		}
+	);
+}</pre>
+
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+
+<p><table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Метод</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>PARAMS</td> 	<td>Массив параметров для добавления (необязательный). Список полей - ниже.</td> <td></td></tr>
+   
+   </tbody>
+ </table></p>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Поля</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+<!---    <tr> 	<td>ID</td> 	<td>Идентификатор линии</td> <td></td></tr>--->
+    <tr> 	<td>	WELCOME_BOT_ENABLE</td> 	<td>При обращении клиента назначить ответственным чат-бота. [Y/N (по умолчанию)] - эта опция должна быть Y, чтобы бот работал</td> <td></td></tr>
+    <tr> 	<td>WELCOME_BOT_JOIN</td> 	<td>Когда подключать чат-бота (<i>first</i> (по-умолчанию), always),</td> <td></td></tr>
+    <tr> 	<td>WELCOME_BOT_ID</td> 	<td>Идентификатор бота (int, по-умолчанию 0)</td> <td></td></tr>
+    <tr> 	<td>WELCOME_BOT_TIME</td> 	<td>Через какое время переводить разговор от чат-бота в очередь (int, 60 по умолчанию)</td> <td></td></tr>
+    <tr> 	<td>WELCOME_BOT_LEFT</td> 	<td>Когда отключать чат-бота (<i>queue</i> (по-умолчанию), close),</td> <td></td></tr>
+    <tr> 	<td>ACTIVE</td> 	<td>Активность линии [Y/N (по умолчанию)]</td> <td></td></tr>
+    <tr> 	<td>LINE_NAME</td> 	<td>Название линии (необязательный)</td> <td></td></tr>
+    <tr> 	<td>	CRM</td> 	<td>Проверять пользователя по CRM [Y/N (по умолчанию)]</td> <td></td></tr>
+    <tr> 	<td>CRM_CREATE</td> 	<td>Если клиент не найден в CRM (строка, по-умолчанию <i>none</i>)</td> <td></td></tr>
+    <tr> 	<td>CRM_FORWARD</td> 	<td>Направлять обращение на ответственного сотрудника в случае идентификации клиента [Y (по умолчанию)/N]</td> <td></td></tr>
+    <tr> 	<td>CRM_SOURCE</td> 	<td>Источник для нового лида (строка, по-умолчанию 'create')</td> <td></td></tr>
+    <tr> 	<td>CRM_TRANSFER_CHANGE</td> 	<td>Автоматически менять ответственного за лид при ручном перенаправлении обращения на другого оператора [Y (по умолчанию)/N]</td> <td></td></tr>
+    <tr> 	<td>QUEUE_TIME</td> 	<td>Время до перехода обращения к следующему сотруднику из очереди (int, 60 по умолчанию)</td> <td></td></tr>
+    <tr> 	<td>NO_ANSWER_TIME</td> 	<td>Время до отметки сообщения как неотвеченного (int, 60 по умолчанию)</td> <td></td></tr>
+    <tr> 	<td>QUEUE_TYPE</td> 	<td>Тип очереди (<i>evenly</i> (по-умолчанию), strictly, all),</td> <td></td></tr>
+    <tr> 	<td>TIMEMAN</td> 	<td>Не направлять обращение на оператора, если не начат рабочий день или установлен перерыв [Y/N (по умолчанию)]</td> <td></td></tr>
+    <tr> 	<td>CHECK_ONLINE</td> 	<td>При распределении обращений проверять доступность оператора [Y/N (по умолчанию)]</td> <td></td></tr>
+    <tr> 	<td>CHECKING_OFFLINE</td> 	<td>Постоянная проверка доступности оператора при распределении обращений [Y/N (по умолчанию)]</td> <td></td></tr>
+    <tr> 	<td>WELCOME_MESSAGE</td> 	<td>Отправить автоматический ответ на первое сообщение клиента [Y (по умолчанию/N)]</td> <td></td></tr>
+    <tr> 	<td>WELCOME_MESSAGE_TEXT</td> 	<td>Текст автоматического ответа (строка, по-умолчанию null)</td> <td></td></tr>
+    <tr> 	<td>AGREEMENT_MESSAGE</td> 	<td>Отправить предупреждение о сборе персональных данных [Y/N (по умолчанию)]</td> <td></td></tr>
+    <tr> 	<td>AGREEMENT_ID</td> 	<td>ID соглашения в системе (int, 0 по-умолчанию)</td> <td></td></tr>
+    <tr> 	<td>NO_ANSWER_RULE</td> 	<td>Действие если операторы не ответили на обращение (<i>none</i> (по-умолчанию), text)</td> <td></td></tr>
+    <tr> 	<td>NO_ANSWER_TEXT</td> 	<td>Текст автоматического ответа (строка, по-умолчанию <i>null</i>)</td> <td></td></tr>
+    <tr> 	<td>WORKTIME_ENABLE</td> 	<td>Настройка рабочего времени Открытой линии [Y/N (по умолчанию)]</td> <td></td></tr>
+    <tr> 	<td>WORKTIME_FROM</td> 	<td>Режим работы "c" (строка формата '00:00')</td> <td></td></tr>
+    <tr> 	<td>WORKTIME_TO</td> 	<td>Режим работы "до" (строка формата '00:00')</td> <td></td></tr>
+    <tr> 	<td>WORKTIME_TIMEZONE</td> 	<td>Временная зона (формат типа 'Europe/Kaliningrad')</td> <td></td></tr>
+    <tr> 	<td>WORKTIME_HOLIDAYS</td> 	<td>Список праздничных дней (строка, Пример: 1.01,2.01,7.01,23.02,8.03,1.05,9.05,12.06,4.11,12.12)</td> <td></td></tr>
+    <tr> 	<td>WORKTIME_DAYOFF</td> 	<td>Список кодов выходных дней (массив, пример ['MO', 'TU'])</td> <td></td></tr>
+    <tr> 	<td>WORKTIME_DAYOFF_RULE</td> 	<td>Обработка обращения в нерабочее время (<i>none</i> (по-умолчанию), 'text')</td> <td></td></tr>
+    <tr> 	<td>WORKTIME_DAYOFF_TEXT</td> 	<td>Текст автоматического ответа (в нерабочее время) (строка, по-умолчанию <i>null</i>),</td> <td></td></tr>
+    <tr> 	<td>CLOSE_RULE</td> 	<td>Действие при завершении обращения клиента ('none', <i>text</i> (по-умолчанию))</td> <td></td></tr>
+    <tr> 	<td>CLOSE_TEXT</td> 	<td>Текст автоматического ответа (строка, по-умолчанию <i>null</i>)</td> <td></td></tr>
+    <tr> 	<td>FULL_CLOSE_TIME</td> 	<td>Время до полного закрытия обращения (с момента закрытия его оператором) (int, по-умолчанию 10 минут)</td> <td></td></tr>
+    <tr> 	<td>AUTO_CLOSE_RULE</td> 	<td>Будет выполнено действие при автоматическом закрытии (<i>none</i> (по-умолчанию), 'text')</td> <td></td></tr>
+    <tr> 	<td>AUTO_CLOSE_TEXT</td> 	<td>Текст автоматического ответа (строка, по-умолчанию null)</td> <td></td></tr>
+    <tr> 	<td>AUTO_CLOSE_TIME</td> 	<td>Время последней активности для автозакрытия диалога (int, по-умолчанию 0)</td> <td></td></tr>
+    <tr> 	<td>VOTE_MESSAGE</td> 	<td>Отправлять запрос клиенту на оценку качества обслуживания, char(1),[Y (по умолчанию)/N]</td> <td></td></tr>
+    <tr> 	<td>VOTE_CLOSING_DELAY</td> 	<td>Закрывать сессию сразу после оценки клиентом, char(1), [Y/N (по умолчанию)]</td> <td></td></tr>
+    <tr> 	<td>VOTE_MESSAGE_1_TEXT</td> 	<td>Текст для запроса оценки в онлайн-чате и bitrix24 network</td> <td></td></tr>
+    <tr> 	<td>VOTE_MESSAGE_1_LIKE</td> 	<td> Текст для положительной оценки в онлайн-чате и bitrix24 network</td> <td></td></tr>
+    <tr> 	<td>VOTE_MESSAGE_1_DISLIKE</td> 	<td>Текст для отрицательной оценки в онлайн-чате и bitrix24 network</td> <td></td></tr>
+    <tr> 	<td>VOTE_MESSAGE_2_TEXT</td> 	<td>Текст для запроса оценки в других каналах (Viber, Telegram, Facebook*, Вконтакте и другие)</td> <td></td></tr>
+    <tr> 	<td>VOTE_MESSAGE_2_LIKE</td> 	<td>Текст для положительной оценки в других каналах (Viber, Telegram, Facebook*, Вконтакте и другие)</td> <td></td></tr>
+    <tr> 	<td>VOTE_MESSAGE_2_DISLIKE</td> 	<td>Текст для отрицательной оценки в других каналах (Viber, Telegram, Facebook*, Вконтакте и другие)</td> <td></td></tr>
+    <tr> 	<td>QUICK_ANSWERS_IBLOCK_ID</td> 	<td>Идентификатор инфоблока быстрых ответов (по-умолчанию, 0)</td> <td></td></tr>
+    <tr> 	<td>LANGUAGE_ID</td> 	<td>Настройка языковых предпочтений (char(2), по-умолчанию <i>null</i>)</td> <td></td></tr>
+    <tr> 	<td>	OPERATOR_DATA</td> 	<td>Информация об операторах в очереди (<i>profile</i> (по-умолчанию), queue, hide)</td> <td></td></tr>
+    <tr> 	<td>DEFAULT_OPERATOR_DATA</td> 	<td>Информация об операторах по-умолчанию. Массив, поля:
+<ul>
+<li>NAME - имя</li>
+<li>AVATAR - ссылка на аватар</li> 
+<li>AVATAR_ID - идентификатор файла аватара на портале</li> 
+ </ul>   </td> <td></td></tr>
+    <tr> 	<td>QUEUE</td> 	<td>Очередь ответственных сотрудников. Массив, поля:
+<ul>
+<li>U - массив id пользователей, которых добавить в очередь</li>
+ </ul> Можно передавать в формате <code>QUEUE: [{ENTITY_TYPE: "user", ENTITY_ID: "1"}]</code></td> <td></td></tr>
+    <tr> 	<td>QUEUE_OPERATOR_DATA</td> 	<td>Данные операторов для отображения в чате. Массив, поля: 
+<ul>
+<li>U - массив пользователей с данными вида "ID пользователя" =&gt; массив данных:
+<ul>
+<li>NAME - имя</li>
+<li>USER_WORK_POSITION - должность</li> 
+<li>AVATAR - ссылка на аватар</li> 
+<li>AVATAR_ID - идентификатор файла аватара на портале</li> 
+ </ul></li>
+  </ul></td> <td></td></tr>
+   
+   </tbody>
+ </table>
+<p class="note">* Социальная сеть признана экстремистской и запрещена на территории Российской Федерации.</p>
+
+</div>
+
+<!------->
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

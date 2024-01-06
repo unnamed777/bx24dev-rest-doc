@@ -1,0 +1,31 @@
+<html>
+        <head>
+            <title>crm.status.fields</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.status.fields <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/auxiliary/status/crm_status_fields.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.status.fields()</pre>
+
+<p>Возвращает описание полей справочника.</p>
+<h4>Параметры</h4>
+<p>Без параметров</p>
+
+<h4>Пример</h4>
+<pre class="syntax" rel="example">	BX24.callMethod(
+		"crm.status.fields", 
+		{}, 
+		function(result) 
+		{
+			if(result.error())
+				console.error(result.error());
+			else
+				console.dir(result.data());
+		}
+	);	
+</pre><br><br>							
+        </div>
+        </body>
+        </html>

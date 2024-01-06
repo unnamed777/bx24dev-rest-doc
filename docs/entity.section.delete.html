@@ -1,0 +1,43 @@
+<html>
+        <head>
+            <title>entity.section.delete</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">entity.section.delete <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/entity/entity_section_delete.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Удаление раздела хранилища. Пользователь должен обладать хотя бы правами на запись (<b>W</b>) в хранилище.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+<tbody><tr>
+	<th width="20%">Параметр</th>
+	<th>Описание</th>
+</tr>
+<tr>
+	<td>ENTITY</td>
+	<td>Обязательный. Строковой идентификатор хранилища.</td>
+</tr>
+<tr>
+	<td>ID</td>
+	<td>Обязательный. Идентификатор удаляемого раздела.</td>
+</tr>
+</tbody></table>
+
+<h4>Пример</h4>
+
+<p>Вызов<br>
+</p><pre class="syntax" rel="example">BX24.callMethod('entity.section.delete', {ENTITY: 'menu_new', ID: 220});</pre><p></p>
+
+<p>Запрос<br>
+</p><pre>https://my.bitrix24.ru/rest/entity.section.delete.json?ENTITY=menu_new&amp;ID=220&amp;auth=9affe382af74d9c5caa588e28096e872</pre><p></p>
+
+<p>Ответ<br>
+</p><pre>{"result":true}</pre><p></p>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

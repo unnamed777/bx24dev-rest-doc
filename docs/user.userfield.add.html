@@ -1,0 +1,85 @@
+<html>
+        <head>
+            <title>user.userfield.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">user.userfield.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/users/userfield/user_userfield_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Метод добавляет пользовательское поле</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+	 <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+	
+	 <tr> 	<td>USER_TYPE_ID</td> 	<td>Тип пользовательского поля. Возможны значения:
+
+<ul>
+<li><code>string</code> - строка;</li>
+<li><code>integer</code> - целое число;</li>
+<li><code>double</code> - число;</li>
+<li><code>date</code> - дата;</li>
+<li><code>datetime</code> - дата со временем;</li>
+<li><code>boolean</code> - Да / Нет;</li>
+<li><code>file</code> - файл;</li>
+<li><code>enumeration</code> - список;</li>
+<li><code>url</code> - ссылка;</li>
+<li><code>address</code> - адрес Google карты;</li>
+<li><code>money</code> - деньги;</li>
+<li><code>iblock_section</code> - Привязка к разделу инфоблока;</li>
+<li><code>iblock_element</code> - Привязка к элементу инфоблока;</li>
+<li><code>employee</code> - Привязка к пользователю;</li>
+<li><code>crm</code> - Привязка к элементу CRM;</li>
+<li><code>crm_status</code> - Привязка к справочнику CRM.</li>
+</ul>
+
+У некоторых типов есть свои дополнительные настройки.</td> <td></td></tr>
+	
+<!---	 <tr> 	<td>SETTINGS[DEFAULT_VALUE]</td> 	<td>Отображается в административной части, в интерфейсе облачного сервиса этого параметра нет.</td> <td></td></tr>--->
+
+	</tbody>
+ </table>
+
+
+<h4>Пример</h4>
+
+<pre class="syntax">CRest::call(
+	'user.userfield.add',
+	[
+		'fields' =&gt; [
+			'FIELD_NAME' =&gt; 'MY_TEST_FIELD_STR3',
+			'USER_TYPE_ID' =&gt; 'string',
+			'XML_ID' =&gt; 'MY_TEST_FIELD_STR_xml',
+			'MULTIPLE' =&gt; 'Y',
+			'SHOW_FILTER' =&gt; 'Y',
+			'SORT' =&gt; 100,
+			'LIST_FILTER_LABEL' =&gt; 'Title',
+			'LIST_COLUMN_LABEL' =&gt; 'List Title',
+			'EDIT_FORM_LABEL' =&gt; 'Title',
+			'ERROR_MESSAGE' =&gt; 'Title',
+			'HELP_MESSAGE' =&gt; 'Title',
+			'SETTINGS' =&gt; [
+				'DEFAULT_VALUE' =&gt; 'value'
+			]
+		],
+	]
+);</pre>
+
+<p class="note">Вместо <br>
+
+<code>
+'LIST_FILTER_LABEL',<br>
+'LIST_COLUMN_LABEL',<br>
+'EDIT_FORM_LABEL',<br>
+'ERROR_MESSAGE',<br>
+'HELP_MESSAGE',</code><br>
+
+можно указать ключ <code>'LABEL'</code>, который заполнит все указанные выше ключи.</p>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

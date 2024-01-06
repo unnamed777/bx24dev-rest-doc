@@ -1,0 +1,146 @@
+<html>
+        <head>
+            <title>crm.invoice.recurring.fields</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.invoice.recurring.fields <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/invoice/crm_invoice_recurring_fields.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Описание и пример</h3>
+<pre class="syntax">crm.invoice.recurring.fields()</pre>
+
+<p>Возвращает список полей настройки шаблона регулярного счета c описанием.</p>
+
+
+<h4>Параметры</h4>
+
+<p>Без параметров.</p>
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	"crm.invoice.recurring.fields",
+	{},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.dir(result.data());
+	}
+);
+</pre>
+
+</div>
+
+<!------->
+
+<div class="tab">
+
+<h3 class="tab-title">Поля</h3>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Поле</th> 	<th>Описание</th><th>Тип</th><th>Примечание</th></tr>
+   
+    <tr> 	<td>ID</td> 	<td>Идентификатор записи в таблице настроек регулярного счета</td><td>integer</td><td>Только для чтения</td></tr>
+  
+    <tr> 	<td>INVOICE_ID</td> 	<td>ID шаблона счета</td><td>integer</td><td>Неизменяемое</td></tr>
+
+    <tr> 	<td>ACTIVE</td> 	<td>Флаг активности. Значения: Y/N</td><td>char</td><td></td></tr>
+
+   <tr> 	<td>NEXT_EXECUTION</td> 	<td>Дата следующего создания нового счета из шаблона. Рассчитывается системой по указанным параметрам. Если значение пустое, новые счета не создаются</td><td>date</td><td>Только для чтения. </td></tr>
+
+    <tr> 	<td>LAST_EXECUTION</td> 	<td>Дата последнего создания нового счета из шаблона</td><td>date</td><td>Только для чтения</td></tr>
+
+    <tr> 	<td>COUNTER_REPEAT</td> 	<td>Количество созданных из шаблона счетов</td><td>integer</td><td>Только для чтения</td></tr>
+
+    <tr> 	<td>START_DATE</td> 	<td>Дата начала отсчета при расчете даты следующего создания нового счета - date - Если значние пустое, рассчитывается от текущей даты
+</td><td>date</td><td></td></tr>
+
+    <tr> 	<td>SEND_BILL</td> 	<td>Отправлять счет на почту, привязанную к плательщику. Значения: Y/N</td><td>char</td><td></td></tr>
+ 
+    <tr> 	<td>EMAIL_ID</td> 	<td>ID поля, содержащего email плательщика</td><td>integer</td><td></td></tr>
+ 
+    <tr> 	<td>IS_LIMIT</td> 	<td>Есть ли ограничения по созданию новых счетов. Значения: N - без ограничений, D - установлено ограничение по дате, T - установлено ограничение по количеству новых счетов</td><td>char</td><td></td></tr>  
+     
+    <tr> 	<td>LIMIT_REPEAT</td> 	<td>Максимальное число счетов, которое можно создать из этого шаблона</td><td>integer</td><td>Учитывается, если IS_LIMIT равно T</td></tr>
+
+    <tr> 	<td>LIMIT_DATE</td> 	<td>Дата, до достижения которой можно создавать счета из этого шаблона</td><td>date</td><td>Учитывается, если IS_LIMIT равно D</td></tr>
+ 
+    <tr> 	<td>PARAMS</td> 	<td>Набор параметров для расчета - recurring_params:
+
+<ul>
+
+<li><b>PERIOD</b> - период повторения:
+<ul>
+<li>day - день</li>
+<li>week - неделя</li>
+<li>month - месяц</li>
+<li>year - год</li>
+</ul>
+</li>
+
+<li><b>TYPE</b> - тип повторения для месяца и года:
+<ul>
+<li>если PERIOD равен month
+<ul>
+<li>1 - расчет по порядковому номеру дня в месяце</li>
+<li>2 - расчет по номерам дней недели в месяце</li>
+</ul>
+</li>
+
+<li>если PERIOD равен year
+<ul>
+<li>1 - расчет по порядковому номеру дня в заданном месяце</li>
+<li>2 - расчет по номерам дней недели в заданном месяце</li>
+</ul>
+</li>
+</ul>
+
+
+</li><li><b>INTERVAL</b> - смещение при расчете</li>
+
+<li><b>IS_WORKING_ONLY</b> - учитываются только рабочие дни (Y/N)</li>
+
+<li><b>WEEKDAY</b> - полное наименование дня недели (согласно форматирования PHP метода date())</li>
+
+<li><b>NUM_DAY_IN_MONTH</b> - порядковый номер даты в месяце (PERIOD равен month или year)</li>
+
+<li><b>NUM_WEEKDAY_IN_MONTH</b> - номер дня недели в месяце (PERIOD равен month или year)</li>
+
+<li><b>FIELD_YEARLY_INTERVAL_MONTH_NAME</b> - номер дня недели в месяце (PERIOD равен month или year)</li>
+
+
+<li><b>DATE_PAY_BEFORE_OFFSET_TYPE</b> - значение смещения для расчета срока оплаты, расчет ведется от момента создания нового счета из шаблона:
+<ul>
+<li>day - день</li>
+<li>week - неделя</li>
+<li>month - месяц</li>
+<li>year - год</li>
+</ul>
+</li>
+
+<li><b>DATE_PAY_BEFORE_OFFSET_VALUE</b> - значение смещения для расчета срока оплаты, расчет ведется от момента создания нового счета из шаблона</li>
+
+
+</ul></td><td></td><td></td></tr>
+
+   </tbody>
+ </table>
+
+
+</div>
+
+<!------->
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

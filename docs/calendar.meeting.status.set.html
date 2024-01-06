@@ -1,0 +1,57 @@
+<html>
+        <head>
+            <title>calendar.meeting.status.set</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">calendar.meeting.status.set <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/calendar/calendar_meeting_status_set.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Устанавливает статус участия в событии для текущего пользователя.</p>
+
+<h4>Параметры функции</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+  
+		<tr>
+			<td>eventId</td>
+			<td>Идентификатор события</td>
+		</tr>
+		<tr>
+			<td>status</td>
+			<td>Статус:
+<ul>
+<li>Y - подтвердил участие;</li>
+
+<li>N - отказался;</li>
+
+<li>Q - под вопросом.</li>
+</ul>
+</td>
+</tr>	
+
+	</tbody>
+</table>
+
+<h4>Возвращаемые значения</h4>
+
+<p>Возвращает <b>true</b> если установка статуса прошла успешно.</p>
+
+
+<h4>Пример использования</h4>
+<pre class="syntax" rel="example">BX24.callMethod("calendar.meeting.status.set",
+	{
+		eventId: '651',
+		status: 'Y'
+	}
+);
+</pre>
+<br><br>							
+        </div>
+        </body>
+        </html>

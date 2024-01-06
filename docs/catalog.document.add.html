@@ -1,0 +1,101 @@
+<html>
+        <head>
+            <title>catalog.document.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">catalog.document.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/catalog/catalogdocument/catalog_document_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">catalog.document.add(fields)</pre>
+
+<p>Метод для добавления 
+		<span class="learning-lesson-detail-block js-detail-info-block">
+			<span class="learning-lesson-detail-word js-detail-info-word">документа</span>
+			<span class="learning-lesson-detail-body js-detail-info-body">
+				<span class="learning-lesson-detail-body-inner  js-detail-info-body-inner">
+                    <button class="learning-lesson-detail-close-button  js-detail-close-button" type="button"></button>
+                    <a class="link" href="/rest_help/catalog/enum/catalog_enum_getstoredocumenttypes.php">Типы</a> документов складского учёта.
+                </span>
+			</span>
+		</span>
+		 складского учёта.</p>
+
+<p>Если операция успешна, возвращается id добавленного документа.</p>
+
+<h4>Параметры</h4>
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th><th>Тип</th>
+			<th>Описание</th>      </tr>
+<tr><td>fields</td><td>array</td> <td>Параметры добавляемого документа. Поля соответствуют доступному списку полей <a class="link" href="/rest_help/catalog/catalogdocument/catalog_document_getfields.php">fields</a>.</td></tr>
+	</tbody>
+</table>
+
+<h4>Примеры</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'catalog.document.add',
+	{
+		'fields': {
+			'docType': 'S', //\CCatalogDocsTypes::TYPE_STORE_ADJUSTMENT, тип - оприходывание
+			'contractorId': '1', // поставщик. Поле используется только в том случае, когда работа с поставщиками идёт не через CRM (т.е. только в "1С-Битрикс: Управление сайтом"). 
+								 // Проверка провайдера поставщиков (идёт ли работа через CRM): \Bitrix\Catalog\v2\Contractor\Provider\Manager::isActiveProviderByModule('crm')
+			'responsibleId': '1', // ID ответственного,
+			'dateModify': '2000-01-01T00:00:00+02:00',
+			'dateCreate': '2000-01-01T00:00:00+02:00',
+			'createdBy': '1',
+			'modifiedBy': '1',
+			'currency': 'USD', //используемая валюта,
+			'status': 'S',
+			'dateStatus': '2000-01-01T00:00:00+02:00',
+			'dateDocument': '2000-01-01T00:00:00+02:00', //DATE_ATOM
+			'statusBy': '1',
+			'total': '100',
+			'commentary': 'first document.', //комментарий
+			'title': 'Новый документ', //заголовок (поле доступно с версии catalog 22.200.0)
+		}
+	},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.log(result.data());
+	}
+);
+</pre>
+
+<pre class="syntax">$result = CRest::call(
+	'catalog.document.add',
+	[
+		'fields' =&gt; [
+			'docType' =&gt; 'S',
+			'contractorId' =&gt; '1',
+			'responsibleId' =&gt; '1',
+			'dateModify' =&gt; '2000-01-01T00:00:00+02:00',
+			'dateCreate' =&gt; '2000-01-01T00:00:00+02:00',
+			'createdBy' =&gt; '1',
+			'modifiedBy' =&gt; '1',
+			'currency' =&gt; 'USD',
+			'status' =&gt; 'S',
+			'dateStatus' =&gt; '2000-01-01T00:00:00+02:00',
+			'dateDocument' =&gt; '2000-01-01T00:00:00+02:00',
+			'statusBy' =&gt; '1',
+			'total' =&gt; '100',
+			'commentary' =&gt; 'first document.',
+			'title' =&gt; 'Новый документ', 
+		],
+	]
+);
+
+echo '&lt;pre&gt;';
+print_r($result);
+echo '&lt;/pre&gt;';
+</pre>
+
+<br>							
+        </div>
+        </body>
+        </html>

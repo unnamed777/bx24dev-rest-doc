@@ -1,0 +1,119 @@
+<html>
+        <head>
+            <title>entity.item.update</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">entity.item.update <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/entity/entity_item_update.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Описание и пример</h3>
+
+<p>Обновление элемента хранилища. Пользователь должен обладать хотя бы правами на запись (<b>W</b>) в хранилище.</p>
+
+<h4>Пример</h4>
+
+<p>Вызов
+<br></p><pre class="syntax" rel="example">BX24.callMethod('entity.item.update', {
+	ENTITY: 'menu_new',
+	ID: 842,
+	DATE_ACTIVE_FROM: new Date(),
+	DETAIL_PICTURE: '',
+	NAME: 'Goodbye Cruel World',
+	PROPERTY_VALUES: {
+		test: 11,
+		test1: 22,
+		test_file: ''
+	},
+	SECTION: 219
+});</pre><p></p>
+
+<p>Запрос
+<br></p><pre>https://my.bitrix24.ru/rest/entity.item.update.json?DATE_ACTIVE_FROM=2013-06-26T12%3A03%3A31.653Z&amp;DETAIL_PICTURE=&amp;ENTITY=menu_new&amp;ID=842&amp;NAME=Goodbye%20Cruel%20World&amp;PROPERTY_VALUES%5Btest1%5D=22&amp;PROPERTY_VALUES%5Btest%5D=11&amp;PROPERTY_VALUES%5Btest_file%5D=&amp;SECTION=219&amp;auth=9affe382af74d9c5caa588e28096e872</pre><p></p>
+
+
+<p>Ответ
+<br></p><pre>{"result":true}</pre><p></p>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+
+<table class="tnormal" width="100%">
+<tbody><tr>
+	<th width="20%">Параметр</th>
+	<th>Описание</th>
+</tr>
+<tr>
+	<td>ENTITY</td>
+	<td>Обязательный. Строковой идентификатор хранилища.</td>
+</tr>
+<tr>
+	<td>ID</td>
+	<td>Обязательный. Идентификатор элемента.</td>
+</tr>
+<tr>
+	<td>NAME</td>
+	<td>Наименование элемента.</td>
+</tr>
+<tr>
+	<td>ACTIVE</td>
+	<td>Флаг активности элемента (Y|N).</td>
+</tr>
+<tr>
+	<td>DATE_ACTIVE_FROM</td>
+	<td>Дата начала активности элемента.</td>
+</tr>
+<tr>
+	<td>DATE_ACTIVE_TO</td>
+	<td>Дата окончания активности элемента.</td>
+</tr>
+<tr>
+	<td>SORT</td>
+	<td>Сортировочный вес элемента.</td>
+</tr>
+<tr>
+	<td>PREVIEW_PICTURE</td>
+	<td>Картинка анонса элемента.</td>
+</tr>
+<tr>
+	<td>PREVIEW_TEXT</td>
+	<td>Анонс элемента.</td>
+</tr>
+<tr>
+	<td>DETAIL_PICTURE</td>
+	<td>Детальная картинка элемента.</td>
+</tr>
+<tr>
+	<td>DETAIL_TEXT</td>
+	<td>Детальный текст элемента.</td>
+</tr>
+<tr>
+	<td>CODE</td>
+	<td>Символьный код элемента.</td>
+</tr>
+<tr>
+	<td>SECTION</td>
+	<td>Идентификатор раздела хранилища.</td>
+</tr>
+<tr>
+	<td>PROPERTY_VALUES</td>
+	<td>Обязательный. ассоциативный список значений свойств элемента. Свойства хранилища создаются при помощи <a class="link" href="/rest_help/entity/entity_item_property_add.php">entity.item.property.add</a>.</td>
+</tr>
+</tbody></table>
+
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

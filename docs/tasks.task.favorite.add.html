@@ -1,0 +1,59 @@
+<html>
+        <head>
+            <title>tasks.task.favorite.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">tasks.task.favorite.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_favorite_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">task</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<pre class="syntax"><strong>tasks.task.favorite.add(</strong>taskId<strong>)</strong></pre>
+
+<p>Метод добавления задачи в "Избранное".</p>
+
+<p>В случае успешного выполнения возвращает параметр <code>true</code> (иначе <code>false</code>).</p>
+
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+<tr>
+<td>taskId</td>
+<td>Идентификатор задачи.</td>
+</tr>
+
+	</tbody>
+</table>
+
+<h4>Примеры</h4>
+<pre class="syntax" rel="example">BX24.callMethod('tasks.task.favorite.add', {taskId: 119}, (res)=&gt;{console.log(res.answer.result);});
+</pre>
+
+<p>Результат:</p>
+
+<pre class="syntax">{
+	"result": true,
+	"time": {
+		"start": 1552382402.930095,
+		"finish": 1552382403.055257,
+		"duration": 0.12516212463378906,
+		"processing": 0.09590816497802734,
+		"date_start": "2019-03-12T11:20:02+02:00",
+		"date_finish": "2019-03-12T11:20:03+02:00"
+	}
+}
+</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

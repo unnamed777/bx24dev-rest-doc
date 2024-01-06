@@ -1,0 +1,80 @@
+<html>
+        <head>
+            <title>telephony.externalcall.finish</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">telephony.externalcall.finish <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/scope_telephony/telephony/telephony_externalcall_finish.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Метод завершает звонок, фиксирует его в статистике, скрывает у пользователя карточку звонка.</p>
+
+<h4>Возвращаемое значение</h4>
+
+<p>Метод возвращает массив, аналогичный методу <a class="link" href="/rest_help/scope_telephony/voximplant/statistic/voximplant_statistic_get.php">voximplant.statistic.get</a>.</p>
+
+
+<h4>Параметры функции</h4>
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th><th>Тип значения</th>
+		</tr>
+		<tr>
+			<td>CALL_ID</td>
+			<td>Идентификатор звонка из метода <a class="link" href="/rest_help/scope_telephony/telephony/telephony_externalcall_register.php">telephony.externalcall.register</a>. Обязательный.</td><td>string</td>
+		</tr>	
+		<tr>
+			<td>USER_ID</td>
+			<td>Идентификатор пользователя. Обязательный. Ответственный в лиде будет изменен на переданный USER_ID. Ответственный будет меняться только для лида, созданного автоматически при вызове метода <a class="link" href="/rest_help/scope_telephony/telephony/telephony_externalcall_register.php">telephony.externalcall.register</a>. Для существующего лида ответственный не меняется. </td><td>int</td>
+		</tr>	
+		<tr>
+			<td>DURATION</td>
+			<td>Длительность в сек. Обязательный.</td><td>int</td>
+		</tr>	
+		<tr>
+			<td>COST</td>
+			<td>Стоимость звонка.</td><td>double</td>
+		</tr>	
+		<tr>
+			<td>COST_CURRENCY</td>
+			<td>Валюта, в которой указана стоимость звонка. Список валют можно получить методом <a class="link" href="/rest_help/crm/currency/crm_currency_list.php">crm.currency.list</a>.</td><td>string</td>
+		</tr>	
+		<tr>
+			<td>STATUS_CODE</td>
+			<td>Код вызова (см. <a class="link" href="/rest_help/scope_telephony/codes_and_types.php#call_failed_code">таблицу кодов вызова</a>).
+</td><td>string</td>
+		</tr>	
+		<tr>
+			<td>FAILED_REASON</td>
+			<td>Причина несостоявшегося звонка.</td><td>string</td>
+		</tr>	
+		<tr>
+			<td>RECORD_URL</td>
+			<td>URL файла (желательно mp3, возможен flac) с записью звонка. <br>
+
+<p>Портал осуществит две попытки скачать запись по указанному адресу. В случае неудачи, запись приложена не будет и никакого уведомления об ошибке отправлено не будет.</p>
+<p class="note">Данный параметр является устаревшим и оставлен исключительно для обратной совместимости. Использовать его крайне не рекомендуется. Для загрузки записи звонка используйте метод <a class="link" href="/rest_help/scope_telephony/telephony/telephony_externalCall_attachRecord.php">telephony.externalCall.attachRecord</a>.</p> 
+
+</td><td>string</td>
+		</tr>	
+		<tr>
+			<td>VOTE</td>
+			<td>Оценка звонка пользователем (если АТС поддерживает функционал оценки разговора).</td><td>int</td>
+		</tr>	
+		<tr>
+			<td>ADD_TO_CHAT</td>
+			<td>Добавлять ли сообщение о совершенном звонке сотруднику Б24 в чат (Возможные значения 0 или 1, по умолчанию 0).</td><td>int</td>
+		</tr>	
+
+	</tbody>
+</table>
+
+<p class="note">Вместо USER_ID также может принимать USER_PHONE_INNER.</p>
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

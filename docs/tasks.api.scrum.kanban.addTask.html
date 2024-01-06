@@ -1,0 +1,59 @@
+<html>
+        <head>
+            <title>tasks.api.scrum.kanban.addTask</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">tasks.api.scrum.kanban.addTask <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/tasks/task/scrum/kanban/tasks_api_scrum_kanban_addTask.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">task</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<pre class="syntax"><b>tasks.api.scrum.kanban.addTask(</b>sprintId, taskId, stageId<b>)</b></pre>
+
+<p>Метод добавляет задачу в канбан Скрама. </p>
+
+
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+<tbody>
+<tr>
+	<th width="15%">Параметр</th>	<th>Описание</th></tr>
+
+<tr>	<td>sprintId</td>	<td>Идентификатор спринта. Обязательный параметр.</td></tr>
+
+<tr>	<td>taskId</td>	<td>Идентификатор задачи. Обязательный параметр.</td></tr>
+
+<tr>	<td>stageId</td>	<td>Идентификатор стадии. Обязательный параметр.</td></tr>
+
+</tbody>
+</table>
+
+
+
+<h4>Примеры</h4>
+ <pre class="syntax" rel="example">const sprintId = 1;
+const taskId = 1;
+const stageId = 1;
+BX24.callMethod(
+	'tasks.api.scrum.kanban.addTask',
+	{
+		sprintId: sprintId,
+		taskId: taskId,
+		stageId: stageId
+	},
+	function(res)
+	{
+		console.log(res);
+	}
+);
+</pre> 
+
+<br>							
+        </div>
+        </body>
+        </html>

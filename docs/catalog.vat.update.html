@@ -1,0 +1,58 @@
+<html>
+        <head>
+            <title>catalog.vat.update</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">catalog.vat.update <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/catalog/vat/catalog_vat_update.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">catalog.vat.update(id, fields)</pre>
+
+<p>Метод для обновления ставки НДС.</p>
+
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th><th>Тип</th>
+			<th>Описание</th>      </tr>
+
+<tr><td>id</td><td>integer</td> <td>Идентификатор ставки НДС.</td></tr>
+
+<tr><td>fields</td><td>object</td> <td>Поля, соответствующие доступному списку полей <a class="link" href="/rest_help/catalog/vat/catalog_vat_getfields.php">fields</a>.</td></tr>
+
+
+	</tbody>
+</table>
+
+<br><br>
+
+<h4>Примеры</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'catalog.vat.update',
+	{
+		id: 9,
+		fields: {
+			name: "Налог 15%",
+			rate: 15,
+			sort: 20,
+			active: "Y"
+		}
+	},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error().ex);
+		else
+			console.log(result.data());
+	}
+);
+</pre>
+<br>							
+        </div>
+        </body>
+        </html>

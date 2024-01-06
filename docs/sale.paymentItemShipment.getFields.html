@@ -1,0 +1,56 @@
+<html>
+        <head>
+            <title>sale.paymentItemShipment.getFields</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">sale.paymentItemShipment.getFields <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/sale/paymentitemshipment/sale_paymentitemshipment_getfields.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">sale</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<pre class="syntax">sale.paymentItemShipment.getFields()</pre>
+
+<p>Метод возвращает поля привязки оплаты к отгрузке.</p>
+
+<h4>Параметры</h4>
+
+<p>Без параметров.</p>
+
+<h4>Примеры</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'sale.paymentItemShipment.getFields', 
+	{}, 
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error().ex);
+		else
+			console.log(result.data());
+	}
+);
+</pre>
+
+<h4>Возвращаемые поля</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Поле</th> 	<th>Описание</th><th>Тип</th><th>Примечание</th></tr>
+   
+    <tr> 	<td>dateInsert</td> 	<td>Дата создания заказа.</td> 	<td>datetime</td> <td>Только для чтения.</td></tr>
+    <tr> 	<td>id</td> 	<td>Идентификатор привязки оплаты к отгрузке.</td> 	<td>integer</td> <td>Только для чтения.</td></tr>
+    <tr> 	<td>paymentId</td> 	<td>Идентификатор оплаты.</td> 	<td>integer</td> <td>Неизменяемое, обязательное поле.</td></tr>
+    <tr> 	<td>shipmentId</td> 	<td>Идентификатор отгрузки.</td> 	<td>integer</td> <td>Неизменяемое, обязательное поле.</td></tr>
+    <tr> 	<td>xmlId</td> 	<td>Внешний код.</td> 	<td>string</td> <td></td></tr>
+
+   </tbody>
+ </table>
+
+
+<br>							
+        </div>
+        </body>
+        </html>

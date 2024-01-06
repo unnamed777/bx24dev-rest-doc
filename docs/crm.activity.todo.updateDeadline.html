@@ -1,0 +1,57 @@
+<html>
+        <head>
+            <title>crm.activity.todo.updateDeadline</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.activity.todo.updateDeadline <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/rest_activity/todo/crm_activity_todo_updateDeadline.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax"><b>crm.activity.todo.updateDeadline(</b>
+	{
+		ownerTypeId: number,
+		ownerId: number,
+		id: number,
+		value: string
+	}
+<b>)</b></pre>
+
+<p>Изменить дедлайн дела</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th></tr>
+   
+    <tr> 	<td>ownerTypeId</td> 	<td>Идентификатор типа элемента (справочник доступных типов), к которому относится дело.</td></tr>
+   
+    <tr> 	<td>ownerId</td> 	<td>Идентификатор элемента, к которому относится дело.</td></tr>
+   
+    <tr> 	<td>id</td> 	<td>Идентификатор дела.</td></tr>
+   
+    <tr> 	<td>value</td> 	<td>Новый крайний срок дела.</td></tr>
+   
+   </tbody>
+ </table>
+
+<p>Результат будет содержать <b>id</b> - идентификатор измененного дела. </p>
+
+<h4>Пример</h4>
+
+<p>Пример использования</p>
+
+<pre class="syntax">crm.activity.todo.updateDeadline?ownerTypeId=2&amp;ownerId=1&amp;id=1&amp;value=2022-12-12T15:00:00</pre>
+
+<p>Успешный результат:</p>
+
+<pre class="syntax">{
+	"result": {
+		"id": 243
+	}
+}</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,63 @@
+<html>
+        <head>
+            <title>landing.block.uploadfile</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">landing.block.uploadfile <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/landing/block/blocks/landing_block_uploadfile.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">landing.block.uploadfile(block, picture)</pre>
+
+<p>Метод загружает картинку и привязывает ее к указанному блоку. В случае успеха возвращает пару: прямой путь до загруженного файла и id сохраненного файла. С этого момента картинка удалится только при полном удалении блока, страницы, содержащей блок, или через вызов метода <a class="link" href="/rest_help/landing/page/methods/landing_landing_removeEntities.php">landing.landing.removeEntities</a>.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>block</td> 	<td>ID блока</td> <td></td></tr>
+   
+    <tr> 	<td>picture</td> 	<td>	Варианты:
+
+<ol>
+<li>Путь до картинки, размещенной по веб-адресу.</li>
+<li><code>document.getElementById('file')</code> в случае работы через JS API.</li> 
+<li> Массив имя + содержимое 
+<pre class="syntax">{
+	0: 'name.jpg',
+	1: 'base64-содержимое файла'
+}</pre></li> 
+ </ol>
+</td> <td></td></tr>
+
+   
+   </tbody>
+ </table>
+
+<h4>Пример</h4>
+<pre class="syntax" rel="example">BX24.callMethod(
+	'landing.block.uploadfile',
+	{
+		block: 12294,
+		picture: 'https://site.com/******.jpg'
+//		picture: document.getElementById('file')
+	},
+	function(result)
+	{
+		if(result.error())
+		{
+			console.error(result.error());
+		}
+		else
+		{
+			console.info(result.data());
+		}
+	}
+);</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

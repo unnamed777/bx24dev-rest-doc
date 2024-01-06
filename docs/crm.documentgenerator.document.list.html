@@ -1,0 +1,70 @@
+<html>
+        <head>
+            <title>crm.documentgenerator.document.list</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.documentgenerator.document.list <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/documentgenerator/documents/crm_documentgenerator_document_list.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<a class="link" name="register"></a>
+<pre class="syntax">crm.documentgenerator.document.list(select = ['*'], order = [], filter = [], start = 0)</pre>
+
+<p>Возвращает список документов по фильтру.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>	  </tr>
+
+<tr><td>select</td><td>массив полей для вывода.</td></tr>
+<tr><td>order</td><td>массив для указания порядка вывода <code>{"id": "desc"}</code>.</td></tr>
+<tr><td>filter</td><td>массив для фильтрации.</td></tr>
+<tr><td>start</td><td>offset для постраничной навигации.</td></tr>
+
+	</tbody>
+</table>
+<br><br>
+
+<h4>Пример фильтра</h4>
+
+<pre class="syntax">"filter": {
+	"entityTypeId": 2,
+	"entityId": 5
+}
+</pre>
+
+<p>В результате будет список документов, сформированный для сделки с ID=5.</p>
+
+<h4>Ответ</h4>
+
+<pre class="syntax">"documents": [
+	"0": {
+		"id": "1523",
+		"title": "Акт (Россия)  1",
+		"number": "1",
+		"templateId": "115",
+		"entityTypeId": "2",
+		"fileId": "4315",
+		"imageId": "4316",
+		"pdfId": "4317",
+		"createTime": "2018-06-05T16:04:40+02:00",
+		"updateTime": "2018-06-05T16:04:40+02:00",
+		"values": {},
+		"entityId": "5",
+		"downloadUrl": "",
+		"downloadUrlMachine": "",
+		"imageUrl": "",
+		"imageUrlMachine": "",
+		"pdfUrl": "",
+		"pdfUrlMachine": "",
+	}
+]
+</pre>
+<br><br>							
+        </div>
+        </body>
+        </html>

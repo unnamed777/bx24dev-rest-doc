@@ -1,0 +1,172 @@
+<html>
+        <head>
+            <title>landing.repo.register</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">landing.repo.register <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/landing/partners_blocks/landing_repo_register.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Описание</h3>
+
+<pre class="syntax">landing.repo.register(code, fields, manifest)</pre>
+
+
+<p>Метод добавления блока в репозиторий. Возвращает ошибку или ID добавленного блока. Этот ID используется для добавления блока на создаваемые программно лендинги.</p>
+
+<p>При добавлении происходит проверка. Если блок с данным кодом уже присутствует в системе, произойдет его удаление</p>
+
+<p>Метод может вернуть ошибку об опасном содержимом блока. В этом случае требуется сначала проверить регистрируемое содержимое методом <a class="link" href="/rest_help/landing/partners_blocks/landing_repo_checkcontent.php">landing.repo.checkContent</a>.</p>
+
+<p>При разработке нового блока или изменении существующего может потребоваться быстрее увидеть изменение, чем это позволяет пере-добавление блока или флаг RESET. Рекомендуется для этих целей использовать метод <a class="link" href="/rest_help/landing/block/blocks/landing_block_updatecontent.php">landing.block.updatecontent</a>. Метод передаёт в блок произвольный контент и отображает изменения практически "налету". После того как разработка закончена, разработчик может окончательно его зарегистрировать.</p>
+
+<p>Метод подходит только для изменения контента. При изменении манифеста блок требуется перерегистрировать (без пере-добавления на страницу).</p>
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Метод</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>code</td> 	<td>Уникальный код вашего блока, по нему будет осуществляться удаление блока, если требуется. </td> <td></td></tr>
+   
+    <tr> 	<td>fields</td> 	<td>Массив полей, описывающих ваш блок, состоит из ключей:
+
+<ul>
+<li>NAME - название блока</li>
+<li>DESCRIPTION - описание блока</li> 
+<li>SECTIONS - <a class="link" href="/rest_help/landing/block/manifest.php#block">категории</a>, в которых должен появиться блок, через запятую.
+<p class="note">Если нужной категории нет в списке, просто напишите ее текстом в манифесте, категория будет добавлена. Ключом новой категории становится значение <code>md5(strtolower($sectionName))</code>.</p></li> 
+<li>PREVIEW - URL картинки, обложки блока</li> 
+<li>CONTENT - html-содержимое блока</li> 
+<li>ACTIVE - активность блока (Y / N)</li> 
+<li>SITE_TEMPLATE_ID – привязка блока к определенному шаблона сайта главного модуля. <b>Только для коробочных версий!</b></li>
+
+ </ul>
+
+<p>Дополнительные параметры:</p>
+
+<ul>
+<li>RESET - если передать со значением Y, то система автоматически обновит все добавленные на страницы блоки на новую верстку. Обратите внимание, технология тестовая и требует отдельного тестирования на блоках, которые вы хотите изменить. <a class="link external-link" href="https://dev.bitrix24.ru/company/personal/user/3/blog/2091/" title="" target="_blank">Подробнее...</a></li> 
+ </ul></td> <td></td></tr>
+   
+    <tr> 	<td>manifest</td> 	<td>Массив <a class="link" href="/rest_help/landing/block/manifest.php">манифеста</a>, которым описывается блок. </td> <td></td></tr>
+   
+   </tbody>
+ </table>
+
+
+
+
+<p class="note">Атрибут <b>style</b> может вырезаться встроенным санитайзером. Чтобы это обойти используйте вместо него атрибут <b>bxstyle</b>. При добавлении система конвертирует его в штатный style.</p>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Пример</h3>
+
+<pre class="syntax">&lt;?
+//для наглядности, передадим PHP-массив на исполнение JS
+$data = array(
+	'code' =&gt; 'myblockx',
+	'fields' =&gt; array(
+		'NAME' =&gt; 'Test block',
+		'DESCRIPTION' =&gt; 'Just try!',
+		'SECTIONS' =&gt; 'cover,about',
+		'PREVIEW' =&gt; 'https://www.bitrix24.ru/images/b24_screen.png',
+		'CONTENT' =&gt; '
+&lt;section class="landing-block"&gt;
+	&lt;div class="text-center g-color-gray-dark-v3 g-pa-10"&gt;
+		&lt;div class="g-width-600 mx-auto"&gt;
+			&lt;div class="landing-block-node-text g-font-size-12 "&gt;
+				&lt;p&gt;© 2017 All right reserved. Developed by
+				&lt;a href="#" class="landing-block-node-link g-color-primary"&gt;Bitrix24&lt;/a&gt;&lt;/p&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/section&gt;'
+	),
+	'manifest' =&gt; array(
+		'assets' =&gt; array(
+			'css' =&gt; array(
+				'https://site.com/aaa.css'
+			),
+			'js' =&gt; array(
+				'https://site.com/aaa.js'
+			)
+		),
+		'nodes' =&gt;
+			array(
+				'.landing-block-node-text' =&gt;
+					array(
+						'name' =&gt; 'Text',
+						'type' =&gt; 'text',
+					),
+				'.landing-block-node-link' =&gt;
+					array(
+						'name' =&gt; 'Link',
+						'type' =&gt; 'link',
+					),
+			),
+		'style' =&gt;
+			array(
+				'.landing-block-node-text' =&gt;
+					array(
+						'name' =&gt; 'Text',
+						'type' =&gt; 'typo',
+					),
+				'.landing-block-node-link' =&gt;
+					array(
+						'name' =&gt; 'Link',
+						'type' =&gt; 'typo',
+					),
+			),
+		'attrs' =&gt;
+			array(
+			  '.landing-block-node-text' =&gt;
+				  array(
+					  'name' =&gt; 'Настройка копирайта',
+					  'type' =&gt; 'dropdown',
+					  'attribute' =&gt; 'data-copy',
+					  'items' =&gt; array(
+						  'val1' =&gt; 'Значение 1',
+						  'val2' =&gt; 'Значение 2'
+							)
+					 ),
+			),
+	),
+);
+?&gt;
+// обратите внимание! далее идет JS код.
+BX24.callMethod(
+	'landing.repo.register',
+	//абстрактный метод, превращающий PHP-массив в JS-объект
+	&lt;?= \CUtil::PhpToJSObject($data)?&gt;,
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.info(result.data());
+	}
+);</pre>
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

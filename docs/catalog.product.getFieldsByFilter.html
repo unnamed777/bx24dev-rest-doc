@@ -1,0 +1,328 @@
+<html>
+        <head>
+            <title>catalog.product.getFieldsByFilter</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">catalog.product.getFieldsByFilter <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/catalog/product/catalog_product_getfieldsbyfilter.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p>
+
+<div class="tab">
+
+<h3 class="tab-title">Описание, параметры, пример</h3>
+
+
+<pre class="syntax">catalog.product.getFieldsByFilter(filter)</pre>
+
+<p>Метод возвращает поля товара торгового каталога по фильтру.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th><th>Тип</th>
+			<th>Описание</th>      </tr>
+<tr><td>filter</td><td>object</td><td>В фильтр передаются обязательных поля:
+<ul>
+<li><b>iblockId</b> - тип информационного блока;</li>
+<li><b>productType</b> - тип продукта:
+<ul>
+<li>[1] =&gt; простой</li>
+<li>[2] =&gt; комплект</li> 
+<li>[3] =&gt; товар с предложениями</li> 
+<li>[4] =&gt; предложение</li> 
+<li>[5] =&gt; предложение без товара</li> 
+ </ul>
+</li>
+<li><b>iblockSectionId</b> - идентификатор раздела.</li>
+<li><b>name</b> - название.</li>
+</ul>
+</td></tr>
+	</tbody>
+</table>
+
+<br><br>
+
+<h4>Примеры</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'catalog.product.getFieldsByFilter', 
+	{
+		filter: {
+			iblockId: 13,
+			productType: 1
+		}
+	},
+	function(result) {
+		if (result.error())
+			console.error(result.error().ex);
+		else
+			console.log(result.data());
+	}
+);
+</pre>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Возвращаемые поля</h3>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Поле</th> 	<th>Описание</th><th>Тип</th><th>Примечание</th></tr>
+<tr>
+<td>active</td>
+<td>Активность</td>
+<td>char</td>
+<td></td>
+</tr>
+<tr>
+<td>available</td>
+<td>Доступность</td>
+<td>char</td>
+<td>Только для чтения</td>
+</tr>
+<tr>
+<td>bundle</td>
+<td>Набор</td>
+<td>char</td>
+<td>Только для чтения</td>
+</tr>
+<tr>
+<td>canBuyZero</td>
+<td>Покупка при отсутствии</td>
+<td>char</td>
+<td></td>
+</tr>
+<tr>
+<td>code</td>
+<td>Символьный код</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>createdBy</td>
+<td>Кем создан (id)</td>
+<td>integer</td>
+<td></td>
+</tr>
+<tr>
+<td>dateActiveFrom</td>
+<td>Начало активности</td>
+<td>datetime</td>
+<td></td>
+</tr>
+<tr>
+<td>dateActiveTo</td>
+<td>Окончание активности</td>
+<td>datetime</td>
+<td></td>
+</tr>
+<tr>
+<td>dateCreate</td>
+<td>Дата создания</td>
+<td>datetime</td>
+<td></td>
+</tr>
+<tr>
+<td>detailPicture</td>
+<td>Детальная картинка</td>
+<td>file</td>
+<td></td>
+</tr>
+<tr>
+<td>detailText</td>
+<td>Детальное описание</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>detailTextType</td>
+<td>Тип детального описания</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>height</td>
+<td>Высота</td>
+<td>double</td>
+<td></td>
+</tr>
+<tr>
+<td>iblockId</td>
+<td>Идентификатор информационного блока</td>
+<td>integer</td>
+<td>Обязательное поле.</td>
+</tr>
+<tr>
+<td>iblockSectionId</td>
+<td>Идентификатора раздела информационного блока</td>
+<td>integer</td>
+<td>Обязательное поле.</td>
+</tr>
+<tr>
+<td>id</td>
+<td>Идентификатор товара</td>
+<td>integer</td>
+<td>Только для чтения.</td>
+</tr>
+<tr>
+<td>length</td>
+<td>Длина</td>
+<td>double</td>
+<td></td>
+</tr>
+<tr>
+<td>measure</td>
+<td>Единица измерения</td>
+<td>integer</td>
+<td></td>
+</tr>
+<tr>
+<td>modifiedBy</td>
+<td>Кем изменен</td>
+<td>integer</td>
+<td></td>
+</tr>
+<tr>
+<td>name</td>
+<td>Название</td>
+<td>string</td>
+<td>Обязательное поле.</td>
+</tr>
+<tr>
+<td>negativeAmountTrace</td>
+<td>Разрешение отрицательного количества товара</td>
+<td>char</td>
+<td>Только для чтения.</td>
+</tr>
+<tr>
+<td>previewPicture</td>
+<td>Картинка для анонса</td>
+<td>file</td>
+<td></td>
+</tr>
+<tr>
+<td>previewText</td>
+<td>Описание для анонса</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>previewTextType</td>
+<td>Тип описания для анонса</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>priceType</td>
+<td>Тип цены</td>
+<td>char</td>
+<td></td>
+</tr>
+<tr>
+<td>propertyN</td>
+<td>Свойства товара</td>
+<td>array</td>
+<td>Зависит от типа свойства. Массив включает в себя value (описание свойства в зависимости от типа) и valueId (идентификатор свойства).</td>
+</tr>
+<tr>
+<td>purchasingCurrency</td>
+<td>Валюта</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>purchasingPrice</td>
+<td>Цена</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>Доступное количество</td>
+<td>double</td>
+<td></td>
+</tr>
+<tr>
+<td>quantityReserved</td>
+<td>Зарезервированное количество</td>
+<td>double</td>
+<td></td>
+</tr>
+<tr>
+<td>quantityTrace</td>
+<td>Включить количественный учет</td>
+<td>char</td>
+<td></td>
+</tr>
+<tr>
+<td>sort</td>
+<td>Сортировка</td>
+<td>integer</td>
+<td></td>
+</tr>
+<tr>
+<td>subscribe</td>
+<td>Подписка на товар</td>
+<td>char</td>
+<td></td>
+</tr>
+<tr>
+<td>timestampX</td>
+<td>Дата изменения</td>
+<td>datetime</td>
+<td></td>
+</tr>
+<tr>
+<td>type</td>
+<td>Тип</td>
+<td>integer</td>
+<td>Только для чтения.</td>
+</tr>
+<tr>
+<td>vatId</td>
+<td>Идентификатор НДС</td>
+<td>integer</td>
+<td></td>
+</tr>
+<tr>
+<td>vatIncluded</td>
+<td>НДС включен в цену</td>
+<td>char</td>
+<td></td>
+</tr>
+<tr>
+<td>weight</td>
+<td>Вес</td>
+<td>double</td>
+<td></td>
+</tr>
+<tr>
+<td>width</td>
+<td>Ширина</td>
+<td>double</td>
+<td></td>
+</tr>
+<tr>
+<td>xmlId</td>
+<td>Внешний код</td>
+<td>string</td>
+<td></td>
+</tr>
+
+   </tbody>
+ </table>
+
+</div>
+
+<!------->
+<br><br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,58 @@
+<html>
+        <head>
+            <title>crm.lead.productrows.set</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.lead.productrows.set <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/leads/crm_lead_productrows_set.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.lead.productrows.set(id, rows)</pre>
+
+<p>Устанавливает (создаёт или обновляет) товарные позиции лида.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+<tr>
+<td>id</td>
+<td>Идентификатор лида.</td>
+</tr>
+
+<tr>
+<td>rows</td>
+<td>Товарные позиции - массив вида array(array("поле"=&gt;"значение"[, ...])[, ...]), где "поле" может принимать значения из возвращаемых методом <a class="link" href="/rest_help/crm/productrow_old/crm_productrow_fields.php">crm.productrow.fields</a>.
+	<p> Товарные позиции лида, существующие до момента вызова метода, будут заменены новыми. После сохранения будет произведён пересчёт суммы лида.</p></td>
+</tr>
+	</tbody>
+</table>
+
+<h4>Пример</h4>
+<pre class="syntax" rel="example">var id = prompt("Введите ID");
+BX24.callMethod(
+	"crm.lead.productrows.set", 
+	{ 
+		id: id, 
+		rows:
+		[ 
+			{ "PRODUCT_ID": 689, "PRICE": 100.00, "QUANTITY": 2 }, 
+			{ "PRODUCT_ID": 690, "PRICE": 200.00, "QUANTITY": 1 } 
+		] 
+	}, 
+	function(result) 
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.info(result.data());
+	}
+);
+</pre><br><br>							
+        </div>
+        </body>
+        </html>

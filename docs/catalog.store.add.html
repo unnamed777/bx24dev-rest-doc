@@ -1,0 +1,81 @@
+<html>
+        <head>
+            <title>catalog.store.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">catalog.store.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/catalog/store/catalog_store_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">catalog.store.add(fields)</pre>
+
+<p>Метод для добавления склада.</p>
+
+<p>Если операция успешна, возвращается id добавленного склада.</p>
+
+<h4>Параметры</h4>
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th><th>Тип</th>
+			<th>Описание</th>      </tr>
+
+<tr><td>fields</td><td>array</td> <td>Параметры добавляемого склада.</td></tr>
+	</tbody>
+</table>
+
+<h4>Примеры</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'catalog.store.add',
+	{
+		fields: {
+			'title': 'Склад 1',
+			'sort': '100',
+			'active': 'Y',
+			'issuingCenter': 'Y',
+			'shippingCenter': 'Y',
+			'code': 'store_1',
+			'address': 'пр. Московский д. 52',
+			'phone': '+0 123 456 789',
+			'schedule': 'Пн.-Пт. с 9:00 до 20:00, Сб.-Вс. с 11:00 до 18:00',
+			'xmlId': 'store_1',
+		}
+	},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.log(result.data());
+	}
+);
+</pre>
+
+<pre class="syntax">$result = CRest::call(
+	'catalog.store.add',
+	[
+		'fields' =&gt; [
+			'title' =&gt; 'Склад 1',
+			'sort' =&gt; '100',
+			'active' =&gt; 'Y',
+			'issuingCenter' =&gt; 'Y',
+			'shippingCenter' =&gt; 'Y',
+			'code' =&gt; 'store_1',
+			'address' =&gt; 'пр. Московский д. 52',
+			'phone' =&gt; '+0 123 456 789',
+			'schedule' =&gt; 'Пн.-Пт. с 9:00 до 20:00, Сб.-Вс. с 11:00 до 18:00',
+			'xmlId' =&gt; 'store_1',
+		],
+	]
+);
+
+echo '&lt;pre&gt;';
+print_r($result);
+echo '&lt;/pre&gt;';
+</pre>
+
+<br>							
+        </div>
+        </body>
+        </html>

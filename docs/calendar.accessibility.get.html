@@ -1,0 +1,56 @@
+<html>
+        <head>
+            <title>calendar.accessibility.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">calendar.accessibility.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/calendar/calendar_accessibility_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Возвращает занятость пользователей из списка.</p>
+
+<h4>Параметры функции</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+<tr>
+<td>* users</td>
+<td>Список id пользователей.</td>
+</tr>
+
+<tr>
+<td>* from</td>
+<td>Дата начала периода для определения занятости.</td>
+</tr>
+
+<tr>
+<td>* to</td>
+<td>Дата окончания периода для определения занятости.</td>
+</tr>
+
+<tr><td colspan="2"><b>* - обязательные параметры</b></td></tr>
+
+	</tbody>
+</table>
+
+<h4>Возвращаемое значение</h4>
+
+<p>Возвращает информацию о занятости по каждому запрашиваемому пользователю.</p>
+
+<h4>Пример использования</h4>
+<pre class="syntax" rel="example">BX24.callMethod("calendar.accessibility.get",
+	{
+		from: '2013-06-20',
+		to: '2013-12-20',
+		users: [1, 2, 34]
+	}
+);
+</pre>
+<br><br>							
+        </div>
+        </body>
+        </html>

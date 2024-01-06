@@ -1,0 +1,93 @@
+<html>
+        <head>
+            <title>tasks.api.scrum.sprint.list</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">tasks.api.scrum.sprint.list <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/tasks/task/scrum/sprint/tasks_api_scrum_sprint_list.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<p class="note_blue">
+Scope: <span class="bg_blue">task</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<div class="tab">
+<h3 class="tab-title">Описание и пример</h3>
+
+<pre class="syntax"><b>tasks.api.scrum.sprint.list(</b><b>)</b></pre>
+
+<p>Метод возвращает список спринтов.</p>
+
+<p>Метод аналогичен другим методам с фильтрацией по списку.</p>
+
+<p>Можно передавать значения полей в <b>filter</b>, <b>select</b>, <b>order</b>.</p>
+
+<h4>Параметры</h4>
+
+<p>Без параметров.</p>
+
+
+
+<h4>Примеры</h4>
+ <pre class="syntax" rel="example">const groupId = 1;
+BX24.callMethod(
+	'tasks.api.scrum.sprint.list',
+	{
+		filter: {
+		GROUP_ID: groupId,
+		'&gt;=DATE_END': new Date()
+		}
+	},
+	function(res)
+	{
+		console.log(res);
+	}
+);
+</pre> 
+
+</div>
+<!------->
+
+
+<div class="tab">
+<h3 class="tab-title">Доступные поля</h3>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Поле</th> 	<th>Описание</th></tr>
+   
+    <tr> 	<td>ID</td> 	<td>Идентификатор спринта</td></tr>
+
+    <tr> 	<td>GROUP_ID</td> 	<td>Идентификатор Скрама</td></tr>
+
+    <tr> 	<td>ENTITY_TYPE</td> 	<td>Тип элемента</td></tr>
+
+    <tr> 	<td>NAME</td> 	<td>Имя</td></tr>
+
+    <tr> 	<td>SORT</td> 	<td>Сортировка</td></tr>
+
+    <tr> 	<td>CREATED_BY</td> 	<td>Кем создан</td></tr>
+
+    <tr> 	<td>MODIFIED_BY</td> 	<td>Кем изменён</td></tr>
+
+    <tr> 	<td>DATE_START</td> 	<td>Дата запуска</td></tr>
+
+    <tr> 	<td>DATE_END</td> 	<td>Дата окончания</td></tr>
+
+    <tr> 	<td>STATUS</td> 	<td>Статус</td></tr>
+
+    <tr> 	<td>INFO</td> 	<td>Информация</td></tr>
+
+   </tbody>
+ </table>
+
+
+</div>
+<!------->
+
+<br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,52 @@
+<html>
+        <head>
+            <title>entity.item.property.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">entity.item.property.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/entity/entity_item_property_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Добавление дополнительного свойства элементов хранилища. Пользователь должен обладать правами на управление (<b>Х</b>) хранилищем.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+<tbody><tr>
+	<th width="20%">Параметр</th>
+	<th>Описание</th>
+</tr>
+<tr>
+	<td>ENTITY</td>
+	<td>Обязательный. Строковой идентификатор хранилища.</td>
+</tr>
+<tr>
+	<td>PROPERTY</td>
+	<td>Обязательный. Строковой идентификатор свойства.</td>
+</tr>
+<tr>
+	<td>NAME</td>
+	<td>Обязательный. Наименование свойства.</td>
+</tr>
+<tr>
+	<td>TYPE</td>
+	<td>Обязательный. Тип свойства (<b>S</b> - строка, <b>N</b> - число, <b>F</b> - файл).</td>
+</tr>
+</tbody></table>
+
+<h4>Пример</h4>
+
+<p>Вызов
+<br></p><pre class="syntax" rel="example">BX24.callMethod('entity.item.property.add', {ENTITY: 'menu_new', PROPERTY: 'new_prop', NAME: 'Новое свойство', TYPE: 'S'});</pre><p></p>
+
+<p>Запрос
+<br></p><pre>https://my.bitrix24.ru/rest/entity.item.property.add.json?ENTITY=menu_new&amp;NAME=%D0%9D%D0%BE%D0%B2%D0%BE%D0%B5%20%D1%81%D0%B2%D0%BE%D0%B9%D1%81%D1%82%D0%B2%D0%BE&amp;PROPERTY=new_prop&amp;TYPE=S&amp;auth=e690b44d2b3827d2eb9d4dbe59406dbb</pre><p></p>
+
+
+<p>Ответ
+<br></p><pre>{"result":true}</pre><p></p>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

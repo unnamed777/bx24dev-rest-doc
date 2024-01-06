@@ -1,0 +1,368 @@
+<html>
+        <head>
+            <title>imopenlines.session.history.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">imopenlines.session.history.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/imopenlines/session/imopenlines_session_history_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title">Метод получает историю сессии.</p>
+
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+	<tr> 	<th width="27%">Параметр</th><th>Пример</th><th>Обязательный</th><th>Описание</th>
+   
+	</tr><tr> 	<td>CHAT_ID</td><td>2020</td><td>Да</td><td>Идентификатор чата.</td></tr>
+	<tr> 	<td>SESSION_ID</td><td>494</td><td>Да</td><td>Идентификатор сессии.</td></tr>
+   
+   </tbody>
+ </table>
+
+
+</div>
+<!------->
+
+<div class="tab">
+
+<h3 class="tab-title">Вызов метода и ответ</h3>
+
+<p>JavaScript для Битрикс24 в коробке.</p>
+<pre class="syntax" rel="example">BX.rest.callMethod(
+	'imopenlines.session.history.get',
+	{
+		CHAT_ID: 1982,
+		SESSION_ID: 469
+	}
+)
+	.then(result =&gt; console.log(result.data()))
+	.catch(result =&gt; console.warn(result.error().ex))
+;
+</pre>
+
+<p>JavaScript для облачного Битрикс24:</p>
+
+<pre class="syntax">BX24.callMethod(
+	'imopenlines.session.head.vote',
+	{
+		CHAT_ID: 2024
+	},
+	function(result)
+	{
+		if(result.error())
+		{
+			console.warn(result.error().ex);
+			return false;
+		}
+
+		console.log(result.data());
+	}
+);</pre>
+
+
+<p>Пример ответа:</p>
+<pre class="syntax">{
+	"result":{
+		"chatId":1982,
+		"canJoin":"Y",
+		"canVoteHead":"Y",
+		"sessionId":469,
+		"sessionVoteHead":0,
+		"sessionCommentHead":null,
+		"userId":"chat1982",
+		"message":{
+			"19009":{
+				"id":"19009",
+				"chatid":"1982",
+				"senderid":"0",
+				"recipientid":"chat1982",
+				"date":"2023-05-30T07:45:34+02:00",
+				"text":"\u0414\u0438\u0430\u043b\u043e\u0433 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d.",
+				"textlegacy":"\u0414\u0438\u0430\u043b\u043e\u0433 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d.",
+				"params":{
+					"class":"bx-messenger-content-item-ol-end",
+					"componentId":"bx-imopenlines-message",
+					"imolVoteHead":0,
+					"imolVoteSid":469,
+					"imolVoteUser":0,
+					"type":"lines"
+				}
+			},
+			"19008":{
+				"id":"19008",
+				"chatid":"1982",
+				"senderid":"0",
+				"recipientid":"chat1982",
+				"date":"2023-05-30T07:45:33+02:00",
+				"text":"[USER=1 REPLACE]\u0412\u043b\u0430\u0434\u0438\u043c\u0438\u0440 \u041b\u043e\u0433\u0438\u043d\u043e\u0432",
+				"textlegacy":"[USER=1 REPLACE]\u0412\u043b\u0430\u0434\u0438\u043c\u0438\u0440 \u041b\u043e\u0433\u0438\u043d\u043e",
+				"params":[
+				
+				]
+			},
+			"18148":{
+				"id":"18148",
+				"chatid":"1982",
+				"senderid":"0",
+				"recipientid":"chat1982",
+				"date":"2023-05-19T01:52:03+02:00",
+				"text":"\u041d\u0415 \u041e\u0422\u0412\u0415\u0427\u0415\u041d\u041e! ALARM! WARNING! ATTENTION! \u041a \u0441\u04",
+				"textlegacy":"\u041d\u0415 \u041e\u0422\u0412\u0415\u0427\u0415\u041d\u041e! ALARM! WARNING! ATTENTION! \u041a \u04",
+				"params":{
+					"class":"bx-messenger-content-item-ol-output",
+					"componentId":"bx-imopenlines-message",
+					"connectorMid":[
+						"18149"
+					],
+					"imolForm":"offline",
+					"type":"lines"
+				}
+			},
+			"18113":{
+				"id":"18113",
+				"chatid":"1982",
+				"senderid":"0",
+				"recipientid":"chat1982",
+				"date":"2023-05-19T01:40:26+02:00",
+				"text":"\u041d\u0430\u0447\u0430\u0442 \u043d\u043e\u0432\u044b\u0439 \u0434\u0438\u0430\u043b\u043e\u0433 \u2116[U",
+				"textlegacy":"\u041d\u0430\u0447\u0430\u0442 \u043d\u043e\u0432\u044b\u0439 \u0434\u0438\u0430\u043b\u043e\u0433 \u",
+				"params":{
+					"class":"bx-messenger-content-item-ol-start"
+				}
+			},
+			"18114":{
+				"id":"18114",
+				"chatid":"1982",
+				"senderid":"0",
+				"recipientid":"chat1982",
+				"date":"2023-05-19T01:40:26+02:00",
+				"text":"\u041f\u0435\u0440\u0435\u0434\u0430\u043d\u044b\u0434\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435",
+				"textlegacy":"\u003CB\u003E\u041f\u0435\u0440\u0435\u0434\u0430\u043d\u044b\u0434\u043e\u043f\u043e\u043b\u043d\u0",
+				"params":{
+					"attach":[
+						{
+							"id":1684478426,
+							"blocks":[
+								{
+									"message":"\u0421\u0442\u0440\u0430\u043d\u0438\u0446\u0430\u0441\u0430\u0439\u0442\u0430"
+								}
+							],
+							"description":"",
+							"color":"#df532d"
+						}
+					],
+					"class":"bx-messenger-content-item-system"
+				}
+			},
+			"18115":{
+				"id":"18115",
+				"chatid":"1982",
+				"senderid":"0",
+				"recipientid":"chat1982",
+				"date":"2023-05-19T01:40:26+02:00",
+				"text":"\u041e\u0431\u0440\u0430\u0449\u0435\u043d\u0438\u0435 \u043d\u0430\u043f\u0440\u0430\u0432\u043b\u0435\u04",
+				"textlegacy":"\u041e\u0431\u0440\u0430\u0449\u0435\u043d\u0438\u0435 \u043d\u0430\u043f\u0440\u0430\u0432\u043b\u04",
+				"params":[
+				
+				]
+			},
+			"18116":{
+				"id":"18116",
+				"chatid":"1982",
+				"senderid":"450",
+				"recipientid":"chat1982",
+				"date":"2023-05-19T01:40:26+02:00",
+				"text":"sdfsdfsdfsdfdff",
+				"textlegacy":"sdfsdfsdfsdfdff",
+				"params":{
+					"connectorMid":[
+						"18112"
+					]
+				}
+			},
+			"18117":{
+				"id":"18117",
+				"chatid":"1982",
+				"senderid":"0",
+				"recipientid":"chat1982",
+				"date":"2023-05-19T01:40:26+02:00",
+				"text":"\u0414\u043e\u0431\u0440\u043e \u043f\u043e\u0436\u0430\u043b\u043e\u0432\u0430\u0442\u044c \u0432 \u041e\u",
+				"textlegacy":"\u0414\u043e\u0431\u0440\u043e \u043f\u043e\u0436\u0430\u043b\u043e\u0432\u0430\u0442\u044c \u0432 \u",
+				"params":{
+					"class":"bx-messenger-content-item-ol-output",
+					"connectorMid":[
+						"18118"
+					]
+				}
+			},
+			"18119":{
+				"id":"18119",
+				"chatid":"1982",
+				"senderid":"0",
+				"recipientid":"chat1982",
+				"date":"2023-05-19T01:40:26+02:00",
+				"text":"[B]\u041e\u0442\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0430 \u0444\u043e\u0440\u043c\u0430 \u0022\u0424",
+				"textlegacy":"\u003CB\u003E\u041e\u0442\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0430 \u0444\u043e\u0440\u043c\u0",
+				"params":{
+					"attach":[
+						{
+							"id":1684478426,
+							"blocks":[
+								{
+									"link":[
+										{
+											"name":"http:\/\/b24-3b4hq4.bitrix24.site\/crm_form_v0fcl\/",
+											"link":"http:\/\/b24-3b4hq4.bitrix24.site\/crm_form_v0fcl\/"
+										}
+									]
+								}
+							],
+							"description":""
+						}
+					],
+					"componentId":"bx-imopenlines-form",
+					"connectorMid":[
+						"18120"
+					],
+					"crmFormId":"3",
+					"crmFormSec":"huqwyy"
+				}
+			}
+		},
+		"usersMessage":{
+			"chat1982":[
+				"19009",
+				"19008",
+				"18148",
+				"18113",
+				"18114",
+				"18115",
+				"18116",
+				"18117",
+				"18119"
+			]
+		},
+		"users":{
+			"450":{
+				"id":"450",
+				"name":"\u0413\u043e\u0441\u0442\u044c",
+				"active":true,
+				"firstName":"\u0413\u043e\u0441\u0442\u044c",
+				"lastName":"",
+				"workPosition":null,
+				"color":"#ab7761",
+				"avatar":"\/bitrix\/js\/im\/images\/blank.gif",
+				"avatarId":null,
+				"birthday":false,
+				"gender":"M",
+				"phoneDevice":false,
+				"phones":false,
+				"extranet":true,
+				"tzOffset":0,
+				"network":false,
+				"bot":false,
+				"connector":true,
+				"profile":"\/company\/personal\/user\/450\/",
+				"externalAuthId":"imconnector",
+				"status":null,
+				"idle":false,
+				"lastActivityDate":"2023-05-19T15:40:26+02:00",
+				"mobileLastDate":false,
+				"desktopLastDate":false,
+				"departments":[
+				
+				],
+				"absent":false,
+				"services":null
+			}
+		},
+		"openlines":{
+			"canvoteashead":{
+				"58":true
+			}
+		},
+		"userInGroup":[
+		
+		],
+		"woUserInGroup":[
+		
+		],
+		"chat":{
+			"1982":{
+				"id":"1982",
+				"name":"\u0411\u0443\u0440\u044b\u0439 \u0433\u043e\u0441\u0442\u044c \u211633 - A1",
+				"owner":"0",
+				"color":"#ab7761",
+				"extranet":false,
+				"avatar":"\/bitrix\/js\/im\/images\/blank.gif",
+				"call":"0",
+				"callNumber":"",
+				"entityType":"LINES",
+				"entityId":"livechat|58|1981|450",
+				"entityData1":"N|NONE|0|N|N|0|1684478426|0|0|0",
+				"entityData2":"",
+				"entityData3":"N",
+				"public":"",
+				"muteList":{
+					"450":false
+				},
+				"managerList":null,
+				"dateCreate":"2023-05-19T08:40:26+02:00",
+				"type":"lines",
+				"messageType":"L"
+			}
+		},
+		"userBlockChat":{
+			"1982":{
+				"450":false
+			}
+		},
+		"userInChat":{
+			"1982":[
+				450
+			]
+		},
+		"files":[
+		
+		]
+	},
+	"time":{
+		"start":1685712569.097672,
+		"finish":1685712569.247064,
+		"duration":0.14939212799072266,
+		"processing":0.0682840347290039,
+		"date_start":"2023-06-02T15:29:29+02:00",
+		"date_finish":"2023-06-02T15:29:29+02:00"
+	}
+}
+</pre>
+
+</div>
+<!------->
+
+<div class="tab">
+
+<h3 class="tab-title"><i style="font-size: 25px;" class="fa fa-list fa-border" aria-hidden="true"></i>&nbsp;&nbsp;Возможные коды ошибок</h3>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+	<tr> 	<th width="27%">Код</th><th>Описание</th>
+   
+	</tr><tr> 	<td>ACCESS_DENIED</td><td>У текущего пользователя нет доступа к указанному чату.</td></tr>
+	<tr> 	<td>CHAT_TYPE</td><td>Указанный чат не является открытой линией.</td></tr>
+	<tr> 	<td>CHAT_ID</td><td>Указан не корректный идентификатор чата.</td></tr>
+  
+   </tbody>
+ </table>
+
+</div>
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

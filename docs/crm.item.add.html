@@ -1,0 +1,105 @@
+<html>
+        <head>
+            <title>crm.item.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.item.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/dynamic/methodscrmitem/crm_item_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Описание и параметры</h3>
+
+<pre class="syntax">crm.item.add({entityTypeId: number, fields: ?{})</pre>
+
+<p>Метод создает новый элемент смарт-процесса с идентификатором <code>entityTypeId</code>.</p>
+<p>При создании элемента производится стандартный ряд проверок, модификаций и автоматических действий:</p>
+<ul>
+    <li>проверяются права доступа;</li>
+    <li>проверяется заполненность обязательных полей;</li>
+    <li>проверяется заполненность зависимых от стадий обязательных полей;</li>
+    <li>проверяется корректность заполнения полей;</li>
+    <li>полям присваиваются значения по умолчанию;</li>
+    <li>после сохранения запускаются роботы.</li>
+</ul>
+<p>Метод вернет результат аналогичный вызову метода <a class="link" href="/rest_help/crm/dynamic/methodscrmitem/crm_item_get.php">crm.item.get</a> на только что созданном элементе.</p>
+
+<p>Чтобы загрузить файл, в качестве значения пользовательского поля необходимо передать массив, где первый элемент - это имя файла, а второй - это закодированный в base64 контент файла.</p>
+
+<p>Примеры <code>fields</code> для разных запросов можно посмотреть <a class="link" href="/rest_help/crm/dynamic/methodscrmitem/crm_item_list.php">здесь</a>.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr><th width="15%">Параметр</th> <th>Описание</th></tr>
+
+<tr><td>entityTypeId</td><td>Идентификатор смарт-процесса.</td></tr>
+<tr><td>fields</td><td>Значение полей элемента. Необязательный параметр.</td></tr>
+
+
+</tbody>
+</table>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Примеры</h3>
+
+<p>Пример добавления элемента смарт-процесса с загрузкой файла</p>
+
+<pre class="syntax">$Smart_Type_ID = 577;
+
+$file_name_1 = 'test_file_img.jpg';
+$file_name_2 = 'test_file_img_2.jpg';
+$path_1 = 'folder/test_file_img.jpg';
+$path_2 = 'folder/test_file_img_2.jpg';
+
+// Кодировать файлы в base64
+$base64image_1 = base64_encode(file_get_contents($path_1));
+$base64image_2 = base64_encode(file_get_contents($path_2));
+
+// Формируем запрос
+$param['act'] = "crm.item.add?" . http_build_query(array(
+	"entityTypeId" =&gt; $Smart_Type_ID,
+	"fields" =&gt; [
+		'title' =&gt; 'Тест',
+		'company_id' =&gt; 57,
+		'contact_ids' =&gt; [ 5, 7 ],
+		'assigned_by_id' =&gt; 1,
+		'ufCrm5_1641472560814' =&gt; 57, // тип - список, 57 - ID одного из вариантов списка
+		'ufCrm5_1641472485686' =&gt; 'строка',
+		'ufCrm5_1641472326332' =&gt; 777,
+		'ufCrm5_1643035938' =&gt; 5, // тип - привязка к CRM
+		// тип - файл, множественное
+		'ufCrm5_1641473846006' =&gt; [
+			'0' =&gt; [ $file_name_1, $base64image_1],
+			'1' =&gt; [ $file_name_2, $base64image_2]
+		],
+	]
+));</pre>
+
+</div>
+
+<!------->
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,72 @@
+<html>
+        <head>
+            <title>crm.currency.localizations.set</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.currency.localizations.set <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/currency/crm_currency_localizations_set.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.currency.localizations.set(id, localizations)</pre>
+
+<p>Устанавливает локализации для валюты, указанной по символьному идентификатору.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+<tr>
+<td>id</td>
+<td>Символьный идентификатор валюты.</td>
+</tr>
+
+<tr>
+<td>localizations</td>
+<td>Набор локализаций  - массив вида array("язык" =&gt; array("поле"=&gt;"значение"[, ...])), содержащий значения полей локализаций, где "язык" - идентификатор языка, "поле" - одно из возвращаемых методом <a class="link" href="/rest_help/crm/currency/crm_currency_localizations_fields.php">crm.currency.localizations.fields</a> значений.</td>
+</tr>
+	</tbody>
+</table>
+
+<h4>Пример</h4>
+<pre class="syntax" rel="example">BX24.callMethod(
+	'crm.currency.localizations.set', 
+	{
+		id: "KWD", 
+		localizations: 
+		{
+			ru:
+			{
+				DEC_POINT:'.', 
+				FORMAT_STRING:'# динар', 
+				FULL_NAME:'Кувейтский динар', 
+				THOUSANDS_VARIANT:'C',
+				DECIMALS: 2,
+				HIDE_ZERO: "Y" //Если десятичная часть нулевая, то отбрасываем её при выводе
+			},
+			en:
+			{
+				DEC_POINT:',', 
+				FORMAT_STRING:'# KD', 
+				FULL_NAME:'Kuwaiti Dinar', 
+				THOUSANDS_VARIANT:'C',
+				DECIMALS: 2,
+				HIDE_ZERO: "Y"
+			}
+		}
+	},
+	function(result) 
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.info(result.data());
+	}
+);
+</pre><br><br>							
+        </div>
+        </body>
+        </html>

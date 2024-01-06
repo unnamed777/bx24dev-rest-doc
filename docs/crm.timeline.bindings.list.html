@@ -1,0 +1,68 @@
+<html>
+        <head>
+            <title>crm.timeline.bindings.list</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.timeline.bindings.list <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/timeline/bindings/crm_timeline_bindings_list.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.timeline.bindings.list()</pre>
+
+<p>Возвращает список привязок к записи в таймлайне.</p>
+
+<p>При фильтрации обязательное поле - 
+		<span class="learning-lesson-detail-block js-detail-info-block">
+			<span class="learning-lesson-detail-word js-detail-info-word">OWNER_ID</span>
+			<span class="learning-lesson-detail-body js-detail-info-body">
+				<span class="learning-lesson-detail-body-inner  js-detail-info-body-inner">
+                    <button class="learning-lesson-detail-close-button  js-detail-close-button" type="button"></button>
+                    <table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Поле</th> 	<th>Описание</th><th>Тип</th><th>Примечание</th></tr>
+
+    <tr> 	<td>OWNER_ID</td> 	<td>ID записи в таймлайне.</td>       <td>integer</td>      <td>Неизменяемое\Обязательное</td></tr>
+
+   
+   </tbody>
+ </table>
+                </span>
+			</span>
+		</span>
+		.</p>
+
+<h4>Параметры</h4>
+
+<p>Cм. описание <a class="link" href="/rest_help/general/lists.php">списочных методов</a>.</p>
+
+
+<h4>Пример:</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	"crm.timeline.bindings.list",
+	{
+		filter: {
+			"OWNER_ID": 1110
+		}
+	},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+		{
+			console.dir(result.data());
+			if(result.more())
+			result.next();
+		}
+	}
+);
+</pre>
+
+
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

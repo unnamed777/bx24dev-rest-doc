@@ -1,0 +1,66 @@
+<html>
+        <head>
+            <title>tasks.api.scrum.kanban.updateStage</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">tasks.api.scrum.kanban.updateStage <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/tasks/task/scrum/kanban/tasks_api_scrum_kanban_updateStage.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">task</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<pre class="syntax"><b>tasks.api.scrum.kanban.updateStage(</b>stageId, fields<b>)</b></pre>
+
+<p>Метод изменяет стадию канбана Скрама.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+<tbody>
+<tr>
+	<th width="15%">Параметр</th>	<th>Описание</th></tr>
+
+<tr>	<td>stageId</td>	<td>Идентификатор стадии.</td></tr>
+
+<tr>	<td>fields</td>	<td>Поля, соответствующие доступному списку полей <a class="link" href="/rest_help/tasks/task/scrum/kanban/tasks_api_scrum_kanban_getFields.php">tasks.api.scrum.kanban.getFields</a>. 
+
+<p>Доступные для обновления поля: (name, sprintId, sort, type, color). Необновляемые поля можно не передавать. </p>
+
+<p>Поле <b>sort</b> кратно 100. </p>
+
+<p>Доступные значения поля для <b>type</b>: (NEW, WORK, FINISH).</p></td></tr>
+
+</tbody>
+</table>
+
+
+<h4>Примеры</h4>
+ <pre class="syntax" rel="example">const stageId = 2;
+const name = 'Updated name';
+const sort = 200;
+const type = 'WORK';
+const color = '47D1E2';
+BX24.callMethod(
+	'tasks.api.scrum.kanban.updateStage',
+	{
+		stageId: stageId,
+		fields: {
+			name: name,
+			sort: sort,
+			type: type,
+			color: color,
+		}
+	},
+	function(res)
+	{
+		console.log(res);
+	}
+);
+</pre> 
+
+<br>							
+        </div>
+        </body>
+        </html>

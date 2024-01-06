@@ -1,0 +1,43 @@
+<html>
+        <head>
+            <title>department.update</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">department.update <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/departments/department_update.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Метод изменяет подразделение. Возможно только от имени пользователя с правами изменения структуры компании.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+<tbody><tr><th width="15%">Параметр</th><th>Описание</th></tr>
+
+<tr><td>ID</td><td> идентификатор подразделения (обязательный)</td></tr>
+
+<tr><td>NAME</td><td> наименование подразделения (обязательный)</td></tr>
+ 
+<tr><td>SORT</td><td> параметр сортировки подразделения</td></tr>
+
+<tr><td>PARENT</td><td> идентификатор родительского подразделения.</td></tr>
+
+<tr><td>UF_HEAD</td><td> идентфикатор руководителя подразделения</td></tr>
+
+</tbody></table>
+
+<p><b>Вызов</b></p>
+
+<pre class="syntax" rel="example">BX24.callMethod('department.update', {"ID": 222, "NAME": "Старое подразделение", "PARENT": 114, "UF_HEAD": 11});</pre>
+
+<p><b>Запрос</b></p>
+
+<pre class="syntax">https://my.bitrix24.ru/rest/department.update.json?ID=222&amp;NAME=%D0%A1%D1%82%D0%B0%D1%80%D0%BE%D0%B5%20%D0%BF%D0%BE%D0%B4%D1%80%D0%B0%D0%B7%D0%B4%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5&amp;PARENT=114&amp;UF_HEAD=11&amp;auth=2577a0459ed8f183c996f44f0995ebe5</pre>
+
+<p><b>Ответ</b></p>
+<pre class="syntax">{"result":true}</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

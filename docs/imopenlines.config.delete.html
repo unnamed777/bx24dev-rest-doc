@@ -1,0 +1,43 @@
+<html>
+        <head>
+            <title>imopenlines.config.delete</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">imopenlines.config.delete <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/imconnector/setting_line/imopenlines_config_delete.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Метод для удалении линии.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>CONFIG_ID</td> 	<td>Идентификатор линии (обязательный).</td> <td></td></tr>
+   
+   </tbody>
+ </table>
+
+<h4>Пример</h4>
+<pre class="syntax" rel="example">//imopenlines.config.delete
+function configDelete()
+{
+	var params = {
+		CONFIG_ID: 1
+	};
+	BX24.callMethod(
+		'imopenlines.config.delete',
+		params,
+		function (result) {
+			if (result.error())
+				alert("Error: " + result.error());
+			else
+				alert("Успешно: " + result.data());
+		}
+	);
+} </pre><br><br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,79 @@
+<html>
+        <head>
+            <title>crm.currency.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.currency.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/currency/crm_currency_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.currency.add(fields)</pre>
+
+<p>Создаёт новую валюту.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+<tr>
+<td>fields</td>
+<td>Набор полей - массив вида array("поле"=&gt;"значение"[, ...]), содержащий значения полей валюты, где "поле" может принимать значения из возвращаемых методом <a class="link" href="/rest_help/crm/currency/crm_currency_fields.php">crm.currency.fields</a>.
+<div class="note">
+	<b>Примечание</b>: чтобы узнать требуемый формат полей, выполните метод <a class="link" href="/rest_help/crm/currency/crm_currency_fields.php">crm.currency.fields</a> и посмотрите формат пришедших значений этих полей.</div>
+</td>
+</tr>
+	</tbody>
+</table>
+
+<p><b>Внимание!</b> Настоятельно рекомендуется определить набор локализаций в поле LANG (см. crm.currency.localizations.set). Если поле LANG отсутствует, то необходимо вызвать для каждого активного языка метод <a class="link" href="/rest_help/crm/currency/crm_currency_localizations_set.php">crm.currency.localizations.set</a>. 
+В противном случае при выводе цены в этой валюте будут использоваться настройки форматирования по умолчанию.</p>
+
+<h4>Пример</h4>
+<pre class="syntax" rel="example">BX24.callMethod(
+	"crm.currency.add",
+	{
+		fields:
+		{
+			"CURRENCY": "KWD",
+			"AMOUNT_CNT": 1,
+			"AMOUNT": 112.25,
+			"SORT": 1000,
+			"LANG": 		 
+			{
+				ru:
+				{
+					DEC_POINT:'.', 
+					FORMAT_STRING:'# динар', 
+					FULL_NAME:'Кувейтский динар', 
+					THOUSANDS_VARIANT:'C', //С = запятая, N = разделитель отсутствует, D = точка, B = пробел
+					DECIMALS: 2,
+					HIDE_ZERO: "Y" //Если десятичная часть нулевая, то отбрасываем её при выводе
+				}, 
+				en:
+				{
+					DEC_POINT:',', 
+					FORMAT_STRING:'# KD', 
+					FULL_NAME:'Kuwaiti Dinar', 
+					THOUSANDS_VARIANT:'C',
+					DECIMALS: 2,
+					HIDE_ZERO: "Y"
+				}
+			}
+		}
+	},
+	function(result) 
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.info("Создана валюта с ID " + result.data());
+	}
+);	
+</pre><br><br>							
+        </div>
+        </body>
+        </html>

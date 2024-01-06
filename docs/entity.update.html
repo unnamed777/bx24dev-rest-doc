@@ -1,0 +1,45 @@
+<html>
+        <head>
+            <title>entity.update</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">entity.update <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/entity/entity_update.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Обновляет параметры хранилища данных. Пользователь должен обладать правами на управление (<b>Х</b>) хранилищем. Пользователь не может отнять у себя права на управление.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+<tbody><tr>
+	<th width="20%">Параметр</th>
+	<th>Описание</th>
+</tr>
+<tr>
+	<td>ENTITY</td>
+	<td>Обязательный. Строковой идентификатор обновляемого хранилища.</td>
+</tr>
+<tr>
+	<td>NAME</td>
+	<td>Новое название хранилища.</td>
+</tr>
+<tr>
+	<td>ACCESS</td>
+	<td>Описание нового набора прав доступа к хранилищу. <br>
+Должно иметь вид ассоциативного массива, ключами которого являются идентификаторы прав доступа, значением - <b>R</b> (чтение),  <b>W</b> (запись) или <b>X</b> (управление).</td>
+</tr>
+<tr>
+	<td>ENTITY_NEW</td>
+	<td>Новый строковой идентификатор хранилища.</td>
+</tr>
+</tbody></table>
+
+<h4>Пример</h4>
+
+<p></p><pre class="syntax" rel="example">BX24.callMethod('entity.update', {'ENTITY': 'dish', 'ACCESS': {U1:'W',AU:'R'}});</pre><p></p>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

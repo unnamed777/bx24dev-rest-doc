@@ -1,0 +1,72 @@
+<html>
+        <head>
+            <title>catalog.document.element.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">catalog.document.element.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/catalog/catalogdocument/catalogdocumentelement/catalog_document_element_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">catalog.document.element.add(fields)</pre>
+
+<p>Метод для добавления товара документа складского учёта.</p>
+
+<p>Если операция успешна, возвращается id добавленного товара.</p>
+
+<h4>Параметры</h4>
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th><th>Тип</th>
+			<th>Описание</th>      </tr>
+<tr><td>fields</td><td>array</td> <td>Параметры добавляемого товара. Поля соответствуют доступному списку полей <a class="link" href="/rest_help/catalog/catalogdocument/catalogdocumentelement/catalog_document_element_getfields.php">fields</a>.</td></tr>
+	</tbody>
+</table>
+
+<h4>Примеры</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'catalog.document.element.add',
+	{
+		'fields': {
+			'docId': 1,
+			'storeFrom': 0,
+			'storeTo': 1,
+			'elementId': 42,
+			'amount': 10,
+			'purchasingPrice': 25,
+		}
+	},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.log(result.data());
+	}
+);
+</pre>
+
+<pre class="syntax">$result = CRest::call(
+	'catalog.document.element.add',
+	[
+		'fields' =&gt; [
+			'docId' =&gt; 1,
+			'storeFrom' =&gt; 0,
+			'storeTo' =&gt; 1,
+			'elementId' =&gt; 42,
+			'amount' =&gt; 10,
+			'purchasingPrice' =&gt; 25,
+		],
+	]
+);
+
+echo '&lt;pre&gt;';
+print_r($result);
+echo '&lt;/pre&gt;';
+</pre>
+
+<br>							
+        </div>
+        </body>
+        </html>

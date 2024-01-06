@@ -1,0 +1,76 @@
+<html>
+        <head>
+            <title>configuration.import.register</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">configuration.import.register <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/configuration_import/configuration_import_register.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">configuration.import</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<pre class="syntax">configuration.import.register(
+	data
+)</pre>
+
+<p>Регистрация импорта.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+	 <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+	
+	 <tr> 	<td>data</td> 	<td>Массив ссылок на файлы из экспортированного архива.</td> <td></td></tr>
+	
+	</tbody>
+ </table>
+
+<h4>Пример</h4>
+
+<pre class="syntax">$rest = CRest::call(
+	'configuration.import.register',
+	[
+		'data' =&gt; [
+			'STRUCTURE' =&gt; [],
+			'FILES' =&gt; [],
+			'MANIFEST' =&gt; [],
+		],
+	]
+);
+</pre>
+
+<p>Результат выполнения:</p>
+
+<pre class="syntax">Array
+	(
+		[result] =&gt; Array
+			(
+				[processId] =&gt; 42
+			)
+			[time] =&gt; Array
+				(
+					[start] =&gt; 1629302119.8213
+					[finish] =&gt; 1629302119.9701
+					[duration] =&gt; 0.14881992340088
+					[processing] =&gt; 0.085903882980347
+					[date_start] =&gt; 2021-08-18T17:55:19+02:00
+					[date_finish] =&gt; 2021-08-18T17:55:19+02:00
+				)
+
+	)
+</pre>
+
+<p>Где:</p>
+
+<ul>
+<li><strong>processId</strong> - идентификатор процесса, на основе которого работает импорт.</li> 
+
+ </ul>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,80 @@
+<html>
+        <head>
+            <title>crm.item.productrow.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.item.productrow.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/productrow/crm_item_productrow_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.item.productrow.get({id: number})</pre>
+
+<p>Отдает информацию о товарной позиции с идентификатором <b>id</b>.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>id</td> 	<td>Идентификатор товарной позиции</td> <td></td></tr>
+    
+   </tbody>
+ </table>
+
+
+<p>Ответ:</p>
+
+<pre class="syntax">{
+	"productRow": {
+		"id": 1263,
+		"ownerId": 707,
+		"ownerType": "Q",
+		"productId": 2,
+		"productName": "Название товарной позиции",
+		"price": 611,
+		"priceAccount": 611,
+		"priceExclusive": 611,
+		"priceNetto": 678.89,
+		"priceBrutto": 678.89,
+		"quantity": 1,
+		"discountTypeId": 2,
+		"discountRate": 10,
+		"discountSum": 67.89,
+		"taxRate": 0,
+		"taxIncluded": "N",
+		"customized": "Y",
+		"measureCode": 796,
+		"measureName": "шт",
+		"sort": 0
+	}
+}</pre>
+
+<p>Значения в ответе:</p>
+
+<ul>
+<li><strong>ownerId</strong> - идентификатор элемента CRM, к которому привязана товарная позиция (например, идентификатор предложения)</li>
+<li><strong>ownerType</strong> - символьный код типа сущности CRM, к которому привязана товарная позиция. Узнать, какому типу сущности соответствует конкретный код можно через методы класса <i>\CCrmOwnerTypeAbb</i>r.</li> 
+<li><strong>productId</strong> - идентификатор товара из каталога, которому соответствует товарная позиция.</li> 
+<li><strong>productName</strong> - название товарной позиции. По умолчанию совпадает с названием товара из каталога, но может быть изменено.</li>
+<li><strong>price</strong> - стоимость за единицу товарной позиции с учетом скидок и налогов.</li> 
+<li><strong>priceAccount</strong> - стоимость за единицу товарной позиции с учетом скидок и налогов, сконвертированная в валюту отчетов.</li> 
+<li><strong>priceExclusive</strong> - стоимость за единицу товарной позиции с учетом скидок, но без учета налогов</li>
+<li><strong>priceNetto</strong> - стоимость за единицу товарной позиции без учета скидок и без учета налогов.</li> 
+<li><strong>priceBrutto</strong> - стоимость за единицу товарной позиции с учетом налогов, но без учета скидок.</li> 
+<li><strong>quantity</strong> - количество единиц товарной позиции.</li>
+<li><strong>discountTypeId</strong> - тип скидки. Может быть 1 для скидки в абсолютном значении и 2 для скидки в процентах. По умолчанию равно 2.</li> 
+<li><strong>discountRate</strong> - процент скидки на товарную позицию.</li> 
+<li><strong>discountSum</strong> - абсолютное значение скидки на товарную позицию.</li>
+<li><strong>taxRate</strong> - процент налога на товарную позицию.</li> 
+<li><strong>measureCode</strong> - код единицы измерения количества товарной позиции. Настроить можно в разделе <a class="link external-link" href="https://helpdesk.bitrix24.ru/open/5488453/" title="" target="_blank">Единицы измерения</a> настроек CRM.</li> 
+<li><strong>measureName</strong> - условное обозначение единицы измерения количества товарной позиции. Настроить можно в разделе <a class="link external-link" href="https://helpdesk.bitrix24.ru/open/5488453/" title="" target="_blank">Единицы измерения</a> настроек CRM.</li>
+<br>
+<p class="note">
+ <strong>Примечание</strong>: С версии <b>CRM 21.1800.0</b> через REST-методы семейства <code>crm.item.productrow.*</code> можно менять единицы измерения товарных позиций, передавая только <code>measureCode</code>, а <code>measureName</code> заполнится автоматически.</p>
+<br>
+<li><strong>sort</strong> - коэффициент сортировки.</li> 
+ </ul>							
+        </div>
+        </body>
+        </html>

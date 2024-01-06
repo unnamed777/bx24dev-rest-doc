@@ -1,0 +1,41 @@
+<html>
+        <head>
+            <title>sonet_group.update</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">sonet_group.update <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/sonet_group/sonet_group_update.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Изменяет параметры группы соцсети, используя метод API <a class="link" href="/api_help/socialnetwork/classes/CSocNetGroup/Update.php">CSocNetGroup::Update()</a>
+Для осуществления операции текущий пользователь должен быть либо владельцем группы, либо иметь права администратора соцсети.</p>
+
+<br>
+<p>Получает в параметрах все поля, необходимые для работы метода <a class="link" href="/api_help/socialnetwork/classes/CSocNetGroup/Update.php">CSocNetGroup::Update()</a>, а также <b>GROUP_ID</b> - ID группы, которую необходимо изменить.</p>
+
+<p>В случае успешного изменения группы, возвращает ее ID, иначе - текст ошибки.</p>
+
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">// Изменяем название группы соцсети с ID=11 на 'Test sonet group XXX'
+
+BX24.callMethod('sonet_group.update', {
+	'GROUP_ID': 11,
+	'NAME': 'Test sonet group XXX'
+});
+</pre>
+
+<h4>Запрос:</h4>
+<pre class="syntax">https://mydomain.bitrix24.ru/rest/sonet_group.update.json?auth=803f65e30340ff39703f8061c8b63a10&amp;GROUP_ID=11&amp;NAME=Test%20sonet%20group%20XXX
+</pre>
+
+
+<h4>Ответ:</h4>
+<pre class="syntax">{"result":11}
+</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

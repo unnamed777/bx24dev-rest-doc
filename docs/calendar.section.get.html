@@ -1,0 +1,56 @@
+<html>
+        <head>
+            <title>calendar.section.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">calendar.section.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/calendar/calendar_section_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Возвращает список календарей. Здесь и в дальнейшем <b>section</b> будет именоваться как "календарь".</p>
+
+<h4>Параметры функции</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+  
+		<tr>
+			<td>* type</td>
+			<td>Тип календаря:
+<ul>
+<li>user</li>
+<li>group</li>
+<li>company_calendar</li>
+<li>location</li>
+<li>другие типы, в том числе пользовательские.</li>
+</ul>
+</td>
+		</tr>
+		<tr>
+			<td>* ownerId</td>
+			<td>Идентификатор владельца календаря.</td>
+		</tr>	
+
+<tr><td colspan="2"><b>* - обязательные параметры</b></td></tr>
+	</tbody>
+</table>
+
+<p>Метод может использоваться для бронирования времени в календаре переговорной комнаты через стороннее приложение. В этом случае в <b>type</b> необходимо указать <code>location</code>, а в <b>ownerId</b> - <code>0</code></p>
+
+
+<h4>Пример использования</h4>
+<pre class="syntax" rel="example">BX24.callMethod("calendar.section.get",
+	{
+		type: 'user',
+		ownerId: '1'
+	}
+);
+</pre>
+<br><br>							
+        </div>
+        </body>
+        </html>

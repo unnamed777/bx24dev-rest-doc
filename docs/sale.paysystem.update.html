@@ -1,0 +1,75 @@
+<html>
+        <head>
+            <title>sale.paysystem.update</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">sale.paysystem.update <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/paysystem/sale_paysystem_update.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">sale.paysystem.update<b>(</b>
+	id,
+	fields
+<b>)</b></pre>
+
+<p>Метод для редактирования платежной системы.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>id</td> 	<td>Идентификатор платежной системы, обязательный </td> <td></td></tr>
+   
+    <tr> 	<td>fields</td> 	<td>Набор полей (массив вида <code>array("поле":"значение"[, ...])</code>), содержащий значения, описывающие платежную систему. Доступные поля:
+<ul>
+<li>NAME - Название системы</li>
+<li>PERSON_TYPE_ID - ID типа плательщика, обязательный.</li> 
+<li>BX_REST_HANDLER - Код обработчика в системе, обязательный.</li> 
+<li>ACTIVE - Флаг активности платежной системы.</li> 
+<li>LOGOTYPE - Логотип платёжной системы (картинка в формате 
+		<span class="learning-lesson-detail-block js-detail-info-block">
+			<span class="learning-lesson-detail-word js-detail-info-word">Base64</span>
+			<span class="learning-lesson-detail-body js-detail-info-body">
+				<span class="learning-lesson-detail-body-inner  js-detail-info-body-inner">
+                    <button class="learning-lesson-detail-close-button  js-detail-close-button" type="button"></button>
+                    
+<strong>Base64</strong> — стандарт кодирования двоичных данных при помощи только 64 символов ASCII. Алфавит кодирования содержит текстово-цифровые латинские символы A-Z, a-z и 0-9 (62 знака) и 2 дополнительных символа, зависящих от системы реализации. Каждые 3 исходных байта кодируются 4 символами (увеличение на ¹⁄₃).
+<br><br><a class="link external-link" href="https://ru.wikipedia.org/wiki/Base64" target="_blank">Подробнее</a>...
+                </span>
+			</span>
+		</span>
+		). Поле доступно с версии <strong>20.0.550</strong>.</li>
+<li>NEW_WINDOW - Поле, отвечающее за настройку "Открывать в новом окне" (по умолчанию значение <code>N</code>). Доступно с версии <strong>20.100.0</strong>.</li>  
+<li>DESCRIPTION - Описание платёжной системы. Доступно с версии <strong>22.600.0</strong>.</li>  
+ </ul>
+</td> <td></td></tr>
+
+   
+   </tbody>
+ </table>
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">var id = prompt("Введите ID");
+var name = prompt("Введите имя");
+
+BX24.callMethod('sale.paysystem.update', {"id": id, "fields": {"NAME" : name, "PERSON_TYPE_ID" : id, "BX_REST_HANDLER" : handler}},
+	function(result)
+	{
+		if(result.error())
+		{
+			console.error(result.error());
+		}
+		else
+		{
+			console.info("Платежная система обновлёна");
+		}
+	}
+);</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

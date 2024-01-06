@@ -1,0 +1,31 @@
+<html>
+        <head>
+            <title>event.offline.clear</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">event.offline.clear <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/general/events_method/event_offline_clear.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Метод производит очистку записей в очереди <a class="link" href="https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=99&amp;LESSON_ID=4462" title="" target="_blank">офлайн событий</a>. Доступность оффлайн событий можно проверить через метод <a class="link" href="/rest_help/general/feature_get.php">feature.get</a>.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Метод</th> 	<th>Описание</th> <th width="8%">Тип</th></tr>
+   
+    <tr> 	<td>process_id</td> 	<td>Идентификатор процесса, который занимается обработкой записей. Обязательный параметр.</td> <td></td></tr>
+   
+    <tr> 	<td>id</td> 	<td>Массив идентификаторов записей, которые нужно вычистить. Не обязателен, по умолчанию будут вычищены все записи, помеченные переданным process_id.</td> <td>array </td></tr>
+   
+    <tr> 	<td>message_id</td> 	<td>Массив значений поля MESSAGE_ID записей, которые нужно вычистить. Игнорируется, если указан параметр id. Не обязателен, по умолчанию будут вычищены все записи, помеченные переданным process_id.</td> <td>array</td></tr>
+   
+   </tbody>
+ </table>
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

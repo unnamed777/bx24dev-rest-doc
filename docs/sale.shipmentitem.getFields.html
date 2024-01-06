@@ -1,0 +1,149 @@
+<html>
+        <head>
+            <title>sale.shipmentitem.getFields</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">sale.shipmentitem.getFields <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/sale/shipmentitem/sale_shipmentitem_getFields.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<p class="note_blue">
+Scope: <span class="bg_blue">sale</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<div class="tab">
+
+<h3 class="tab-title">Описание и пример</h3>
+
+<pre class="syntax">sale.shipmentitem.getFields()</pre>
+
+<p>Метод возвращает поля табличной части отгрузки.</p>
+
+<h4>Параметры</h4>
+
+<p>Без параметров.</p>
+
+<h4>Примеры</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'sale.shipmentitem.getFields', 
+	{}, 
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error().ex);
+		else
+			console.log(result.data());
+	}
+);
+</pre>
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Возвращаемые поля</h3>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Поле</th>
+			<th>Описание</th>      </tr>
+
+<tr><td>id</td><td>ID отгрузки.</td> </tr>
+<tr><td>orderId</td><td>ID заказа.</td> </tr>
+<tr><td>paid</td><td>Оплачен ли заказ.</td> </tr>
+<tr><td>datePaid</td><td>Дата оплаты заказа.</td> </tr>
+<tr><td>empPaidId</td><td>ID пользователя, который оплатил заказ.</td> </tr>
+<tr><td>paySystemId</td><td>ID платежной системы.</td> </tr>
+<tr><td>psStatus</td><td>Данные, пришедшие от платежной системы: статус транзакции.</td> </tr>
+<tr><td>psStatusCode</td><td>Данные, пришедшие от платежной системы: код транзакции.</td> </tr>
+<tr><td>psInvoiceId</td><td>Идентификатор оплаты в платежной системе.</td> </tr>
+<tr><td>psStatusDescription</td><td>Данные, пришедшие от платежной системы: описание транзакции.</td> </tr>
+<tr><td>psStatusMessage</td><td>Данные, пришедшие от платежной системы: сообщение.</td> </tr>
+<tr><td>psSum</td><td>Данные, пришедшие от платежной системы: сумма транзакции.</td> </tr>
+<tr><td>psCurrency</td><td>Данные, пришедшие от платежной системы: валюта.</td> </tr>
+<tr><td>psResponseDate</td><td>Данные, пришедшие от платежной системы: дата ответа от платежной системы.</td> </tr>
+<tr><td>payVoucherNum</td><td>Номер платежного документа.</td> </tr>
+<tr><td>payVoucherDate</td><td>Дата платежного документа.</td> </tr>
+<tr><td>datePayBefore</td><td>Дата, до которой необходимо оплатить счет (в магазине не используется).</td> </tr>
+<tr><td>dateBill</td><td>Дата выставления счета.</td> </tr>
+<tr><td>xmlId</td><td>Внешний идентификатор.</td> </tr>
+<tr><td>sum</td><td>Сумма оплаты.</td> </tr>
+<tr><td>priceCod</td><td>Стоимость оплаты при доставке (используется, например, для наложенного платежа).</td> </tr>
+<tr><td>currency</td><td>Валюта.</td> </tr>
+<tr><td>paySystemName</td><td>Название платежной системы.</td> </tr>
+<tr><td>responsibleId</td><td>ID пользователя, ответственного за оплату.</td> </tr>
+<tr><td>empResponsibleId</td><td>ID пользователя, который назначил ответственного.</td> </tr>
+<tr><td>dateResponsibleId</td><td>Дата назначения ответственного.</td> </tr>
+<tr><td>comments</td><td>комментарий к оплате.</td> </tr>
+<tr><td>companyId</td><td>ID компании, которая будет принимать оплату.</td> </tr>
+<tr><td>payReturnNum</td><td>Номер документа возврата.</td> </tr>
+<tr><td>payReturnDate	</td><td>Дата документа возврата.</td> </tr>
+<tr><td>empReturnId</td><td>ID пользователя, который выполнял возврат.</td> </tr>
+<tr><td>payReturnComment</td><td>Комментарий к возврату.</td> </tr>
+<tr><td>isReturn</td><td>Выполнялся ли возврат.</td> </tr>
+<tr><td>marked</td><td>Промаркирована ли оплата.</td> </tr>
+<tr><td>dateMarked</td><td>Дата маркировки.</td> </tr>
+<tr><td>empMarkedId</td><td>Кем промаркирована оплата.</td> </tr>
+<tr><td>reasonMarked</td><td>Причина маркировки.</td> </tr>
+<tr><td>updated1c</td><td>Обновлена ли через 1С.</td> </tr>
+<tr><td>id1c</td><td>ID в 1С.</td> </tr>
+<tr><td>version1c</td><td>Версия документа оплаты от 1с.</td> </tr>
+<tr><td>externalPayment</td><td>Флаг Y/N: внешняя оплата или нет.</td> </tr>
+<tr><td>statusId</td><td>Статус отгрузки.</td> </tr>
+<tr><td>basePriceDelivery</td><td>Базовая стоимость доставки.</td> </tr>
+<tr><td>priceDelivery</td><td>Стоимость доставки.</td> </tr>
+<tr><td>customPriceDelivery</td><td>Флаг, установлена ли цена вручную.</td> </tr>
+<tr><td>currency</td><td>Валюта.</td> </tr>
+<tr><td>discountPrice</td><td>Сумма итоговой скидки/наценки для отгрузки.</td> </tr>
+<tr><td>allowDelivery</td><td>Флаг разрешения доставки: Y/N.</td> </tr>
+<tr><td>dateAllowDelivery</td><td>Дата разрешения доставки.</td> </tr>
+<tr><td>empAllowDeliveryId</td><td>ID пользователя, который разрешал доставку.</td> </tr>
+<tr><td>deducted</td><td>Флаг отгрузки: Y/N.</td> </tr>
+<tr><td>dateDeducted</td><td>Дата отгрузки.</td> </tr>
+<tr><td>empDeductedId</td><td>ID пользователя, который отгружал отгрузку.</td> </tr>
+<tr><td>reasonUndoDeducted</td><td>Причина отмены отгрузки.</td> </tr>
+<tr><td>deliveryId</td><td>ID службы доставки.</td> </tr>
+<tr><td>deliveryDocNum</td><td>Номер документа отгрузки.</td> </tr>
+<tr><td>deliveryDocDate</td><td>Дата документа отгрузки.</td> </tr>
+<tr><td>trackingNumber</td><td>Трэк-номер.</td> </tr>
+<tr><td>trackingStatus</td><td>Статус отправления.</td> </tr>
+<tr><td>trackingDescription</td><td>Описание статуса отправления.</td> </tr>
+<tr><td>trackingLastCheck</td><td>Дата последней проверки статуса отправления.</td> </tr>
+<tr><td>xmlId</td><td>Внешний идентификатор.</td> </tr>
+<tr><td>deliveryName</td><td>Название службы доставки.</td> </tr>
+<tr><td>canceled</td><td>Отменена ли отгрузка.</td> </tr>
+<tr><td>dateCanceled</td><td>Дата отмены отгрузки.</td> </tr>
+<tr><td>empCanceledId</td><td>ID пользователя, который отменил отгрузку.</td> </tr>
+<tr><td>marked</td><td>Промаркирована ли отгрузка.</td> </tr>
+<tr><td>dateMarked</td><td>Дата маркировки.</td> </tr>
+<tr><td>empMarkedId</td><td>ID пользователя, который промаркировал отгрузку.</td> </tr>
+<tr><td>reasonMarked</td><td>Причина маркировки.</td> </tr>
+<tr><td>system</td><td>Флаг, устанавливающий, системная это отгрузка или нет.</td> </tr>
+<tr><td>responsibleId</td><td>ID пользователя, ответственного за отгрузку.</td> </tr>
+<tr><td>empResponsibleId</td><td>ID пользователя, который назначил ответственного.</td> </tr>
+<tr><td>dateResponsibleId</td><td>Дата назначения ответственного.</td> </tr>
+<tr><td>comments</td><td>Комментарий.</td> </tr>
+<tr><td>companyId</td><td>ID компании, занимающейся отгрузкой.</td> </tr>
+<tr><td>updated1c</td><td>Обновлена ли отгрузка через 1С</td> </tr>
+<tr><td>id1c</td><td>ID отгрузки в 1С.</td> </tr>
+<tr><td>version1c</td><td>Версия документа отгурзки от 1С.</td> </tr>
+<tr><td>externalDelivery</td><td>Флаг Y/N: доставка из внешней системы или нет.</td> </tr>
+
+
+	</tbody>
+</table>
+
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

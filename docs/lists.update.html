@@ -1,0 +1,89 @@
+<html>
+        <head>
+            <title>lists.update</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">lists.update <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/lists/lists/lists.update.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Описание</h3>
+
+<pre class="syntax">lists.update (params, fields)</pre>
+
+<p>Метод обновляет существующий список. В случае успешного обновления списка ответ true, иначе Exception.</p>
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr><th width="15%">Параметр</th><th>Описание</th></tr>
+<tr><td>IBLOCK_TYPE_ID</td><td> id типа инфоблока (обязательное):
+<ul>
+<li><b>lists</b> - тип инфоблока списка</li>
+<li><b>bitrix_processes</b> - тип инфоблока процессов</li> 
+<li><b>lists_socnet</b> - тип инфоблока списков групп</li></ul></td></tr>
+<tr><td>IBLOCK_CODE/IBLOCK_ID</td><td>код или id инфоблока (обязательное);</td></tr>
+<tr><td>SOCNET_GROUP_ID</td><td>id группы (обязательно, если список создается для группы);</td></tr>
+<tr><td>FIELDS</td><td>поля инфоблока:
+<ul>
+<li><b>NAME</b> - название инфоблока (обязательно);</li>
+<li><b>DESCRIPTION</b> - описание;</li> 
+<li><b>SORT</b> - сортировка;</li> 
+ <li><b>PICTURE</b> - изображение;</li>
+<li><b>BIZPROC</b> - включение поддержки бизнес-процессов.</li> 
+</ul></td></tr>
+<tr><td>MESSAGES</td><td>подписи к элементам и разделам списка;</td></tr>
+<tr><td>RIGHTS</td><td>управление правами доступа.</td></tr>
+</tbody>
+</table>
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Пример</h3>
+
+<pre class="syntax" rel="example">var params = {
+	'IBLOCK_TYPE_ID': 'lists_socnet',
+	'IBLOCK_CODE': 'rest_1',
+	'FIELDS': {
+		'NAME': 'List 1 (Update)',
+		'DESCRIPTION': 'Test list (Update)',
+		'SORT': '20',
+		'PICTURE': document.getElementById('iblock-image-update')
+	},
+	'RIGHTS': {
+		'G1': 'X'
+	}
+};
+BX24.callMethod(
+	'lists.update',
+	params,
+	function(result)
+	{
+		if(result.error())
+			alert("Error: " + result.error());
+		else
+			alert("Success: " + result.data());
+	}
+);</pre>
+
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

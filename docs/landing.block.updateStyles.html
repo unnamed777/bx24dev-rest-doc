@@ -1,0 +1,71 @@
+<html>
+        <head>
+            <title>landing.block.updateStyles</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">landing.block.updateStyles <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/landing/block/blocks/landing_block_updateStyles.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">landing.block.updateStyles(lid, block,data)</pre>
+
+<p>Метод для изменения стилей блока. Возвращает <i>true</i> или ошибку.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th></tr>
+   
+    <tr> 	<td>lid</td> 	<td>Идентификатор страницы</td></tr>
+   
+    <tr> 	<td>block</td> 	<td>Идентификатор блока</td></tr>
+   
+    <tr> 	<td>data</td> 	<td>В параметре передается массива ключ-значение, где ключом идет селектор, а каждым значением указывается два массива::
+
+<ul>
+<li><strong>classList</strong> - какие классы добавить в изменяемый селектор.</li>
+<li><strong>affect</strong> - передаются стили, которые надо обнулить у всех дочерних нод. Например, передаётся класс, который окрашивает элемент в цвет (color). Значит в affect надо передать массив [color], чтобы система обнулила все color у дочерних. Иначе будет такая ситуация - цвет родителя стоит красный, а текст внутри останется прежним.</li> 
+ </ul>
+
+<p>Селектор может передаваться как без указания позиции (например, .landing-block-node-text), тогда будут изменены все карточки по данному селектору. Так и с указанием позиции (например, .landing-block-node-text@2), тогда будет изменена только карточка на указанной позиции (отсчет с нуля).</p>
+
+<p>Селектор можно передавать в виде <code>#wrapper</code>, тогда влияние будет происходить на стили блока (его оболочки).</p>
+</td></tr>
+   </tbody>
+ </table>
+
+<h4>Пример</h4>
+
+<p>В примере используется text-right - это <b>класс, который выравнивает справа</b>. Поэтому в affect задаётся что все нижележащие стили text-align должны быть удалены.</p>
+
+<p class="note"><b>Важно!</b> Такие классы как landing-block-node-text являются системными в манифесте. Если вы их не передадите, класс потеряется, и нода не сможет меняться через визуальный интерфейс. Вы должны четко понимать, что делаете.</p>
+<pre class="syntax" rel="example">BX24.callMethod(
+	'landing.block.updateStyles',
+	{
+		lid: 311,
+		block: 6058,
+		data: {
+			'.landing-block-node-text': {
+				classList: ['landing-block-node-text', 'g-color-gray-light-v2', 'text-right'],
+				affect: ['text-align']
+			}
+		}
+	},
+	function(result)
+	{
+		if(result.error())
+		{
+			console.error(result.error());
+		}
+		else
+		{
+			console.info(result.data());
+		}
+	}
+);</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

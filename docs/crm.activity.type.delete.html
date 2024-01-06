@@ -1,0 +1,44 @@
+<html>
+        <head>
+            <title>crm.activity.type.delete</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.activity.type.delete <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/rest_activity/type/crm_activity_type_delete.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Метод для удаления подтипа дел.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>TYPE_ID</td> 	<td>Идентификатор типа дела провайдера</td> <td></td></tr>
+
+      </tbody>
+ </table>
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'crm.activity.type.delete',
+	{
+		TYPE_ID: id
+	},
+	function(result)
+	{
+		if(result.error())
+			alert("Error: " + result.error());
+		else
+		{
+			alert("Success: " + result.data());
+		}
+	}
+);</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

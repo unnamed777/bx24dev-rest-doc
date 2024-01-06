@@ -1,0 +1,79 @@
+<html>
+        <head>
+            <title>crm.documentgenerator.document.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.documentgenerator.document.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/documentgenerator/documents/crm_documentgenerator_document_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<a class="link" name="register"></a>
+<pre class="syntax">crm.documentgenerator.document.get(id)</pre>
+
+<p>Возвращает информацию о документе по его идентификатору.</p>
+
+
+<div class="learnin-post-text"> 
+  <table class="learning-spoiler"> <thead onclick="LearningInitSpoiler(this)"> 
+      <tr><th> 
+          <div>Почему в результате <b>crm.documentgenerator.document.add</b> нет ссылки на <b>pdf</b>?</div>
+         </th></tr>
+    </thead> 
+    <tbody style="display: none;" class="learning-spoiler"> 
+      <tr><td> 
+         <ul><li>Конвертация в <b>pdf</b> - операция асинхронная. На момент окончания генерации документа еще нет <b>pdf</b>-файла. Минимальное время конвертации - 8 секунд. </li>
+<li>Если для документа очень нужен <b>pdf</b>, то сейчас единственный вариант - сделать повторный запрос <b>crm.documentgenerator.document.get</b> через 20-30 секунд, чтобы считать ссылку на <b>pdf</b>. Если она там не появилась - попробовать повторить. </li>
+
+</ul>
+           
+        </td></tr>
+     </tbody>
+   </table>
+</div>
+
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>      </tr>
+
+<tr><td>id</td><td>ID документа</td></tr>
+
+	</tbody>
+</table>
+
+
+
+<h4>Пример</h4>
+
+<pre class="syntax">"document": {
+	"id": 1, // id документа
+	"title": "Счет (Россия) 1", // название
+	"number": "1", // номер
+	"createTime": "2018-06-05T16:04:40+02:00", // дата создания
+	"updateTime": "2018-06-05T16:04:40+02:00", // дата обновления
+	"createdBy": "1", // ид пользователя, кто создал документ
+	"updatedBy": "1", // ид пользователя, кто обновил документ
+	"stampsEnabled": true // вставлены ли печати и подписи
+	"downloadUrl": "", // ссылка на скачивание docx файла пользователем
+	"downloadUrlMachine": "", // ссылка на скачивание docx файла приложением
+	"imageUrl": "", // ссылка на скачивание картинки пользователем
+	"imageUrlMachine": "", // ссылка на скачивание картинки приложением
+	"pdfUrl": "", // ссылка на скачивание pdf пользователем
+	"pdfUrlMachine": "", // ссылка на скачивание pdf приложением
+	"publicUrl": "" // публичная ссылка (если есть)
+	"isTransformationError": false, // была ли ошибка конвертации
+	"templateId": "1", // ид шаблона
+	"entityTypeId": 1, // ид типа сущности CRM
+	"entityId": "1", // ИД сущности CRM
+	"values": {},// массив дополнительных значений  
+}
+</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

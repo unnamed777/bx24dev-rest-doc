@@ -1,0 +1,25 @@
+<html>
+        <head>
+            <title>sonet_group.setowner</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">sonet_group.setowner <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/sonet_group/sonet_group_setowner.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Метод изменяет владельца группы. Может быть запущен либо администратором социальной сети, либо текущим владельцем группы.</p>
+
+<p>Параметры: <b>GROUP_ID</b> - идентификатор группы, владелец которой меняется и <b>USER_ID</b> - идентификатор нового владельца.</p>
+
+<p>В случае успеха возвращает <i>true</i>.</p>
+
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod('sonet_group.setowner', {
+	'GROUP_ID': 11,
+	'USER_ID': 2
+});</pre>							
+        </div>
+        </body>
+        </html>

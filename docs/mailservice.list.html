@@ -1,0 +1,43 @@
+<html>
+        <head>
+            <title>mailservice.list</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">mailservice.list <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/mailservice/mailservice_list.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">mailservice.list<b>(</b>
+<b>)</b></pre>
+
+<p>Возвращает список всех почтовых сервисов.</p>
+ 
+<h4>Параметры</h4>
+<p>Без параметров</p>
+
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	"mailservice.list",
+	{
+	},
+	function(result)
+	{
+		if(result.error())
+		{
+			console.error(result.error());
+		}
+		else
+		{
+			console.info(result.data());
+		}
+	}
+);
+</pre>
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

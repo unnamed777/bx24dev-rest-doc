@@ -1,0 +1,95 @@
+<html>
+        <head>
+            <title>userfieldtype.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">userfieldtype.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/application_embedding/user_field/userfieldtype_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Регистрация нового типа пользовательских полей. Метод возвращает true или ошибку с описанием причины.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th width="8%">Тип</th> <th>Описание</th><th>Ограничения</th></tr>
+   
+    <tr> 	<td>USER_TYPE_ID</td> 	<td>Строка</td> <td>Строковой код типа. Обязательный параметр. </td><td>
+<ul>
+<li>a-z0-9</li>
+<li>Должен быть уникальным.</li> 
+ </ul>
+ </td></tr>
+   
+    <tr> 	<td>HANDLER</td> 	<td>URL</td> <td>Адрес обработчика пользовательского типа. Обязательный параметр.</td><td>Должен быть
+<ul>
+<li>в том же домене, что и основной адрес приложения</li>
+<li>уникальным</li> 
+ </ul></td></tr>
+   
+    <tr> 	<td>TITLE</td> 	<td>Строка</td> <td>Текстовое название типа. Будет выводиться в административном интерфейсе настройки пользовательских полей.</td><td></td></tr>
+   
+    <tr> 	<td>DESCRIPTION</td> 	<td>Строка</td> <td>Текстовое описание типа. Будет выводиться в административном интерфейсе настройки пользовательских полей.</td><td></td></tr>
+       
+    <tr> 	<td>OPTIONS</td> 	<td>Многомерный массив</td> <td>Дополнительные настройки. На данный момент доступен один ключ:<br>
+<strong>height</strong> - указывает высоту пользовательского поля по умолчанию в пикселях. 
+		<span class="learning-lesson-detail-block js-detail-info-block">
+			<span class="learning-lesson-detail-word js-detail-info-word">По умолчанию - 0</span>
+			<span class="learning-lesson-detail-body js-detail-info-body">
+				<span class="learning-lesson-detail-body-inner  js-detail-info-body-inner">
+                    <button class="learning-lesson-detail-close-button  js-detail-close-button" type="button"></button>
+                    При указании значения 0 - будет использована высота стандартная для отображения данной встройки.
+                </span>
+			</span>
+		</span>
+		. Применится любое положительное значение.</td><td></td></tr>
+
+   </tbody>
+ </table>
+
+<h4>Примеры</h4>
+
+<p>Пример вызова</p>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'userfieldtype.add', 
+	{
+		USER_TYPE_ID: 'test',
+		HANDLER: 'https://www.myapplication.com/handler/',
+		TITLE: 'Test type',
+		DESCRIPTION: 'Test userfield type for documentation'
+	}
+);</pre>
+
+<p>Пример запроса</p>
+
+<pre class="syntax">POST https://sometestportal.bitrix24.com/rest/userfieldtype.add HTTP/1.1
+
+USER_TYPE_ID=test&amp;HANDLER=https%3A%2F%2Fwww.myapplication.com%2Fhandler%2F&amp;TITLE=Test+type&amp;DESCRIPTION=Test+userfield+type+for+documentation&amp;auth=63t6r4z9cugaciaxocrh2r47zlodp12y
+
+HTTP/1.1 200 OK
+
+{
+	"result": true
+}</pre>
+
+<p>Пример с использованием параметра OPTIONS:</p>
+
+<pre class="syntax">CRest::call(
+	'userfieldtype.add',
+	[
+		'USER_TYPE_ID' =&gt; 'custom_type',
+		'HANDLER' =&gt; 'https://example.com/field.php',
+		'TITLE' =&gt; 'title',
+		'OPTIONS' =&gt; [
+			'height' =&gt; 60,
+		],
+	]
+);</pre>
+
+
+<br>							
+        </div>
+        </body>
+        </html>

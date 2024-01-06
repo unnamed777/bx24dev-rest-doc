@@ -1,0 +1,34 @@
+<html>
+        <head>
+            <title>catalog.enum.getRoundTypes</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">catalog.enum.getRoundTypes <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/catalog/enum/catalog_enum_getroundtypes.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">catalog.enum.getRoundTypes()</pre>
+
+<p>Метод возвращает список типов округления.</p>
+
+<h4>Параметры</h4>
+
+<p>Без параметров.</p>
+
+<h4>Примеры</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'catalog.enum.getRoundTypes', 
+	{}, 
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error().ex);
+		else
+			console.log(result.data());
+	}
+);
+</pre>							
+        </div>
+        </body>
+        </html>

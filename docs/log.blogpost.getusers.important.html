@@ -1,0 +1,61 @@
+<html>
+        <head>
+            <title>log.blogpost.getusers.important</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">log.blogpost.getusers.important <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/log/log_blogpost_getusers_important.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">log</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<p>Отдает массив ID пользователей, прочитавших <b>Важное сообщение</b> на портале.</p>
+
+<h4>Параметры функции</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+  
+		<tr>
+			<td>POST_ID</td>
+			<td>ID поста блога, являющегося Важным сообщением.</td>
+		</tr>
+
+	</tbody>
+</table>
+
+
+
+<h4>Пример</h4>
+<pre class="syntax" rel="example">BX24.callMethod(
+	'log.blogpost.getusers.important',
+	{
+		POST_ID: 345
+	},
+	function(result)
+	{
+		console.log(result.data());
+	}
+);
+</pre>
+
+<h4>Запрос:</h4>
+<pre class="syntax">https://my.bitrix24.ru/rest/log.blogpost.getusers.important.json?POST_ID=345&amp;auth=xxxxxxx
+</pre>
+
+
+<h4>Ответ:</h4>
+<pre class="syntax">{"result":["1","2","3"]}
+</pre>
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

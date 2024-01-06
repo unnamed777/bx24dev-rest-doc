@@ -1,0 +1,133 @@
+<html>
+        <head>
+            <title>timeman.timecontrol.report.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">timeman.timecontrol.report.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/timeman/timecontrol/timeman_timecontrol_report_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Описание и параметры</h3>
+
+<p>Метод для отправки отчета о выявленном отсутствии.</p>
+
+<h4>Параметры</h4>
+
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr><th width="15%">Параметр</th><th>Пример</th><th>Обязательный</th><th>Описание</th></tr>
+<tr><td>ID</td>
+<td>468</td>
+<td>Да</td>
+<td>Идентификатор записи.</td></tr>
+
+<tr><td>TYPE</td>
+<td>work</td>
+<td>Да</td>
+<td>Тип отсутствия (<code>work</code> - по рабочим вопросам, <code>private</code> - личные дела).</td></tr>
+
+<tr><td>TEXT</td>
+<td>'Был на обеде'</td>
+<td>Да</td>
+<td>Описание причины отсутствия.</td></tr>
+
+<tr><td>CALENDAR</td>
+<td>true</td>
+<td>Нет</td>
+<td>Занести отсутствие в календарь (только для первичного отчета).</td></tr>
+
+<tr><td>USER_ID</td>
+<td>2</td>
+<td>Нет</td>
+<td>Идентификатор пользователя для которого сформирован отчет (поле доступно только администраторам).</td></tr>
+
+</tbody>
+</table>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Пример вызова</h3>
+
+<p>JavaScript</p>
+
+<pre class="syntax" rel="example">BX24.callMethod('timeman.timecontrol.report.add', {
+	'id': 468,
+	'type': 'private',
+	'text': 'Был на обеде',
+	'calendar': true
+}, function(result){
+	if(result.error())
+	{
+		console.error(result.error().ex);
+	}
+	else
+	{
+		console.log(result.data());
+	}
+});</pre>
+
+<p>PHP</p>
+
+<pre class="syntax">$result = restCommand('timeman.timecontrol.report.add', Array(
+	'ID' =&gt; 468,
+	'TYPE' =&gt; 'private',
+	'TEXT' =&gt; 'Был на обеде',
+	'CALENDAR' =&gt; true
+), $_REQUEST["auth"]);	
+</pre>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Пример ответа</h3>
+
+<pre class="syntax">{    
+	"result": true
+}</pre>
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Пример ответа при возникновении ошибки</h3>
+
+<pre class="syntax">{
+	"error": "TEXT_EMPTY",
+	"error_description": "Text can't be empty"
+}</pre>
+
+<ul>
+<li>Ключ <b>error</b> - код возникшей ошибки.</li>
+<li>Ключ <b>error_description</b> - краткое описание возникшей ошибки.</li>
+
+</ul>
+
+<h4>Возможные коды ошибок</h4>
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr><th width="15%">Код</th><th>Описание</th></tr>
+<tr><td>TEXT_EMPTY</td><td>Не передана причина отсутствия.</td></tr>
+<tr><td>ACCESS_ERROR</td><td>У вас нет доступа к этому отчету.</td></tr>
+
+</tbody>
+</table>
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

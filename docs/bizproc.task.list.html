@@ -1,0 +1,201 @@
+<html>
+        <head>
+            <title>bizproc.task.list</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">bizproc.task.list <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/bizproc/bizproc_task/tasklist.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<p class="note_blue">
+Scope: <span class="bg_blue">bizproc</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<div class="tab">
+
+<h3 class="tab-title">Описание</h3>
+<p><b>bizproc.task.list</b> - метод возвращает список заданий бизнес-процессов. Метод доступен не только для администраторов. Обычный пользователь может запросить задания свои или своего подчиненного. Для запроса своих заданий не-администратору не указывать фильтр по <code>USER_ID</code>. </p>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+<th width="25%">Значение по умолчанию</th>
+			
+		</tr>
+  
+		<tr>
+			<td>SELECT</td>
+			<td>
+<p>Массив полей записей, которые будут возвращены методом. Можно указать только те поля, которые необходимы. Доступные поля:</p> 
+
+<p><code>ID</code> - идентификатор задания;</p> 
+<p><code>WORKFLOW_ID</code> - идентификатор бизнес-процесса;</p> 
+<p><code>DOCUMENT_NAME</code> - название документа;</p> 
+<p><code>DESCRIPTION</code> - описание задания;</p>
+<p><code>NAME</code> - название задания;</p>
+<p><code>MODIFIED</code> - дата изменения;</p>
+<p><code>WORKFLOW_STARTED</code> - дата запуска бизнес-процесса;</p> 
+<p><code>WORKFLOW_STARTED_BY</code> - кем запущен бизнес-процесс;</p>
+<p><code>OVERDUE_DATE</code> - крайний срок;</p>
+<p><code>WORKFLOW_TEMPLATE_ID</code> - идентификатор шаблона бизнес-процесса;</p> 
+<p><code>WORKFLOW_TEMPLATE_NAME</code> - название шаблона бизнес-процесса;</p>
+<p><code>WORKFLOW_STATE</code> - статус бизнес-процесса;</p>
+<p><code>STATUS</code> - статус задания:</p>
+<ul>
+<li><code>0</code> - выполняется;</li>
+<li><code>1</code> - утверждено (ответ <b>Да</b>);</li> 
+<li><code>2</code> - отклонено (ответ <b>Нет</b>);</li>
+<li><code>3</code> - выполнено (ответ <b>Ок</b>);</li>
+<li><code>4</code> - таймаут (истек срок выполнения задания).</li>
+</ul>
+
+<p><code>USER_ID</code> - идентификатор пользователя;</p> 
+<p><code>USER_STATUS</code> - ответ пользователя:</p>
+<ul>
+<li><code>0</code> - ожидание ответа;</li>
+<li><code>1</code> - да (утвердил);</li>
+<li><code>2</code> - нет (отклонил);</li>
+<li><code>3</code> - ок (выполнил).</li>
+</ul>
+<p><code>MODULE_ID</code> - идентификатор модуля (по документу);</p> 
+<p><code>ENTITY</code> - идентификатор сущности (по документу);</p>
+<p><code>DOCUMENT_ID</code> - идентификатор документа.</p>
+
+<p><code>ACTIVITY</code> - идентификатор типа задания, строка, варианты значений:</p>
+<ul>
+<li><code>ApproveActivity</code> - Утверждение документа</li>
+<li><code>ReviewActivity</code> - Ознакомление с документом</li> 
+<li><code>RequestInformationActivity</code> - Запрос дополнительной информации</li> 
+<li><code>RequestInformationOptionalActivity</code> - Запрос дополнительной информации (с отклонением)</li> 
+ </ul>
+<p><code>ACTIVITY_NAME</code> - идентификатор действия в шаблоне.</p>
+
+<p><code>PARAMETERS</code> - параметры задания, массив, который может содержать следующую информацию:</p>
+<ul>
+<li><code>CommentLabelMessage</code> - Название поля "Комментарий";</li>
+<li><code>CommentRequired</code> - Обязательность комментария. Допустимые значения N (нет), Y (да), YA (да при утверждении), YR (да при отклонении);</li> 
+<li><code>ShowComment</code> - Показывать комментарий, Y/N;</li> 
+<li><code>TaskButtonMessage</code> - текст кнопки "Ознакомлен";</li>
+<li><code>TaskButton1Message</code> - текст кнопки "Утвердить";</li> 
+<li><code>TaskButton2Message</code> - текст кнопки "Отклонить";</li>
+<li><code>Fields</code> - массив с описанием полей (
+		<span class="learning-lesson-detail-block js-detail-info-block">
+			<span class="learning-lesson-detail-word js-detail-info-word">с версии 20.0.800</span>
+			<span class="learning-lesson-detail-body js-detail-info-body">
+				<span class="learning-lesson-detail-body-inner  js-detail-info-body-inner">
+                    <button class="learning-lesson-detail-close-button  js-detail-close-button" type="button"></button>
+                    С версии <b>20.0.800</b> модуля Бизнес-процессы появилась возможность выполнять задания <b>Запрос доп.информации</b> через rest метод <a class="link" href="/rest_help/bizproc/bizproc_task/bizproc_task_complete.php">bizrpoc.task.complete</a>. Для того, чтобы понять, какие поля нужно заполнить, в метод <b>bizproc.task.list</b> в PARAMETERS добавлено новое свойство <code>Fields</code>.
+                </span>
+			</span>
+		</span>
+		);</li>  
+ </ul>    
+</td>
+                        <td>
+<p><code>['ID', 'WORKFLOW_ID', 'DOCUMENT_NAME', 'NAME'] </code></p>
+
+<p></p><div class="note"><b>Важно:</b> <b>'MODULE', 'ENTITY', 'DOCUMENT_ID', 'DOCUMENT_URL'</b> - возвращаются всегда.</div><p></p>
+
+
+</td>
+		</tr>
+
+
+
+		<tr>
+			<td>FILTER</td>
+			<td>
+<p>Массив вида <code>{"фильтруемое_поле": "значение фильтра" [, ...]}</code>. Список фильтруемых полей такой же, как для параметра <code>SELECT</code>.</p> 
+
+<p>Перед названием фильтруемого поля может указать тип фильтрации:</p>
+<ul>
+<li><code>"!"</code> - не равно;</li> 
+<li><code>"&lt;"</code> - меньше;</li> 
+<li><code>"&lt;="</code> - меньше либо равно;</li> 
+<li><code>"&gt;"</code> - больше;</li> 
+<li><code>"&gt;="</code> - больше либо равно.</li> 
+</ul>
+</td>
+			<td><p>Если в фильтре присутствует <code>USER_ID</code>, то проверяется субординация пользователей. Начальник может запросить список заданий своих подчиненных. Администратор может запрашивать все задания без ограничений.</p><p></p></td>
+		</tr>
+
+<tr>
+			<td>ORDER</td>
+			<td>
+<p>Массив для сортировки результата. Массив вида <code>{"поле_сортировки": 'направление сортировки' [, ...]}</code>. Список полей для сортировки такой же, как для параметра <code>SELECT</code>.</p><p>
+ 
+</p><p>Направление сортировки может принимать значения:</p>
+<ul>
+<li><code>asc</code> - по возрастанию;</li> 
+<li><code>desc</code> - по убыванию.</li>
+</ul>
+</td>
+			<td><p><code>{'ID': 'desc'}</code></p></td>
+		</tr>
+		
+
+</tbody>
+</table>
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Пример</h3>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'bizproc.task.list',
+	{
+		select: [
+			'ID',
+			'WORKFLOW_ID',
+			'DOCUMENT_NAME',
+			'DESCRIPTION',
+			'NAME',
+			'MODIFIED',
+			'WORKFLOW_STARTED',
+			'WORKFLOW_STARTED_BY',
+			'OVERDUE_DATE',
+			'WORKFLOW_TEMPLATE_ID',
+			'WORKFLOW_TEMPLATE_NAME',
+			'WORKFLOW_STATE',
+			'STATUS',
+			'USER_ID',
+			'USER_STATUS',
+			'MODULE_ID',
+			'ENTITY',
+			'DOCUMENT_ID'
+		],
+		order: {ID: 'DESC'},
+		filter: {'USER_ID': 1}
+	},
+	function(result)
+	{
+		if(result.error())
+			alert("Error: " + result.error());
+		else
+			console.log(result.data());
+	}
+);
+</pre>
+
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

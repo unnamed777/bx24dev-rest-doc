@@ -1,0 +1,52 @@
+<html>
+        <head>
+            <title>crm.contact.userfield.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.contact.userfield.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/contacts/crm_contact_userfield_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.contact.userfield.get(id)</pre>
+
+<p>Возвращает пользовательское поле контактов по идентификатору.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+<tr>
+<td>id</td>
+<td>Идентификатор пользовательского поля.</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4>Пример</h4>
+<pre class="syntax" rel="example">var id = prompt("Введите ID");		
+BX24.callMethod(
+	"crm.contact.userfield.get", 
+	{
+		id: id 
+	}, 
+	function(result) 
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.dir(result.data());
+	}
+);
+</pre>
+
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

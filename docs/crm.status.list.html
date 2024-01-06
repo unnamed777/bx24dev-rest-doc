@@ -1,0 +1,39 @@
+<html>
+        <head>
+            <title>crm.status.list</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.status.list <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/auxiliary/status/crm_status_list.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.status.list()</pre>
+
+<p>Возвращает список элементов справочника по фильтру. Является реализацией списочного метода для элементов справочников. Обратите внимание, что в данной реализации параметры "select" и "navigation" не поддерживаются.</p>
+
+<h4>Параметры</h4>
+<p>Cмотри описание <a class="link" href="/rest_help/rest_sum/index.php">списочных методов</a>.</p>
+
+<h4>Пример</h4>
+<pre class="syntax" rel="example">	BX24.callMethod(
+		"crm.status.list", 
+		{ 
+			order: { "SORT": "ASC" },
+			filter: { "ENTITY_ID": "STATUS" }
+		}, 
+		function(result) 
+		{
+			if(result.error())
+				console.error(result.error());
+			else
+			{
+				console.dir(result.data());			
+				if(result.more())
+					result.next();						
+			}
+		}
+	);	
+</pre><br><br>							
+        </div>
+        </body>
+        </html>

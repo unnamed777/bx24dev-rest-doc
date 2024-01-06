@@ -1,0 +1,56 @@
+<html>
+        <head>
+            <title>imopenlines.session.mode.unpinAll</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">imopenlines.session.mode.unpinAll <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/imopenlines/session/imopenlines_session_mode_unpinall.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Открепление всех диалогов от текущего оператора. Возвращает массив идентификаторов откреплённых сессий.</p>
+
+
+
+<h4>Вызов метода и ответ</h4>
+<br>
+<b>JavaScript для Битрикс24 в коробке</b>
+
+<pre class="syntax" rel="example">BX.rest.callMethod('imopenlines.session.mode.unpinAll', {})
+	.then(result =&gt; console.log(result.data()))
+	.catch(result =&gt; console.warn(result.error().ex))
+;
+</pre>
+<br>
+<b>JavaScript для облачного Битрикс24</b>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'imopenlines.session.mode.unpinAll',
+	{},
+	function(result)
+	{
+		if(result.error())
+		{
+			console.warn(result.error().ex);
+			return false;
+		}
+		console.log(result.data());
+	}
+);
+</pre>
+
+<br>
+<b>Пример ответа:</b>
+<pre class="syntax">{
+	"result":[
+		1652,
+		1653
+	]
+}
+</pre>
+
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

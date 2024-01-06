@@ -1,0 +1,43 @@
+<html>
+        <head>
+            <title>crm.item.productrow.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.item.productrow.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/productrow/crm_item_productrow_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.item.productrow.add({fields: {}})</pre>
+
+<p>Метод создает новую товарную позицию с полями <b>fields</b>. При этом новая товарная позиция привязывается к элементу CRM, указанному в полях 
+		<span class="learning-lesson-detail-block js-detail-info-block">
+			<span class="learning-lesson-detail-word js-detail-info-word"><b>ownerType</b></span>
+			<span class="learning-lesson-detail-body js-detail-info-body">
+				<span class="learning-lesson-detail-body-inner  js-detail-info-body-inner">
+                    <button class="learning-lesson-detail-close-button  js-detail-close-button" type="button"></button>
+                    Для счетов и стандартных сущностей смотри <a class="link" href="/rest_help/crm/constants.php">Константы CRM</a> (Столбец <code>Краткий символьный код</code>)<br>
+Для кастомных СП используйте <a class="link" href="/rest_help/crm/auxiliary/enum/crm_enum_ownertype.php">crm.enum.ownertype</a> (Значение в <code>SYMBOL_CODE_SHORT</code>).
+                </span>
+			</span>
+		</span>
+		 и <b>ownerId</b>.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>fields</td> 	<td>значение полей товарной позиции</td> <td></td></tr>
+   
+   </tbody>
+ </table>
+
+<p>Значения некоторых полей (priceExclusive и др.) будут вычислены автоматически на основании предоставленных данных. Задать их вручную нельзя. Полный список можно read-only полей можно узнать с помощью метода <a class="link" href="/rest_help/crm/productrow/crm_item_productrow_fields.php">crm.item.productrow.fields</a>.</p>
+
+<p>Метод вернет результат аналогичный вызову метода <a class="link" href="/rest_help/crm/productrow/crm_item_productrow_get.php">crm.item.productrow.get</a> на только что созданной товарной позиции.</p>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

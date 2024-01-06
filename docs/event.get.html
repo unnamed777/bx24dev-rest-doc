@@ -1,0 +1,30 @@
+<html>
+        <head>
+            <title>event.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">event.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/general/events_method/event_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Получение списка зарегистрированных обработчиков <a class="link" href="/rest_help/rest_sum/events/events.php">событий</a>.</p>
+
+<!--<p>При вызове метода с авторизацией пользователя без прав администратора портала метод вернет ограниченный список обработчиков событий, установленных для текущего пользователя (см. параметр <b>auth_type</b> в <a class="link" href="/rest_help/general/events_method/event_bind.php">event.bind</a>)</p>-->
+
+
+<h4>Параметры</h4>
+
+<p>Параметров не имеет.</p>
+
+<a class="link" name="example"></a><h4>Пример:</h4>
+
+<pre>https://my.bitrix24.ru/rest/event.get?auth=db12e4b28d20af8a78da516510768de9</pre>
+
+<p><b>Ответ:</b></p>
+
+<pre>{"result":[{"event":"ONAPPUNINSTALL","handler":"https:\/\/www.apphost.com\/eventhandler.php","auth_type":"0"}]}</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

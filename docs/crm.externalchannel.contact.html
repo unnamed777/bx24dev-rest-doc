@@ -1,0 +1,155 @@
+<html>
+        <head>
+            <title>crm.externalchannel.contact</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.externalchannel.contact <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/externalchannel/crm_externalchannel_contact.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.externalchannel.contact</pre>
+<p>Импортирует Контакт и создает дело "Импорт контакта".</p>
+
+
+
+<h4>Параметры</h4>
+
+<p>См. <a class="link" href="/rest_help/crm/externalchannel/index.php">параметры функций</a>. </p>
+<h4>Пример вызова для Контакта (для вызова Компании структура аналогична)</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	"crm.externalchannel.contact",
+	{
+		batch:[{
+			"agent":{
+				"fields":{
+					"обновляемое поле":"значение",
+					"ORIGIN_VERSION":"qqohNDrbtJfIpEPIEPEnCg==",
+					"ORIGIN_ID":"fff6e1b4-55bc-11d9-848a-00112f43529a-00001", 
+				},
+				"EXTERNAL_FIELDS":{
+					"COMPANY_ORIGIN_ID":"dee6e1b4-55bc-11d9-848a-00112f43529a-00001",
+					"EXTERNAL_URL":"contact_id=1001"
+				},
+				"REQUISITE":[{
+					"XML_ID":"faa1c2a9-55bc-11d9-848a-00112f43529a-00001",
+					"RQ_ADDR":{
+						"PRIMARY":{
+							"ADDRESS_1":"#Улица, дом, корпус, строение#",
+							"ADDRESS_2":"#Квартира / офис#",
+							"CITY":"#Город#",
+							"POSTAL_CODE":"#Почтовый индекс#",
+							"REGION":"#Район#",
+							"PROVINCE":"#Область#",
+							"COUNTRY":"#Страна#",
+							"COUNTRY_CODE":""
+						},
+						"HOME":{
+							"ADDRESS_1":"#Улица, дом, корпус, строение#",
+							"ADDRESS_2":"#Квартира / офис#",
+							"CITY":"#Город#",
+							"POSTAL_CODE":"#Почтовый индекс#",
+							"REGION":"#Район#",
+							"PROVINCE":"#Область#",
+							"COUNTRY":"#Страна#",
+							"COUNTRY_CODE":""
+						},
+						"REGISTERED":{
+							"ADDRESS_1":"#Улица, дом, корпус, строение#",
+							"ADDRESS_2":"#Квартира / офис#",
+							"CITY":"#Город#",
+							"POSTAL_CODE":"#Почтовый индекс#",
+							"REGION":"#Район#",
+							"PROVINCE":"#Область#",
+							"COUNTRY":"#Страна#",
+							"COUNTRY_CODE":""
+						},
+						"BENEFICIARY":{
+							"ADDRESS_1":"#Улица, дом, корпус, строение#",
+							"ADDRESS_2":"#Квартира / офис#",
+							"CITY":"#Город#",
+							"POSTAL_CODE":"#Почтовый индекс#",
+							"REGION":"#Район#",
+							"PROVINCE":"#Область#",
+							"COUNTRY":"#Страна#",
+							"COUNTRY_CODE":""
+						}
+					},
+					"RQ_NAME":"#Организация#",
+					"RQ_FIRST_NAME":"",
+					"RQ_LAST_NAME":"",
+					"RQ_SECOND_NAME":""
+					"RQ_COMPANY_NAME":"#Сокращенное наименование организации#",
+					"RQ_COMPANY_FULL_NAME":"#Полное наименование организации#",
+					"RQ_COMPANY_REG_DATE":"#Дата государственной регистрации#",
+					"RQ_DIRECTOR":"#Ген. директор#",
+					"RQ_ACCOUNTANT":"#Гл. бухгалтер#",
+					"RQ_CEO_NAME":"",
+					"RQ_CEO_WORK_POS":"",
+					"RQ_CONTACT":"",
+					"RQ_EMAIL":"",
+					"RQ_PHONE":"",
+					"RQ_FAX":"",
+					"RQ_IDENT_DOC":""
+					"RQ_IDENT_DOC_SER":"",
+					"RQ_IDENT_DOC_NUM":"",
+					"RQ_IDENT_DOC_DATE":"",
+					"RQ_IDENT_DOC_ISSUED_BY":"",
+					"RQ_IDENT_DOC_DEP_CODE":"",
+					"RQ_INN":"#ИНН#",
+					"RQ_KPP":"",
+					"RQ_USRLE":"",
+					"RQ_IFNS":"",
+					"RQ_OGRN":"#ОГРН#",
+					"RQ_OGRNIP":"#ОКПО#",
+					"RQ_OKPO":"#ОКТМО#",
+					"RQ_OKTMO":"",
+					"RQ_OKVED":"",
+					"RQ_EDRPOU":"",
+					"RQ_DRFO":"",
+					"RQ_KBE":"",
+					"RQ_IIN":"",
+					"RQ_BIN":"",
+					"RQ_VAT_PAYER":"",
+					"RQ_VAT_ID":"",
+					"RQ_VAT_CERT_SER":"",
+					"RQ_VAT_CERT_NUM":"",
+					"RQ_VAT_CERT_DATE":"",
+					"RQ_RESIDENCE_COUNTRY":"",
+					"BANK_DETAILS":[{"
+						"RQ_BANK_NAME":"#Наименование банка#",
+						"RQ_BANK_ADDR":"#Адрес банка#",
+						"RQ_BANK_ROUTE_NUM":"",
+						"RQ_BIK":"#БИК#",
+						"RQ_MFO":"",
+						"RQ_ACC_NAME":"",
+						"RQ_ACC_NUM":"#Расчетный счёт#",
+						"RQ_IIK":"",
+						"RQ_ACC_CURRENCY":"#Валюта счёта#",
+						"RQ_COR_ACC_NUM":"#Кор. счёт#",
+						"RQ_IBAN":"",
+						"RQ_SWIFT":"#SWIFT#",
+						"RQ_BIC":"",
+						"COMMENTS":"#Комментарий#",
+						"XML_ID":"caa2g4q8-55bc-11d9-848a-00112f43529a-00001"
+					}]
+				}]
+			}
+		}],
+		params:{
+			"CHANNEL_ID":"ext_channel.574b405083de90.99016531"
+		}
+	},
+	function(result) 
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.dir(result.data());
+	}
+);
+</pre>
+<br><br>							
+        </div>
+        </body>
+        </html>

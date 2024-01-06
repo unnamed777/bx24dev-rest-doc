@@ -1,0 +1,76 @@
+<html>
+        <head>
+            <title>imopenlines.config.list.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">imopenlines.config.list.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/imconnector/setting_line/imopenlines_config_list_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Метод для получения списка линий.</p>
+
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>PARAMS</td> 	<td>Массив 
+		<span class="learning-lesson-detail-block js-detail-info-block">
+			<span class="learning-lesson-detail-word js-detail-info-word">параметров</span>
+			<span class="learning-lesson-detail-body js-detail-info-body">
+				<span class="learning-lesson-detail-body-inner  js-detail-info-body-inner">
+                    <button class="learning-lesson-detail-close-button  js-detail-close-button" type="button"></button>
+                    Список доступных параметров идентичен параметрам метода <a class="link" href="/rest_help/imconnector/setting_line/imopenlines_config_add.php">imopenlines.config.add</a>
+                </span>
+			</span>
+		</span>
+		 для выборки (select, order, filter) (необязательный)</td> <td></td></tr>
+   
+    <tr> 	<td>OPTIONS </td> 	<td>Массив дополнительных опций (на данный момент только поле 'QUEUE' =&gt; 'Y'/'N' - Очередь ответственных сотрудников) (необязательный)</td> <td></td></tr>
+   
+   </tbody>
+ </table>
+
+	
+	<h4>Пример</h4>
+
+<pre class="syntax" rel="example">//imopenlines.config.list.get
+function configListGet()
+{
+	var params = {
+		PARAMS: {
+			select: {
+				'ID',
+				...
+			},
+			order: {
+				ID: 'ASC',
+				...
+			},
+			filter: {
+				ID: 1,
+				...
+			}
+		},
+		OPTIONS: {
+			QUEUE: Y
+		}
+	};
+	BX24.callMethod(
+		'imopenlines.config.list.get',
+		params,
+		function (result) {
+			if (result.error())
+				alert("Error: " + result.error());
+			else
+				alert("Успешно: " + result.data());
+		}
+	);
+}</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

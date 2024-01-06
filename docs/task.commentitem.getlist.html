@@ -1,0 +1,96 @@
+<html>
+        <head>
+            <title>task.commentitem.getlist</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">task.commentitem.getlist <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/tasks/task/commentitem/getlist.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<p class="note_blue">
+Scope: <span class="bg_blue">task</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<div class="tab">
+
+<h3 class="tab-title">Описание и пример</h3>
+<p>Возвращает список комментариев к задаче.</p>
+ 
+<h4>Пример</h4>
+<pre class="syntax" rel="example">// Получить все комментарии для задачи ID=1 с восходящей сортировкой по ID и фильтрацией по AUTHOR_ID
+
+BX24.callMethod(
+	'task.commentitem.getlist',
+	[1, {'ID': 'asc'}, {'&gt;AUTHOR_ID': 2}],
+	function(result){
+		console.info(result.data());
+		console.log(result);
+	}
+);
+</pre>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+<table class="tnormal" width="100%"> 
+  <tbody> 
+    <tr><th width="15%">Параметр</th><th>Описание</th></tr>
+		<tr><td>TASKID</td>	<td>Идентификатор задачи. Обязательный параметр.</td>	</tr>
+		
+		<tr><td>ORDER</td>	<td>Массив для сортировки результата. Поле для сортировки может принимать значения:
+			<br>
+			<ul>
+				<li><b>ID</b> - идентификатор комментария;	</li>
+				<li><b>AUTHOR_ID</b> - идентификатор автора комментария;	</li>
+				<li><b>AUTHOR_NAME</b> - имя автора;	</li>
+				<li><b>AUTHOR_EMAIL</b> - почтовый адрес автора;	</li>
+				<li><b>POST_DATE</b> - дата публикации комментария.	</li>
+			</ul>
+			Направление сортировки может принимать значения:
+			<ul>
+				<li><b>asc</b> - по возрастанию;	</li>
+				<li><b>desc</b> - по убыванию;	</li>
+			</ul>
+			Необязательный. По умолчанию фильтруется по убыванию идентификатора комментария.
+		</td></tr>
+		
+		<tr><td>FILTER</td>	<td>Массив вида <i>{"фильтруемое_поле": "значение фильтра" [, ...]}</i>. Фильтруемое поле может принимать значения:  
+			<br>
+			<ul>
+				<li><b>ID</b> - идентификатор комментария;	</li>
+				<li><b>AUTHOR_ID</b> - идентификатор автора комментария;	</li>
+				<li><b>AUTHOR_NAME</b> - имя автора;	</li>
+				<li><b>POST_DATE</b> - дата публикации комментария.	</li>
+			</ul>
+			Перед названием фильтруемого поля может указать тип фильтрации:
+			<ul>
+				<li> "!" - не равно;	</li>
+				<li>"&lt;" - меньше;	</li>
+				<li>"&lt;=" - меньше либо равно;	</li>
+				<li>"&gt;" - больше;	</li>
+				<li>"&gt;=" - больше либо равно.	</li>
+			</ul>
+			<i>"значения фильтра"</i> - одиночное значение или массив. 
+			<br><br>
+			Необязательный. По умолчанию записи не фильтруются. 
+		</td></tr>
+		
+	</tbody>
+</table>
+
+ <p></p><div class="note"><b>Внимание!</b> Соблюдение порядка следования параметров в запросе обязательно. При его нарушении запрос будет выполнен с ошибками.</div><p></p>
+
+
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,50 @@
+<html>
+        <head>
+            <title>task.checklistitem.isactionallowed</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">task.checklistitem.isactionallowed <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/tasks/task/checklistitem/isactionallowed.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">task</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<p>Проверяет, разрешено ли действие.</p>
+ 
+<h4>Параметры функции</h4>
+<table class="tnormal" width="100%"> 
+  <tbody> 
+    <tr><th width="15%">Параметр</th><th>Описание</th></tr>
+		<tr><td>TASKID</td>	<td>Идентификатор задачи. Обязательный параметр.</td>	</tr>
+		<tr><td>ITEMID</td>	<td>Идентификатор элемента чек-листа. Обязательный параметр.</td>	</tr>		
+		<tr><td>ACTIONID</td>	<td>Идентификатор проверяемого действия:
+		<ul>
+			<li><b>1</b> - ACTION_ADD;</li>
+			<li><b>2</b> - ACTION_MODIFY;</li>
+			<li><b>3</b> - ACTION_REMOVE;</li>
+			<li><b>4</b> - ACTION_TOGGLE.</li>
+		</ul>
+		Обязательный параметр.</td>	</tr>	
+	</tbody>
+</table>
+
+ <p></p><div class="note"><b>Внимание!</b> Соблюдение порядка следования параметров в запросе обязательно. При его нарушении запрос будет выполнен с ошибками.</div><p></p>
+
+<h4>Пример</h4>
+<pre class="syntax" rel="example">// Для элемента с ID=21 проверяем, разрешено ли действие его изменения
+BX24.callMethod(
+	'task.checklistitem.isactionallowed',
+	[13, 21, 2],
+	function(result){
+		console.info(result.data());
+		console.log(result);
+	}
+);
+</pre>
+ 
+<br><br>							
+        </div>
+        </body>
+        </html>

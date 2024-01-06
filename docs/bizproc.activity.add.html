@@ -1,0 +1,258 @@
+<html>
+        <head>
+            <title>bizproc.activity.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">bizproc.activity.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/bizproc/bizproc_activity/add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<p class="note_blue">
+Scope: <span class="bg_blue">bizproc</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<div class="tab">
+
+<h3 class="tab-title">Описание</h3>
+<p><b>bizproc.activity.add</b> - добавляет новое действие в бизнес-процесс.</p>
+
+<p>Каждый документ генерирует свой набор типов полей, с которыми он может работать. Например, у CRM есть поле типа <strong>Адрес</strong>, он обозначается как <code>UF:address</code>. Чтобы такой тип поля использовать в своих активити, нужно указать, что мы работаем с документом CRM (ключ DOCUMENT_TYPE)
+и тогда можно описывать свойства такого типа (ключ PROPERTIES).</p>
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+  
+		<tr>
+			<td>CODE*</td>
+			<td>Внутренний идентификатор действия, уникальный в рамках приложения. <br>Допустимые символы a-z, A-Z, 0-9, точка, дефис и нижнее подчеркивание. </td>
+		</tr>
+		<tr>
+			<td>HANDLER*</td>
+			<td>URL, на который действие будет отсылать данные (через сервер очередей <i>bitrix24</i>), когда бизнес-процесс дошел до его выполнения. <br>Должен ссылаться на тот же домен, на котором установлено приложение.</td>
+		</tr>
+		<tr>
+			<td>AUTH_USER_ID</td>
+			<td>ID пользователя, токен которого будет передан приложению.</td>
+		</tr>
+		<tr>
+			<td>USE_SUBSCRIPTION</td>
+			<td>Использование подписки. Допустимые значения - Y или N. Можно указать, должно ли ожидать действие ответа от приложения. Если параметр пустой или не указан - пользователь может сам настроить этот параметр в настройках действия в дизайнере бизнес-процессов.</td>
+		</tr>
+		<tr>
+			<td>NAME*</td>
+			<td>Название действия. Может быть строкой или ассоциативным массивом локализированных строк. Нельзя использовать значение <b>Title</b>.</td>
+		</tr>
+<tr>
+			<td>DESCRIPTION</td>
+			<td>Описание действия. Может быть строкой или ассоциативным массивом локализированных строк. </td>
+		</tr>
+		<tr>
+			<td>PROPERTIES</td>
+			<td>Массив параметров действия. Список значений аналогичен значениям параметра RETURN_PROPERTIES.</td>
+		</tr>
+		<tr>
+			<td>RETURN_PROPERTIES</td>
+			<td>Массив возвращаемых значений действия. Параметр управляет возможностью действия ожидать ответа приложения и работать с данными, которые придут в ответе.<br> <p></p><div class="note"><b>Внимание</b>! Системное название параметра должно начинаться с буквы и может содержать только символы <b>a-z</b>, <b>A-Z</b>, <b>0-9</b> и нижнее подчеркивание.</div>
+<p>Каждый параметр обязательно должен содержать:</p>
+<ul><li><b>Name</b> - строка или массив локализаций.</li>
+<li><b>Description</b> - описание параметра, строка или массив локализаций.</li>
+<li><b>Type</b> - тип параметра. Список базовых параметров:</li>
+<ul>
+<li><code>bool</code> (<b>Да/Нет</b>)</li>
+<li><code>date</code> (<b>Дата</b>)</li>
+<li><code>datetime</code> (<b>Дата/Время</b>)</li>
+<li><code>double</code> (<b>Число</b>)</li>
+<li><code>int</code> (<b>Целое число</b>)</li>
+
+<li><code>select</code> (<b>Список</b>) массив значений списка:</li>
+<li><code>string</code> (<b>Строка</b>)</li>
+<li><code>text</code> (<b>Текст</b>)</li>
+<li><code>user</code> (<b>Пользователь</b>), может иметь значения вида:
+<ul>
+<li>цифра - ID группы пользователей;</li>
+<li>user_1 - пользователь с ID 1;</li>
+<li>group_D12 - сотрудники отдела 12 и другие коды (группы соцсети и т.п.).</li>
+</ul>
+</li></ul>
+<li><b>Options</b> Только для <strong>TYPE</strong> равному <strong>select</strong>.
+<pre class="syntax">[
+'value1' =&gt; 'title1',
+'value2' =&gt; 'title2',
+'value3' =&gt; 'title3',
+'value4' =&gt; 'title4',
+]</pre>
+</li>
+<li><b>Required(Y/N)</b> - обязательность параметра.</li>
+<li><b>Multiple(Y/N)</b> - множественность параметра.</li>
+<li><b>Default</b> - значение параметра по-умолчанию. По умолчанию тип параметра - <b>string</b>, необязательный, немножественный.</li>
+</ul> 
+</td>
+		</tr>
+
+<tr>
+			<td>DOCUMENT_TYPE</td>
+			<td>Тип документа, который будет определять типы данных для параметров PROPERTIES и RETURN_PROPERTIES. Массив из 3 элементов:
+<ul>
+<li> id модуля</li>
+<li>сущность (класс)</li> 
+<li>непосредственно тип документа</li> 
+ </ul>
+Примеры:
+
+<pre class="syntax">['crm', 'CCrmDocumentLead', 'LEAD']
+['lists', 'BizprocDocument', 'iblock_22']
+['disk', 'Bitrix\Disk\BizProcDocument', 'STORAGE_490']
+['tasks', 'Bitrix\Tasks\Integration\Bizproc\Document\Task', 'TASK_PROJECT_13']</pre></td>
+		</tr>
+		<tr>
+			<td>FILTER</td>
+			<td>Правила ограничения действия по типу документа и редакции.</td>
+		</tr>
+
+
+<tr>
+			<td>USE_PLACEMENT</td>
+			<td>Дает  возможность открывать дополнительные настройки действия в  слайдере приложения. Принимает значения (Y/N). </td>
+		</tr>
+
+</tbody>
+</table>
+
+<p>* - обязательные параметры</p>
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Примеры</h3>
+
+<pre class="syntax" rel="example">var params = {
+	'CODE': 'md5',
+	'HANDLER': 'http://yanzh.net16.net/ping.php',
+	'AUTH_USER_ID': 1,
+	'USE_SUBSCRIPTION': 'Y',
+	'NAME': {
+		'ru': 'MD5 генератор',
+		'en': 'MD5 generator'
+	},
+	'DESCRIPTION': {
+		'ru': 'Действие возвращает MD5 хеш от входящего параметра',
+		'en': 'Activity returns MD5 hash of input parameter'
+	},
+	'PROPERTIES': {
+		'inputString': {
+			'Name': {
+				'ru': 'Входящая строка',
+				'en': 'Input string'
+			},
+			'Description': {
+				'ru': 'Введите строку, которую вы хотите хешировать',
+				'en': 'Input string for hashing'
+			},
+			'Type': 'string',
+			'Required': 'Y',
+			'Multiple': 'N',
+			'Default': '{=Document:NAME}'
+		}
+	},
+	'RETURN_PROPERTIES': {
+		'outputString': {
+			'Name': {
+				'ru': 'MD5',
+				'en': 'MD5'
+			},
+			'Type': 'string',
+			'Multiple': 'N',
+			'Default': null
+		}
+	},
+	'DOCUMENT_TYPE': ['lists', 'BizprocDocument', 'iblock_1'],
+	'FILTER': {
+		INCLUDE: [
+			['lists']
+		]
+	}
+};
+BX24.callMethod(
+	'bizproc.activity.add',
+	params,
+	function(result)
+	{
+		if(result.error())
+			alert("Error: " + result.error());
+		else
+			alert("Success: " + result.data());
+	}
+);
+</pre>
+
+<p>Пример параметров Бизнес-процесса</p>
+
+<pre class="syntax">select
+'docType': {
+	'Name': {
+		'ru': 'Тип документа',
+		'en': 'Document type'
+	},
+	'Required': 'Y',
+	'Multiple': 'N',
+	'Default': 'PDF',
+	'Type': 'select',
+	'Options': {
+		'pdf': 'PDF',
+		'docx': 'DOCX'
+	}
+}
+bool
+'saveDoc': {
+	'Name': {
+		'ru': 'Сохранить документ',
+		'en': 'Save document'
+	},
+	'Description': {
+		'ru': 'Присвоить порядковый номер',
+		'en': 'Assign a sequential number'
+	},
+	'Type': 'bool',
+	'Required': 'Y',
+	'Multiple': 'N',
+	'Default': 'Y'
+}
+string
+'Parameters': {
+	'Name': {
+		'ru': 'Параметры шаблона',
+		'en': 'Template\'s parameters'
+	},
+	 'Description': {
+		'ru': 'ParamID={=ParamValue}',
+		'en': 'ParamID={=ParamValue}'
+	},
+	'Type': 'string',
+	'Required': 'N',
+	'Multiple': 'Y'
+}</pre>
+
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

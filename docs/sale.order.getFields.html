@@ -1,0 +1,151 @@
+<html>
+        <head>
+            <title>sale.order.getFields</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">sale.order.getFields <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/sale/order/sale_order_getFields.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<p class="note_blue">
+Scope: <span class="bg_blue">sale</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<div class="tab">
+
+<h3 class="tab-title">Описание и пример</h3>
+<pre class="syntax">sale.order.getFields()</pre>
+
+<p>Метод возвращает поля заказа.</p>
+
+<h4>Параметры</h4>
+
+<p>Без параметров.</p>
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'sale.order.getFields', 
+	{}, 
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error().ex);
+		else
+			console.log(result.data());
+	}
+);
+</pre>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Возвращаемые поля</h3>
+
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Поле</th><th>Описание</th>    <th width="15%">Тип</th><th width="15%">Обязательность</th>  </tr>
+
+<tr><td>id</td><td>Идентификатор заказа. Только для чтения.</td> <td>int</td><td></td></tr>
+
+<tr><td>lid</td><td>Идентификатор сайта. </td> <td>string</td><td>*</td></tr>
+
+<tr><td>dateInsert</td><td>Дата создания заказа.</td> <td>datetime</td><td></td></tr>
+
+<tr><td>dateUpdate</td><td>Дата обновления заказа. Только для чтения.</td> <td>datetime</td><td></td></tr>
+
+<tr><td>personTypeId</td><td>Идентификатор типа плательщика. </td> <td>int</td><td>*</td></tr>
+
+<tr><td>personxmlId</td><td>Внешний идентификатор типа плательщика. Только для чтения.</td> <td>string</td><td></td></tr>
+
+<tr><td>statusId</td><td>Идентификатор статуса.</td> <td>char</td><td></td></tr>
+
+<tr><td>dateStatus</td><td>Дата изменения статуса. Только для чтения.</td> <td>datetime</td><td></td></tr>
+
+<tr><td>marked</td><td>Промаркирован ли заказ.</td> <td>char</td><td></td></tr>
+
+<tr><td>dateMarked</td><td>Дата маркировки заказа. Только для чтения.</td> <td>datetime</td><td></td></tr>
+
+<tr><td>empMarkedId</td><td>ID пользователя, поставившего маркировку.</td> <td>int</td><td></td></tr>
+
+<tr><td>reasonMarked</td><td>Причина, по которой заказ был промаркирован.</td> <td>string</td><td></td></tr>
+
+<tr><td>price</td><td>Цена.</td> <td>float</td><td></td></tr>
+
+<tr><td>discountValue</td><td>Значение скидки.</td> <td>float</td><td></td></tr>
+
+<tr><td>taxValue</td><td>Ставка налога на заказ.. Только для чтения.</td> <td>float</td><td></td></tr>
+
+<tr><td>userDescription</td><td>Пользовательское описание.</td> <td>string</td><td></td></tr>
+
+<tr><td>additionalInfo</td><td>Дополнительная информация.</td> <td>string</td><td></td></tr>
+
+<tr><td>comments</td><td>Комментарии.</td> <td>string</td><td></td></tr>
+
+<tr><td>companyId</td><td>ID компании, привязанной к заказу.</td> <td>int</td><td></td></tr>
+
+<tr><td>responsibleId</td><td>ID ответственного.</td> <td>int</td><td></td></tr>
+
+<tr><td>recurringId</td><td>Код продления подписки (если он есть).</td> <td>char</td><td></td></tr>
+
+<tr><td>lockedBy</td><td>Кем заблокирован заказ.</td> <td>char</td><td></td></tr>
+
+<tr><td>dateLock</td><td>Дата блокировки. Только для чтения.</td> <td>datetime</td><td></td></tr>
+
+<tr><td>recountFlag</td><td>Флаг пересчета (Y/N).</td> <td>char</td><td></td></tr>
+
+<tr><td>affiliateId</td><td>Идентификатор аффилиата.</td> <td>int</td><td></td></tr>
+
+<tr><td>updated1c</td><td>Обновлен ли через 1С.</td> <td>char</td><td></td></tr>
+
+<tr><td>orderTopic</td><td>Тема заказа.</td> <td>string</td><td></td></tr>
+
+<tr><td>xmlId</td><td>Внешний идентификатор.</td> <td>string</td><td></td></tr>
+
+<tr><td>statusxmlId</td><td>Внешний идентификатор статуса. Только для чтения.</td> <td>string</td><td></td></tr>
+
+<tr><td>id1c</td><td>Идентификатор в 1С.</td> <td>string</td><td></td></tr>
+
+<tr><td>version</td><td>Версия документа. Только для чтения.</td> <td>int</td><td></td></tr>
+
+<tr><td>version1c</td><td>Версия в 1С.</td> <td>string</td><td></td></tr>
+
+<tr><td>externalOrder</td><td>Флаг Y/N: заказ из внешней системы или нет.</td> <td>char</td><td></td></tr>
+
+<tr><td>canceled</td><td>Была ли отмена.</td> <td>char</td><td></td></tr>
+
+<tr><td>dateCanceled</td><td>Дата отмена. Только для чтения.</td> <td>datetime</td><td></td></tr>
+
+<tr><td>empCanceledId</td><td>Дата отмены.</td> <td>int</td><td></td></tr>
+
+<tr><td>reasonCanceled</td><td>Причина отмены.</td> <td>string</td><td></td></tr>
+
+<tr><td>userId</td><td>Идентификатор клиента. </td> <td>int</td><td>*</td></tr>
+
+<tr><td>currency</td><td>Валюта.</td> <td>string</td><td>*</td></tr>
+
+<tr><td>accountnumber</td><td>Номер аккаунта. Только для чтения.</td> <td>string</td><td></td></tr>
+
+<tr><td>payed</td><td>Заказ оплачен. Только для чтения.</td> <td>Int</td><td></td></tr>
+
+<tr><td>deducted</td><td>Применена скидка. Только для чтения.</td> <td>char</td><td></td></tr>
+
+	</tbody>
+</table>
+
+
+</div>
+
+<!------->
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

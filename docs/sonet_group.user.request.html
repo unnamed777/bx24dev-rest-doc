@@ -1,0 +1,80 @@
+<html>
+        <head>
+            <title>sonet_group.user.request</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">sonet_group.user.request <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/sonet_group/sonet_group_user_request.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Описание</h3>
+
+<p>Отправляет запрос текущего пользователя на вступление в группу соцсети, при этом проверяются права на доступ текущего пользователя к группе.
+Если группа открыта для свободного вступления, пользователь сразу становится ее участником.</p>
+<p>Возвращает <b>true</b>, если запрос произошел успешно, или текст ошибки.</p>
+
+<h4>Запрос:</h4>
+<pre class="syntax">https://mydomain.bitrix24.ru/rest/sonet_group.user.request.json?auth=52423d4a5f19f5f964f9b4e96a925cfa&amp;GROUP_ID=17&amp;MESSAGE=Request
+</pre>
+
+
+<h4>Ответ:</h4>
+<pre class="syntax">{"result":true}
+</pre>
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+  
+		<tr>
+			<td>GROUP_ID</td>
+			<td>ID группы, в которую отправляется запрос</td>
+		</tr>
+		<tr>
+			<td>MESSAGE</td>
+			<td>Текст запроса</td>
+		</tr>		
+	</tbody>
+</table>
+
+
+
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Пример</h3>
+<pre class="syntax" rel="example">// Отправляем запрос на вступление в группу с ID=15
+
+BX24.callMethod('sonet_group.user.request', {
+	'GROUP_ID': 17,
+	'MESSAGE': 'Request'
+});
+</pre>
+
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

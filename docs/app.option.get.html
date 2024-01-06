@@ -1,0 +1,38 @@
+<html>
+        <head>
+            <title>app.option.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">app.option.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/general/application/app_option_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre>app.option.get(
+   option
+)</pre>
+
+<p>Получает данные, привязанные к приложению. Если ничего не подать на вход, вернёт все свойства записанные через  <a class="link" href="/rest_help/general/application/app_option_set.php">app.option.set</a>.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>option</td> 	<td>Строка, один из ключей из свойства <strong>app.option.set</strong>.</td> <td></td></tr>
+   
+   </tbody>
+ </table>
+
+<h4>Пример</h4>
+
+<pre>CRest::call('app.option.get',[//вернёт свойство с ключом 'data'
+	'option' =&gt; 'data'
+])</pre>
+
+<pre>CRest::call('app.option.get',[]) //вернёт все свойства</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

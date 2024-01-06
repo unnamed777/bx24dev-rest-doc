@@ -1,0 +1,53 @@
+<html>
+        <head>
+            <title>crm.product.property.delete</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.product.property.delete <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/products/crm_product_property_delete.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.product.property.delete(id)</pre>
+
+<p>Удаляет свойство товаров.</p>
+
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+<tr>
+<td>id</td>
+<td>Идентификатор свойства товаров.</td>
+</tr>
+
+
+	</tbody>
+</table>
+
+
+<h4>Пример</h4>
+<pre class="syntax" rel="example">var id = prompt("Введите ID");
+BX24.callMethod(
+	"crm.product.property.delete",
+	{
+		id: id
+	},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.info(result.data());
+	}
+);
+</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

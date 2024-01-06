@@ -1,0 +1,51 @@
+<html>
+        <head>
+            <title>lists.field.delete</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">lists.field.delete <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/lists/fields/lists_field_delete.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax" "="">lists.field.delete (params, fields)</pre>
+
+<p>Метод удаляет поле списка. В случае успешного удаления поля ответ <i>true</i>, иначе <i>Exception</i>.</p>
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr><th width="15%">Параметр</th><th>Описание</th></tr>
+<tr><td>IBLOCK_TYPE_ID</td><td>id типа инфоблока (обязательно):
+<ul>
+<li><b>lists</b> - тип инфоблока списка</li>
+<li><b>bitrix_processes</b> - тип инфоблока процессов</li> 
+<li><b>lists_socnet</b> - тип инфоблока списков групп</li></ul></td></tr>
+<tr><td>IBLOCK_CODE/IBLOCK_ID</td><td>код или id инфоблока (обязательно)</td></tr>
+<tr><td>SOCNET_GROUP_ID</td><td>id группы (обязательно, если список создается для группы);</td></tr>
+<tr><td>FIELD_ID</td><td>ID поля. (обязательно. Если поле свойство инфоблока, то формат: "PROPERTY_propertyId")</td></tr>
+</tbody>
+</table>
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">var params = {
+	'IBLOCK_TYPE_ID': 'lists_socnet',
+	'IBLOCK_CODE': 'rest_1',
+	'FIELD_ID': 'PROPERTY_61'
+};
+BX24.callMethod(
+	'lists.field.delete',
+	params,
+	function(result)
+	{
+		if(result.error())
+			alert("Error: " + result.error());
+		else
+			alert("Success: " + result.data());
+	}
+);</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

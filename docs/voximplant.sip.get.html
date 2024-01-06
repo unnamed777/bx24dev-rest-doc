@@ -1,0 +1,145 @@
+<html>
+        <head>
+            <title>voximplant.sip.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">voximplant.sip.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/scope_telephony/voximplant/voximplant_sip_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Описание и пример</h3>
+
+<p>Возвращает список всех sip-линий, созданных приложением. Списочный метод. Метод доступен обладателю <a class="link" href="https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=48&amp;LESSON_ID=1985" target="_blank">права</a> <b>Управление номерами - изменение - любые</b>.</p>
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'voximplant.sip.get',
+	{
+		"FILTER": {"CONFIG_ID":12},
+		"SORT": "CONFIG_ID",
+		"ORDER": "DESC",
+	},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.info(result.data());
+	}
+);</pre>
+
+<!--
+<h4>Запрос:</h4>
+<pre class="syntax" rel="example">
+
+</pre>
+
+
+<h4>Ответ:</h4>
+<pre class="syntax" rel="example">
+
+</pre>
+-->
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+		<tr>
+			<td>FILTER</td>
+			<td>Поля для сортировки.</td>
+		</tr>	
+		<tr>
+			<td>SORT</td>
+			<td>По какому полю производится сортировка.</td>
+		</tr>	
+		<tr>
+			<td>ORDER</td>
+			<td>Порядок сортировки (ASC/DESC).</td>
+		</tr>		
+<tr><td colspan="2"><b>Все параметры не обязательные</b></td></tr>	
+	</tbody>
+</table>
+
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Описание результата</h3>
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+  
+		<tr>
+			<td>CONFIG_ID</td>
+			<td>Идентификатор настройки sip-линии.</td>
+		</tr>
+		<tr>
+			<td>TYPE</td>
+			<td>Тип АТС (см. <a class="link" href="/rest_help/scope_telephony/codes_and_types.php#ats_type">список типов АТС</a>).</td>
+		</tr>
+		<tr>
+			<td>TITLE</td>
+			<td>Название подключения.</td>
+		</tr>	
+		<tr>
+			<td>SERVER</td>
+			<td>Адрес сервера sip-регистрации.</td>
+		</tr>	
+		<tr>
+			<td>LOGIN</td>
+			<td>Логин для сервера.</td>
+		</tr>	
+		<tr>
+			<td>PASSWORD</td>
+			<td>Пароль для сервера.</td>
+		</tr>	
+		<tr>
+			<td>REG_ID</td>
+			<td>Идентификатор sip-регистрации (<b>только для Облачной АТС</b>).</td>
+		</tr>	
+		<tr>
+			<td>INCOMING_SERVER</td>
+			<td>Адрес сервера для подключения при исходящем звонке (<b>только для Облачной АТС</b>).</td>
+		</tr>	
+		<tr>
+			<td>INCOMING_LOGIN</td>
+			<td>Логин для подключения (<b>только для Облачной АТС</b>).</td>
+		</tr>	
+		<tr>
+			<td>INCOMING_PASSWORD</td>
+			<td>Пароль для подключения (<b>только для Облачной АТС</b>).</td>
+		</tr>	
+	</tbody>
+</table>
+
+
+
+</div>
+
+<!------->
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

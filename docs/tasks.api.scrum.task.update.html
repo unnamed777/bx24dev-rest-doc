@@ -1,0 +1,61 @@
+<html>
+        <head>
+            <title>tasks.api.scrum.task.update</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">tasks.api.scrum.task.update <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/tasks/task/scrum/task/tasks_api_scrum_task_update.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">task</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<pre class="syntax"><b>tasks.api.scrum.task.update(</b>id, fields<b>)</b></pre>
+
+<p>Метод создает или изменяет задачу Скрама.</p>
+
+<p>Задачу нужно предварительно создать, либо получить уже существующую. Задачу нужно предварительно привязать к Скраму с помощью методов <a class="link" href="/rest_help/tasks/task/tasks/tasks_task_add.php">tasks.task.add</a> / <a class="link" href="/rest_help/tasks/task/tasks/tasks_task_update.php">tasks.task.update</a>, обновив поле <code>GROUP_ID</code>. <i>Битрикс24</i> автоматически добавляет ее в бэклог Скрама, если он существует.</p>
+
+<p>Метод используется, если нужно создать задачу в Скраме, перенести задачу из другого проекта, перенести её между бэклогом и спринтами, изменить стори поинты, привязать эпик.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+<tbody>
+<tr>
+	<th width="15%">Параметр</th>	<th>Описание</th></tr>
+
+<tr>	<td>id</td>	<td>Идентификатор задачи. </td></tr>
+
+<tr>	<td>fields</td>	<td>Поля, соответствующие доступному списку полей <a class="link" href="/rest_help/tasks/task/scrum/task/tasks_api_scrum_task_getFields.php">tasks.api.scrum.task.getFields</a>. </td></tr>
+
+</tbody>
+</table>
+
+<h4>Примеры</h4>
+ <pre class="syntax" rel="example">const taskId = 1;
+const epicId = 1;
+const storyPoints = '8';
+const sprintId = 2;
+BX24.callMethod(
+	'tasks.api.scrum.task.update',
+	{
+		id: taskId,
+		fields:{
+			epicId: epicId,
+			storyPoints: storyPoints,
+			entityId: sprintId
+		}
+	},
+	function(res)
+	{
+		console.log(res);
+	}
+);
+</pre> 
+
+<br>							
+        </div>
+        </body>
+        </html>

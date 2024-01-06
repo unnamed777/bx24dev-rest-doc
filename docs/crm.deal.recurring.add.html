@@ -1,0 +1,87 @@
+<html>
+        <head>
+            <title>crm.deal.recurring.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.deal.recurring.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/cdeals/crm_deal_recurring_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.deal.recurring.add(fields)</pre>
+
+<p>Добавляет новую настройку для регулярной сделки.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+
+<tr>
+<td>fields</td>
+<td>Набор полей - массив вида array ("поле"=&gt;"значение"[, ...]), содержащий значения полей сделки. Обязательное поле - поле DEAL_ID [ID сделки, у которой задан параметр IS_RECURRING=Y]
+<div class="note">
+	<b>Примечание</b>: чтобы узнать требуемый формат полей, выполните метод <a class="link" href="/rest_help/crm/cdeals/crm_deal_recurring_fields.php">crm.deal.recurring.fields</a> и посмотрите формат пришедших значений этих полей.</div>
+</td>
+</tr>
+
+	</tbody>
+</table>
+
+
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">var current = new Date();
+var nextMonth = new Date();
+var nextYear = new Date();
+nextMonth.setMonth(current.getMonth() + 1);
+nextYear.setYear(current.getFullYear() + 1);
+var date2str = function(d)
+{
+	return d.getFullYear() + '-' + paddatepart(1 + d.getMonth()) + '-' + paddatepart(d.getDate()) + 'T' + paddatepart(d.getHours()) + ':' + paddatepart(d.getMinutes()) + ':' + paddatepart(d.getSeconds()) + '+03:00';
+};
+var paddatepart = function(part)
+{
+	return part &gt;= 10 ? part.toString() : '0' + part.toString();
+};
+BX24.callMethod(
+	"crm.deal.recurring.add",
+	{
+		fields:
+		{
+			"DEAL_ID": "45",
+			"CATEGORY_ID": "1",
+			"IS_LIMIT": "D",
+			"LIMIT_DATE": date2str(nextYear),
+			"START_DATE": date2str(nextMonth),
+			"PARAMS": {
+				"MODE": "multiple",
+				"MULTIPLE_TYPE": "month",
+				"MULTIPLE_INTERVAL": 1,
+				"OFFSET_BEGINDATE_TYPE": "day",
+				"OFFSET_BEGINDATE_VALUE": 1,
+				"OFFSET_CLOSEDATE_TYPE": "month",
+				"OFFSET_CLOSEDATE_VALUE": 2,
+			}
+		}
+	},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.info("Добавлены настройки регулярной сделки. ID записи - " + result.data());
+	}
+);
+</pre>
+
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

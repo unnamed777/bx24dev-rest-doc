@@ -1,0 +1,94 @@
+<html>
+        <head>
+            <title>timeman.settings</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">timeman.settings <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/timeman/base/timeman_settings.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Описание и примеры</h3>
+
+<p>Метод возвращает настройки рабочего времени пользователя.</p>
+
+<h4>Примеры</h4>
+
+<p>Пример вызова:</p>
+
+<pre class="syntax">https://portal.bitrix24.com/rest/timeman.settings/?auth=xxxxxx&amp;user_id=1</pre>
+
+<p>Пример ответа:</p>
+
+<pre class="syntax">HTTP/1.1 200 OK
+{
+	"result": {
+		"ADMIN": true, 
+		"UF_TIMEMAN": true, 
+		"UF_TM_ALLOWED_DELTA": "00:15:00", 
+		"UF_TM_FREE": false, 
+		"UF_TM_MAX_START": "09:15:00", 
+		"UF_TM_MIN_DURATION": "08:00:00", 
+		"UF_TM_MIN_FINISH": "17:45:00"
+	}
+}</pre>
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr><th width="15%">Параметр</th><th>Описание</th></tr>
+<tr><td>USER_ID</td><td>Идентификатор пользователя. Не обязателен, по умолчанию возвращаются настройки текущего пользователя. </td></tr>
+
+</tbody>
+</table>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Поля ответа</h3>
+
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr><th width="15%">Поле	</th><th>Значение</th><th>Описание</th><th>Примечание</th></tr>
+
+<tr><td>ADMIN</td><td>true|false</td><td>Обладает ли пользователь правами на управление чужими рабочими днями</td><td>Возвращается только для текущего пользователя</td></tr>
+
+<tr><td>UF_TIMEMAN</td><td>true|false</td><td>Включен ли учет рабочего времени для пользователя</td><td></td></tr>
+
+<tr><td>UF_TM_FREE</td><td>true|false</td><td>Включен ли для пользователя свободный график работы</td><td>При включенном свободном графике изменения рабочего времени не требуют подтверждения и указания причины</td></tr>
+
+<tr><td>UF_TM_MAX_START</td><td>HH:MM:SS</td><td>Настроенное для пользователя максимальное время начала рабочего дня</td><td>Рабочий день, начатый позже указанного времени, будет считаться нарушением</td></tr>
+
+<tr><td>UF_TM_MIN_FINISH</td><td>HH:MM:SS</td><td>Настроенное для пользователя минимальное время завершения рабочего дня</td><td>Рабочий день, завершенный раньше указанного времени, будет считаться нарушением</td></tr>
+
+<tr><td>UF_TM_MIN_DURATION</td><td>HH:MM:SS</td><td>Настроенная для пользователя минимальная длительность рабочего дня</td><td>Рабочий день с длительностью меньше указанной будет считаться нарушением</td></tr>
+
+<tr><td>UF_TM_ALLOWED_DELTA</td><td>HH:MM:SS</td><td>Настроенный для пользователя допустимый промежуток изменения рабочего времени</td><td>Изменение рабочего дня на промежуток меньше указанного не будет требовать подтверждения руководителем</td></tr>
+
+</tbody>
+</table>
+
+
+</div>
+
+<!------->
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

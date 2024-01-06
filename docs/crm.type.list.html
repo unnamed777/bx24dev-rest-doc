@@ -1,0 +1,54 @@
+<html>
+        <head>
+            <title>crm.type.list</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.type.list <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/dynamic/methodscrmtype/crm_type_list.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.type.list({order: ?{} = null, filter: ?{} = null, start: ?number = 0})</pre>
+
+<p>Метод вернет массив настроек смарт-процессов</p>
+
+<pre class="syntax">{
+	"types": []
+}
+</pre>
+
+<p>где каждый элемент массива - это структура, аналогичная ответу на запрос <a class="link" href="#crmtypeget">crm.type.get</a>, за исключением связанных данных.</p>
+<br>
+<p class="note">Этот метод возвращает только собственные поля настроек смарт-процессов.</p>
+<br>
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr><th width="15%">Параметр</th> <th>Описание</th></tr>
+
+<tr><td>order</td><td>Список для сортировки, где ключ - поле, а значение - <code>ASC</code> или <code>DESC</code>.</td></tr>
+<tr><td>filter</td><td>Список для фильтрации. Примеры фильтров ниже.</td></tr>
+<tr><td>start</td><td>Сдвиг для постраничной навигации.</td></tr>
+
+</tbody>
+</table>
+<br>
+<b>Примеры запросов</b>
+<br>
+<p>Найти все элементы, у которых включено поле "Клиент" с сортировкой по названию.</p>
+<br>
+<pre class="syntax">{
+	"order": {
+		"title": "ASC"
+	},
+	"filter": {
+		"isClientEnabled": "Y"
+	}
+}
+</pre>
+<br>
+<p>Фильтр поддерживает сложную логику.</p>
+<br><br>							
+        </div>
+        </body>
+        </html>

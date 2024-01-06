@@ -1,0 +1,90 @@
+<html>
+        <head>
+            <title>crm.lead.details.configuration.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.lead.details.configuration.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/custom_form/crm_lead_details_configuration_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Метод для получения параметров настройки карточки лидов. Метод читает личные настройки карточки указанного пользователя или общие настройки, заданные для всех пользователей.</p>
+
+<p class="note">Обратите внимание, что настройки карточки повторных лидов могут отличаться от настроек карточки простых лидов. Для переключения между настройками карточек лидов применяется параметр <strong>leadCustomerType</strong>.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>scope</td> 	<td>Область применения настроек. Допустимые значения: 
+<ul>
+<li><strong>P</strong> - личные настройки,</li>
+<li><strong>C</strong> - общие настройки</li> 
+ </ul></td> <td></td></tr>
+   
+    <tr> 	<td>userId</td> 	<td> Идентификатор пользователя. Если не задан, то берётся текущий. Нужен только при запросе личных настроек.</td> <td></td></tr>
+   
+    <tr> 	<td>extras</td> 	<td>Дополнительные параметры. Здесь для лидов может быть задан параметр <code>leadCustomerType</code>, с допустимыми значениями:
+<ul>
+<li><strong>1</strong> - простые лиды,</li>
+<li><strong>2</strong> - повторные лиды</li> 
+ </ul></td> <td></td></tr>
+   
+   </tbody>
+ </table>
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">//--
+//Запрос личных настроек карточки лидов для пользователя с идентификатором 1.
+BX24.callMethod(
+	"crm.lead.details.configuration.get",
+	{
+		scope: "P",
+		userId: 1
+	},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.dir(result.data());
+	}
+);
+//Запрос общих настроек карточки лидов.
+BX24.callMethod(
+	"crm.lead.details.configuration.get",
+	{
+		scope: "C"
+	},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.dir(result.data());
+	}
+);
+//Запрос общих настроек карточки повторных лидов.
+BX24.callMethod(
+	"crm.lead.details.configuration.get",
+	{
+		scope: "C",
+		extras: { leadCustomerType: 2 }
+	},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.dir(result.data());
+	}
+);
+//--</pre>
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

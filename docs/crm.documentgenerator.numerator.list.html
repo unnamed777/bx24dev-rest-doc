@@ -1,0 +1,51 @@
+<html>
+        <head>
+            <title>crm.documentgenerator.numerator.list</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.documentgenerator.numerator.list <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/documentgenerator/numerator/crm_documentgenerator_numerator_list.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<a class="link" name="register"></a>
+<pre class="syntax">crm.documentgenerator.numerator.list(start = 0)</pre>
+
+<p>Метод возвращает список нумераторов.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>      </tr>
+
+<tr><td>start</td><td>offset при запросе, для постраничной навигации.</td></tr>
+	</tbody>
+</table>
+
+<br><br>
+
+<h4>Ответ</h4>
+
+<pre class="syntax">"numerators": [
+	0: {
+		"id": "202", // id шаблона
+		"name": "Rest Template", // название
+		"template": "{NUMBER}", // шаблон
+		"settings": { // настройки генераторов
+			"Bitrix_Main_Numerator_Generator_SequentNumberGenerator": {
+				"start":  20,
+				"step":  5,
+				"periodicBy": '',
+				"timezone": '',
+				"isDirectNumeration": ''
+			}
+		}
+	}
+]
+</pre>
+<br><br>							
+        </div>
+        </body>
+        </html>

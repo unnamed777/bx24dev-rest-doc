@@ -1,0 +1,55 @@
+<html>
+        <head>
+            <title>bizproc.provider.delete</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">bizproc.provider.delete <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/bizproc/bizproc_provider/providerdelete.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">bizproc</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<p><b>bizproc.provider.delete</b> - метод удаляет зарегистрированного SMS-провайдера.</p>
+
+<p class="note"><b>Внимание!</b> Методы устарели, рекомендуется к использованию <a class="link" href="/rest_help/messageservice/index.php">Служба сообщений</a></p>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+  
+		<tr>
+			<td>CODE</td>
+			<td>Идентификатор провайдера.</td>
+		</tr>
+		
+</tbody>
+</table> 
+
+<p><b>Пример</b></p>
+
+<pre class="syntax" rel="example">function uninstallProvider(provider)
+{
+	BX24.callMethod(
+		'bizproc.provider.delete',
+		{
+			'CODE': provider
+		},
+		function(result)
+		{
+			if(result.error())
+				alert('Error: ' + result.error());
+			else
+				alert("Успешно: " + result.data());
+		}
+	);
+}
+</pre>
+<br>							
+        </div>
+        </body>
+        </html>

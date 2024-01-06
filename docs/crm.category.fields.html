@@ -1,0 +1,83 @@
+<html>
+        <head>
+            <title>crm.category.fields</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.category.fields <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/methodscrmcategory/crm_category_fields.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.category.fields({entityTypeId: number})</pre>
+
+<p>Отдает информацию о полях направлений. Названия полей для входных данных следует брать из этого метода.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr><th width="15%">Параметр</th> <th>Описание</th></tr>
+
+<tr><td>entityTypeId</td><td>Идентификатор типа сущности CRM.</td></tr>
+
+</tbody>
+</table>
+
+
+<h4>Ответ:</h4>
+
+<pre class="syntax">{
+	"fields": {
+		"id": {
+			"type": "integer",
+			"isRequired": false,
+			"isReadOnly": true,
+			"isImmutable": false,
+			"isMultiple": false,
+			"isDynamic": false,
+			"title": "ID"
+		},
+		"name": {
+			"type": "string",
+			"isRequired": false,
+			"isReadOnly": false,
+			"isImmutable": false,
+			"isMultiple": false,
+			"isDynamic": false,
+			"title": "NAME"
+		},
+		"sort": {
+			"type": "integer",
+			"isRequired": false,
+			"isReadOnly": false,
+			"isImmutable": false,
+			"isMultiple": false,
+			"isDynamic": false,
+			"title": "SORT"
+		},
+		"entityTypeId": {
+			"type": "integer",
+			"isRequired": true,
+			"isReadOnly": false,
+			"isImmutable": false,
+			"isMultiple": false,
+			"isDynamic": false,
+			"title": "ENTITY_TYPE_ID"
+		},
+		"isDefault": {
+			"type": "boolean",
+			"isRequired": false,
+			"isReadOnly": false,
+			"isImmutable": false,
+			"isMultiple": false,
+			"isDynamic": false,
+			"title": "IS_DEFAULT"
+		}
+	}
+}
+</pre>
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

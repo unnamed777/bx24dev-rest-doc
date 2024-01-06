@@ -1,0 +1,42 @@
+<html>
+        <head>
+            <title>placement.unbind</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">placement.unbind <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/application_embedding/metods/placement_unbind.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Метод удаляет зарегистрированный обработчик места встраивания. Должен исполняться с правами администратора портала.</p>
+
+<h4>Параметры</h4>
+
+<p><table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>PLACEMENT</td> 	<td>Идентификатор места встраивания. Обязателен.</td> <td></td></tr>
+   
+    <tr> 	<td>HANDLER</td> 	<td>URL обработчика места встраивания. Если не указывать URL обработчика, будут удалены все обработчики указанного места встраивания, зарегистрированные приложением.</td> <td></td></tr>
+   
+   </tbody>
+ </table></p>
+
+
+<p>Метод возвращает количество удаленных обработчиков.</p>
+
+<h4>Пример</h4>
+
+<pre class="syntax">GET https://sometestportal.bitrix24.com/rest/placement.unbind?auth=7e623a5a0000cd710000cd5b00000001000000a8b1dbe022e2de93198634e9526b00f7&amp;placement=CRM_LEAD_DETAIL_TAB&amp;handler=https%3A%2F%2Fwww.myapplicationhost.com%2Fplacement%2F HTTP/1.1
+HTTP/1.1 200 OK
+{
+	"result": {
+		"count": 1
+	}
+}</pre>
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

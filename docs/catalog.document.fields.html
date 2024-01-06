@@ -1,0 +1,104 @@
+<html>
+        <head>
+            <title>catalog.document.fields</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">catalog.document.fields <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/catalog/catalogdocument/catalog_document_fields.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<p> </p><div class="note"><font color="red"><strong>Внимание!</strong></font> Метод устарел с версии <b>22.400.0</b>. Рекомендуется использовать метод <a class="link" href="/rest_help/catalog/catalogdocument/catalog_document_getfields.php">catalog.document.getFields</a>.</div><p></p>
+
+<div class="tab">
+<h3 class="tab-title">Описание и пример</h3>
+
+<pre class="syntax">catalog.document.fields()</pre>
+
+<p>Метод возвращает список полей документов.</p>
+
+
+
+<h4>Параметры</h4>
+
+<p>Без параметров.</p>
+
+<h4>Примеры</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'catalog.document.fields',
+	{},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.log(result.data());
+	}
+);
+</pre>
+
+<pre class="syntax">$result = CRest::call(
+	'catalog.document.fields'
+);
+
+echo '&lt;pre&gt;';
+print_r($result);
+echo '&lt;/pre&gt;';
+</pre>
+
+</div>
+<!------->
+
+
+<div class="tab">
+<h3 class="tab-title">Возвращаемые поля</h3>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Поле</th> 	<th>Описание</th><th>Тип</th><th>Примечание</th></tr>
+   
+    <tr> 	<td>id</td> 	<td>Идентификатор</td><td>integer</td><td></td></tr>
+
+    <tr> 	<td>docType</td> 	<td>Тип документа</td><td>char</td><td></td></tr>
+
+    <tr> 	<td>siteId</td> 	<td>Привязка к сайту</td><td>char</td><td></td></tr>
+
+    <tr> 	<td>contractorId</td> 	<td>Поставщик</td><td>integer</td><td></td></tr>
+
+    <tr> 	<td>responsibleId</td> 	<td>Ответственный</td><td>integer</td><td>Обязательное</td></tr>
+
+    <tr> 	<td>dateModify</td> 	<td>Дата изменений</td><td>datetime</td><td></td></tr>
+
+    <tr> 	<td>dateCreate</td> 	<td>Дата создания</td><td>datetime</td><td></td></tr>
+
+    <tr> 	<td>createdBy</td> 	<td>Создатель</td><td>integer</td><td></td></tr>
+
+    <tr> 	<td>modifiedBy</td> 	<td>Кем изменён</td><td>integer</td><td></td></tr>
+
+    <tr> 	<td>currency</td> 	<td>Валюта</td><td>char</td><td>Обязательное</td></tr>
+
+    <tr> 	<td>status</td> 	<td>Статус</td><td>char</td><td></td></tr>
+
+    <tr> 	<td>dateStatus</td> 	<td>Дата установки статуса</td><td>datetime</td><td></td></tr>
+
+    <tr> 	<td>dateDocument</td> 	<td>Дата документа</td><td>datetime</td><td></td></tr>
+
+    <tr> 	<td>statusBy</td> 	<td>Кем установлен статус</td><td>integer</td><td></td></tr>
+
+    <tr> 	<td>total</td> 	<td>Общая сумма товаров</td><td>double</td><td></td></tr>
+
+    <tr> 	<td>commentary</td> 	<td>Комментарий</td><td>char</td><td></td></tr>
+
+
+   </tbody>
+ </table>
+
+</div>
+<!------->
+
+<br>							
+        </div>
+        </body>
+        </html>

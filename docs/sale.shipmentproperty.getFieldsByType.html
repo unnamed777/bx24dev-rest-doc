@@ -1,0 +1,93 @@
+<html>
+        <head>
+            <title>sale.shipmentproperty.getFieldsByType</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">sale.shipmentproperty.getFieldsByType <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/sale/shipmentproperty/sale_shipmentproperty_getFieldsByType.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<p class="note_blue">
+Scope: <span class="bg_blue">sale</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<div class="tab">
+
+<h3 class="tab-title">Описание и пример</h3>
+<pre class="syntax">sale.shipmentproperty.getFieldsByType()</pre>
+
+<p>Метод, возвращающий поля и настройки свойства отгрузки для определённого типа свойства.</p>
+
+<h4>Параметры</h4>
+
+<p>Без параметров.</p>
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'sale.shipmentproperty.getFieldsByType', 
+	{}, 
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error().ex);
+		else
+			console.log(result.data());
+	}
+);
+</pre>
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Возвращаемые поля</h3>
+
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Поле</th>
+			<th>Описание</th>      </tr>
+
+<tr><td>id</td><td>ID свойства.</td> </tr>
+<tr><td>personTypeId</td><td>ID типа плательщика, к которому привязано свойство.</td> </tr>
+<tr><td>name</td><td>Название свойства.</td> </tr>
+<tr><td>type</td><td>Тип.</td> </tr>
+<tr><td>required</td><td>Флаг обязательности.</td> </tr>
+<tr><td>defaultValue</td><td>Значение по умолчанию.</td> </tr>
+<tr><td>sort</td><td>Сортировка.</td> </tr>
+<tr><td>userProps</td><td>Входит ли в профиль.</td> </tr>
+<tr><td>isLocation</td><td>Является ли местоположением.</td> </tr>
+<tr><td>propsGroupId</td><td>ID группы.</td> </tr>
+<tr><td>description</td><td>Описание.</td> </tr>
+<tr><td>isemail</td><td>Является ли почтой.</td> </tr>
+<tr><td>isProfileName</td><td>Является ли названием профиля пользователя.</td> </tr>
+<tr><td>isPayer</td><td>Используется ли как имя плательщика.</td> </tr>
+<tr><td>isLocation4Tax</td><td>Используется ли как местоположение для налогов.</td> </tr>
+<tr><td>isFiltered</td><td>Доступно ли в фильтре по заказам.</td> </tr>
+<tr><td>code</td><td>Код в системе.</td> </tr>
+<tr><td>isZip</td><td>Используется ли как почтовый индекс.</td> </tr>
+<tr><td>isPhone</td><td>Является ли телефоном.</td> </tr>
+<tr><td>isAddress</td><td>Является ли адресом.</td> </tr>
+<tr><td>active</td><td>Флаг активности.</td> </tr>
+<tr><td>util</td><td>Флаг служебности.</td> </tr>
+<tr><td>inputFieldLocation</td><td>Положение поля ввода.</td> </tr>
+<tr><td>multiple</td><td>Флаг множественности.</td> </tr>
+<tr><td>settings</td><td>Настройки.</td> </tr>
+
+	</tbody>
+</table>
+
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

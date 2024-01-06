@@ -1,0 +1,54 @@
+<html>
+        <head>
+            <title>sonet_group.delete</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">sonet_group.delete <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/sonet_group/sonet_group_delete.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Удаляет группу соцсети. Для осуществления операции текущий пользователь должен быть либо владельцем группы, либо иметь права администратора соцсети.</p>
+
+<h4>Параметры функции</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+  
+		<tr>
+			<td>GROUP_ID</td>
+			<td>ID группы, которую необходимо удалить.</td>
+
+		</tr>		
+	</tbody>
+</table>
+
+
+<p>В случае успешного изменения группы возвращает <b>true</b>, иначе - текст ошибки.</p>
+
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">// Удаляем группы соцсети с ID=11
+
+BX24.callMethod('sonet_group.delete', {
+	'GROUP_ID': 11
+});
+</pre>
+
+<h4>Запрос:</h4>
+<pre class="syntax">https://mydomain.bitrix24.ru/rest/sonet_group.delete.json?auth=803f65e30340ff39703f8061c8b63a10&amp;GROUP_ID=11
+</pre>
+
+
+<h4>Ответ:</h4>
+<pre class="syntax">{"result":true}
+</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

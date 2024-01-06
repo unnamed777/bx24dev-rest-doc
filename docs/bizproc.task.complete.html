@@ -1,0 +1,98 @@
+<html>
+        <head>
+            <title>bizproc.task.complete</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">bizproc.task.complete <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/bizproc/bizproc_task/bizproc_task_complete.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">bizproc</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<p>Метод осуществляет выполнение заданий БП. В настоящий момент можно выполнить задания <a class="link" href="https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=57&amp;LESSON_ID=3771" title="" target="_blank">Утверждение документа</a> и <a class="link" href="https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=57&amp;LESSON_ID=3783" title="" target="_blank">Ознакомление с документом</a>.</p> 
+<p>С версии <b>20.0.800</b> модуля <b>Бизнес-процессы</b> доступно также выполнение задания <a class="link" href="https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=57&amp;LESSON_ID=3782&amp;LESSON_PATH=5442.5446.5035.7837.3782 title=" "="" target="_blank">Запрос доп.информации</a>. Выполнить можно только свое задание и, только то, которое еще не выполнено.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="20%">Параметр</th> 	<th>Описание</th> <th width="25%">Примечание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td><b>TASK_ID</b></td> 	<td>Идентификатор задания, обязательный</td> <td></td><td></td></tr>
+   
+    <tr> 	<td><b>STATUS</b></td> 	<td>Целевой статус задания, обязательный.<br>
+ Список допустимых значений: 
+
+<ul>
+<li>1 или yes - ответ "Да" (утвержден)</li>
+<li>2 или no - ответ "Нет" (отклонен)</li> 
+<li>3 или ok - ответ "Ок" (ознакомлен)</li> 
+<li>4 или cancel - ответ "Отмена"</li> 
+ </ul>
+</td> <td>Статусы: <br>
+<b>1</b> и <b>2</b> для действия Утверждение документа;<br>
+<b>3</b> и <b>4</b> для действия Запрос доп. информации;<br>
+<b>3</b> для действия Запроса доп.информации с отклонением.</td><td></td></tr>
+   
+    <tr> 	<td><b>COMMENT</b></td> 	<td>Комментарий пользователя, обязательность зависит от параметров задания</td> <td></td><td></td></tr>
+
+   </tbody>
+ </table>
+
+<h4>Пример</h4>
+
+<pre class="syntax">function completeTask(id, status, comment, cb)
+	{
+		var params = {
+			TASK_ID: id,
+			STATUS: status,
+			COMMENT: comment
+		};
+		BX24.callMethod(
+			'bizproc.task.complete',
+			params,
+			function(result)
+			{
+				if(result.error())
+					alert("Error: " + result.error());
+				else if (cb)
+					cb();
+			}
+		);
+	}</pre>
+
+<h4>Выполнение задания Запрос дополнительной информации через REST</h4>
+
+<p>С версии <b>20.0.800</b> модуля Бизнес-процессы появилась возможность выполнять задания <b>Запрос доп.информации</b> через rest метод <b>bizrpoc.task.complete</b>.</p>
+<p>Для того, чтобы понять, какие поля нужно заполнить, в метод <a class="link" href="/rest_help/bizproc/bizproc_task/tasklist.php">bizproc.task.list</a> в PARAMETERS добавлено новое свойство <code>Fields</code> - массив с описанием полей.</p>
+
+<pre class="syntax">"PARAMETERS": {
+	"CommentLabel": "Комментарий",
+	"CommentRequired": "N",
+	"ShowComment": "Y",
+	"StatusOkLabel": "Сохранить",
+	"Fields": [
+		{
+			"Type": "datetime",
+			"Name": "date",
+			"Description": "",
+			"Multiple": false,
+			"Required": true,
+			"Options": null,
+			"Settings": null,
+			"Default": "2020-07-08T15:16:12+02:00",
+			"Id": "date"
+		}
+	]
+}
+</pre>
+<p>Значения <b>по умолчанию</b> хранятся в разделе <b>Default</b>. Значения конвертируются во <q>внешнее</q> представление (для дат - в формат rest ATOM (ISO-8601), а для файлов - в ссылку на файл).</p>
+
+<p>Далее значения этих полей нужно передать в метод <b>bizrpoc.task.complete</b> в параметре <b>Fields</b>. Значения конвертируются в этот раз во <q>внутреннее представление</q> (т.е. даты из rest формата конвертируются во внутренний, а файлы из rest сохраняются и прикрепляются к бизнес-процессу).</p>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

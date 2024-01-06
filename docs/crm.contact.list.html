@@ -1,0 +1,70 @@
+<html>
+        <head>
+            <title>crm.contact.list</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.contact.list <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/contacts/crm_contact_list.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Возвращает список контактов по фильтру. Является реализацией списочного метода для контактов.</p>
+
+<p>При выборке используйте маски:</p>
+
+<ul>
+<li>"*" - для выборки всех полей (без пользовательских и множественных)</li>
+<li>"UF_*"- для выборки всех пользовательских полей (без множественных)</li> 
+ </ul>
+<p>Маски для выборки множественных полей нет. Для выборки множественных полей укажите нужные в списке выбора ("PHONE", "EMAIL" и так далее).</p>
+
+<p>Для получения списка компаний, привязанных к контакту используйте метод <a class="link" href="/rest_help/crm/contacts/crm_contact_company_items_get.php">crm.contact.company.items.get</a>.</p>
+
+<p class="note"><strong>Внимание!</strong> Поля: телефон, почта, сайт, мессенджеры - множественные. По ним фильтры работают только на точное совпадение.</p>
+
+<h4>Параметры</h4>
+
+<p>Cм. описание <a class="link" href="/rest_help/rest_sum/index.php">списочных методов</a>.</p>
+
+<h4>Пример</h4>
+<pre class="syntax" rel="example">BX24.callMethod(
+	"crm.contact.list",
+	{
+		order: { "DATE_CREATE": "ASC" },
+		filter: { "TYPE_ID": "CLIENT" },
+		select: [ "ID", "NAME", "LAST_NAME", "TYPE_ID", "SOURCE_ID" ]
+	},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+		{
+			console.dir(result.data());
+			if(result.more())
+				result.next();
+		}
+	}
+);
+//Поиск контакта по телефону
+BX24.callMethod(
+	"crm.contact.list",
+	{
+		filter: { "PHONE": "555888" },
+		select: [ "ID", "NAME", "LAST_NAME" ]
+	},
+	function(result) 
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+		{
+			console.dir(result.data());
+			if(result.more())
+				result.next();
+		}
+	}
+);
+</pre><br><br>							
+        </div>
+        </body>
+        </html>

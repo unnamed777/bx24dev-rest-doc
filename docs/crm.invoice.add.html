@@ -1,0 +1,175 @@
+<html>
+        <head>
+            <title>crm.invoice.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.invoice.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/invoice/crm_invoice_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.invoice.add(fields)</pre>
+
+<p>Создаёт новый счет. Если необходимо в счёте указать какие реквизиты покупателя/продавца (т.к. их может быть несколько у компании), то используйте метод <a class="link" href="/rest_help/crm/requisite/methods/crm_requisite_link_register.php">crm.requisite.link.register</a>.</p>
+
+<p>В создаваемом счёте обязательно должны быть указаны компании продавца и покупателя:<br>
+<code>UF_COMPANY_ID</code>, если покупатель - компания или <code>UF_CONTACT_ID</code>, если покупатель - контакт.<br>
+<code>UF_MYCOMPANY_ID</code> - продавец.</p><p></p>
+
+<p>Идентификаторы указанные в <b>crm.requisite.link.register</b> и в создаваемом счёте должны соответствовать покупателю и продавцу.</p>
+
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+
+<tr>
+<td>fields</td>
+<td>Набор полей - массив вида array("поле"=&gt;"значение"[, ...]), содержащий значения полей счёта.
+<div class="note">
+	<b>Примечание</b>: чтобы узнать требуемый формат полей, выполните метод <a class="link" href="/rest_help/crm/invoice/crm_invoice_fields.php">crm.invoice.fields</a> и посмотрите формат пришедших значений этих полей.</div>
+</td>
+</tr>
+	</tbody>
+</table>
+
+<a class="link" name="example"></a>
+<h4>Пример</h4>
+
+<p><b>Пример 1</b></p>
+
+<pre class="syntax" rel="example">var current = new Date();
+var nextMonth = new Date();
+nextMonth.setMonth(current.getMonth() + 1);
+
+var date2str = function(d)
+{
+	return d.getFullYear() + '-' + paddatepart(1 + d.getMonth()) + '-' + paddatepart(d.getDate()) + 'T' + paddatepart(d.getHours()) + ':' + paddatepart(d.getMinutes()) + ':' + paddatepart(d.getSeconds()) + '+03:00';
+};
+
+var paddatepart = function(part)
+{
+	return part &gt;= 10 ? part.toString() : '0' + part.toString();
+};
+
+BX24.callMethod(
+	"crm.invoice.add",
+	{
+		"fields": {
+			"ORDER_TOPIC": "Счёт для юр. лица",
+			"STATUS_ID": "P",
+			"DATE_INSERT": date2str(current),
+			"PAY_VOUCHER_DATE": date2str(current),
+			"PAY_VOUCHER_NUM": "876",
+			"DATE_MARKED": date2str(current),
+			"REASON_MARKED": "Счёт оплачен сразу.",
+			"COMMENTS": "комментарий менеджера",
+			"USER_DESCRIPTION": "комментарий для клиента",
+			"DATE_BILL": date2str(current),
+			"DATE_PAY_BEFORE": date2str(nextMonth),
+			"RESPONSIBLE_ID": 1,
+			"UF_DEAL_ID": 10,
+			"UF_COMPANY_ID": 5,
+			"UF_CONTACT_ID": 2,
+			"PERSON_TYPE_ID": 2,
+			"PAY_SYSTEM_ID": 6,
+			"INVOICE_PROPERTIES": {
+				"COMPANY": "ООО \"Новые технологии\"",                              // Название компании
+				"COMPANY_ADR": "543000 Москва, ул. Песчаная, д. 15, оф. 55 (юр)",   // Юридический адрес
+				"INN": "",                                                          // ИНН
+				"KPP": "",                                                          // КПП
+				"CONTACT_PERSON": "Борис Соколов",                                  // Контактное лицо
+				"EMAIL": "pr@logistics-north.com",                                  // E-Mail
+				"PHONE": "8 (495) 234-54-32",                                       // Телефон
+				"FAX": "",                                                          // Факс
+				"ZIP": "",                                                          // Индекс
+				"CITY": "",                                                         // Город
+				"LOCATION": "",                                                     // Местоположение
+				"ADDRESS": ""                                                       // Адрес доставки
+			},
+			"PRODUCT_ROWS": [
+				{"ID": 0, "PRODUCT_ID": 438, "PRODUCT_NAME": "Товар 01", "QUANTITY": 1, "PRICE": 100},
+				{"ID": 0, "PRODUCT_ID": 515, "PRODUCT_NAME": "Товар 77", "QUANTITY": 1, "PRICE": 118}
+			]
+		}
+	},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.info("Создан счёт с ID " + result.data());
+	}
+);
+
+</pre>
+
+<p><b>Пример 2</b></p>
+<pre class="syntax" rel="example">var current = new Date();
+var nextMonth = new Date();
+nextMonth.setMonth(current.getMonth() + 1);
+
+var date2str = function(d)
+{
+	return d.getFullYear() + '-' + paddatepart(1 + d.getMonth()) + '-' + paddatepart(d.getDate()) + 'T' + paddatepart(d.getHours()) + ':' + paddatepart(d.getMinutes()) + ':' + paddatepart(d.getSeconds()) + '+03:00';
+};
+
+var paddatepart = function(part)
+{
+	return part &gt;= 10 ? part.toString() : '0' + part.toString();
+};
+
+BX24.callMethod(
+	"crm.invoice.add",
+	{
+		"fields": {
+			"ORDER_TOPIC": "Счёт для физ. лица",
+			"STATUS_ID": "P",
+			"DATE_INSERT": date2str(current),
+			"PAY_VOUCHER_DATE": date2str(current),
+			"PAY_VOUCHER_NUM": "876",
+			"DATE_MARKED": date2str(current),
+			"REASON_MARKED": "оплатили",
+			"COMMENTS": "комментарий",
+			"USER_DESCRIPTION": "комментарий клиенту",
+			"DATE_BILL": date2str(current),
+			"DATE_PAY_BEFORE": date2str(nextMonth),
+			"RESPONSIBLE_ID": 1,
+			"UF_DEAL_ID": 8,
+			"UF_COMPANY_ID": 0,
+			"UF_CONTACT_ID": 3,
+			"PERSON_TYPE_ID": 1,
+			"PAY_SYSTEM_ID": 6,
+			"INVOICE_PROPERTIES": {
+				"FIO": "Глеб Титов",                                                // Ф.И.О.
+				"EMAIL": "boss@yt-soft.net",                                        // E-Mail
+				"PHONE": "",                                                        // Телефон
+				"ZIP": "",                                                          // Индекс
+				"CITY": "",                                                         // Город
+				"LOCATION": "",                                                     // Местоположение
+				"ADDRESS": ""                                                       // Адрес доставки
+			},
+			"PRODUCT_ROWS": [
+				{"ID": 0, "PRODUCT_ID": 438, "PRODUCT_NAME": "Товар 01", "QUANTITY": 1, "PRICE": 100},
+				{"ID": 0, "PRODUCT_ID": 515, "PRODUCT_NAME": "Товар 77", "QUANTITY": 1, "PRICE": 118}
+			]
+		}
+	},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.info("Создан счёт с ID " + result.data());
+	}
+);
+</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

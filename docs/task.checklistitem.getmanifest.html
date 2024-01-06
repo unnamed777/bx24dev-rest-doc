@@ -1,0 +1,35 @@
+<html>
+        <head>
+            <title>task.checklistitem.getmanifest</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">task.checklistitem.getmanifest <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/tasks/task/checklistitem/getmanifest.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">task</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<p>Возвращает список методов вида <b>task.checklistitem.*</b> и их описание.</p>
+<p>Возвращаемое значение этого метода не предназначено для автоматической обработки, т.к. его формат может быть изменен без предупреждения.</p>
+<p>Метод может быть полезен в качестве справочной информации, т.к. всегда содержит актуальную информацию.</p>
+
+ <p></p><div class="note"><b>Внимание!</b> Соблюдение порядка следования параметров в запросе обязательно. При его нарушении запрос будет выполнен с ошибками.</div><p></p>
+	 
+<h4>Пример</h4>
+<pre class="syntax" rel="example">BX24.callMethod(
+	'task.checklistitem.getmanifest',
+	[],
+	function(result)
+	{
+		console.info(result.data());
+		console.log(result);
+	}
+);
+</pre>
+ 
+<br><br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,45 @@
+<html>
+        <head>
+            <title>catalog.enum.getStoreDocumentTypes</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">catalog.enum.getStoreDocumentTypes <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/catalog/enum/catalog_enum_getstoredocumenttypes.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">catalog.enum.getStoreDocumentTypes()</pre>
+
+<p>Метод возвращает типы документов складского учёта, доступные для REST.</p>
+
+<p>На текущий момент доступны следующие типы:.</p>
+<ul>
+<li><code>A</code> – Приход товара на склад;</li>
+<li><code>S</code> – Оприходование товара;</li>
+<li><code>M</code> – Перемещение товара между складами;</li>
+<li><code>R</code> – Возврат товара;</li>
+<li><code>D</code> – Списание товара.</li>
+</ul>
+
+<h4>Параметры</h4>
+
+<p>Без параметров.</p>
+
+<h4>Примеры</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'catalog.enum.getStoreDocumentTypes', 
+	{}, 
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error().ex);
+		else
+			console.log(result.data());
+	}
+);
+</pre>
+
+<br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,53 @@
+<html>
+        <head>
+            <title>catalog.storeproduct.getFields</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">catalog.storeproduct.getFields <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/catalog/storeproduct/catalog_storeproduct_getfields.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">catalog.storeproduct.getFields()</pre>
+
+<p>Метод возвращает поля остатков по складам.</p>
+
+<h4>Параметры</h4>
+
+<p>Без параметров.</p>
+
+
+<h4>Примеры</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'catalog.storeproduct.getFields',
+	{},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error().ex);
+		else
+			console.log(result.data());
+	}
+);
+</pre>
+
+
+<h4>Возвращаемые поля</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Поле</th> 	<th>Описание</th><th>Тип</th><th>Примечание</th></tr>
+   
+    <tr> 	<td>amount</td> 	<td>Количество.</td><td>double</td><td>Только для чтения.</td></tr>
+    <tr> 	<td>id</td> 	<td>Первичный ключ записи.</td><td>integer</td><td>Только для чтения.</td></tr>
+    <tr> 	<td>productId</td> 	<td>Идентификатор товара или торгового предложения.</td><td>integer</td><td>Только для чтения.</td></tr>
+    <tr> 	<td>quantityReserved</td> 	<td>Зарезервированное количество.</td><td>double</td><td>Только для чтения.</td></tr>
+    <tr> 	<td>storeId</td> 	<td>Идентификатор склада.</td><td>integer</td><td>Только для чтения.</td></tr>
+
+   </tbody>
+ </table>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

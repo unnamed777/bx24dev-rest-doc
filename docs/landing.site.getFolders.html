@@ -1,0 +1,70 @@
+<html>
+        <head>
+            <title>landing.site.getFolders</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">landing.site.getFolders <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/landing/site/methods/landing_site_getfolders.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax"><strong>landing.site.getFolders(</strong>
+	siteId,
+	filter
+<strong>)</strong></pre>
+
+<p>Метод получает папки сайта.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>siteId</td> 	<td>Идентификатор сайта.
+<p class="note"><b>Внимание:</b> Требуются права на запись в указанный сайт.</p></td> <td></td></tr>
+   
+    <tr> 	<td>filter</td> 	<td>Опциональный фильтр. Может принимать поля:
+<ul>
+<li>ACTIVE – активность папки (Y/N). По умолчанию создается не активной;</li>
+<li>DELETED – папка удалена (Y/N). По умолчанию возвращаются не удаленные папки;</li>
+<li>PARENT_ID – идентификатор родительской папки;</li>
+<li>TITLE – заголовок папки;</li>
+<li>INDEX_ID – идентификатор индексной страницы папки;</li>
+<li>CODE – символьный код папки;</li>
+<li>CREATED_BY_ID – идентификатор пользователя, создавшего папку;</li>
+<li>MODIFIED_BY_ID – идентификатор пользователя, изменившего папку;</li>
+</ul>
+</td> <td></td></tr>
+
+   
+   </tbody>
+ </table>
+
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'landing.site.getFolders',
+	{
+		siteId: 1817,
+		filter: {
+			TITLE: 'Измененная папка'
+		}
+	},
+	function(result)
+	{
+		if(result.error())
+		{
+			console.error(result.error());
+		}
+		else
+		{
+			console.info(result.data());
+		}
+	}
+);</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

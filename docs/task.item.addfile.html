@@ -1,0 +1,46 @@
+<html>
+        <head>
+            <title>task.item.addfile</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">task.item.addfile <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/tasks/task/item/addfile.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">task</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<p>Метод загружает к задаче файл. Пока реализована загрузка файла через <b>post</b> с передачей содержимого файла в параметре <code>CONTENT</code>.</p>
+
+<h4>Параметры метода</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr><th width="15%">Параметр</th><th>Описание</th></tr>
+   
+<tr><td><i>TASK_ID</i></td><td>Идентификатор задачи.</td></tr>
+<tr><td><i>NAME</i></td><td>Имя файла.</td></tr>
+<tr><td><i>CONTENT</i></td><td>Содержимое файла в <b>base64</b>.</td></tr>
+ </tbody></table>
+
+<h4>Пример</h4>
+
+<pre class="syntax">$curl = curl_init();
+curl_setopt($curl, CURLOPT_URL, 'http://test-domain.ru/rest/task.item.addfile.xml');
+curl_setopt($curl, CURLOPT_RETURNTRANSFER,true);
+curl_setopt($curl, CURLOPT_POST, true);
+curl_setopt($curl, CURLOPT_POSTFIELDS, array( 
+	'auth' =&gt; 'z3eamwwkpgl7u18kx14q1s4c0ffckqsn', 
+	'TASK_ID' =&gt; "140", 
+	'FILE[NAME]' =&gt; 'desc.txt', 
+	'FILE[CONTENT]' =&gt; base64_encode(file_get_contents($_SERVER['DOCUMENT_ROOT'] .'/desc.txt')) 
+));
+$out = curl_exec($curl);
+print($out);
+curl_close($curl);
+</pre>
+<br>							
+        </div>
+        </body>
+        </html>

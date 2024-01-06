@@ -1,0 +1,39 @@
+<html>
+        <head>
+            <title>user.access</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">user.access <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/general/user_access.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre>BX24.callMethod('user.access', {ACCESS:['U22','U33']});
+</pre>
+
+<p>Определение, обладает ли текущий пользователь хотя бы одним из заданного параметром <i>ACCESS</i> набора прав.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+<tbody><tr>
+	<th width="20%">Параметр</th>
+	<th>Описание</th>
+</tr>
+<tr>
+	<td>ACCESS</td>
+	<td>Обязательный. Идентификатор или список идентификаторов прав, доступ к которым нужно проверить.</td>
+</tr>
+</tbody></table>
+
+<h4>Пример:</h4>
+
+<p></p><pre>https://my.bitrix24.ru/rest/user.access.json?ACCESS[]=U22&amp;ACCESS[]=U33&amp;auth=d161f25928c3184678924ec127edd29a</pre><p></p>
+
+<p>Ответ JSON
+<br>
+</p><pre>{"result":false}</pre><p></p>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,87 @@
+<html>
+        <head>
+            <title>crm.product.fields</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.product.fields <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/products/crm_product_fields.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.product.fields()</pre>
+
+<p>Возвращает описание <a class="link" href="/rest_help/crm/products/crm_product_add.php">полей товара</a>.</p>
+
+<h4>Параметры</h4>
+
+<p>Без параметров.</p>
+
+<h4>Пример</h4>
+<pre class="syntax" rel="example">BX24.callMethod(
+	"crm.product.fields",
+	{},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.dir(result.data());
+	}
+);
+</pre><br><br>
+
+<h4>Поля</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Поле</th> 	<th>Описание</th><th>Тип</th><th>Примечание</th></tr>
+   
+    <tr> 	<td>ACTIVE</td> 	<td>Активен</td><td>char</td><td></td></tr>
+
+    <tr> 	<td>CATALOG_ID</td> 	<td>Идентификатор каталога</td><td>integer</td><td>Только для чтения</td></tr>
+   
+    <tr> 	<td>CREATED_BY</td> 	<td>Кем создан товар</td><td>integer</td><td></td></tr>
+    
+    <tr> 	<td>CURRENCY_ID</td> 	<td>Идентификатор валюты</td><td>string</td><td></td></tr>
+  
+    <tr> 	<td>DATE_CREATE</td> 	<td>Дата создания товара</td><td>datetime</td><td></td></tr>
+
+    <tr> 	<td>DESCRIPTION</td> 	<td>Описание</td><td>string</td><td></td></tr>
+   
+    <tr> 	<td>DESCRIPTION_TYPE</td> 	<td>Тип описания</td><td>string</td><td></td></tr>
+
+  <tr> 	<td>DETAIL_PICTURE</td><td>Детальная картинка</td><td>product_file</td><td></td></tr>
+
+  <tr> 	<td>ID</td><td>Идентификатор товара</td><td>integer</td><td>Только для чтения</td></tr>
+  
+    <tr> 	<td>MEASURE</td> 	<td>Единица измерения</td><td>integer</td><td></td></tr>
+
+    <tr> 	<td>MODIFIED_BY</td> 	<td>Кем изменён товар</td><td>integer</td><td></td></tr>
+   
+    <tr> 	<td>NAME</td> 	<td>Название</td><td>string</td><td>Обязательное</td></tr>
+   
+    <tr> 	<td>PREVIEW_PICTURE</td> 	<td>Картинка для анонса</td><td>product_file</td><td></td></tr>
+  
+    <tr> 	<td>PRICE</td> 	<td>Цена</td><td>double</td><td></td></tr>
+   
+    <tr> 	<td>SECTION_ID</td> 	<td>Идентификатор раздела</td><td>integer</td><td></td></tr>
+   
+    <tr> 	<td>SORT</td> 	<td>Сортировка</td><td>integer</td><td></td></tr>
+   
+    <tr> 	<td>TIMESTAMP_X</td> 	<td>Дата изменения товара</td><td>datetime</td><td>Неизменяемое поле</td></tr>
+   
+    <tr> 	<td>VAT_ID</td> 	<td>Идентификатор ставки НДС</td><td>integer</td><td></td></tr>
+   
+    <tr> 	<td>VAT_INCLUDED</td> 	<td>НДС включён в цену</td><td>char</td><td></td></tr>
+
+    <tr> 	<td>XML_ID</td> 	<td>Внешний код</td><td>string</td><td></td></tr>
+   
+      </tbody>
+ </table>
+
+
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

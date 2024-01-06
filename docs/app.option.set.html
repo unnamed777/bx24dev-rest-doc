@@ -1,0 +1,47 @@
+<html>
+        <head>
+            <title>app.option.set</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">app.option.set <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/general/application/app_option_set.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre>app.option.set(
+   options
+)</pre>
+
+<p>Метод привязывает данные к приложению. </p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Метод</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>options</td> 	<td>Массив, где ключ - название сохраняемого свойства, а значение - значение свойства. <br>
+Если подать значение с новым ключом, то метод его запишет, если существующее, то обновит.</td> <td></td></tr>
+   
+   </tbody>
+ </table>
+
+
+<h4>Примеры</h4>
+
+<pre>CRest::call('app.option.set',[
+	"options"=&gt;[
+		'data' =&gt; 'value',
+		'data2' =&gt; 'value2',
+	]
+]);</pre>
+
+<pre>CRest::call('app.option.set',[
+	"options"=&gt;[
+		'data' =&gt; 'NewValue',                
+	]
+]),</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

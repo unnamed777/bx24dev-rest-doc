@@ -1,0 +1,87 @@
+<html>
+        <head>
+            <title>tasks.api.scrum.kanban.addStage</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">tasks.api.scrum.kanban.addStage <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/tasks/task/scrum/kanban/tasks_api_scrum_kanban_addStage.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">task</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<pre class="syntax"><b>tasks.api.scrum.kanban.addStage(</b>fields<b>)</b></pre>
+
+<p>Метод создаёт стадию канбана Скрама.</p>
+
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+<tbody>
+<tr>
+	<th width="15%">Параметр</th>	<th>Описание</th></tr>
+
+<tr>	<td>fields</td>	<td>Поля, соответствующие доступному списку полей <a class="link" href="/rest_help/tasks/task/scrum/kanban/tasks_api_scrum_kanban_getFields.php">tasks.api.scrum.kanban.getFields</a>. 
+
+<p>Поля <b>name</b> и <b>sprintId</b> обязательные. </p>
+
+<p>Поле <b>sort</b> кратно 100.</p>
+
+<p>Доступные значения для поля <b>type</b>: (NEW, WORK, FINISH).</p>
+</td></tr>
+
+</tbody>
+</table>
+
+
+
+<h4>Примеры</h4>
+ <pre class="syntax" rel="example">const sprintId = 2;
+let name = 'firstColumn';
+let sort = 100;
+let type = 'NEW';
+let color = '00C4FB';
+BX24.callMethod(
+	'tasks.api.scrum.kanban.addStage',
+{
+	fields: {
+		sprintId: sprintId,
+		name: name,
+		sort: sort,
+		type: type,
+		color: color,
+	}
+},
+	function(res)
+	{
+		console.log(res);
+	}
+);
+name = 'secondColumn';
+sort = 200;
+type = 'FINISH';
+color = '75D900';
+BX24.callMethod(
+	'tasks.api.scrum.kanban.addStage',
+{
+	sprintId: sprintId,
+	fields: {
+		name: name,
+		sort: sort,
+		type: type,
+		color: color,
+	}
+},
+	function(res)
+	{
+		console.log(res);
+	}
+);
+</pre> 
+
+<br>							
+        </div>
+        </body>
+        </html>

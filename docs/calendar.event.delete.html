@@ -1,0 +1,64 @@
+<html>
+        <head>
+            <title>calendar.event.delete</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">calendar.event.delete <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/calendar/calendar_event_delete.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Удаляет событие.</p>
+
+<h4>Параметры функции</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+  
+		<tr>
+			<td>* type</td>
+			<td>Тип календаря:
+<ul>
+<li>user;</li>
+
+<li>group.</li>
+</ul>
+</td>
+		</tr>
+		<tr>
+			<td>* ownerId</td>
+			<td>Идентификатор владельца календаря.</td>
+		</tr>	
+
+<tr>
+			<td>* id</td>
+			<td>Идентификатор события.</td>
+		</tr>
+
+	
+
+<tr><td colspan="2"><b>* - обязательные параметры</b></td></tr>
+
+	</tbody>
+</table>
+
+<h4>Возвращаемое значение</h4>
+
+<p>Возвращает <b>true</b> в случае успешного удаления.</p>
+
+<h4>Пример использования</h4>
+<pre class="syntax" rel="example">BX24.callMethod("calendar.event.delete",
+	{
+		id: 698,
+		type: 'user',
+		ownerId: '2'
+	}
+);
+</pre>
+<br><br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,122 @@
+<html>
+        <head>
+            <title>timeman.status</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">timeman.status <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/timeman/base/timeman_status.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Описание и примеры</h3>
+
+<p>Метод возвращает информацию о текущем рабочем дне.</p>
+
+<h4>Примеры</h4>
+
+<p>Пример вызова:</p>
+<pre class="syntax">https://portal.bitrix24.com/rest/timeman.status/?auth=xxxxxx&amp;user_id=1</pre>
+
+<p>Пример ответа:</p>
+
+<pre class="syntax">{
+	"result": {
+		"STATUS": "PAUSED", 
+		"TIME_START": "2017-04-21T02:33:44+02:00", 
+		"TIME_FINISH": "2017-04-21T15:11:26+02:00", 
+		"DURATION": "00:00:00", 
+		"TIME_LEAKS": "00:00:00", 
+		"ACTIVE": false, 
+		"IP_OPEN": "192.168.0.1", 
+		"IP_CLOSE": "192.168.0.100", 
+		"LAT_OPEN": 55.33, 
+		"LON_OPEN": 20.5, 
+		"LAT_CLOSE": 0, 
+		"LON_CLOSE": 0, 
+		"TZ_OFFSET": 7200
+	}
+}</pre>
+
+
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr><th width="15%">Параметр</th><th>Описание</th></tr>
+<tr><td>USER_ID</td><td>Идентификатор пользователя. Не обязателен, по умолчанию возвращаются настройки текущего пользователя. </td></tr>
+
+</tbody>
+</table>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Поля ответа</h3>
+
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr><th width="15%">Поле	</th><th>Значение</th><th>Описание</th><th>Примечание</th></tr>
+
+<tr><td>STATUS</td><td>string</td><td>Статус текущего рабочего дня.</td><td>Варианты значений:
+<ul>
+<li>OPENED - рабочий день идет</li>
+<li>CLOSED - рабочий день закрыт</li> 
+<li>PAUSED - рабочий день приостановлен</li> 
+<li>EXPIRED - рабочий день истек (был открыт до начала текущих календарных суток и не закрыт)</li> 
+ </ul>
+</td></tr>
+
+<tr><td>TIME_START	</td><td>datetime	</td><td>Дата-время начала рабочего дня.</td><td>Часовой пояс соответствует часовому поясу начала рабочего дня</td></tr>
+
+<tr><td>TIME_FINISH</td><td>datetime</td><td>Дата-время заверения рабочего дня</td><td>Для незавершенного рабочего дня возвращается null</td></tr>
+
+<tr><td>DURATION</td><td>HH:MM:SS</td><td>Длительность рабочего дня</td><td>Для незавершенного рабочего дня возвращается 00:00:00</td></tr>
+
+<tr><td>TIME_LEAKS</td><td>HH:MM:SS</td><td>Суммарная длительность перерыва за день</td><td></td></tr>
+
+<tr><td>ACTIVE</td><td>true|false</td><td>Подтвержденность рабочего дня</td><td>Значение false означает, что изменение рабочего дня ожидает подтверждения руководителем</td></tr>
+
+<tr><td>IP_OPEN</td><td>string</td><td>IP-адрес, с которого был начат рабочий день</td><td></td></tr>
+
+<tr><td>IP_CLOSE</td><td>string</td><td>IP-адрес, с которого был завершен рабочий день</td><td>Для незавершенного рабочего дня возвращается null</td></tr>
+
+<tr><td>LAT_OPEN</td><td>double</td><td>Географическая широта точки начала рабочего дня	</td><td></td></tr>
+
+<tr><td>LON_OPEN</td><td>double</td><td>Географическая долгота точки начала рабочего дня</td><td></td></tr>
+
+<tr><td>LAT_CLOSE</td><td>double</td><td>Географическая широта точки завершения рабочего дня</td><td></td></tr>
+
+<tr><td>LON_CLOSE</td><td>double</td><td>Географическая долгота точки завершения рабочего дня	</td><td></td></tr>
+
+<tr><td>TZ_OFFSET</td><td>int</td><td>Смещение часового пояса сотрудника</td><td>Подразумевается часовой пояс, в котором день начат. При завершении дня время завершения приводится к часовому поясу начала дня.</td></tr>
+
+<tr><td>TIME_FINISH_DEFAULT</td><td>datetime</td><td>Время завершения дня по умолчанию</td><td>Выводится только для рабочих дней в статусе EXPIRED. "Рекомендуемое" значение завершения дня, которое можно выводить пользователю в качестве значения по умолчанию.</td></tr>
+</tbody>
+</table>
+			
+			
+
+<p>Если пользователь ни разу не начинал рабочий день, будет отдан сокращенный ответ, содержащий только поле STATUS со значением CLOSED.</p>
+
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

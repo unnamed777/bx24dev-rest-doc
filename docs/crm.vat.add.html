@@ -1,0 +1,66 @@
+<html>
+        <head>
+            <title>crm.vat.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.vat.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/auxiliary/vat/crm_vat_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.vat.add(fields)</pre>
+
+<p>Создаёт новую ставку НДС.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+
+<tr>
+<td>fields</td>
+<td>Набор полей - массив вида array("поле"=&gt;"значение"[, ...]), содержащий значения ставки НДС.</td>
+</tr>
+	</tbody>
+</table>
+
+<a class="link" name="example"></a>
+<h4>Пример</h4>
+<pre class="syntax" rel="example">	var current = new Date();
+	var date2str = function(d)
+	{
+		return d.getFullYear() + '-' + paddatepart(1 + d.getMonth()) + '-' + paddatepart(d.getDate()) + 'T' + paddatepart(d.getHours())
+			+ ':' + paddatepart(d.getMinutes()) + ':' + paddatepart(d.getSeconds()) + '+03:00';
+	};
+	var paddatepart = function(part)
+	{
+		return part &gt;= 10 ? part.toString() : '0' + part.toString();
+	};
+	BX24.callMethod(
+		"crm.vat.add",
+		{
+			"fields":
+			{
+				"TIMESTAMP_X": date2str(current),
+				"ACTIVE": "Y",
+				"C_SORT": 110,
+				"NAME": "НДС 18%",
+				"RATE": 18.00
+			}
+		},
+		function(result)
+		{
+			if(result.error())
+				console.error(result.error());
+			else
+				console.info("Создана новая ставка НДС с ID " + result.data());
+		}
+	);
+
+</pre><br><br>							
+        </div>
+        </body>
+        </html>

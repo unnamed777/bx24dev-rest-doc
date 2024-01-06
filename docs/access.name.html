@@ -1,0 +1,47 @@
+<html>
+        <head>
+            <title>access.name</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">access.name <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/general/access_name.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre>BX24.callMethod('access.name', {ACCESS:['AU']});
+</pre>
+<p>Получение названий прав доступа.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+<tbody><tr>
+	<th width="20%">Параметр</th>
+	<th>Описание</th>
+</tr>
+<tr>
+	<td>ACCESS</td>
+	<td>Обязательный. Список идентификаторов прав, названия для которых нужно получить.</td>
+</tr>
+</tbody></table>
+
+
+<h4>Пример:</h4>
+
+<p></p><pre>https://my.bitrix24.ru/rest/access.name.xml?ACCESS[]=AU&amp;auth=d161f25928c3184678924ec127edd29a</pre><p></p>
+
+<p>Ответ XML
+<br>
+</p><pre>&lt;response&gt;
+	&lt;result&gt;
+		&lt;AU&gt;
+			&lt;provider/&gt;
+			&lt;name&gt;Все авторизованные пользователи&lt;/name&gt;
+		&lt;/AU&gt;
+	&lt;/result&gt;
+&lt;/response&gt;
+</pre><p></p>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

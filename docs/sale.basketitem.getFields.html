@@ -1,0 +1,105 @@
+<html>
+        <head>
+            <title>sale.basketitem.getFields</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">sale.basketitem.getFields <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/sale/basketitem/sale_basketitem_getFields.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<p class="note_blue">
+Scope: <span class="bg_blue">sale</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<div class="tab">
+
+<h3 class="tab-title">Описание и пример</h3>
+<pre class="syntax">sale.basketitem.getFields()</pre>
+
+<p>Метод возвращает поля элемента корзины.</p>
+
+
+<h4>Параметры</h4>
+
+<p>Без параметров.</p>
+
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'sale.basketitem.getFields', 
+	{}, 
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error().ex);
+		else
+			console.log(result.data());
+	}
+);
+</pre>
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Возвращаемые поля</h3>
+
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Поле</th>
+			<th>Описание</th>      </tr>
+
+<tr><td>id</td><td>Идентификатор товара.</td> </tr>
+<tr><td>lid</td><td>Сайт, на котором сделана покупка.</td> </tr>
+<tr><td>orderId</td><td>Идентификатор заказа.</td> </tr>
+<tr><td>productId</td><td>Код товара.</td> </tr>
+<tr><td>productPriceId</td><td>Идентификатор цены товара.</td> </tr>
+<tr><td>priceTypeId</td><td>Идентификатор типа цены товара.</td> </tr>
+<tr><td>name</td><td>Название товара.</td> </tr>
+<tr><td>price</td><td>Цена товара с учетом скидок и наценок.</td> </tr>
+<tr><td>currency</td><td>Валюта.</td> </tr>
+<tr><td>basePrice</td><td>Цена товара без учета скидок и наценок.</td> </tr>
+<tr><td>vatIncluded</td><td>Флаг(Y/N): включен налог или нет.</td> </tr>
+<tr><td>weight</td><td>Вес.</td> </tr>
+<tr><td>quantity</td><td>Количество.</td> </tr>
+<tr><td>module</td><td>Модуль.</td> </tr>
+<tr><td>productProviderClass</td><td>Имя класса провайдера.</td> </tr>
+<tr><td>notes</td><td>Особые заметки.</td> </tr>
+<tr><td>detailPageUrl</td><td>URL страницы детального просмотра.</td> </tr>
+<tr><td>discountPrice</td><td>Скидка.</td> </tr>
+<tr><td>catalogXmlId</td><td>Внешний идентификатор каталога.</td> </tr>
+<tr><td>productXmlId</td><td>Внешний идентификатор товара.</td> </tr>
+<tr><td>discountName</td><td>Название скидки.</td> </tr>
+<tr><td>discountValue</td><td>Значение скидки.</td> </tr>
+<tr><td>discountCoupon</td><td>Купон на скидку.</td> </tr>
+<tr><td>vatRate</td><td>Ставка НДС.</td> </tr>
+<tr><td>subscribe</td><td>Флаг (Y/N): подписка на товар.</td> </tr>
+<tr><td>barcodeMulti</td><td>Флаг (Y/N): штрихкод уникальный или нет.</td> </tr>
+<tr><td>customPrice</td><td>Флаг (Y/N): кастомная цена или нет.</td> </tr>
+<tr><td>dimensions</td><td>Размеры.</td> </tr>
+<tr><td>type</td><td>Тип товара.</td> </tr>
+<tr><td>setParentId</td><td>Идентификатор родительского раздела.</td> </tr>
+<tr><td>measureCode</td><td>Код единицы измерения.</td> </tr>
+<tr><td>measureName</td><td>Название единицы измерения.</td> </tr>
+<tr><td>recommendation</td><td>Рекомендация.</td> </tr>
+<tr><td>sort</td><td>Сортировка.</td> </tr>
+
+	</tbody>
+</table>
+
+
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

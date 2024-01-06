@@ -1,0 +1,57 @@
+<html>
+        <head>
+            <title>landing.landing.update</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">landing.landing.update <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/landing/page/methods/landing_landing_update.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">landing.landing.update(lid, fields)</pre>
+
+<p>Метод для изменения страницы. Возвращает <i>true</i> в случае успеха, или ошибку.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Метод</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>lid</td> 	<td>Идентификатор сущности</td> <td></td></tr>
+   
+    <tr> 	<td>fields</td> 	<td>Изменяемые <a class="link" href="/rest_help/landing/page/base_field.php">поля сущности</a></td> <td></td></tr>
+      
+   </tbody>
+ </table>
+
+<br>
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'landing.landing.update',
+	{
+		lid: 349,
+		fields: {
+			TITLE: 'My second page!'
+		}
+	},
+	function(result)
+	{
+		if(result.error())
+		{
+			console.error(result.error());
+		}
+		else
+		{
+			console.info(result.data());
+		}
+	}
+);</pre>
+
+
+<br>
+<br>							
+        </div>
+        </body>
+        </html>

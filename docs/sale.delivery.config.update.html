@@ -1,0 +1,55 @@
+<html>
+        <head>
+            <title>sale.delivery.config.update</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">sale.delivery.config.update <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/sale/delivery/saledelivery/sale_delivery_config_update.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">sale, delivery</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<p>Метод для обновления службы доставки.</p>
+
+<p><a class="link" href="https://dev.1c-bitrix.ru/upload/api_help/rest/files-sale/schemas/methods/sale.delivery.config.update/request.json" target="_blank">JSON схема запроса</a></p>
+
+<h4>Пример</h4>
+
+<p>Запрос:
+<br></p><pre>https://my.bitrix24.ru/rest/sale.delivery.config.update</pre><p></p>
+
+<p>Вызов JSON:
+<br></p><pre class="syntax" rel="example">{
+	ID: 687,
+	CONFIG: [
+		{
+			CODE: "SETTING_1",
+			VALUE: "SETTING_1 new value",
+		},
+		{
+			CODE: "SETTING_2",
+			VALUE: "SETTING_2 new value",
+		},
+	],
+}</pre><p></p>
+
+
+<p>Ответ JSON:
+<br></p><pre>{
+	result: true,
+	time: {
+		start: 1638369486.01651,
+		finish: 1638369486.41351,
+		duration: 0.3970000743865967,
+		processing: 0.04800009727478027,
+		date_start: "2021-12-01T16:38:06+02:00",
+		date_finish: "2021-12-01T16:38:06+02:00",
+	},
+}</pre><p></p>
+
+<br>							
+        </div>
+        </body>
+        </html>

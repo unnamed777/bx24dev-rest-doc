@@ -1,0 +1,89 @@
+<html>
+        <head>
+            <title>crm.item.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.item.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/dynamic/methodscrmitem/crm_item_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.item.get({entityTypeId: number, id: number})</pre>
+
+<p>Отдает информацию об элементе с идентификатором <code>id</code> смарт-процесса с идентификатором <code>entityTypeId</code>.</p>
+
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr><th width="15%">Параметр</th> <th>Описание</th></tr>
+
+<tr><td>entityTypeId</td><td>Идентификатор смарт-процесса.</td></tr>
+<tr><td>id</td><td>Идентификатор элемента.</td></tr>
+
+</tbody>
+</table>
+
+<h4>Ответ</h4>
+
+<pre class="syntax">{
+	"item": {
+		"id": 28,
+		"xmlId": "",
+		"title": "Название элемента",
+		"createdBy": 1,
+		"updatedBy": 1,
+		"movedBy": 1,
+		"createdTime": "2021-03-09T02:00:00+02:00",
+		"updatedTime": "2021-03-29T02:00:00+02:00",
+		"movedTime": "2021-03-25T02:00:00+02:00",
+		"categoryId": 17,
+		"opened": "Y",
+		"stageId": "DT132_17:CLIENT",
+		"previousStageId": "DT132_17:PREPARATION",
+		"begindate": "2021-03-09T02:00:00+02:00",
+		"closedate": "2021-03-16T02:00:00+02:00",
+		"companyId": 36,
+		"contactId": 1,
+		"opportunity": 120,
+		"isManualOpportunity": "N",
+		"taxValue": 20,
+		"currencyId": "RUB",
+		"mycompanyId": 7,
+		"sourceId": "RC_GENERATOR",
+		"sourceDescription": "",
+		"assignedById": 2,
+		"ufCrm24_1612951135": 123
+	}
+}
+</pre>
+
+<br>
+<p>Здесь</p>
+<ul>
+<li><code>xmlId</code> - внешний код элемента;</li>
+<li><code>title</code> - название элемента;</li>
+<li><code>stageId</code> - идентификатор стадии, на которой находится элемент;</li>
+<li><code>previousStageId</code> - идентификатор предыдущей стадии элемента;</li>
+<li><code>createdBy</code> - идентификатор пользователя, создавшего элемент;</li>
+<li><code> updatedBy</code> - идентификатор пользователя, изменившего элемент;</li>
+<li><code> movedBy</code> - идентификатор пользователя, изменившего стадию элемента;</li>
+<li><code>createdTime</code> - время создания элемента;</li>
+<li><code>updatedTime</code> - время изменения элемента;</li>
+<li><code>movedTime</code> - время изменения стадии элемента;</li>
+<li><code>categoryId</code> - идентификатор направления смарт-процесса;</li>
+<li><code>ufCrm...</code> - значения пользовательских полей:</li>
+<ul>
+<li>значения множественных полей отдаются в виде массива;</li>
+<li>значение поля типа "файл" отдаются в виде списка:</li>
+<ul>
+<li><code>id</code> - идентификатор;</li>
+<li><code>url</code> - ссылка на файл на портале;</li>
+<li><code>urlMachine</code> - ссылка на файл для приложения.</li>
+</ul></ul></ul>
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

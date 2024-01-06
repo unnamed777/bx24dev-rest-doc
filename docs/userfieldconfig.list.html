@@ -1,0 +1,100 @@
+<html>
+        <head>
+            <title>userfieldconfig.list</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">userfieldconfig.list <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/userfieldconfig/userfieldconfig/userfieldconfig_list.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">userfieldconfig, scope модуля</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<pre class="syntax">userfieldconfig.list({moduleId: string, select: ?{}, order: ?{}, filter: ?{}, start: number = 0})</pre>
+
+<p>Метод вернет список настроек пользовательских полей.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>moduleId </td> 	<td>Строковый идентификатор модуля. Обязательный.</td> <td></td></tr>
+   
+    <tr> 	<td>select</td> 	<td>Массив с полями, которые надо показать. По умолчанию выводятся все, кроме вариантов для списка и языковых фраз. Чтобы получить фразы в списке, необходимо передать идентификатор языка по ключу <b>language</b></td> <td></td></tr>
+   
+    <tr> 	<td>order</td> 	<td>Список для определения порядка отображения, где ключ - название поля, а значение - ASC или DESC</td> <td></td></tr>
+   
+    <tr> 	<td>filter</td> 	<td>Список для фильтрации</td> <td></td></tr>
+   
+   </tbody>
+ </table>
+
+<h4>Пример</h4>
+
+<p><b>Пример запроса</b></p>
+
+<p>Найти все множественные настройки пользовательских полей из модуля <i>rpa</i>, отсортированные по убыванию <i>id</i>, со всеми полями и языковыми фразами для языка <i>ru</i>.</p>
+
+<pre class="syntax">{
+	"moduleId": "rpa",
+	"select": {
+		"0": "*",
+		"language": "ru"
+	},
+	"order": {
+		"id": "DESC"
+	},
+	"filter": {
+		"multiple": "Y"
+	}
+}</pre>
+
+<p>Формат ответа в части языковых фраз немного отличается, так как здесь фразы только для одного языка.</p>
+
+<pre class="syntax">{
+	"fields": [
+		{
+			"id": "165",
+			"entityId": "RPA_1",
+			"fieldName": "UF_RPA_1_1585069397",
+			"userTypeId": "file",
+			"xmlId": null,
+			"sort": "100",
+			"multiple": "Y",
+			"mandatory": "N",
+			"showFilter": "E",
+			"showInList": "Y",
+			"editInList": "Y",
+			"isSearchable": "Y",
+			"settings": {
+				"SIZE": 20,
+				"LIST_WIDTH": 0,
+				"LIST_HEIGHT": 0,
+				"MAX_SHOW_SIZE": 0,
+				"MAX_ALLOWED_SIZE": 0,
+				"EXTENSIONS": []
+			},
+			"languageId": {
+				"ru": "ru"
+			},
+			"editFormLabel": {
+				"ru": "Множественный файл"
+			},
+			"listColumnLabel": null,
+			"listFilterLabel": null,
+			"errorMessage": null,
+			"helpMessage": null
+		},
+		{
+			... 
+		}
+	]
+}</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,60 @@
+<html>
+        <head>
+            <title>crm.invoice.getexternallink</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.invoice.getexternallink <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/invoice/crm_invoice_getexternallink.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.invoice.getexternallink(id)</pre>
+
+<p>Метод возращает публичную ссылку для онлайн-счета.</p>
+
+<h4>Параметры</h4> 
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+
+<tr>
+<td>id</td>
+<td>Идентификатор счета.</td>
+</tr>
+	</tbody>
+</table>
+
+<a class="link" name="example"></a>
+<h4>Примеры</h4>
+<pre class="syntax" rel="example">var id = prompt("Введите ID");
+BX24.callMethod(
+	"crm.invoice.getexternallink",
+	{ "id": id },
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.log(result.data());
+	}
+);</pre>
+
+
+
+<p>Запрос</p>
+
+<pre class="syntax">https://******.bitrix24.ru/rest/crm.invoice.getexternallink.json?auth=******&amp;ID=2</pre>
+
+<p>Ответ</p>
+
+<pre class="syntax">https://******.bitrix24.ru/pub/pay/Mg==/00724392abf8a2da3bc85d7382f5753c/</pre>
+
+
+
+<br>							
+        </div>
+        </body>
+        </html>

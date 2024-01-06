@@ -1,0 +1,43 @@
+<html>
+        <head>
+            <title>landing.role.getList</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">landing.role.getList <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/landing/rights/role_model/landing_role_getlist.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note"><strong>Важно!</strong> Функционал доступен только администратору.</p>
+
+<p>Метод позволяет получить список ролей. Вернет массив идентификаторов и названий всех ролей.</p>
+
+
+<h4>Параметры</h4>
+
+<p>Метод без параметров. </p>
+
+
+<h4>Пример</h4>
+
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'landing.role.getList',
+	{
+	},
+	function(result)
+	{
+		if(result.error())
+		{
+			console.error(result.error());
+		}
+		else
+		{
+			console.info(result.data());
+		}
+	}
+);</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

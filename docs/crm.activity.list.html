@@ -1,0 +1,53 @@
+<html>
+        <head>
+            <title>crm.activity.list</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.activity.list <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/rest_activity/crm_activity_list.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Возвращает список активностей по фильтру. (Для получения COMMUNICATIONS его надо явно указать в select.) Является реализацией списочного метода для активностей.</p>
+
+
+
+<h4>Параметры</h4>
+<p>Cм. описание <a class="link" href="/rest_help/rest_sum/index.php">списочных методов</a>.</p>
+
+<h4>Пример</h4>
+
+<p>В примере мы получаем список дел контакта с ИД 102.</p>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	"crm.activity.list",
+	{
+		order:{ "ID": "DESC" },
+		filter:
+		{
+			"OWNER_TYPE_ID": 3,
+			"OWNER_ID": 102
+		},
+		select:[ "*", "COMMUNICATIONS" ]
+	}, 
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+		{
+			console.dir(result.data());
+			if(result.more())
+				result.next();
+		}
+	}
+);
+</pre>
+
+<p>Как отфильтровать только универсальные дела:</p>
+
+<pre class="syntax">/crm.activity.list.json?filter[PROVIDER_ID]=CRM_TODO</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

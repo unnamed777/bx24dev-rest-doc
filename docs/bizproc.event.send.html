@@ -1,0 +1,60 @@
+<html>
+        <head>
+            <title>bizproc.event.send</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">bizproc.event.send <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/bizproc/bizproc_event/send.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">bizproc</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<p><b>bizproc.event.send</b> - метод возвращает действию выходные параметры, заданные в описании действия. </p>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+  
+		<tr>
+			<td>EVENT_TOKEN</td>
+			<td>Уникальный ключ, который необходимо использовать при отправке события бизнес-процессу. </td>
+		</tr>
+		<tr>
+			<td>RETURN_VALUES</td>
+			<td>Массив возвращаемых значений действия. <br>Также будет появляться в <a class="link" href="/learning/course/index.php?COURSE_ID=57&amp;CHAPTER_ID=05059&amp;LESSON_PATH=5442.5446.5059" target="_blank">форме Вставка значения</a> во вкладке <b>Дополнительные результаты</b>.</td>
+		</tr>
+		
+
+</tbody>
+</table>
+
+
+<p><b>Пример</b></p>
+
+<pre class="syntax" rel="example">var params = {
+	event_token: '55c1dc1c3f0d75.78875596|A51601_82584_96831_81132|hsyUws1j4XiwqPqN45eH66CcQtEvpUIP.47dd5d888e8e549d2c984713e12a4268e6e87d0208ca1f093ba1075e77f92e90',
+	return_values: {
+		outputString: '846c55d14f552180874a628d2615e285'
+	}
+};
+BX24.callMethod(
+	'bizproc.event.send',
+	params,
+	function(result)
+	{
+		if(result.error())
+			alert("Error: " + result.error());
+		else
+			alert("Success: " + result.data());
+	}
+);
+</pre>
+<br>							
+        </div>
+        </body>
+        </html>

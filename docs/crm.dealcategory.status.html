@@ -1,0 +1,51 @@
+<html>
+        <head>
+            <title>crm.dealcategory.status</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.dealcategory.status <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/category/crm_dealcategory_status.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.dealcategory.status(id)</pre>
+
+<p>Возвращает идентификатор типа справочника для хранения стадий по идентификатору направления сделок. </p>
+<br>Это строка вида DEAL_STAGE_[Идентификатор направления].  Например, для направления с идентификатором 1 будет возвращена строка "DEAL_STAGE_1".
+<br>Идентификатор предназначен для работы с семейством методов <a class="link" href="/rest_help/crm/auxiliary/status/index.php">crm.status.*</a>. Например, чтобы создать новую стадию для направления, нужно передать его в метод <a class="link" href="/rest_help/crm/auxiliary/status/crm_status_add.php">crm.status.add</a> в качестве параметра ENTITY_ID
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+
+<tr>
+<td>id</td>
+<td>Идентификатор направления.</td>
+</tr>
+
+
+	</tbody>
+</table>
+
+
+<a class="link" name="example"></a>
+<h4>Пример</h4>
+<pre class="syntax" rel="example">BX24.callMethod(
+	"crm.dealcategory.status", 
+	{ id: id }, 
+	function(result) 
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.dir(result.data());
+	}
+);
+</pre><br><br>							
+        </div>
+        </body>
+        </html>

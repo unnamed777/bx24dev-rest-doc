@@ -1,0 +1,44 @@
+<html>
+        <head>
+            <title>task.item.approve</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">task.item.approve <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/tasks/task/item/approve.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">task</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<p></p><div class="note"><font color="red"><strong>Внимание!</strong></font> Метод устарел и не поддерживается. Рекомендуется использовать методы <a class="link" href="/rest_help/tasks/task/tasks/index.php">tasks.task.*</a>.</div><p></p>
+
+<p>Переводит задачу, ожидающую контроля, в статус «завершена».</p>	
+	
+<h4>Параметры функции</h4>
+<table class="tnormal" width="100%"> 
+  <tbody> 
+    <tr><th width="15%">Параметр</th><th>Описание</th></tr>
+    <tr><td>TASKID</td><td>Идентификатор задачи.</td></tr>
+  </tbody>
+</table>  
+
+ <p></p><div class="note"><b>Внимание!</b> Соблюдение порядка следования параметров в запросе обязательно. При его нарушении запрос будет выполнен с ошибками.</div><p></p>
+
+<h4>Пример</h4>
+<pre class="syntax" rel="example">BX24.callMethod(
+	'task.item.approve',
+	[13],
+	function(result)
+	{
+		console.info(result.data());
+		console.log(result);
+	}
+);
+</pre>
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

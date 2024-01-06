@@ -1,0 +1,39 @@
+<html>
+        <head>
+            <title>socialnetwork.api.workgroup.list</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">socialnetwork.api.workgroup.list <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/sonet_group/socialnetwork_api_workgroup_list.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Метод возвращает список групп.</p>
+
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>filter</td> 	<td>Cоответствует параметру arFilter для метода API <a class="link" href="https://dev.1c-bitrix.ru/api_help/socialnetwork/classes/csocnetgroup/GetList.php" title="" target="_blank">CSocNetGroup::getList</a>. </td> <td></td></tr>
+   
+    <tr> 	<td>select</td> 	<td>Массив, задающий выбираемые поля. Содержит список полей, которые должны быть возвращены методом. Если массив пустой, то выбираются поля <b>ID</b>, <b>SITE_ID</b>, <b>NAME</b>, <b>DESCRIPTION</b>, <b>DATE_CREATE</b>, <b>DATE_UPDATE</b>, <b>DATE_ACTIVITY</b>, <b>ACTIVE</b>, <b>VISIBLE</b>, <b>OPENED</b>, <b>CLOSED</b>, <b>SUBJECT_ID</b>, <b>OWNER_ID</b>, <b>KEYWORDS</b>, <b>IMAGE_ID</b>, <b>NUMBER_OF_MEMBERS</b>, <b>INITIATE_PERMS</b>, <b>SPAM_PERMS</b>, <b>SUBJECT_NAME</b>. В массиве допустимы любые поля из списка полей. </td> <td></td></tr>
+     		<tr>
+			<td>IS_ADMIN</td>
+			<td>При передаче Y, проверяется, является ли текущий пользователь администратором соцсети и, если да, отключается проверка прав при выборке групп.</td><td></td>
+		</tr>	
+   </tbody>
+ </table>
+
+<h4>Пример</h4>
+
+<pre class="syntax">BX.rest.callMethod('socialnetwork.api.workgroup.list', {
+	filter: {
+		ID: 424
+	},
+	select: [ 'ID', 'NAME' ]
+});</pre>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,32 @@
+<html>
+        <head>
+            <title>crm.enum.activitypriority</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.enum.activitypriority <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/auxiliary/enum/crm_enum_activitypriority.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.enum.activitypriority()</pre>
+
+<p>Возвращает элементы перечисления "Приоритет активности".</p>
+
+<h4>Параметры</h4>
+<p>Без параметров</p>
+
+<h4>Пример</h4>
+<pre class="syntax" rel="example">	BX24.callMethod(
+		"crm.enum.activitypriority", 
+		{}, 
+		function(result) 
+		{
+			if(result.error())
+				console.error(result.error());
+			else
+				console.dir(result.data());
+		}
+	);	
+</pre><br><br>							
+        </div>
+        </body>
+        </html>

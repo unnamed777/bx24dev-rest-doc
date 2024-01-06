@@ -1,0 +1,65 @@
+<html>
+        <head>
+            <title>landing.block.getcontent</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">landing.block.getcontent <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/landing/block/blocks/landing_block_getcontent.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">landing.block.getcontent(
+	lid,
+	block,
+	editMode,
+	params 
+)</pre>
+
+<p>Метод для получения контента блока. Возвращает массив содержимого блока - html, файлы стилей и JS. Или ошибку.</p>
+
+<!--<p class="note"><b>Примечание</b>. Контент блока возвращается с обрамляющим тегом <code>div</code>, не входящим в содержимое самого блока. Следует это иметь в виду, если вы хотите использовать полученный контент для последующего обновления содержимого (например, методом <a class="link" href="/rest_help/landing/block/blocks/7202625.php">landing.block.updatecontent</a>)</p>-->
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Метод</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>lid</td> 	<td>Идентификатор страницы</td> <td></td></tr>
+   
+    <tr> 	<td>block</td> 	<td>Идентификатор блока</td> <td></td></tr>
+   
+    <tr> 	<td>editMode</td> 	<td>Режим редактирования (1) или нет (0), вернется разный набор блоков</td> <td></td></tr>
+      
+    <tr> 	<td>params</td> 	<td>Массив дополнительных параметров. На данный момент поддерживает один ключ – <b>wrapper_show</b> – показывать ли обрамляющий системный div (0, 1). По умолчанию - показывать.</td> <td></td></tr>
+   </tbody>
+ </table>
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'landing.block.getContent',
+	{
+		lid: 4858,
+		block: 39556,
+		editMode: 1,
+		params: {
+			wrapper_show: 0
+		}
+	},
+	function(result)
+	{
+		if(result.error())
+		{
+			console.error(result.error());
+		}
+		else
+		{
+			console.info(result.data());
+		}
+	}
+);</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

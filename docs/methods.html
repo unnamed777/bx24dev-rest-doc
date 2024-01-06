@@ -1,0 +1,45 @@
+<html>
+        <head>
+            <title>methods</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">methods <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/general/methods.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note"><b>Внимание!</b> Данный метод устарел и в срок до 1 сентября 2022  года будет удалён. Настоятельно рекомендуется использовать метод <a class="link" href="/rest_help/general/method_get.php">method.get</a>.</p>
+
+
+<pre>BX24.callMethod('methods', {});
+</pre>
+
+<p>Без параметров - показ списка методов, доступных текущему приложению.</p>
+
+<p>Дополнительные параметры:</p>
+
+<table width="100%" class="tnormal"> 
+  <tbody>
+    <tr> 	<th width="20%">Поле</th> 	<th>Описание</th> </tr>
+   
+    <tr> 	<td><i>full=true</i></td> 	<td>показ всех методов.</td> </tr>
+   
+    <tr> 	<td><i>scope=имя_разрешения</i></td> 	<td>показ методов, входящих в данное разрешение. Если указан параметр без значения (<code>methods?scope=&amp;auth=xxxxx</code>), то будут выведены все общие методы.</td> </tr>
+   
+   </tbody>
+</table>
+
+
+
+<h4>Пример</h4>
+
+<p></p><pre>https://my.bitrix24.ru/rest/methods?scope=&amp;auth=d161f25928c3184678924ec127edd29a - показать все общедоступные методы.</pre><p></p>
+
+<p><b>Ответ</b></p>
+
+<pre>{"result":["scope","methods","batch","user.admin","user.access","access.name"]}</pre>
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

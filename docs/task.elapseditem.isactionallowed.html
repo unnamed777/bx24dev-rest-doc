@@ -1,0 +1,54 @@
+<html>
+        <head>
+            <title>task.elapseditem.isactionallowed</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">task.elapseditem.isactionallowed <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/tasks/task/elapseditem/isactionallowed.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">task</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<pre class="syntax">task.elapseditem.isactionallowed(taskId, itemId, actionId)</pre>
+
+Проверяет, разрешено ли действие. 
+
+<h4>Параметры функции</h4>
+ 
+<table class="tnormal" width="100%"> 
+  <tbody> 
+    <tr><th width="15%">Параметр</th><th>Описание</th></tr>
+    <tr><td>TASKID</td><td>Идентификатор задачи.</td></tr>
+    <tr><td>ITEMID</td><td>Идентификатор записи о затраченном времени.</td></tr>
+    <tr><td>ACTIONID</td><td>Идентификатор действия: 
+        <ul> 
+          <li><b>1</b> - ACTION_ELAPSED_TIME_ADD; </li>
+          <li><b>2</b> - ACTION_ELAPSED_TIME_MODIFY; </li>
+          <li><b>3</b> - ACTION_ELAPSED_TIME_REMOVE. </li>
+         </ul>
+       	</td></tr>
+   	 </tbody>
+ </table>
+ 
+ <p></p><div class="note"><b>Внимание!</b> Соблюдение порядка следования параметров в запросе обязательно. При его нарушении запрос будет выполнен с ошибками.</div><p></p>
+
+<h4>Пример</h4>
+ 
+<pre class="syntax" rel="example">BX24.callMethod(
+	'task.elapseditem.isActionAllowed',
+	[1, 204, 2],
+	function(reply)
+	{
+		var isAllowed = reply.data();	// или так (аналогично): var isAllowed = reply.answer.result;
+	}
+);
+</pre>
+
+
+<br> 
+<br>							
+        </div>
+        </body>
+        </html>

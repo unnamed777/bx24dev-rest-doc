@@ -1,0 +1,56 @@
+<html>
+        <head>
+            <title>landing.block.removecard</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">landing.block.removecard <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/landing/block/blocks/landing_block_removecard.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">landing.block.removecard (lid, block,selector)</pre>
+
+<p>Метод для удаления карточки блока. Возвращает <i>true</i> или ошибку.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Метод</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>lid</td> 	<td>Идентификатор страницы</td> <td></td></tr>
+   
+    <tr> 	<td>block</td> 	<td>Идентификатор блока</td> <td></td></tr>
+   
+    <tr> 	<td>selector</td> 	<td><a class="link" href="/rest_help/landing/block/manifest.php#cards">Селектор карточки</a>, взятый с манифеста, с добавленным идентификатором карточки.<br>Например: <code>'.landing-block-card@0'</code>. 0 в конце означает, что воздействуем на первую по порядку карточку.</td> <td></td></tr>
+   
+   </tbody>
+ </table>
+
+<p class="note"><b>Обратите внимание</b>, что как только вы удалили карточку, их счетчики поменялись.</p>
+
+<h4>Пример</h4>
+<pre class="syntax" rel="example">BX24.callMethod(
+	'landing.block.removecard',
+	{
+		lid: 311,
+		block: 6057,
+		selector: '.landing-block-card@0'
+	},
+	function(result)
+	{
+		if(result.error())
+		{
+			console.error(result.error());
+		}
+		else
+		{
+			console.info(result.data());
+		}
+	}
+);</pre>
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

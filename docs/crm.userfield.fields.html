@@ -1,0 +1,29 @@
+<html>
+        <head>
+            <title>crm.userfield.fields</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.userfield.fields <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/userfields/crm_userfield_fields.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.userfield.fields</pre>
+
+<p>Возвращает описание полей для пользовательских полей.</p>
+<a class="link" name="example"></a>
+<h4>Пример</h4>
+<pre class="syntax" rel="example">BX24.callMethod(
+	"crm.userfield.fields",
+	{},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.dir(result.data());
+	}
+);
+</pre><br><br>							
+        </div>
+        </body>
+        </html>

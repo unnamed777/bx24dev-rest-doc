@@ -1,0 +1,48 @@
+<html>
+        <head>
+            <title>catalog.priceTypeGroup.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">catalog.priceTypeGroup.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/catalog/pricetypegroup/catalog_pricetypegroup_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">catalog.priceTypeGroup.add(fields)</pre>
+
+<p>Метод добавляет привязку типа цен к группе покупателей.</p>
+
+
+<h4>Параметры</h4>
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th><th>Тип</th>
+			<th>Описание</th>      </tr>
+<tr><td>fields</td><td>object</td> <td>Поля, соответствующие доступному списку полей <a class="link" href="/rest_help/catalog/pricetypegroup/catalog_pricetypegroup_getfields.php">fields</a>.
+</td></tr>
+	</tbody>
+</table>
+
+<h4>Примеры</h4>
+<pre class="syntax" rel="example">BX24.callMethod(
+	'catalog.priceTypeGroup.add', 
+	{
+		fields: {
+			catalogGroupId: 14,
+			groupId: 16,
+			access: "Y"
+		}
+	},
+	function(result) {
+		if (result.error())
+			console.error(result.error().ex);
+		else
+			console.log(result.data());
+	}
+);
+</pre>
+
+<br>							
+        </div>
+        </body>
+        </html>

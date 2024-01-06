@@ -1,0 +1,52 @@
+<html>
+        <head>
+            <title>imconnector.delete.messages</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">imconnector.delete.messages <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/imconnector/methods/imconnector_delete_messages.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Метод удаления сообщений в ОЛ.</p>
+
+<h4>Параметры</h4>
+
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>CONNECTOR </td> 	<td>ID коннектора (который был указан при регистрации обработчика).
+</td> <td></td></tr>   
+
+    <tr> 	<td>LINE</td> 	<td>ID открытой линии.
+</td> <td></td></tr>   
+
+    <tr> 	<td>MESSAGES</td> 	<td>Массив сообщений, где сообщения описываются массивом следующего формата:
+
+<pre class="syntax">array(
+	array(
+		//Массив описания пользователя
+		'user' =&gt; array(
+			'id',//ID пользователя во внешней системе *
+		),
+		//Массив описания сообщения
+		'message' =&gt; array(
+			'id', //ID сообщения во внешней системе.*
+		),
+		//Массив описания чата
+		'chat' =&gt; array(
+			'id',//ID чата во внешней системе *
+		),
+	),
+	array(...)
+);
+</pre>
+
+</td> <td></td></tr>   
+
+   </tbody>
+ </table>							
+        </div>
+        </body>
+        </html>

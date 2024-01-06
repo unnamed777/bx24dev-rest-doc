@@ -1,0 +1,78 @@
+<html>
+        <head>
+            <title>sale.delivery.handler.update</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">sale.delivery.handler.update <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/sale/delivery/saledeliveryhandler/sale_delivery_handler_update.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">sale, delivery</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<p>Метод выполняет обновление обработчика служб доставки.</p>
+
+<p><a class="link" href="https://dev.1c-bitrix.ru/upload/api_help/rest/files-sale/schemas/methods/sale.delivery.handler.update/request.json" target="_blank">JSON схема запроса</a></p>
+
+<h4>Пример</h4>
+
+<p>Запрос:
+<br></p><pre>https://my.bitrix24.ru/rest/sale.delivery.handler.update</pre><p></p>
+
+<p>Вызов JSON:
+<br></p><pre class="syntax" rel="example">{
+	ID: 43,
+	CODE: "uber",
+	NAME: "Uber",
+	DESCRIPTION: "Uber Description",
+	SETTINGS: {
+		CALCULATE_URL: "http://gateway.bx/calculate.php",
+		CREATE_DELIVERY_REQUEST_URL: "http://gateway.bx/create_delivery_request.php",
+		CANCEL_DELIVERY_REQUEST_URL: "http://gateway.bx/cancel_delivery_request.php",
+		HAS_CALLBACK_TRACKING_SUPPORT: "Y",
+		CONFIG: [
+			{
+				TYPE: "STRING",
+				CODE: "SETTING_1",
+				NAME: "Setting 1",
+			},
+			{
+				TYPE: "STRING",
+				CODE: "SETTING_2",
+				NAME: "Setting 2",
+			},
+		],
+	},
+	PROFILES: [
+		{
+			NAME: "Taxi",
+			CODE: "TAXI",
+			DESCRIPTION: "Taxi Delivery",
+		},
+		{
+			NAME: "Cargo",
+			CODE: "CARGO",
+			DESCRIPTION: "Cargo Delivery",
+		},
+	],
+}</pre><p></p>
+
+
+<p>Ответ JSON:
+<br></p><pre>{
+	result: true,
+	time: {
+		start: 1638371182.61351,
+		finish: 1638371182.99051,
+		duration: 0.377000093460083,
+		processing: 0.02500009536743164,
+		date_start: "2021-12-01T17:06:22+02:00",
+		date_finish: "2021-12-01T17:06:22+02:00",
+	},
+}</pre><p></p>
+
+<br>							
+        </div>
+        </body>
+        </html>

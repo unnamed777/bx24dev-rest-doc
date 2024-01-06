@@ -1,0 +1,53 @@
+<html>
+        <head>
+            <title>catalog.measure.getFields</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">catalog.measure.getFields <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/catalog/measure/catalog_measure_getfields.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">catalog.measure.getFields()</pre>
+
+<p>Метод возвращает поля единицы измерения.</p>
+
+<h4>Параметры</h4>
+
+<p>Без параметров.</p>
+
+<h4>Примеры</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'catalog.measure.getFields', 
+	{},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error().ex);
+		else
+			console.log(result.data());
+	}
+);
+</pre>
+
+<h4>Возвращаемые поля</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Поле</th> 	<th>Описание</th><th>Тип</th><th>Примечание</th></tr>
+   
+    <tr> 	<td>code</td> 	<td>Код</td><td>integer</td><td>Обязательное поле.</td></tr>
+    <tr> 	<td>id</td> 	<td>Идентификатор единицы измерения</td><td>integer</td><td>Только для чтения.</td></tr>
+    <tr> 	<td>isDefault</td> 	<td>По умолчанию</td><td>char</td><td></td></tr>
+    <tr> 	<td>measureTitle</td> 	<td>Наименование единицы измерения</td><td>string</td><td>Обязательное поле.</td></tr>
+    <tr> 	<td>symbol</td> 	<td>Условное обозначение</td><td>string</td><td></td></tr>
+    <tr> 	<td>symbolIntl</td> 	<td>Условное обозначение (международное)</td><td>string</td><td></td></tr>
+    <tr> 	<td>symbolLetterIntl</td> 	<td>Кодовое буквенное обозначение (международное)</td><td>string</td><td></td></tr>
+
+   </tbody>
+ </table>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

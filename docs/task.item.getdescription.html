@@ -1,0 +1,52 @@
+<html>
+        <head>
+            <title>task.item.getdescription</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">task.item.getdescription <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/tasks/task/item/getdescription.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">task</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<p></p><div class="note"><font color="red"><strong>Внимание!</strong></font> Метод устарел и не поддерживается. Рекомендуется использовать методы <a class="link" href="/rest_help/tasks/task/tasks/index.php">tasks.task.*</a>.</div><p></p>
+
+<p>Возвращает описание задачи.</p>
+
+<h4>Параметры функции</h4>
+<table class="tnormal" width="100%"> 
+  <tbody> 
+    <tr><th width="15%">Параметр</th><th>Описание</th></tr>
+    <tr><td>TASKID</td><td>Идентификатор задачи.</td></tr>
+    <tr><td>FORMAT</td><td>Допустимые значения:
+		<ul>
+			<li><b>1</b> (соответствует PHP-константе <a class="link" href="http://dev.1c-bitrix.ru/api_help/tasks/constants/index.php">CTaskItem::DESCR_FORMAT_RAW</a>) — описание будет возвращено в том формате, в котором хранится в БД (HTML, либо BB-code), обработка санитайзером производиться не будет;</li>
+			<li><b>2</b> (соответствует PHP-константе <a class="link" href="http://dev.1c-bitrix.ru/api_help/tasks/constants/index.php">CTaskItem::DESCR_FORMAT_HTML</a>) — описание будет возвращено в формате HTML, предварительно будет обработано санитайзером (если это включено в настройках модуля задач);</li>
+			<li><b>3</b> (соответствует PHP-константе <a class="link" href="http://dev.1c-bitrix.ru/api_help/tasks/constants/index.php">CTaskItem::DESCR_FORMAT_PLAIN_TEXT</a>) — описание будет возвращено в виде «плоского» текста (без HTML-тегов).</li>
+		</ul>
+	</td></tr>		
+  </tbody>
+</table>  
+
+ <p></p><div class="note"><b>Внимание!</b> Соблюдение порядка следования параметров в запросе обязательно. При его нарушении запрос будет выполнен с ошибками.</div><p></p>
+
+<h4>Пример</h4>
+<pre class="syntax" rel="example">BX24.callMethod(
+	'task.item.getdescription',
+	[13, 1],
+	function(result)
+	{
+		console.info(result.data());
+		console.log(result);
+	}
+);
+</pre>	
+
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

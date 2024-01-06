@@ -1,0 +1,64 @@
+<html>
+        <head>
+            <title>documentgenerator.role.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">documentgenerator.role.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/documentgenerator/role/documentgenerator_role_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">documentgenerator</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<a class="link" name="register"></a>
+<pre class="syntax">documentgenerator.role.add(fields)</pre>
+
+<p>Метод добавит новую роль. Вернет те же данные, что и при вызове на новой роли <a class="link" href="/rest_help/documentgenerator/role/documentgenerator_role_get.php">documentgenerator.role.get()</a> на новом регионе.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>      </tr>
+
+<tr><td>fields</td><td>Массив полей роли, среди которых:
+<ul>
+<li><code>name</code> - название роли (обязательное)</li>
+<li><code>code</code> - код роли</li>
+<li><code>permissions</code> - разрешения роли. Это массив следующего вида:</li>
+<pre class="syntax">"permissions": {
+	"settings": {
+		"modify" : "X",
+	},
+	"templates": {
+		"modify" : "X",
+	},
+	"documents": {
+		"modify" : "X",
+		"view" : "X",
+	},
+}
+</pre>
+</ul>
+<br>
+<p>Первый ключ - сущность, второй - действие, значение - уровень разрешений. Если передать пустой массив, то у роли будут отсутствовать какие-либо разрешения. Есть следующие уровни: пустое значение - нет разрешения, <code>A</code> - своё, <code>D</code> - своё и коллег по отделу, <code>X</code> - разрешено всё.</p>
+
+<p>Уровни <code>A</code> и <code>D</code> имеют значение только для <code>permissions[templates][modify]</code>.</p>
+</td></tr>
+
+	</tbody>
+</table>
+
+<br><br>
+
+
+
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

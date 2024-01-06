@@ -1,0 +1,45 @@
+<html>
+        <head>
+            <title>task.dependence.delete</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">task.dependence.delete <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/tasks/task/dependence/task_dependence_delete.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">task</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<pre class="syntax">task.dependence.delete(taskIdFrom, taskIdTo, linkType)</pre>
+
+<p> Метод удаляет зависимость одной задачи от другой.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>taskIdFrom</td> 	<td>Идентификатор задачи от которой удаляется зависимость</td> <td></td></tr>
+   
+    <tr> 	<td>taskIdTo</td> 	<td>Идентификатор задачи для которой удаляется зависимость</td> <td></td></tr>
+   
+    <tr> 	<td>linkType</td> 	<td>Тип зависимости:
+
+<pre class="syntax">const LINK_TYPE_START_START =      0x00; // Связь старт-старт
+const LINK_TYPE_START_FINISH =     0x01; // Связь старт-финиш
+const LINK_TYPE_FINISH_START =     0x02; // Связь финиш-старт
+const LINK_TYPE_FINISH_FINISH =    0x03; // Связь финиш-финиш</pre>
+
+
+</td> <td></td></tr>
+    
+   </tbody>
+ </table>
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

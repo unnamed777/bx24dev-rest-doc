@@ -1,0 +1,39 @@
+<html>
+        <head>
+            <title>user.userfield.file.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">user.userfield.file.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/users/userfield/user_userfield_file_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Метод позволяет получить файл из пользовательского поля.</p>
+
+<h4>Пример</h4>
+
+<p>Есть поле <code>UF_USR_1604998606834</code> типа файл. Вызвав метод <a class="link" href="/rest_help/users/user_current.php">user.current</a> можно получить файл в этом поле у текущего пользователя, где: <br>
+<strong>showUrl</strong> - это URL который покажет файл в браузере если пользователь авторизован; <br>
+<strong>downloadData</strong> - данные, которые нужно подавать на этот метод.
+</p>
+<pre class="syntax">[UF_USR_1604998606834] =&gt; Array
+(
+	[id] =&gt; 774
+	[showUrl] =&gt; /bitrix/services/main/ajax.php?action=rest.file.get&amp;SITE_ID=s1&amp;entity=USER&amp;id=1&amp;field=UF_USR_1604998606834&amp;value=774
+	[downloadData] =&gt; Array
+	(
+		[id] =&gt; 1
+		[field] =&gt; UF_USR_1604998606834
+		[value] =&gt; 774
+	)
+)</pre>
+
+<p>Запрос вебхуком:</p>
+
+<pre class="syntax">/rest/1/a2ebx1rfao5pq5cr/user.userfield.file.get?id=1&amp;field=UF_USR_1604998606834&amp;value=774</pre>
+
+<p class="note">Метод возвращает файл как контент на загрузку, а не json/xml.</p>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

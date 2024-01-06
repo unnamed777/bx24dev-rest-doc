@@ -1,0 +1,69 @@
+<html>
+        <head>
+            <title>task.item.deletefromfavorite</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">task.item.deletefromfavorite <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/tasks/task/item/deletefromfavorite.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">task</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<p></p><div class="note"><font color="red"><strong>Внимание!</strong></font> Метод устарел и не поддерживается. Рекомендуется использовать методы <a class="link" href="/rest_help/tasks/task/tasks/index.php">tasks.task.*</a>.</div><p></p>
+
+<p>
+	Метод удаляет задачу из <b>Избранного</b>.
+</p>
+<h4>Параметры метода</h4>
+<table width="100%" class="tnormal">
+<tbody>
+<tr>
+	<th width="15%">
+		Параметр
+	</th>
+	<th>
+		Описание
+	</th>
+</tr>
+<tr>
+	<td>
+		<i>auth</i>
+	</td>
+	<td>
+		Токен авторизации.
+	</td>
+</tr>
+<tr>
+	<td>
+		<i>TASK_ID</i>
+	</td>
+	<td>
+		Идентификатор задачи.
+	</td>
+</tr>
+<tr>
+	<td>
+		<i>PARAMS</i>
+	</td>
+	<td>
+		Параметр содержит ключ <i>AFFECT_CHILDREN</i>. Он указывает, добавлять ли в избранное подзадачи данной задачи.
+	</td>
+</tr>
+</tbody>
+</table>
+<p>
+</p>
+<div class="note">
+	<b>Внимание!</b> Соблюдение порядка следования параметров в запросе обязательно. При его нарушении запрос будет выполнен с ошибками.
+</div>
+<p>
+</p>
+<h4>Пример вызова</h4>
+<pre class="syntax">$request = 'http://your-domain.ru/rest/task.item.deletefromfavorite.xml?auth=mqa17fnd5cth4rpwtizyl49tbnzp7omf&amp;TASK_ID=10&amp;PARAMS[AFFECT_CHILDREN]=Y'
+</pre>
+ <br>							
+        </div>
+        </body>
+        </html>

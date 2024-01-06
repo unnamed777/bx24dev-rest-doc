@@ -1,0 +1,117 @@
+<html>
+        <head>
+            <title>log.blogpost.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">log.blogpost.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/log/log_blogpost_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">log</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<p>Возвращает массив с доступными текущему пользователю сообщениями <b>Ленты новостей</b>. Каждое из сообщений представляет собой массив значений полей (включая пользовательские поля).</p>
+
+<h4>Параметры функции</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+  
+                <tr>
+			<td>POST_ID</td>
+			<td>Числовой ID сообщения для фильтрации (опционально).</td>
+		</tr>		
+<tr><td>LOG_RIGHTS</td><td>Фильтрация по получателю. Значением фильтра может быть как строка (конкретное значение прав), так и массив.
+<br>
+Права на просмотр сообщения (опционально), по умолчанию - <code>array("UA")</code> - всем авторизованным пользователям.
+<br>
+Можно использовать значения:
+<ul>
+<li><b><code>SG&lt;X&gt;</code> </b> - рабочая группа с ID=X;</li>
+<li><b><code>U&lt;X&gt;</code> </b> - пользователь с ID=X;</li>
+<li><b><code>DR&lt;X&gt;</code></b> - отдел с ID=X, включая подразделы;</li>
+<li><b><code>UA</code></b> - все авторизованные пользователи.</li>
+<li><b><code>G</code></b> - группа пользователей (например, G2).</li>
+</ul>
+</td>	</tr>
+
+	</tbody>
+</table>
+
+
+<p>В ответе значение поля DATE_PUBLISH отдается в формате ISO 8601.</p>
+
+<h4>Пример</h4>
+<pre class="syntax" rel="example">BX24.callMethod('log.blogpost.get', { POST_ID: 755 });
+</pre>
+
+
+<h4>Запрос:</h4>
+<pre class="syntax">https://my.bitrix24.ru/rest/log.blogpost.get.xml?auth=xxxxxxx
+</pre>
+
+
+<h4>Ответ:</h4>
+<pre class="syntax">{"result":[{"ID":"4","BLOG_ID":"1","PUBLISH_STATUS":"P","TITLE":"sdfsdfsd","AUTHOR_ID":"1","ENABLE_COMMENTS":"Y","NUM_COMMENTS":"0",
+"CODE":null,"MICRO":"Y","DETAIL_TEXT":"sdfsdfsd","DATE_PUBLISH":"21.10.2015 17:00:50",
+"CATEGORY_ID":"","HAS_SOCNET_ALL":"Y","HAS_TAGS":"N","HAS_IMAGES":"N","HAS_PROPS":"N","HAS_COMMENT_IMAGES":null},
+{"ID":"3","BLOG_ID":"1","PUBLISH_STATUS":"P","TITLE":"test1","AUTHOR_ID":"1","ENABLE_COMMENTS":"Y","NUM_COMMENTS":"0",
+"CODE":null,"MICRO":"Y","DETAIL_TEXT":"test1","DATE_PUBLISH":"31.07.2015 17:03:54",
+"CATEGORY_ID":"","HAS_SOCNET_ALL":"Y","HAS_TAGS":"N","HAS_IMAGES":"N","HAS_PROPS":"Y","HAS_COMMENT_IMAGES":null,
+"UF_BLOG_POST_DOC":{"ID":"1","ENTITY_ID":"BLOG_POST","FIELD_NAME":"UF_BLOG_POST_DOC","USER_TYPE_ID":"file",
+"XML_ID":"UF_BLOG_POST_DOC","SORT":"100","MULTIPLE":"Y","MANDATORY":"N","SHOW_FILTER":"N","SHOW_IN_LIST":"N","EDIT_IN_LIST":"Y",
+"IS_SEARCHABLE":"Y","SETTINGS":{"SIZE":20,"LIST_WIDTH":0,"LIST_HEIGHT":0,"MAX_SHOW_SIZE":0,"MAX_ALLOWED_SIZE":0,"EXTENSIONS":[]},
+"EDIT_FORM_LABEL":null,"LIST_COLUMN_LABEL":null,"LIST_FILTER_LABEL":null,"ERROR_MESSAGE":null,"HELP_MESSAGE":null,
+"USER_TYPE":{"USER_TYPE_ID":"file","CLASS_NAME":"CUserTypeFile",
+"DESCRIPTION":"\u0424\u0430\u0439/u043b","BASE_TYPE":"file"},"VALUE":false,"ENTITY_VALUE_ID":3},
+"UF_GRATITUDE":{"ID":"3","ENTITY_ID":"BLOG_POST","FIELD_NAME":"UF_GRATITUDE","USER_TYPE_ID":"integer",
+"XML_ID":"UF_GRATITUDE","SORT":"100","MULTIPLE":"N",
+"MANDATORY":"N","SHOW_FILTER":"N","SHOW_IN_LIST":"N","EDIT_IN_LIST":"Y","IS_SEARCHABLE":"N",
+"SETTINGS":{"SIZE":20,"MIN_VALUE":0,"MAX_VALUE":0,"DEFAULT_VALUE":""},
+"EDIT_FORM_LABEL":null,"LIST_COLUMN_LABEL":null,"LIST_FILTER_LABEL":null,"ERROR_MESSAGE":null,"HELP_MESSAGE":null,
+"USER_TYPE":{"USER_TYPE_ID":"integer","CLASS_NAME":"CUserTypeInteger",
+"DESCRIPTION":"\u0426\u0435\u043b\u043e\u0435 \u0447\u0438\u0441\u043b\u043e","BASE_TYPE":"int"},
+"VALUE":null,"ENTITY_VALUE_ID":3},
+"UF_BLOG_POST_FILE":{"ID":"8","ENTITY_ID":"BLOG_POST","FIELD_NAME":"UF_BLOG_POST_FILE","USER_TYPE_ID":"disk_file",
+"XML_ID":"UF_BLOG_POST_FILE","SORT":"100","MULTIPLE":"Y","MANDATORY":"N","SHOW_FILTER":"N","SHOW_IN_LIST":"N","EDIT_IN_LIST":"Y",
+"IS_SEARCHABLE":"Y","SETTINGS":"IBLOCK_ID":0,"SECTION_ID":0,"UF_TO_SAVE_ALLOW_EDIT":null},"EDIT_FORM_LABEL":null,
+"LIST_COLUMN_LABEL":null,"LIST_FILTER_LABEL":null,"ERROR_MESSAGE":null,"HELP_MESSAGE":null,
+"USER_TYPE":{"USER_TYPE_ID":"disk_file","CLASS_NAME":"Bitrix\\Disk\\Uf\\FileUserType",
+"DESCRIPTION":"\u0424\u0430\u0439\u043b (\u0414\u0438\u0441\u043a)",
+"BASE_TYPE":"int","TAG":["DISK FILE ID","DOCUMENT ID"]},"VALUE":false,"ENTITY_VALUE_ID":3},
+"UF_BLOG_POST_IMPRTNT":"ID":"18","ENTITY_ID":"BLOG_POST","FIELD_NAME":"UF_BLOG_POST_IMPRTNT","USER_TYPE_ID":"integer",
+"XML_ID":"UF_BLOG_POST_IMPRTNT","SORT":"100","MULTIPLE":"N","MANDATORY":"N","SHOW_FILTER":"N","SHOW_IN_LIST":"Y",
+"EDIT_IN_LIST":"Y","IS_SEARCHABLE":"N","SETTINGS":{"SIZE":20,"MIN_VALUE":0,"MAX_VALUE":0,"DEFAULT_VALUE":""},
+"EDIT_FORM_LABEL":"\u0412\u0430\u0436\u043d\u043e\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435",
+"LIST_COLUMN_LABEL":"\u0412\u0430\u0436\u043d\u043e\u0435","LIST_FILTER_LABEL":"\u0412\u0430\u0436\u043d\u043eu0435",
+"ERROR_MESSAGE":null,"HELP_MESSAGE":null,"USER_TYPE":{"USER_TYPE_ID":"integer","CLASS_NAME":"CUserTypeInteger",
+"DESCRIPTION":"\u0426\u0435\u043b\u043e\u0435 \u0447\u0438\u0441\u043b\u043e","BASE_TYPE":"int"},"VALUE":"1","ENTITY_VALUE_ID":3},
+"UF_BLOG_POST_VOTE":"ID":"35","ENTITY_ID":"BLOG_POST","FIELD_NAME":"UF_BLOG_POST_VOTE","USER_TYPE_ID":"vote",
+"XML_ID":"UF_BLOG_POST_VOTE","SORT":"100","MULTIPLE":"N","MANDATORY":"N",
+"SHOW_FILTER":"N","SHOW_IN_LIST":"Y","EDIT_IN_LIST":"Y","IS_SEARCHABLE":"N","SETTINGS":{"CHANNEL_ID":1,"UNIQUE":13,
+"UNIQUE_IP_DELAY":{"DELAY":"10","DELAY_TYPE":"D"},"NOTIFY":"I"},"EDIT_FORM_LABEL":null,
+"LIST_COLUMN_LABEL":null,"LIST_FILTER_LABEL":null,"ERROR_MESSAGE":null,"HELP_MESSAGE":null,
+"USER_TYPE":{"USER_TYPE_ID":"vote","CLASS_NAME":"CUserTypeVote","DESCRIPTION":"\u041e\u043f\u0440\u043e\u0441",
+"BASE_TYPE":"int"},"VALUE":null,"ENTITY_VALUE_ID":3}},{"ID":"2","BLOG_ID":"1","PUBLISH_STATUS":"P","TITLE":"test","AUTHOR_ID":"1","ENABLE_COMMENTS":"Y","NUM_COMMENTS":"0",
+"CODE":null,"MICRO":"Y","DETAIL_TEXT":"test","DATE_PUBLISH":"31.07.2015 17:03:35",
+"CATEGORY_ID":"","HAS_SOCNET_ALL":"Y","HAS_TAGS":"N","HAS_IMAGES":"N","HAS_PROPS":"N","HAS_COMMENT_IMAGES":null},
+{"ID":"1","BLOG_ID":"1","PUBLISH_STATUS":"P",
+"TITLE":"\u041e\u0444\u0438\u0446\u0438\u0430\u043b\u044c\u043d\u043e \u043e\u0442\u043a\u0440\u044b\u0442 \u043a\u043e\u0440\u043f\u043e\u0440\u0430\u0442\u0438\u0432
+\u043d\u044b\u0439 \u043f\u043e\u0440\u0442\u0430\u043b \u043d\u0430\u0448\u0435\u0439 \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u0438",
+"AUTHOR_ID":"1","ENABLE_COMMENTS":"Y","NUM_COMMENTS":"1","CODE":null,"MICRO":"N",
+"DETAIL_TEXT":"\u0421\u0435\u0433\u043e\u0434\u043d\u044f \u043e\u0444\u0438\u0446\u0438\u0430\u043b\u044c\u043d\u043e \u0437\u0430\u0440\u0430\u0431\u043e\u0442\u0430
+\u043b \u043a\u043e\u0440\u043f\u043e\u0440\u0430\u0442\u0438\u0432\u043d\u044b\u0439 \u043f\u043e\u0440\u0442\u0430\u043b \u043d\u0430\u0448\u0435\u0439 \u043a\u043e
+\u043c\u043f\u0430\u043d\u0438\u0438.\n\n\",
+"DATE_PUBLISH":"16.07.2015 13:12:35","CATEGORY_ID":"1,2","HAS_SOCNET_ALL":"Y","HAS_TAGS":"Y",
+"HAS_IMAGES":"N","HAS_PROPS":"N","HAS_COMMENT_IMAGES":"N"}],"total":4}
+
+</pre>
+<br><br>							
+        </div>
+        </body>
+        </html>

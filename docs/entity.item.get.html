@@ -1,0 +1,89 @@
+<html>
+        <head>
+            <title>entity.item.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">entity.item.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/entity/entity_item_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Описание</h3>
+
+<p>Получение списка элементов хранилища. Списочный метод.</p>
+
+<p>Пользователь должен обладать хотя бы правами на чтение (<b>R</b>) хранилища.</p>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+
+<table class="tnormal" width="100%">
+<tbody><tr>
+	<th width="20%">Параметр</th>
+	<th>Описание</th>
+</tr>
+<tr>
+	<td>ENTITY</td>
+	<td>Обязательный. Строковой идентификатор хранилища.</td>
+</tr>
+<tr>
+	<td>SORT</td>
+	<td rowspan="2">Аналогичны параметрам <i>arOrder</i> и <i>arFilter</i> PHP-метода <a class="link" href="http://dev.1c-bitrix.ru/api_help/iblock/classes/ciblockelement/getlist.php" target="_blank">CIBlockElement::GetList</a> (включая операции фильтра и сложную логику).</td>
+</tr>
+<tr>
+	<td>FILTER</td>
+</tr>
+</tbody></table>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Примеры</h3>
+<p>Вызов
+<br></p><pre class="syntax" rel="example">BX24.callMethod('entity.item.get', {
+	ENTITY: 'menu',
+	SORT: {DATE_ACTIVE_FROM: 'ASC', ID: 'ASC'},
+	FILTER: {
+		'&gt;=DATE_ACTIVE_FROM': dateStart,
+		'&lt;DATE_ACTIVE_FROM': dateFinish
+	}
+}, $.proxy(this.buildData, this));</pre><p></p>
+
+<p>Запрос
+<br></p><pre>https://my.bitrix24.ru/rest/entity.item.get.json?=&amp;ENTITY=menu&amp;FILTER%5B%3CDATE_ACTIVE_FROM%5D=2013-07-01T00%3A00%3A00.000Z&amp;FILTER%5B%3E%3DDATE_ACTIVE_FROM%5D=2013-06-24T00%3A00%3A00.000Z&amp;SORT%5BDATE_ACTIVE_FROM%5D=ASC&amp;SORT%5BID%5D=ASC&amp;auth=723867cdb1ada1de7870de8b0e558679</pre><p></p>
+
+
+<p>Ответ
+<br></p><pre>{"result":[{"ID":"838","TIMESTAMP_X":"2013-06-25T15:06:47+03:00","MODIFIED_BY":"1","DATE_CREATE":"2013-06-25T15:06:47+03:00","CREATED_BY":"1","ACTIVE":"Y","DATE_ACTIVE_FROM":"2013-07-01T03:00:00+03:00","DATE_ACTIVE_TO":"","SORT":"500","NAME":"\u0413\u0440\u0435\u0447\u043a\u0430 \u0432 \u043c\u0443\u043d\u0434\u0438\u0440\u0435","PREVIEW_PICTURE":null,"PREVIEW_TEXT":null,"DETAIL_PICTURE":null,"DETAIL_TEXT":null,"CODE":null,"ENTITY":"menu","SECTION":null,"PROPERTY_VALUES":{"dish":"813","price":"16"}}],"total":1}</pre><p></p>
+
+<h4>Пример  вызова со сложным фильтром:</h4>
+<pre class="syntax" rel="example">BX24.callMethod('entity.item.get', {
+	ENTITY: 'menu',
+	SORT: {DATE_ACTIVE_FROM: 'ASC', ID: 'ASC'},
+	FILTER: {
+		'1':{
+			'LOGIC':'OR',
+			'PROPERTY_MYPROP1':'value1',
+			'PROPERTY_MYPROP2':'value2'
+		}
+	}
+}); 
+</pre>
+
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,43 @@
+<html>
+        <head>
+            <title>entity.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">entity.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/entity/entity_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Создает хранилище данных. Перед созданием проверить наличие хранилища можно с помощью <a class="link" href="/rest_help/entity/entity_get.php">entity.get</a></p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+<tbody><tr>
+	<th width="20%">Параметр</th>
+	<th>Описание</th>
+</tr>
+<tr>
+	<td>ENTITY</td>
+	<td>Обязательный. Строковой идентификатор хранилища, уникальны для данного приложения (максимальная длина - 13 символов).</td>
+</tr>
+<tr>
+	<td>NAME</td>
+	<td>Обязательный. Название хранилища</td>
+</tr>
+<tr>
+	<td>ACCESS</td>
+	<td>Описание прав доступа к хранилищу. <br>
+Должно иметь вид ассоциативного массива, ключами которого являются идентификаторы прав доступа, значением - <b>R</b> (чтение),  <b>W</b> (запись) или <b>X</b> (управление).</td>
+</tr>
+</tbody></table>
+
+<p> Создатель хранилища автоматически получает право <b>X</b>.</p>
+
+<h4>Пример</h4>
+
+<p></p><pre class="syntax" rel="example">BX24.callMethod('entity.add', {'ENTITY': 'dish', 'NAME': 'Dishes', 'ACCESS': {U1:'W',AU:'R'}});</pre><p></p>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

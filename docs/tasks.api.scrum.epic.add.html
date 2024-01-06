@@ -1,0 +1,62 @@
+<html>
+        <head>
+            <title>tasks.api.scrum.epic.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">tasks.api.scrum.epic.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/tasks/task/scrum/epic/tasks_api_scrum_epic_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">task</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<pre class="syntax"><b>tasks.api.scrum.epic.add(</b>fields<b>)</b></pre>
+
+<p>Метод добавляет эпик в Скрам.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+<tbody>
+<tr>
+	<th width="15%">Параметр</th>	<th>Описание</th></tr>
+
+<tr>	<td>fields</td>	<td>Поля, соответствующие доступному списку полей <a class="link" href="/rest_help/tasks/task/scrum/epic/tasks_api_scrum_epic_getFields.php">tasks.api.scrum.epic.getFields</a>. 
+
+<p>Поля <b>name</b> и <b>groupId</b> обязательные. </p>
+
+<p>В поле <b>files</b> можно передать массив значений с идентификаторами файлов, указав префикс <code>n</code>.</p></td></tr>
+
+</tbody>
+</table>
+
+
+
+<h4>Примеры</h4>
+ <pre class="syntax" rel="example">const groupId = 1;
+const name = 'Epic 1';
+const description = 'Description text';
+const color = '#69dafc';
+const files = ['n428'];
+BX24.callMethod(
+	'tasks.api.scrum.epic.add',
+	{
+		fields:{
+			name: name,
+			groupId: groupId,
+			color: color,
+			files: files
+		}
+	},
+	function(res)
+	{
+		console.log(res);
+	}
+);
+</pre> 
+
+<br>							
+        </div>
+        </body>
+        </html>

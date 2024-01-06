@@ -1,0 +1,64 @@
+<html>
+        <head>
+            <title>imopenlines.config.update</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">imopenlines.config.update <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/imconnector/setting_line/imopenlines_config_update.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Метод для обновления линии.</p>
+
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Метод</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>CONFIG_ID</td> 	<td>ID линии (обязательный)</td> <td></td></tr>
+   
+    <tr> 	<td>PARAMS</td> 	<td>Массив 
+		<span class="learning-lesson-detail-block js-detail-info-block">
+			<span class="learning-lesson-detail-word js-detail-info-word">параметров</span>
+			<span class="learning-lesson-detail-body js-detail-info-body">
+				<span class="learning-lesson-detail-body-inner  js-detail-info-body-inner">
+                    <button class="learning-lesson-detail-close-button  js-detail-close-button" type="button"></button>
+                    Список возможных параметров идентичен списку метода <a class="link" href="/rest_help/imconnector/setting_line/imopenlines_config_add.php">imopenlines.config.add</a>.
+                </span>
+			</span>
+		</span>
+		 для обновления (необязательный)</td> <td></td></tr>
+   
+   </tbody>
+ </table>
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">//imopenlines.config.update
+function configUpdate()
+{
+	var params = {
+		CONFIG_ID: 1,
+		PARAMS: {
+			LINE_NAME: 'New line name',
+			...
+		}
+	};
+	BX24.callMethod(
+		'imopenlines.config.update',
+		params,
+		function (result) {
+			if (result.error())
+				alert("Error: " + result.error());
+			else
+				alert("Успешно: " + result.data());
+		}
+	);
+}
+</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

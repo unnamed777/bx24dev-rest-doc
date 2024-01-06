@@ -1,0 +1,49 @@
+<html>
+        <head>
+            <title>tasks.api.scrum.sprint.delete</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">tasks.api.scrum.sprint.delete <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/tasks/task/scrum/sprint/tasks_api_scrum_sprint_delete.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">task</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<pre class="syntax"><b>tasks.api.scrum.sprint.delete(</b>id<b>)</b></pre>
+
+<p>Метод удаляет спринт.</p>
+
+<p>При удалении спринта с задачами задачи будут перемещены в бэклог.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+<tbody>
+<tr>
+	<th width="15%">Параметр</th>	<th>Описание</th></tr>
+
+<tr>	<td>id</td>	<td>Идентификатор спринта. Обязательный параметр.</td></tr>
+
+</tbody>
+</table>
+
+<h4>Примеры</h4>
+ <pre class="syntax" rel="example">const sprintId = 1;
+BX24.callMethod(
+	'tasks.api.scrum.sprint.delete',
+	{
+		id: sprintId
+	},
+	function(res)
+	{
+		console.log(res);
+	}
+);
+</pre> 
+
+<br>							
+        </div>
+        </body>
+        </html>

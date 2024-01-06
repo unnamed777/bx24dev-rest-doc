@@ -1,0 +1,37 @@
+<html>
+        <head>
+            <title>user.update</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">user.update <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/users/user_update.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Обновляет данные пользователя. Возможно только от имени пользователя с правами приглашения пользователей.</p>
+
+<h4>Параметры</h4>
+
+<p>Все поля из <a class="link" href="/rest_help/users/user_fields.php">user.fields</a>. Поле <b>ID</b> - обязательное.</p>
+
+<p><b>Вызов</b></p>
+
+<pre class="syntax" rel="example">BX24.callMethod('user.update', {"ID": 1, "NAME": "Administrator"});</pre>
+
+<p><b>Запрос</b></p>
+
+<pre class="syntax">https://my.bitrix24.ru/rest/user.update.json?ID=1&amp;NAME=Administrator&amp;auth=1b2234a7412080205f4318e42c7298dc</pre>
+
+<p><b>Ответ</b></p>
+
+<pre class="syntax">{"result":true}</pre>
+
+<h4>Пример</h4>
+
+<p>Пример запроса, переводящий сотрудника в число уволенных.</p>
+
+<pre class="syntax">BX24.callMethod('user.update', {"ID": 6, "ACTIVE": "N"}); </pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

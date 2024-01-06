@@ -1,0 +1,33 @@
+<html>
+        <head>
+            <title>crm.deal.contact.fields</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.deal.contact.fields <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/cdeals/crm_deal_contact_fields.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.deal.contact.fields()</pre>
+
+<p>Возвращает для связи сделка-контакт описание полей, используемых методами семейства crm.deal.contact.*, то есть <a class="link" href="/rest_help/crm/cdeals/crm_deal_contact_items_get.php">crm.deal.contact.items.get</a>, <a class="link" href="/rest_help/crm/cdeals/crm_deal_contact_items_set.php">crm.deal.contact.items.set</a>, <a class="link" href="/rest_help/crm/cdeals/crm_deal_contact_add.php">crm.deal.contact.add</a> и т.д.</p>
+
+<h4>Параметры</h4>
+
+<p>Без параметров.</p>
+
+<h4>Пример</h4>
+<pre class="syntax" rel="example">BX24.callMethod(
+	"crm.deal.contact.fields",
+	{},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.dir(result.data());
+	}
+);
+</pre><br><br>							
+        </div>
+        </body>
+        </html>

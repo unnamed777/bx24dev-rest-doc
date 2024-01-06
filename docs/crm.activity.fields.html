@@ -1,0 +1,133 @@
+<html>
+        <head>
+            <title>crm.activity.fields</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.activity.fields <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/rest_activity/crm_activity_fields.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.activity.fields()</pre>
+
+<p>Возвращает описание полей активности.</p>
+
+<h4>Параметры</h4>
+
+<p>Без параметров</p>
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	"crm.activity.fields",
+	{},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.dir(result.data());
+	}
+);
+</pre>
+
+<h4>Поля </h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Поле</th> 	<th>Описание</th><th>Тип</th><th>Примечание</th></tr>
+   
+    <tr> 	<td>ASSOCIATED_ENTITY_ID</td> 	<td>Идентификатор связанной с делом сущности</td><td>integer</td><td>Только для чтения</td></tr>
+   
+    <tr> 	<td>AUTHOR_ID</td> 	<td>Создатель дела</td><td>user</td><td></td></tr>
+   
+    <tr> 	<td>AUTOCOMPLETE_RULE</td> 	<td>Автозаполнение</td><td>integer</td><td></td></tr>
+   
+    <tr> 	<td>BINDINGS</td> 	<td>Привязки</td><td>crm_activity_binding</td><td>Множественное, только для чтения.</td></tr>
+   
+    <tr> 	<td>COMMUNICATIONS</td> 	<td></td><td>crm_activity_communication</td><td>Множественное, обязательное.</td></tr>
+   
+    <tr> 	<td>COMPLETED</td> 	<td>Завершено</td><td>char</td><td></td></tr>
+   
+    <tr> 	<td>CREATED</td> 	<td>Создано</td><td>datetime</td><td></td></tr>
+   
+    <tr> 	<td>DEADLINE</td> 	<td>Срок исполнения</td><td>datetime</td><td>Поле напрямую не устанавливается, значение берётся из START_TIME для звонка и встречи и из END_TIME для задачи.</td></tr>
+   
+    <tr> 	<td>DESCRIPTION</td> 	<td>Описание</td><td>string</td><td></td></tr>
+   
+    <tr> 	<td>DESCRIPTION_TYPE</td> 	<td>Тип описания</td><td><a class="link" href="/rest_help/crm/auxiliary/enum/crm_enum_contenttype.php">crm.enum.contenttype</a></td><td></td></tr>
+   
+    <tr> 	<td>DIRECTION</td> 	<td>Направление дела: входящее/исходящее. </td><td><a class="link" href="/rest_help/crm/auxiliary/enum/crm_enum-activitydirection.php">crm.enum.activitydirection</a></td><td>Актуально для звонков и писем, для встреч не используется.</td></tr>
+   
+    <tr> 	<td>EDITOR_ID</td> 	<td>Кто изменил</td><td>user</td><td>Только для чтения</td></tr>
+   
+    <tr> 	<td>END_TIME</td> 	<td>Время завершения</td><td>datetime</td><td></td></tr>
+   
+    <tr> 	<td>FILES</td> 	<td>Добавленные файлы</td><td>diskfile</td><td>Множественное</td></tr>
+   
+    <tr> 	<td>ID</td> 	<td>Идентификатор дела</td><td>integer</td><td>Только для чтения</td></tr>
+   
+    <tr> 	<td>LAST_UPDATED</td> 	<td>Дата последнего обновления </td><td>datetime</td><td>Только для чтения</td></tr>
+   
+    <tr> 	<td>LOCATION</td> 	<td>Местоположение.</td><td>string</td><td></td></tr>
+   
+    <tr> 	<td>NOTIFY_TYPE</td> 	<td>Тип уведомлений</td><td><a class="link" href="/rest_help/crm/auxiliary/enum/crm_enumactivitynotifytype.php">crm.enum.activitynotifytype</a></td><td></td></tr>
+   
+    <tr> 	<td>NOTIFY_VALUE</td> 	<td></td><td>integer</td><td>Только для чтения</td></tr>
+   
+    <tr> 	<td>ORIGINATOR_ID</td> 	<td>Идентификатор источника данных</td><td>string</td><td>Используется только для привязки к внешнему источнику.</td></tr>
+   
+    <tr> 	<td>ORIGIN_ID</td> 	<td>Идентификатор элемента в источнике данных</td><td>string</td><td>Используется только для привязки к внешнему источнику.</td></tr>
+   
+    <tr> 	<td>ORIGIN_VERSION</td> 	<td>Оригинальная версия</td><td>string</td><td>Используется для защиты данных от случайного перетирания внешней системой. Если данные были импортированы и не изменялись во внешней системе, то такие данные могут быть редактированы в CRM без опасения, что следующая выгрузка приведет к перетиранию данных</td></tr>
+   
+    <tr> 	<td>OWNER_ID</td> 	<td>Собственник</td><td>integer</td><td>Неизменяемое.</td></tr>
+   
+    <tr> 	<td>OWNER_TYPE_ID</td> 	<td>Тип собственника</td><td><a class="link" href="/rest_help/crm/auxiliary/enum/crm_enum_ownertype.php">crm.enum.ownertype</a></td><td>Неизменяемое.</td></tr>
+   
+    <tr> 	<td>PRIORITY</td> 	<td>Приоритет</td><td><a class="link" href="/rest_help/crm/auxiliary/enum/crm_enum_activitypriority.php">crm.enum.activitypriority</a></td><td></td></tr>
+   
+    <tr> 	<td>PROVIDER_DATA</td> 	<td></td><td>string</td><td></td></tr>
+   
+    <tr> 	<td>PROVIDER_GROUP_ID</td> 	<td></td><td>string</td><td></td></tr>
+  
+    <tr> 	<td>PROVIDER_ID</td> 	<td>Идентификатор провайдера</td><td>string</td><td>Только для чтения</td></tr>
+   
+    <tr> 	<td>PROVIDER_TYPE_ID</td> 	<td>Идентификатор типа провайдера</td><td>string</td><td>Статус из справочника</td></tr>
+   
+    <tr> 	<td>PROVIDER_PARAMS</td> 	<td></td><td>object</td><td></td></tr>
+   
+    <tr> 	<td>RESPONSIBLE_ID</td> 	<td>Ответстветнный</td><td>user</td><td>Обязательное.</td></tr>
+   
+    <tr> 	<td>RESULT_CURRENCY_ID</td> 	<td></td><td>string</td><td></td></tr>
+      
+    <tr> 	<td>RESULT_MARK</td> 	<td></td><td>integer</td><td></td></tr>
+   
+    <tr> 	<td>RESULT_SOURCE_ID</td> 	<td></td><td>string</td><td></td></tr>
+   
+    <tr> 	<td>RESULT_STATUS</td> 	<td></td><td>integer</td><td></td></tr>
+   
+    <tr> 	<td>RESULT_STREAM</td> 	<td>Статистика отчётов</td><td>integer</td><td></td></tr>
+   
+    <tr> 	<td>RESULT_SUM</td> 	<td></td><td>double</td><td></td></tr>
+  
+    <tr> 	<td>RESULT_VALUE</td> 	<td></td><td>double</td><td></td></tr>
+   
+    <tr> 	<td>SETTINGS</td> 	<td>Настройки</td><td>object</td><td></td></tr>
+   
+    <tr> 	<td>START_TIME</td> 	<td>Время начала выполнения</td><td>datetime</td><td></td></tr>
+   
+    <tr> 	<td>STATUS</td> 	<td>Статус</td><td>crm_enum_activitystatus</td><td></td></tr>
+   
+    <tr> 	<td>SUBJECT</td> 	<td>Субьект</td><td>string</td><td>Обязательное</td></tr>
+      
+    <tr> 	<td>TYPE_ID</td> 	<td>Тип</td><td><a class="link" href="/rest_help/crm/auxiliary/enum/crm_enum_activitytype.php">crm_enum_activitytype</a></td><td>Обязательный, неизменяемый</td></tr>
+   
+    <tr> 	<td>WEBDAV_ELEMENTS</td> 	<td>Добавленные файлы</td><td>diskfile</td><td>Множественное. Устарел, сохраняется для совместимости.</td></tr>
+   </tbody>
+ </table>
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

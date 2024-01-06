@@ -1,0 +1,78 @@
+<html>
+        <head>
+            <title>crm.documentgenerator.template.getfields</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.documentgenerator.template.getfields <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/documentgenerator/tempates/crm_documentgenerator_template_getfields.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<a class="link" name="register"></a>
+<pre class="syntax">crm.documentgenerator.template.getfields(id, entityTypeId, entityId, values = [])</pre>
+
+<p>Возвращает список полей шаблона с их описанием.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>      </tr>
+
+<tr><td>id</td><td>ID шаблона</td></tr>
+<tr><td>entityTypeId</td><td>ID типа CRM-сущности</td></tr>
+<tr><td>entityId</td><td>ID используемой сущности</td></tr>
+<tr><td>values</td><td>массив дополнительных значений</td></tr>
+	</tbody>
+</table>
+
+
+
+<h4>Пример</h4>
+
+<pre class="syntax">"templateFields": {
+	"DocumentNumber": {
+		"title": "Номер" // заголовок
+		"value": "22" // значение
+		"group": [ // иерархия
+			0: "Документ"
+		],
+		"default": "22" // значение по умолчанию
+	},
+	"MyCompanyUfLogo": { // поле типа картинка
+		"title": "Логотип",
+		"value": "", 
+		"type": "IMAGE",
+		"group": [
+			0: "Документ",
+			1: "Моя компания"
+		],
+		"default": ""
+	},
+	"MY_COMPANY": { // поле, у которого есть несколько вариантов выбора
+		"title": "Моя компания"
+		"value": [
+			0: {
+				"value": "6"
+				"title": "1С-Битрикс"
+				"selected": "1"
+			},
+			1: {
+				"value": "11"
+				"title": "ИП Копытов"
+				"selected":" "
+			}
+		]
+		"group": [
+			0: "Документ",
+			1: "Моя компания"
+		],
+	}
+}
+</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

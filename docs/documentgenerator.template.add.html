@@ -1,0 +1,65 @@
+<html>
+        <head>
+            <title>documentgenerator.template.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">documentgenerator.template.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/documentgenerator/templates/documentgenerator_template_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">documentgenerator</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<a class="link" name="register"></a>
+<pre class="syntax">documentgenerator.template.add(fields)</pre>
+
+<p>Метод добавляет новый шаблон. Возвращает те же данные, что и при вызове <a class="link" href="/rest_help/documentgenerator/templates/documentgenerator_template_get.php">documentgenerator.template.get()</a> на новом шаблоне.</p>
+
+<p>Контент файла (параметр <code>file</code>) можно передать двумя способами:</p>
+<ul>
+<li>В POST-запросе закодированным в <i>base64</i> (<code>fields[file]</code>);</li>
+<li>Без кодировки в <i>multipart/form-data</i> (просто <code>file</code>);</li>
+</ul>
+
+<p>Т.к. интерфейс должен быть реализован самостоятельно, то настройки видимости (параметр <code>fields[users]</code>) нужны только самому приложению. Аналогично индекс сортировки (параметр <code>fields[sort]</code>) и активность (параметр <code>fields[active]</code>).</p>
+
+<p>Все созданные через этот метод шаблоны привязаны к модулю rest и единственному провайдеру <code>\Bitrix\DocumentGenerator\DataProvider\Rest</code>.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>      </tr>
+
+<tr><td>fields</td><td>массив полей шаблона, среди которых:
+<ul>
+<li><code>fields[name]</code> - название шаблона (обязательное).</li>
+<li><code>fields[file]</code> - контент файла, закодированный в <i>base64</i> (обязательное). Как альтернативу, контент файла можно передать в <i>multipart / form-data</i>. В этом случае его не надо кодировать в <i>base64</i>.</li>
+<li><code>fields[code]</code> - символьный код шаблона.</li>
+<li><code>fields[numeratorId]</code> - идентификатор нумератора (обязательное).</li>
+<li><code>fields[region]</code> - страна  (обязательное).</li>
+<li><code>fields[users]</code> - массив видимости. По умолчанию пусто.</li>
+<li><code>fields[active]</code> - Y/N флаг активности. По умолчанию Y.</li>
+<li><code>fields[withStamps]</code> - Y/N ставить печати и подписи. По умолчанию N</li>
+<li><code>fields[sort]</code> - индекс сортировки.</li>
+</ul>
+
+
+
+
+</td></tr>
+
+
+
+	</tbody>
+</table>
+
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

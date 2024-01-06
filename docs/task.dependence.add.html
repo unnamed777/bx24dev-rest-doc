@@ -1,0 +1,47 @@
+<html>
+        <head>
+            <title>task.dependence.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">task.dependence.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/tasks/task/dependence/task_dependence_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">task</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<pre class="syntax">task.dependence.add(taskIdFrom, taskIdTo, linkType)</pre>
+
+<p> Метод создаёт зависимость одной задачи от другой.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>taskIdFrom</td> 	<td>Идентификатор задачи от которой создаётся зависимость</td> <td></td></tr>
+   
+    <tr> 	<td>taskIdTo</td> 	<td>Идентификатор задачи для которой создаётся зависимость</td> <td></td></tr>
+   
+    <tr> 	<td>linkType</td> 	<td>Тип зависимости:
+
+<pre class="syntax">const LINK_TYPE_START_START =      00; // Связь старт-старт
+const LINK_TYPE_START_FINISH =     01; // Связь старт-финиш
+const LINK_TYPE_FINISH_START =     02; // Связь финиш-старт
+const LINK_TYPE_FINISH_FINISH =    03; // Связь финиш-финиш</pre>
+
+
+</td> <td></td></tr>
+    
+   </tbody>
+ </table>
+
+<p>Тип зависимости может передаваться просто цифрами. Но в случае обращения со стороны PHP рекомендуется <code>ProjectDependenceTable::LINK_TYPE_START_START</code>, то есть использовать значение константы.</p>
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

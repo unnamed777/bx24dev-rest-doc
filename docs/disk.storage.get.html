@@ -1,0 +1,63 @@
+<html>
+        <head>
+            <title>disk.storage.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">disk.storage.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/disk/storage/disk_storage_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">disk</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<pre class="syntax">disk.storage.get</pre>
+
+<p>Возвращает хранилище по идентификатору.</p>
+
+<h4>Пример ответа:</h4>
+<pre class="syntax">"result": {
+	"ID": "2", //идентификатор
+	"NAME": "Маркетинг и реклама", //название
+	"CODE": null, //символьный код
+	"MODULE_ID": "disk",
+	"ENTITY_TYPE": "group", //тип сущности (см. <a class="link" href="/rest_help/disk/storage/disk_storage_gettypes.php">disk.storage.gettypes</a>)
+	"ENTITY_ID": "1", //идентификатор сущности
+	"ROOT_OBJECT_ID": "2" //идентификатор корневой папки
+}
+
+</pre>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+<tr>
+<td>id</td>
+<td>Идентификатор хранилища.</td>
+</tr>
+
+</tbody>
+</table>
+
+<h4>Пример</h4>
+<pre class="syntax" rel="example">        BX24.callMethod(
+		"disk.storage.get",
+		{id: 2},
+		function (result)
+		{
+			if (result.error())
+				console.error(result.error());
+			else
+				console.dir(result.data());
+		}
+);
+
+</pre><br><br>							
+        </div>
+        </body>
+        </html>

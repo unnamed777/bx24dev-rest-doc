@@ -1,0 +1,50 @@
+<html>
+        <head>
+            <title>task.item.userfield.gettypes</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">task.item.userfield.gettypes <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/tasks/task/userfield/gettypes.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">task</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<pre class="syntax">$appParams = array(
+	'auth' =&gt; 'q21g8vhcqmxdrbhqlbd2wh6ev1debppa',
+);
+</pre>
+
+<p>Метод возвращает все доступные типы данных.</p>
+
+<h4>Параметры метода</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr><th width="15%">Параметр</th><th>Описание</th></tr>
+   
+<tr><td><i>auth</i></td><td>Токен авторизации.</td></tr>
+
+   </tbody>
+ </table>
+<h4>Примеры вызова</h4>
+<pre class="syntax">$request = 'http://your-domain.ru/rest/task.item.userfield.gettypes.xml?'.http_build_query($appParams);'
+</pre>
+
+<br>
+<pre class="syntax" rel="example">BX24.callMethod(
+	'task.item.userfield.gettypes',
+	{'q21g8vhcqmxdrbhqlbd2wh6ev1debppa'},
+
+	function(result)
+	{
+		console.info(result.data());
+		console.log(result);
+	}
+);
+</pre>
+<br>							
+        </div>
+        </body>
+        </html>

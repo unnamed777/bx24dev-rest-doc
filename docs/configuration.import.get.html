@@ -1,0 +1,96 @@
+<html>
+        <head>
+            <title>configuration.import.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">configuration.import.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/configuration_import/configuration_import_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">configuration.import</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<pre class="syntax">configuration.import.get(
+	processId
+)</pre>
+
+<p>Получение информации о текущем шаге импорта. Импорт происходит на агенте, выполняемом не чаще раза в минуту, поэтому нецелесообразно узнавать статус более одного раза в минуту (для каждой регистрации свой импорт).</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+	 <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+	
+	 <tr> 	<td>processId</td> 	<td>Идентификатор процесса.</td> <td></td></tr>
+	
+	</tbody>
+ </table>
+
+<h4>Пример</h4>
+
+<pre class="syntax">$res = CRest::call('configuration.import.get',
+	[
+		'processId' =&gt; $id
+	]
+);
+</pre>
+
+<p>Возможный результат:</p>
+
+<pre class="syntax">Array
+	(
+		[result] =&gt; Array
+			(
+				[status] =&gt; P
+				[progress] =&gt; Array
+					(
+						[action] =&gt; manifest
+						[step] =&gt; 0
+						[section] =&gt; REST_APPLICATION
+					)
+			)
+			[time] =&gt; Array
+				(
+					[start] =&gt; 1629303000.9341
+					[finish] =&gt; 1629303001.0443
+					[duration] =&gt; 0.11020803451538
+					[processing] =&gt; 0.054312944412231
+					[date_start] =&gt; 2021-08-18T18:10:00+02:00
+					[date_finish] =&gt; 2021-08-18T18:10:01+02:00
+				)
+	)
+</pre>
+
+<p>Где:</p>
+
+<ul>
+<li><strong>status</strong>:
+<ul>
+<li>S -  старт (сразу после регистрации);</li>
+<li>P -  выполняется. Попутно возвращается <b>progress</b> с некоторыми подробностями о шаге;</li> 
+<li>F -  импорт завершен. Также может возвращаться <b>additional</b> с дополнительными данными завершенного импорта, если они есть для данного импорта;</li> 
+<li>E - ошибка. Подробности в сообщениях <b>errors</b>;</li> 
+<li>U - неизвестный процесс (либо неверный ID, либо информация 
+		<span class="learning-lesson-detail-block js-detail-info-block">
+			<span class="learning-lesson-detail-word js-detail-info-word">уже удалена</span>
+			<span class="learning-lesson-detail-body js-detail-info-body">
+				<span class="learning-lesson-detail-body-inner  js-detail-info-body-inner">
+                    <button class="learning-lesson-detail-close-button  js-detail-close-button" type="button"></button>
+                    Информация очищается через 3 дня.
+                </span>
+			</span>
+		</span>
+		).</li>
+ </ul></li>
+<li><strong>progress</strong> - некоторые подробности о текущем шаге. Данные используются для отладки.</li> 
+<li><strong>notice</strong> - уведомления о некритичных ошибках.</li> 
+<li><strong>errors</strong> - ошибки есть, но импорт продолжается.</li> 
+<li><strong>exception</strong> - импорт остановлен. На следующем шаге будет статус E (если он ещё не установлен).</li> 
+ </ul>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

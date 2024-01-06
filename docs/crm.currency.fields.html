@@ -1,0 +1,68 @@
+<html>
+        <head>
+            <title>crm.currency.fields</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.currency.fields <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/currency/crm_currency_fields.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.currency.fields()</pre>
+
+<p>Возвращает описание <a class="link" href="/rest_help/crm/currency/crm_currency_add.php">полей валюты</a>.</p>
+
+<h4>Параметры</h4>
+
+<p>Без параметров.</p>
+
+<h4>Пример</h4>
+<pre class="syntax" rel="example">BX24.callMethod(
+	"crm.currency.fields",
+	{},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.dir(result.data());
+	}
+);
+</pre>
+
+<h4>Поля</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Поле</th> 	<th>Описание</th><th>Тип</th><th>Примечание</th></tr>
+   
+    <tr> 	<td>AMOUNT</td> 	<td>Номинал</td><td>double</td><td></td></tr>
+   
+    <tr> 	<td>AMOUNT_CNT</td> 	<td>Курс обмена</td><td>int</td><td></td></tr>
+   
+    <tr> 	<td>CURRENCY</td> 	<td>Код валюты</td><td>string</td><td></td></tr>
+  
+    <tr> 	<td>DATA_UPDATE</td> 	<td>Дата изменения</td><td>datetime</td><td>Только для чтения</td></tr> 	<tr><td>DECIMALS</td> 	<td>Количество знаков после запятой</td><td>int</td><td>Только для чтения</td></tr>
+   
+    <tr> 	<td>DEC_POINT</td> 	<td>Десятичная точка при выводе</td><td>string</td><td>Только для чтения</td></tr>
+   
+    <tr> 	<td>FORMAT_STRING</td> 	<td>Строка формата для вывода валюты</td><td>string</td><td>Только для чтения</td></tr>
+   
+    <tr> 	<td>FULL_NAME</td> 	<td>Название</td><td>string</td><td>Только для чтения</td></tr>
+   
+    <tr> 	<td>LANG</td> 	<td>Языковое обозначение</td><td>currency_localization</td><td>Множественный</td></tr>
+   
+    <tr> 	<td>LID</td> 	<td>Привязка к языку</td><td>string</td><td>Только для чтения</td></tr>
+   
+    <tr> 	<td>SORT</td> 	<td>Сортировка</td><td>int</td><td></td></tr>
+   
+    <tr> 	<td>THOUSANDS_SEP</td> 	<td>Разделитель триад</td><td>string</td><td>Только для чтения. Чем будут отделяться сотни от тысяч, тысячи от миллионов и так далее.</td></tr>
+  
+
+   </tbody>
+ </table>
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

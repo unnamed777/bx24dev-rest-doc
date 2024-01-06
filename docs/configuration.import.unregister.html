@@ -1,0 +1,79 @@
+<html>
+        <head>
+            <title>configuration.import.unregister</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">configuration.import.unregister <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/configuration_import/configuration_import_unregister.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">configuration.import</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<pre class="syntax">configuration.import.unregister(
+	processId
+)</pre>
+
+<p>Отмена зарегистрированного импорта.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+	 <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+	
+	 <tr> 	<td>processId</td> 	<td>Идентификатор процесса.</td> <td></td></tr>
+	
+	</tbody>
+ </table>
+
+<h4>Пример</h4>
+
+<p>Отменить импорт можно просто прервав его текущим шагом:</p>
+
+<pre class="syntax">$rest = CRest::call(
+	'configuration.import.unregister',
+	[
+		'processId' =&gt; 42,
+	]
+);
+</pre>
+
+<p>Возвращается:</p>
+
+<ul>
+<li>либо успешный результат выполнения запроса:
+<p></p><pre class="syntax">Array
+(
+	[result] =&gt; Array
+		(
+			[success] =&gt; Y
+		)
+	[time] =&gt; Array
+		(
+			[start] =&gt; 1629302449.9443
+			[finish] =&gt; 1629302450.0617
+			[duration] =&gt; 0.11744093894958
+			[processing] =&gt; 0.035245895385742
+			[date_start] =&gt; 2021-08-18T18:00:49+02:00
+			[date_finish] =&gt; 2021-08-18T18:00:50+02:00
+		)
+)
+</pre><p></p></li>
+
+<li>либо ошибка:
+<p></p><pre class="syntax">Array
+(
+	[error] =&gt; PROCESS_NOT_FOUND
+	[error_description] =&gt; Process doesn't found.
+)
+</pre><p></p>
+</li>
+</ul>
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

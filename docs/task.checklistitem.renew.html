@@ -1,0 +1,47 @@
+<html>
+        <head>
+            <title>task.checklistitem.renew</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">task.checklistitem.renew <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/tasks/task/checklistitem/renew.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">task</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<p>Отмечает выполненный элемент чек-листа как вновь активный.</p>
+ 
+<h4>Параметры функции</h4>
+<table class="tnormal" width="100%"> 
+  <tbody> 
+    <tr><th width="15%">Параметр</th><th>Описание</th></tr>
+		<tr><td>TASKID</td>	<td>Идентификатор задачи. Обязательный параметр.</td>	</tr>
+		<tr><td>ITEMID</td>	<td>Идентификатор элемента чек-листа. Обязательный параметр.</td>	</tr>		
+
+	</tbody>
+</table>
+
+ <p></p><div class="note"><b>Внимание!</b> Соблюдение порядка следования параметров в запросе обязательно. При его нарушении запрос будет выполнен с ошибками.</div><p></p>
+
+<h4>Пример</h4>
+<pre class="syntax" rel="example">BX24.callMethod(
+	'task.checklistitem.renew',
+	[13, 21],
+	function(result){
+		console.info(result.data());
+		console.log(result);
+	}
+);
+</pre>
+ 
+<p><b>Смотрите также</b></p>
+<ul>
+	<li><a class="link" href="#">task.checklistitem.complete</a></li>
+</ul>  
+ 
+<br><br>							
+        </div>
+        </body>
+        </html>

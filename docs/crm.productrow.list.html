@@ -1,0 +1,43 @@
+<html>
+        <head>
+            <title>crm.productrow.list</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.productrow.list <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/productrow_old/crm_productrow_list.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Возвращает список товарных позиций по фильтру. Является реализацией списочного метода для товарных позиций. Владелец товарных позиций определяется обязательными полями OWNER_TYPE и OWNER_ID, где OWNER_TYPE - односимвольный код типа ("D" - сделка, "L" - лид), OWNER_ID - идентификатор.</p>
+
+<h4>Параметры</h4>
+
+<p>Cм. описание <a class="link" href="/rest_help/rest_sum/index.php">списочных методов</a>.</p>
+
+<h4>Пример</h4>
+<pre class="syntax" rel="example">var ownerType = prompt("Введите тип владельца (D, L)");
+var ownerId = prompt("Введите ID владельца");
+BX24.callMethod(
+	"crm.productrow.list",
+	{
+		filter:
+		{
+			"OWNER_TYPE": ownerType,
+			"OWNER_ID": ownerId
+		}
+	},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+		{
+			console.dir(result.data());
+			if(result.more())
+				result.next();
+		}
+	}
+);
+</pre><br><br>							
+        </div>
+        </body>
+        </html>

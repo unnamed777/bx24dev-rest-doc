@@ -1,0 +1,58 @@
+<html>
+        <head>
+            <title>catalog.productProperty.update</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">catalog.productProperty.update <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/catalog/productproperty/catalog_productproperty_update.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">catalog.productProperty.update(id, fields)</pre>
+
+<p>Метод для обновления полей свойства товаров или торговых предложений.</p>
+
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th><th>Тип</th>
+			<th>Описание</th>      </tr>
+
+<tr><td>id</td><td>integer</td> <td>Идентификатор свойства товаров или торговых предложений.</td></tr>
+
+<tr><td>fields</td><td>object</td> <td>Поля, соответствующие доступному списку полей <a class="link" href="/rest_help/catalog/productproperty/catalog_productproperty_getfields.php">fields</a>.</td></tr>
+
+
+	</tbody>
+</table>
+
+<br><br>
+
+<h4>Примеры</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'catalog.productProperty.update',
+	{
+		id: 128,
+		fields: {
+			isRequired: "Y",
+			iblockId: 16,
+			name: "Размер",
+			propertyType: "L"
+		}
+	},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error().ex);
+		else
+			console.log(result.data());
+	}
+);
+</pre>
+<br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,72 @@
+<html>
+        <head>
+            <title>crm.automation.trigger.execute</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.automation.trigger.execute <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/automation/trigger_application/crm_automation_trigger_execute.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Метод, запускающий выполнение триггера. Возвращает <i>true</i> или ошибку с описанием</p>
+
+<h4>Параметры</h4>
+
+<p><table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Метод</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>CODE</td> 	<td>Внутренний уникальный (в рамках приложения) идентификатор триггера. Должен соответствовать маске [a-z0-9\.\-_]</td> <td></td></tr>
+   
+    <tr> 	<td>OWNER_TYPE_ID</td> 	<td>Тип сущности CRM (Лид или Сделка по справочнику <a class="link" href="/rest_help/crm/auxiliary/enum/crm_enum_ownertype.php">crm.enum.ownertype</a>)</td> <td></td></tr>
+   
+    <tr> 	<td>OWNER_ID</td> 	<td>Идентификатор сущности</td> <td></td></tr>
+   
+
+   
+   </tbody>
+ </table></p>
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">function executeTrigger(code)
+{
+	BX24.selectCRM({
+		entityType: ['lead', 'deal']
+	},
+	function(selected)
+	{
+		var typeId, id;
+		if (selected['lead'] &amp;&amp; selected['lead'][0])
+		{
+			typeId = 1;
+			id = selected['lead'][0]['id'].substring(2);
+		}
+		else if (selected['deal'] &amp;&amp; selected['deal'][0])
+		{
+			typeId = 2;
+			id = selected['deal'][0]['id'].substring(2);
+		}
+		BX24.callMethod(
+			'crm.automation.trigger.execute',
+			{
+				CODE: code,
+				OWNER_TYPE_ID: typeId,
+				OWNER_ID: id
+			},
+			function(result)
+			{
+				if(result.error())
+					alert("Error: " + result.error());
+				else
+				{
+					alert("Success: " + result.data());
+				}
+			}
+		);
+	});
+}</pre>
+
+<br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,33 @@
+<html>
+        <head>
+            <title>crm.item.productrow.update</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.item.productrow.update <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/productrow/crm_item_productrow_update.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.item.productrow.update({id: number, fields: {}})</pre>
+
+<p>Метод обновит товарную позицию с идентификатором id, задав ей новые значения полей из fields. Если какое-то поле будет отсутствовать в fields, то его значение останется неизменным.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>id</td> 	<td>Идентификатор товарной позиции</td> <td></td></tr>
+   
+    <tr> 	<td>fields</td> 	<td>Значение полей товарной позиции, которые необходимо изменить</td> <td></td></tr>
+   
+   </tbody>
+ </table>
+
+ <p>Значения некоторый полей (priceExclusive и др.) будут автоматически пересчитаны, если в ходе обновления товарной позиции изменятся значимые для вычислений поля (например, price).</p>
+
+<p>Метод вернет результат аналогичный вызову метода <a class="link" href="/rest_help/crm/productrow/crm_item_productrow_get.php">crm.item.productrow.get</a> для изменённой товарной позиции.</p>
+<br><br>							
+        </div>
+        </body>
+        </html>

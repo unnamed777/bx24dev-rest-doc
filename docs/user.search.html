@@ -1,0 +1,112 @@
+<html>
+        <head>
+            <title>user.search</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">user.search <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/users/user_search.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note">Перечень полей пользователей Битрикс24, который будет получен в результате выполнения метода, зависит от скоупа приложения/вебхука. Подробности о доступе к данным пользователей можно узнать в <a class="link" href="/rest_help/users/index.php">статье</a>. </p>
+
+<p>Метод для получения списка пользователей с ускоренным поиском по персональным данным (имя, фамилия, отчество, название подразделения, должность). Работает в двух режимах: быстро с помощью <b>Fulltext Index</b> и более медленный вариант через	
+		<span class="learning-lesson-detail-block js-detail-info-block">
+			<span class="learning-lesson-detail-word js-detail-info-word">правый LIKE</span>
+			<span class="learning-lesson-detail-body js-detail-info-body">
+				<span class="learning-lesson-detail-body-inner  js-detail-info-body-inner">
+                    <button class="learning-lesson-detail-close-button  js-detail-close-button" type="button"></button>
+                    USER_NAME LIKE "Текст%" - это называется правый лайк, когда поиск осуществляется	только по тексту который начинается на заданную фразу, но может содержать разные окончания - такой поиск существенно быстрее чем у двухстороннего лайка "%текст%" или левостороннего "%текст" - за счет архитектуры хранения идексированных полей в БД
+                </span>
+			</span>
+		</span>
+		 (поддержка определяется автоматически).</p>
+
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+	<tbody> 
+		<tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+	 
+		<tr> 	<td>FILTER</td> 	<td>Массив может содержать поля в любом сочетании:
+
+<ul>
+<li><b>NAME</b> - имя</li>
+<li><b>LAST_NAME</b> - фамилия</li> 
+<!---<li><b>SECOND_NAME</b> - отчество</li> -->
+<li><b>WORK_POSITION</b> - должность</li>
+<li><b>UF_DEPARTMENT_NAME</b> - название подразделения</li> 
+<li><strong>USER_TYPE</strong> - тип пользователя. Может принимать следующие значения: <br>
+<strong>employee</strong> - сотрудник, <br>
+<strong>extranet</strong> - пользователь экстранета,<br>
+<strong>email</strong> - почтовый пользователь</li>
+ </ul>
+
+<p>Или <b>FIND</b> - поле которое будет искать во всех перечисленных полях (Это аналог режима старого <a class="link" href="https://dev.1c-bitrix.ru/api_help/main/reference/cuser/getlist.php" title="" target="_blank">CUser::GetList</a> в котором можно было задать фильтр NAME_SEARCH и получить результат)</p>
+
+
+<p class="note">Метод может работать либо с фильтрацией с помощью ключа FIND или со всеми другими полями. Одновременно использовать FIND и любое другое поле - нельзя.</p>
+</td> <td></td></tr>
+	 
+	 </tbody>
+ </table>
+
+<p>Метод наследует поведение метода <a class="link" href="/rest_help/users/user_get.php">user.get</a> все параметры из этой функции так же доступны.</p>
+
+<h4>Пример</h4>
+
+<p>Результат:</p>
+
+<pre class="syntax">{
+	"result": [
+		{
+			"ID": "2",
+			"ACTIVE": true,
+			"EMAIL": "m.ivshina@example.com",
+			"NAME": "Мария",
+			"LAST_NAME": "Ившина",
+			"SECOND_NAME": "",
+			"PERSONAL_GENDER": "F",
+			"PERSONAL_PROFESSION": "",
+			"PERSONAL_WWW": "http://shelenkov.com/horse/events.html",
+			"PERSONAL_BIRTHDAY": "1984-04-29T02:00:00+04:00",
+			"PERSONAL_PHOTO": "http://www.hazz/upload/main/982/42-17082203.gif",
+			"PERSONAL_ICQ": "431-874-61",
+			"PERSONAL_PHONE": "",
+			"PERSONAL_FAX": "",
+			"PERSONAL_MOBILE": "",
+			"PERSONAL_PAGER": "",
+			"PERSONAL_STREET": "",
+			"PERSONAL_CITY": "",
+			"PERSONAL_STATE": "",
+			"PERSONAL_ZIP": "",
+			"PERSONAL_COUNTRY": "0",
+			"WORK_COMPANY": "",
+			"WORK_POSITION": "IT-\"специалист\"",
+			"WORK_PHONE": "+7 495 188 46 29",
+			"UF_DEPARTMENT": [
+				51,
+				55,
+				84
+			],
+			"UF_INTERESTS": null,
+			"UF_SKILLS": null,
+			"UF_WEB_SITES": null,
+			"UF_XING": null,
+			"UF_LINKEDIN": null,
+			"UF_FACEBOOK": null,
+			"UF_TWITTER": null,
+			"UF_SKYPE": null,
+			"UF_DISTRICT": null,
+			"UF_PHONE_INNER": "4629"
+		}
+	],
+	"total": 1
+}</pre>
+
+
+
+<br>							
+        </div>
+        </body>
+        </html>

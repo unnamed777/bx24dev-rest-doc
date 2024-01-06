@@ -1,0 +1,34 @@
+<html>
+        <head>
+            <title>sale.paysystem.handler.list</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">sale.paysystem.handler.list <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/paysystem/sale_paysystem_handler_list.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">sale.paysystem.handler.list<b>(</b>
+<b>)</b></pre>
+
+<p>Метод для получения списка рест-обработчиков.</p>
+
+<h4>Параметры</h4>
+<p>Без параметров</p>
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	"sale.paysystem.handler.list",
+	{},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.dir(result.data());
+	}
+);</pre>
+<br><br>							
+        </div>
+        </body>
+        </html>

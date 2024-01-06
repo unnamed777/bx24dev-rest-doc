@@ -1,0 +1,52 @@
+<html>
+        <head>
+            <title>catalog.productPropertyFeature.getFields</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">catalog.productPropertyFeature.getFields <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/catalog/productpropertyfeature/catalog_productpropertyfeature_getfields.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">catalog.productPropertyFeature.getFields()</pre>
+
+<p>Метод возвращает поля параметра свойства товаров или торговых предложений.</p>
+
+<h4>Параметры</h4>
+
+<p>Без параметров.</p>
+
+<h4>Примеры</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'catalog.productPropertyFeature.getFields',
+	{},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error().ex);
+		else
+			console.log(result.data());
+	}
+);
+</pre>
+
+<h4>Возвращаемые поля</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Поле</th> 	<th>Описание</th><th>Тип</th><th>Примечание</th></tr>
+   
+    <tr> 	<td>featureId</td> 	<td>Код параметра.</td> 	<td>string</td> 	<td>Обязательное поле.</td></tr>
+    <tr> 	<td>id</td> 	<td>Идентификатор параметра свойства.</td> 	<td>integer</td> 	<td>Только для чтения.</td></tr>
+    <tr> 	<td>isEnabled</td> 	<td>Включен ли параметр.</td> 	<td>char</td> 	<td>Обязательное поле.</td></tr>
+    <tr> 	<td>moduleId</td> 	<td>Идентификатор модуля.</td> 	<td>string</td> 	<td>Обязательное поле.</td></tr>
+    <tr> 	<td>propertyId</td> 	<td>Идентификатор свойства.</td> 	<td>integer</td> 	<td>Обязательное поле.</td></tr>
+
+   </tbody>
+ </table>
+
+
+<br>							
+        </div>
+        </body>
+        </html>

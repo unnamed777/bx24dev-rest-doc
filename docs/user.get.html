@@ -1,0 +1,93 @@
+<html>
+        <head>
+            <title>user.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">user.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/users/user_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note"> Метод не возвращает интеграторов. Перечень полей пользователей Битрикс24, который будет получен в результате выполнения метода, зависит от скоупа приложения/вебхука.Подробности о доступе к данным пользователей можно узнать в <a class="link" href="/rest_help/users/index.php">статье</a>. </p>
+
+<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Описание</h3>
+
+<p>Получение фильтрованного списка пользователей. Метод вернет всех пользователей за исключением: ботов, пользователей для e-mail, пользователей для Открытых Линий, пользователей Реплики.</p>
+
+<p><b>Вызов</b></p>
+
+<pre class="syntax" rel="example">BX24.callMethod('user.get', {"ID": 1});</pre>
+
+<p><b>Запрос</b></p>
+
+<pre class="syntax">https://my.bitrix24.ru/rest/user.get.json?ID=1&amp;auth=b961afd4148963c5d54ebeb17123d1fc</pre>
+
+<p><b>Ответ</b></p>
+<pre class="syntax">{"result":[{"ID":"1","ACTIVE":true,"EMAIL":"sigurd@example.com","NAME":"Administrator","LAST_NAME":"","SECOND_NAME":"","PERSONAL_GENDER":"",
+"PERSONAL_PROFESSION":"","PERSONAL_WWW":"","PERSONAL_BIRTHDAY":"1955-04-10T00:00:00+03:00","PERSONAL_PHOTO":"\/upload\/main\/80c\/44169_C5_PrimalWaterE500CC.jpg",
+"PERSONAL_ICQ":"","PERSONAL_PHONE":"","PERSONAL_FAX":"","PERSONAL_MOBILE":"","PERSONAL_PAGER":"","PERSONAL_STREET":"","PERSONAL_CITY":"","PERSONAL_STATE":"",
+"PERSONAL_ZIP":"","PERSONAL_COUNTRY":"0","WORK_COMPANY":"","WORK_POSITION":"","UF_DEPARTMENT":[128],"UF_INTERESTS":null,"UF_SKILLS":null,"UF_WEB_SITES":null,
+"UF_XING":null,"UF_LINKEDIN":null,"UF_FACEBOOK":null,"UF_TWITTER":null,"UF_SKYPE":null,"UF_DISTRICT":null,"UF_PHONE_INNER":null}],"total":1}</pre>
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+<table class="tnormal" width="100%">
+  <tbody>
+    <tr><th width="15%">Параметр</th><th>Описание </th></tr>
+  
+<tr><td>sort</td><td> поле, по которому сортируются результаты</td></tr>
+
+<tr><td>order</td><td> направление сортировки
+<ul>
+<li><b>ASC</b> - по возрастанию.</li>
+<li><b>DESC</b> - по убыванию</li> 
+ </ul>
+</td></tr>
+
+<tr><td>FILTER</td><td> Дополнительно  можно указывать любые параметры из <a class="link" href="/rest_help/users/user_fields.php">user.fields</a> для фильтрации по их значениям. Кроме основных полей, доступны дополнительные:
+<ul>
+<li>UF_DEPARTMENT - принадлежность к структуре компании;</li>
+<li>UF_PHONE_INNER - внутренний телефонный номер;</li> 
+<li>IS_ONLINE - [Y/N] - позволяет показать только авторизованных или нет пользователей.</li> 
+<li>NAME_SEARCH - быстрый поиск по персональным данным.</li> 
+<li>USER_TYPE - тип пользователя. Может принимать следующие значения: <br>
+<strong>employee</strong> - сотрудник, <br>
+<strong>extranet</strong> - пользователь экстранета,<br>
+<strong>email</strong> - почтовый пользователь</li>
+<li>ACTIVE -  при значении <i>true</i> исключает из запроса уволенных пользователей.</li>
+
+ </ul>
+<p>Параметры фильтрации могут принимать значение массивов.</p>
+
+</td></tr>
+<tr><td>ADMIN_MODE</td><td>
+		<span class="learning-lesson-detail-block js-detail-info-block">
+			<span class="learning-lesson-detail-word js-detail-info-word">Ключ для работы</span>
+			<span class="learning-lesson-detail-body js-detail-info-body">
+				<span class="learning-lesson-detail-body-inner  js-detail-info-body-inner">
+                    <button class="learning-lesson-detail-close-button  js-detail-close-button" type="button"></button>
+                    <code>'ADMIN_MODE': 'True' </code> <!---Получается с помощью метода <a class="link" href="/rest_help/users/user_fields.php">user.fields</a> закомментировано по комменту юзера--->
+                </span>
+			</span>
+		</span>
+		 в режиме администратора, служит для получения данных о любых пользователях.</td></tr>
+  </tbody>
+</table> 
+
+</div>
+
+<!------->
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,60 @@
+<html>
+        <head>
+            <title>event.bind</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">event.bind <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/general/events_method/event_bind.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Регистрация нового обработчика <a class="link" href="/rest_help/general/events/index.php">события</a>.</p>
+ 
+<p>Метод может работать как при авторизации под пользователем с правами администрирования портала, так и под обычным пользователем. Метод для пользователя без прав администратора доступен с ограничениями:</p>
+
+<ul>
+<li>офлайн-события недоступны, попытка установки будет порождать исключение;</li>
+<li>события устанавливаются от имени текущего пользователя (см. описание параметра auth_type); явное указание auth_type, отличного от ID текущего пользователя, также будет порождать исключение;</li> 
+ </ul>
+
+<br>
+
+<p class="note">Поскольку запросы будут идти с серверов Битрикс, то любой URL должен быть доступен для GET/POST запросов извне.</p>
+
+<p>Интерфейс для данного метода - <a class="link" href="/rest_help/js_library/rest/bx24.callbind.php">BX24.callBind</a>.</p>
+
+<p class="note">При удалении и обновлении приложения его действия будут удаляться. Так что в инсталляторе каждой версии нужно их выставлять с нуля.</p>
+
+ 
+<h4>Параметры</h4>
+ 
+<table width="100%" class="tnormal"> 
+  <tbody>
+    <tr> 	<th width="20%">Параметр</th> 	<th>Описание</th> </tr>
+   
+    <tr> 	<td>event</td> 	<td>Имя события. Обязательный.</td> </tr>
+   
+    <tr> 	<td>handler</td> 	<td>Ссылка на обработчик события. Обязательный.</td> </tr>
+   
+    <tr> 	<td>auth_type</td> 	<td>Идентификатор пользователя, под которым авторизуется обработчик события. Не обязательный. По умолчанию будет использоваться авторизация пользователя, действия которого привели к срабатыванию события.</td> </tr>
+   
+    <tr> 	<td>event_type</td> 	<td>Значения: online|offline. По умолчанию event_type=online, и поведение метода не меняется. Если вызывается event_type=offline, то метод работает с <a class="link" href="https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=99&amp;LESSON_ID=4462" title="" target="_blank">офлайн событиями</a>.</td> </tr>
+
+    <tr> 	<td>auth_connector</td> 	<td>Ключ источника. Параметр предназначен для <a class="link" href="https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=99&amp;LESSON_ID=4462" title="" target="_blank">офлайн событий</a>. Позволяет исключать ложные срабатывания событий. </td> </tr>
+
+    <tr> 	<td>options</td> 	<td>Дополнительные настройки для регистрируемого события, при наличии.</td> </tr>
+   </tbody>
+</table>
+ 
+<a class="link" name="example"></a>
+
+<h4>Пример:</h4>
+ 
+<pre>https://my.bitrix24.ru/rest/event.bind.json?auth=a25e86871fcebb24f4d9076caf2e6623&amp;auth_type=0&amp;event=OnAppUpdate&amp;handler=http%3A%2F%2Fwww.my-domain.com%2Fhandler%2F</pre>
+
+ 
+<p><b>Ответ:</b></p>
+ 
+<pre>{"result":true}</pre><br><br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,28 @@
+<html>
+        <head>
+            <title>messageservice.sender.list</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">messageservice.sender.list <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/messageservice/messageservice_sender_list.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p><b>messageservice.sender.list</b> - возвращает список зарегистрированных приложением SMS-провайдеров.</p>
+
+<h4>Пример</h4>
+<pre class="syntax" rel="example">BX24.callMethod(
+	'messageservice.sender.list',
+	{},
+	function(result)
+	{
+		if(result.error())
+			alert("Error: " + result.error());
+		else
+			alert("Успешно: " + result.data().join(', '));
+	}
+);
+</pre>
+<br>							
+        </div>
+        </body>
+        </html>

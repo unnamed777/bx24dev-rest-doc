@@ -1,0 +1,74 @@
+<html>
+        <head>
+            <title>task.item.update</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">task.item.update <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/tasks/task/item/update.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">task</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<p></p><div class="note"><font color="red"><strong>Внимание!</strong></font> Метод устарел и не поддерживается. Рекомендуется использовать методы <a class="link" href="/rest_help/tasks/task/tasks/index.php">tasks.task.*</a>.</div><p></p>
+
+<p>Обновляет данные по задаче. Доступны для обновления следующие <a class="link" href="/rest_help/tasks/fields.php">поля</a>. При обновлении данных по задаче учитывается бизнес-логика и права. </p>	
+<p>Например: Ответственный не может переименовать задачу - в таком случае будет сгенерирована ошибка.</p>
+
+
+
+<p>Рекомендуется перед обновлением данных проверять, допустимо ли данное действие (<a class="link" href="/rest_help/tasks/task/item/isactionallowed.php">task.item.isactionallowed</a>).</p>
+	
+<h4>Параметры функции</h4>
+<table class="tnormal" width="100%"> 
+  <tbody> 
+    <tr><th width="15%">Параметр</th><th>Описание</th></tr>
+    <tr><td>TASKID</td><td>Идентификатор задачи.</td></tr>
+    <tr><td>TASKDATA</td><td>Список полей с новыми значениями.</td></tr>
+
+  </tbody>
+</table>  	
+  
+
+ <p></p><div class="note"><b>Внимание!</b> Соблюдение порядка следования параметров в запросе обязательно. При его нарушении запрос будет выполнен с ошибками.</div><p></p>
+
+<h4>Пример</h4>
+<pre class="syntax" rel="example">BX24.callMethod(
+	'task.item.update',
+	[1, {TIME_ESTIMATE: 113}],
+	function(result)
+	{
+		console.info(result.data());
+		console.log(result);
+	}
+);
+</pre>
+
+<p>Пример записи значений с CRM:</p>
+<pre class="syntax" rel="example">BX24.callMethod(
+	'task.item.update',
+	[1, {UF_CRM_TASK: ["L_4", "C_7", "CO_5", "D_10"]}],
+	function(result)
+	{
+		console.info(result.data());
+		console.log(result);
+	}
+); </pre>
+
+<p>Цифры это ID соответствующих значений. Значение <code>L_4</code> означает привязку к задаче лида с ID = 4. Можно задавать несколько связей одного типа, например <code>L_4, L_5</code>.</p>
+<ul>
+<li><b>L</b> - лид</li>
+<li><b>C</b> - контакт</li> 
+<li><b>CO</b> - компания</li> 
+<li><b>D</b> - сделка</li> 
+ </ul>
+
+
+
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

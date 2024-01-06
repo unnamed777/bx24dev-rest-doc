@@ -1,0 +1,55 @@
+<html>
+        <head>
+            <title>crm.category.get</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.category.get <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/methodscrmcategory/crm_category_get.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.category.get({entityTypeId: number, id: number})</pre>
+
+<p>Отдает информацию о направлении с идентификатором <code>id</code>.</p>
+
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr><th width="15%">Параметр</th> <th>Описание</th></tr>
+
+<tr><td>entityTypeId</td><td>Идентификатор типа сущности CRM.</td></tr>
+<tr><td>id</td><td>Идентификатор направления.</td></tr>
+
+
+</tbody>
+</table>
+<br>
+<h4>Ответ:</h4>
+<br>
+<pre class="syntax">{
+	"category": {
+		"id": 53,
+		"name": "Общее",
+		"sort": 500,
+		"entityTypeId": 170,
+		"isDefault": "N"
+	}
+}
+</pre>
+<br>
+<p>Здесь:</p>
+<ul>
+    <li><code>id</code> - идентификатор направления.</li>
+    <li><code>name</code> - название направления.</li>
+    <li><code>sort</code> - коэффициент сортировки.</li>
+    <li><code>entityTypeId</code> - идентификатор типа сущности CRM, к которому относится данное направление.</li>
+    <li><code>isDefault</code> - является ли данное направление направлением по умолчанию.</li>
+</ul>
+<br>
+<p>У некоторых сущностей ответ может быть расширен дополнительными полями.</p>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,112 @@
+<html>
+        <head>
+            <title>crm.timeline.bindings.unbind</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.timeline.bindings.unbind <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/timeline/bindings/crm_timeline_bindings_unbind.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+
+<h3 class="tab-title">Описание</h3>
+<pre class="syntax">crm.timeline.bindings.unbind()</pre>
+
+<p>Снимает привязку записи таймлайна с элемента crm.</p>
+<br><br>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+
+<tr>
+<td>fields</td>
+<td>Набор полей - массив вида array ("поле"=&gt;"значение"[, ...]), содержащий значения полей. Обязательные поля - <code>OWNER_ID</code>, <code>ENTITY_ID</code> и <code>ENTITY_TYPE</code>.
+</td>
+</tr>
+
+	</tbody>
+</table>
+
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Поля</h3>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Поле</th> 	<th>Описание</th><th>Тип</th><th>Примечание</th></tr>
+
+    <tr> 	<td>OWNER_ID</td> 	<td>ID записи в таймлайне.</td>       <td>integer</td>      <td>Неизменяемое\Обязательное</td></tr>
+
+    <tr> 	<td>ENTITY_ID</td> 	<td>ID элемента, к которому привязана записи в таймлайне.</td>       <td>integer</td>      <td>Неизменяемое\Обязательное</td></tr>
+
+    <tr> 	<td>ENTITY_TYPE</td> 	<td>Тип элемента, к которому привязан комментарий.
+<br>Значения: 
+<ul>
+<li><code>lead</code> - лид;</li>
+<li><code>deal</code> - сделка;</li>
+<li><code>contact</code> - контакт;</li>
+<li><code>company</code> - компания;</li>
+<li><code>order</code> - заказ.</li>
+</ul>
+</td>       <td>string</td>      <td>Неизменяемое\Обязательное</td></tr>
+
+   </tbody>
+ </table>
+
+
+<p></p>
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Пример</h3>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	"crm.timeline.bindings.unbind",
+	{
+		fields:
+		{
+			"ENTITY_ID": 10,
+			"ENTITY_TYPE": "deal",
+			"OWNER_ID": 1110
+		}
+	},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.info(result.data());
+	}
+);
+</pre>
+
+</div>
+
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

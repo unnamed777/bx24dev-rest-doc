@@ -1,0 +1,88 @@
+<html>
+        <head>
+            <title>catalog.document.element.list</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">catalog.document.element.list <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/catalog/catalogdocument/catalogdocumentelement/catalog_document_element_list.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">catalog.document.element.list(order, filter, select, offset, limit)</pre>
+
+<p>Метод для получения списка товаров в документах складского учёта.</p>
+
+<p>Если операция успешна, возвращается список документов в теле ответа.</p>
+
+<h4>Параметры</h4>
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th><th>Тип</th>
+			<th>Описание</th>      </tr>
+<tr><td>order</td><td>array</td> <td>Сортировка.</td></tr>
+
+<tr><td>filter</td><td>array</td> <td>Фильтр.</td></tr>
+
+<tr><td>select</td><td>array</td> <td>Список получаемых полей.</td></tr>
+
+<tr><td>offset</td><td>integer</td> <td>Страница выборки, работает аналогично start.</td></tr>
+
+<tr><td>limit</td><td>integer</td> <td>Размер страницы от 1 до 500 (если указан 0 или число больше максимального, то используется значение по умолчанию 50).</td></tr>
+	</tbody>
+</table>
+
+<h4>Примеры</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'catalog.document.element.list', 
+	{
+		'order': {
+			'id': 'asc',
+		},
+		'filter': {
+			'&gt;id': 0,
+		},
+		'offset': 0,
+		'limit': 50,
+	}, 
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.log(result.data());
+	}
+);
+</pre>
+
+<pre class="syntax">$result = CRest::call(
+	'catalog.document.element.list',
+	[
+		'order' =&gt; [
+			'id' =&gt; 'asc',
+		],
+		'filter' =&gt; [
+			'&gt;id' =&gt; 0,
+		],
+		'offset' =&gt; 0,
+		'limit' =&gt; 5,
+	]
+	function(result)
+	{
+		result.next();
+	}
+);
+
+echo '&lt;pre&gt;';
+print_r($result);
+echo '&lt;/pre&gt;';
+</pre>
+
+<p>Для HTTPS</p>
+
+<pre class="syntax">https://ваш_портал/rest/catalog.document.element.list?auth=_ключ_авторизации_&amp;start=50</pre>
+
+<br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,104 @@
+<html>
+        <head>
+            <title>calendar.section.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">calendar.section.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/calendar/calendar_section_add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Добавляет новый календарь. Здесь и в дальнейшем <b>section</b> будет именоваться как "календарь".</p>
+
+<p class="note">На текущий момент метод добавляет новый календарь только для пользователя от которого выполняется метод calendar.section.add. В будущем это ограничение будет снято.</p>
+
+<h4>Параметры функции</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+  
+		<tr>
+			<td>* type</td>
+			<td>Тип календаря:
+<ul>
+<li>user;</li>
+
+<li>group.</li>
+</ul>
+</td>
+		</tr>
+		<tr>
+			<td>* ownerId</td>
+			<td>Идентификатор владельца календаря.</td>
+		</tr>	
+
+<tr>
+			<td>* name</td>
+			<td>Название календаря.</td>
+		</tr>	
+
+<tr>
+			<td>description</td>
+			<td>Описание календаря.</td>
+		</tr>	
+
+<tr>
+			<td>color</td>
+			<td>Цвет календаря.</td>
+		</tr>	
+
+<tr>
+			<td>text_color</td>
+			<td>Цвет текста в календаре.</td>
+		</tr>
+
+<tr>
+			<td>export</td>
+			<td>Список параметров:
+<ul>
+<li>ALLOW - разрешить экспорт календаря;</li>
+
+<li>SET - устанавливается период, за который производить экспорт.</li>
+</ul>
+</td>
+		</tr>
+
+<tr>
+<td>access</td> 
+<td>Массив данных доступа к календарю.</td>
+</tr>
+
+<tr><td colspan="2"><b>* - обязательные параметры</b></td></tr>
+	</tbody>
+</table>
+
+<h4>Возвращаемые значения</h4>
+
+<p>Возвращает id созданных календарей.</p>
+
+
+<h4>Пример использования</h4>
+<pre class="syntax" rel="example">BX24.callMethod("calendar.section.add",
+	{
+		type: 'user',
+		ownerId: '2',
+		name: 'New Section',
+		description: 'Description for section',
+		color: '#9cbeee',
+		text_color: '#283000',
+		export: [{ALLOW: false}]
+		access: {
+			'D114': 17,
+			'G2': 13,
+			'U2':15
+		}
+	}
+);
+</pre>
+<br><br>							
+        </div>
+        </body>
+        </html>

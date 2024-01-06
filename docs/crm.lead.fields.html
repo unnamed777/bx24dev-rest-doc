@@ -1,0 +1,154 @@
+<html>
+        <head>
+            <title>crm.lead.fields</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.lead.fields <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/leads/crm_lead_fields.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.lead.fields()</pre>
+
+<p>Возвращает описание полей <a class="link" href="/rest_help/crm/leads/crm_lead_add.php">лида</a>, в том числе <a class="link" href="/rest_help/crm/leads/crm_lead_userfield_add.php">пользовательских</a>.</p>
+
+<h4>Параметры</h4>
+
+<p>Без параметров.</p>
+
+<h4>Пример</h4>
+<pre class="syntax" rel="example">BX24.callMethod(
+	"crm.lead.fields", 
+	{}, 
+	function(result) 
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.dir(result.data());
+	}
+);
+</pre>
+<h4>Поля</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Поле</th> 	<th>Описание</th><th>Тип</th><th>Примечание</th></tr>
+   
+    <tr> 	<td>ADDRESS</td> 	<td>Адрес контакта</td><td>string</td><td></td></tr>
+   
+    <tr> 	<td>ADDRESS_2</td> 	<td>Вторая страница адреса</td><td>string</td><td>В некоторых странах принято разбивать адрес на 2 части</td></tr>
+   
+    <tr> 	<td>ADDRESS_CITY</td> 	<td>Город</td><td>string</td><td></td></tr>
+   
+    <tr> 	<td>ADDRESS_COUNTRY</td> 	<td>Страна</td><td>string</td><td></td></tr>
+   
+    <tr> 	<td>ADDRESS_COUNTRY_CODE</td> 	<td>Код страны</td><td>string</td><td></td></tr>
+   
+    <tr> 	<td>ADDRESS_POSTAL_CODE</td> 	<td>Почтовый индекс</td><td>string</td><td></td></tr>
+   
+    <tr> 	<td>ADDRESS_PROVINCE</td> 	<td>Область</td><td>string</td><td></td></tr>
+   
+    <tr> 	<td>ADDRESS_REGION</td> 	<td>Район</td><td>string</td><td></td></tr>
+   
+    <tr> 	<td>ASSIGNED_BY_ID</td> 	<td>Связано с пользователем по ID</td><td>user</td><td></td></tr>
+   
+    <tr> 	<td>BIRTHDATE</td> 	<td>Дата рождения</td><td>date</td><td></td></tr>
+   
+    <tr> 	<td>COMMENTS</td> 	<td>Комментарии</td><td>string</td><td></td></tr>
+   
+    <tr> 	<td>COMPANY_ID</td> 	<td>Привязка лида к компании</td><td>crm_company</td><td></td></tr>
+   
+    <tr> 	<td>COMPANY_TITLE</td> 	<td>Название компании, привязанной к лиду</td><td>crm_company</td><td></td></tr>
+    
+    <tr> 	<td>CONTACT_ID</td> 	<td>Привязка лида к контакту</td><td>crm_contact</td><td></td></tr>
+
+   
+    <tr> 	<td>CONTACT_IDS</td> 	<td>Идентификатор привязанного контакта</td><td>crm_contact</td><td>Множественный. <br> При использовании <a class="link" href="/rest_help/crm/cdeals/crm_deal_update.php">crm.deal.update</a> и <a class="link" href="/rest_help/crm/cdeals/crm_deal_add.php">crm.deal.add</a> можно подать массив контактов. В методах <a class="link" href="/rest_help/crm/cdeals/crm_deal_list.php">crm.deal.list</a> и <a class="link" href="/rest_help/crm/cdeals/crm_deal_get.php">crm.deal.get</a> поля нет и необходимо использовать <a class="link" href="/rest_help/crm/cdeals/crm_deal_contact_items_get.php">crm.deal.contact.items.get</a> для получения списка контактов.<br>
+Для очистки поля используйте <a class="link" href="/rest_help/crm/cdeals/crm_deal_contact_items_delete.php">crm.deal.contact.items.delete</a>, для замены значения используйте <a class="link" href="/rest_help/crm/cdeals/crm_deal_contact_items_set.php">crm.deal.contact.items.set</a>.
+</td></tr>
+  
+    <tr> 	<td>CREATED_BY_ID</td> 	<td>Кем создана</td><td>user</td><td>Только для чтения</td></tr>
+    <tr>     <td>CURRENCY_ID</td><td>Идентификатор валюты</td><td>crm_currency</td><td></td></tr>
+    <tr>     <td>DATE_CLOSED</td><td>Дата закрытия</td><td>datetime</td><td>Только для чтения</td></tr>
+	   
+    <tr> 	<td>DATE_CREATE</td> 	<td>Дата создания</td><td>datetime</td><td>Только для чтения</td></tr>
+   
+    <tr> 	<td>DATE_MODIFY</td> 	<td>Дата изменения</td><td>datetime</td><td>Только для чтения</td></tr>
+   
+    <tr> 	<td>EMAIL</td> 	<td>Адрес электронной почты</td><td>crm_multifield</td><td><a class="link" href="/rest_help/crm/auxiliary/multifield/multifield_fields.php">Множественное</a></td></tr>
+   
+    <tr> 	<td>HAS_EMAIL</td> 	<td>Проверка заполненности поля электронной почты</td><td>char</td><td>Только для чтения</td></tr>
+  
+    <tr> 	<td>HAS_PHONE</td> 	<td>Проверка заполненности поля телефон</td><td>char</td><td>Только для чтения</td></tr>
+   
+    <tr> 	<td>HONORIFIC</td> 	<td>Вид обращения</td><td>crm_status</td><td></td></tr>
+   
+    <tr> 	<td>ID</td> 	<td>Идентификатор контакта </td><td>integer</td><td>Только для чтения</td></tr>
+   
+    <tr> 	<td>IM</td> 	<td>Мессенджеры</td><td>crm_multifield</td><td><a class="link" href="/rest_help/crm/auxiliary/multifield/multifield_fields.php">Множественное</a></td></tr>
+      
+  <tr> 	<td>IS_RETURN_CUSTOMER</td><td>Признак повторного лида</td><td>char</td><td>Только для чтения</td></tr>
+  <tr>	<td>LAST_NAME</td><td>Фамилия</td><td>string</td><td>Обязательноcть настраиваемая.</td></tr>
+   
+    <tr> 	<td>MODIFY_BY_ID</td> 	<td>Идентификатор автора последнего изменения</td><td>user</td><td>Только для чтения</td></tr>
+
+    <tr> 	<td>MOVED_BY_ID</td> 	<td>Идентификатор автора перемещения элемента на текущую стадию</td><td>user</td><td>Только для чтения</td></tr>
+
+    <tr> 	<td>MOVED_TIME</td> 	<td>Дата перемещения элемента на текущую стадию</td><td>user</td><td>Только для чтения</td></tr>
+  
+    <tr> 	<td>NAME</td> 	<td>Имя</td><td>string</td><td>Обязательноcть настраиваемая.</td></tr>
+   
+    <tr> 	<td>OPENED</td> 	<td>Доступен для всех</td><td>char</td><td></td></tr>
+    <tr>	<td>OPPORTUNITY</td><td>Предполагаемая сумма</td><td>double</td><td></td></tr>
+   
+    <tr> 	<td>ORIGINATOR_ID</td> 	<td>Идентификатор источника данных</td><td>string</td><td>Используется только для привязки к внешнему источнику.</td></tr>
+   
+    <tr> 	<td>ORIGIN_ID</td> 	<td>Идентификатор элемента в источнике данных</td><td>string</td><td>Используется только для привязки к внешнему источнику.</td></tr>
+   
+    <tr> 	<td>ORIGIN_VERSION</td> 	<td>Оригинальная версия</td><td>string</td><td>Используется для защиты данных от случайного перетирания внешней системой. Если данные были импортированы и не изменялись во внешней системе, то такие данные могут быть редактированы в CRM без опасения, что следующая выгрузка приведет к перетиранию данных</td></tr>
+   
+    <tr> 	<td>PHONE</td> 	<td>Телефон контакта</td><td>crm_multifield</td><td><a class="link" href="/rest_help/crm/auxiliary/multifield/multifield_fields.php">Множественное</a></td></tr>
+   
+    <tr> 	<td>POST</td> 	<td>Должность</td><td>string</td><td></td></tr>
+   
+    <tr> 	<td>SECOND_NAME</td> 	<td>Отчество</td><td>string</td><td>Обязательноcть настраиваемая.</td></tr>
+   
+    <tr> 	<td>SOURCE_DESCRIPTION</td> 	<td>Описание источника</td><td>string</td><td></td></tr>
+  
+    <tr> 	<td>SOURCE_ID</td> 	<td>Идентификатор источника</td><td>crm_status</td><td>Статус из справочника. Список возможных идентификаторов можно получить методом <a class="link" href="/rest_help/crm/auxiliary/status/crm_status_list.php">crm.status.list</a> с фильтром <code>filter[ENTITY_ID]=SOURCE</code></td></tr>
+   
+    <tr> 	<td>STATUS_DESCRIPTION</td> 	<td></td><td>string</td><td></td></tr>
+
+    <tr> 	<td>STATUS_ID</td> 	<td></td><td>string</td><td>NEW - Не обработан, <br>
+    IN_PROCESS – В работе<br>
+    PROCESSED – Обработан<br>
+    JUNK – Некачественный лид<br>
+    CONVERTED – Качественный лид<br>
+</td></tr>
+   
+    <tr> 	<td>STATUS_SEMANTIC_ID</td> 	<td></td><td>string</td><td> F (failed) – обработан неуспешно, <br>
+S (success) – обработан успешно, <br>
+P (processing) – лид в обработке.</td></tr>
+   
+    <tr> 	<td>TITLE</td> 	<td>Название лида</td><td>string</td><td>Обязательное</td></tr>
+   
+    <tr> 	<td>UTM_CAMPAIGN</td> 	<td>Обозначение рекламной кампании</td><td>string</td><td></td></tr>
+   
+    <tr> 	<td>UTM_CONTENT</td> 	<td>Содержание кампании</td><td>string</td><td>Например, для контекстных объявлений.</td></tr>
+   
+    <tr> 	<td>UTM_MEDIUM</td> 	<td>Тип трафика</td><td>string</td><td>CPC (объявления), CPM (баннеры)</td></tr>
+      
+    <tr> 	<td>UTM_SOURCE</td> 	<td>Рекламная система</td><td>string</td><td>Yandex-Direct, Google-Adwords и другие.</td></tr>
+   
+    <tr> 	<td>UTM_TERM</td> 	<td>Условие поиска кампании</td><td>string</td><td>Например, ключевые слова контекстной рекламы.</td></tr>
+   
+    <tr> 	<td>WEB</td> 	<td>URL ресурсов лида</td><td>crm_multifield</td><td><a class="link" href="/rest_help/crm/auxiliary/multifield/multifield_fields.php">Множественное</a></td></tr>
+
+   </tbody>
+ </table>
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,94 @@
+<html>
+        <head>
+            <title>task.item.getallowedactions</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">task.item.getallowedactions <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/tasks/task/item/getallowedactions.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<p class="note_blue">
+Scope: <span class="bg_blue">task</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<div class="tab">
+
+<h3 class="tab-title">Описание</h3>
+ <p></p><div class="note"><font color="red"><strong>Внимание!</strong></font> Метод устарел и не поддерживается. Рекомендуется использовать методы <a class="link" href="/rest_help/tasks/task/tasks/index.php">tasks.task.*</a>.</div><p></p>
+
+<p>Возвращает массив, идентификаторов допустимых действий над задачей (см. констатнты PHP-класса <a class="link" href="http://dev.1c-bitrix.ru/api_help/tasks/constants/index.php">CTaskItem</a>).</p>
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Параметры</h3>
+<table class="tnormal" width="100%"> 
+  <tbody> 
+    <tr><th width="15%">Параметр</th><th>Описание</th></tr>
+    <tr><td>TASKID</td><td>Идентификатор задачи.</td></tr>
+
+    <!--<tr><td>BRETURNASSTRINGS</td><td>Если <b>false</b> (по умолчанию), то возвращается массив идентификаторов допустимых действий, иначе ассоциативный массив, ключами которого являются названия действий (совпадают с названиями констант), а значениями — <i>true</i> (действие разрешено) или <i>false</i> (действие запрещено).</td></tr>-->
+
+  </tbody>
+</table>  
+
+
+<h4>Таблица соответствия идентификаторов и допустимых действий над задачей</h4>
+<table class="tnormal" width="100%"> 
+  <tbody> 
+    <tr><th width="15%">Идентификатор</th><th>Описание</th></tr>
+
+    <tr><td>1</td><td>ACTION_ACCEPT.</td></tr>
+    <tr><td>2</td><td>ACTION_DECLINE.</td></tr>
+    <tr><td>3</td><td>ACTION_COMPLETE.</td></tr>
+    <tr><td>4</td><td>ACTION_APPROVE.</td></tr>
+    <tr><td>5</td><td>ACTION_DISAPPROVE.</td></tr>
+    <tr><td>6</td><td>ACTION_START.</td></tr>
+    <tr><td>7</td><td>ACTION_DELEGATE.</td></tr>
+    <tr><td>8</td><td>ACTION_REMOVE.</td></tr>
+    <tr><td>9</td><td>ACTION_EDIT.</td></tr>
+    <tr><td>10</td><td>ACTION_DEFER.</td></tr>
+    <tr><td>11</td><td>ACTION_RENEW.</td></tr>
+    <tr><td>12</td><td>ACTION_CREATE.</td></tr>
+    <tr><td>13</td><td>ACTION_CHANGE_DEADLINE.</td></tr>
+    <tr><td>14</td><td>ACTION_CHECKLIST_ADD_ITEMS.</td></tr>
+    <tr><td>15</td><td>ACTION_ELAPSED_TIME_ADD.</td></tr>
+    <tr><td>16</td><td>ACTION_CHANGE_DIRECTOR.</td></tr>
+    <tr><td>17</td><td>ACTION_PAUSE.</td></tr>
+    <tr><td>18</td><td>ACTION_START_TIME_TRACKING.</td></tr>
+  </tbody>
+</table>  
+
+ <p></p><div class="note"><b>Внимание!</b> Соблюдение порядка следования параметров в запросе обязательно. При его нарушении запрос будет выполнен с ошибками.</div><p></p>
+
+
+</div>
+
+<!------->
+<div class="tab">
+
+<h3 class="tab-title">Примеры</h3>
+<pre class="syntax" rel="example">BX24.callMethod(
+	'task.item.getallowedactions',
+	[13],
+	function(result)
+	{
+		console.info(result.data());
+		console.log(result);
+	}
+);
+</pre>
+
+</div>
+
+<!------->
+
+
+<br><br>							
+        </div>
+        </body>
+        </html>

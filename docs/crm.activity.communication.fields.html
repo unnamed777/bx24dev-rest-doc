@@ -1,0 +1,32 @@
+<html>
+        <head>
+            <title>crm.activity.communication.fields</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.activity.communication.fields <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/rest_activity/crm_activity_communication_fields.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.activity.communication.fields()</pre>
+
+<p>Возвращает описание коммуникации для активности. Коммуникации хранят номера телефонов в звонках, email-адреса в письмах, имена во встречах.</p>
+
+<h4>Параметры</h4>
+<p>Без параметров</p>
+
+<h4>Пример</h4>
+<pre class="syntax" rel="example">BX24.callMethod(
+	"crm.activity.communication.fields",
+	{},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.dir(result.data());
+	}
+);
+</pre><br><br>							
+        </div>
+        </body>
+        </html>

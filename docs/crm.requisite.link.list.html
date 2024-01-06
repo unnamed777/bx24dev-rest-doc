@@ -1,0 +1,69 @@
+<html>
+        <head>
+            <title>crm.requisite.link.list</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.requisite.link.list <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/requisite/methods/crm_requisite_link_list.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.requisite.link.list(order, filter)</pre>
+
+<p>Возвращает список связей реквизитов. Связи определяют, какие реквизиты выбраны для сделки, предложения или счёта. При этом реквизиты должны принадлежать выбранной компании или контакту. Так, если в счёте в качестве покупателя выбрана компания, то реквизиты покупателя должны принадлежать этой компании. В качестве продавца может быть выбрана только компания из справочника "Реквизиты ваших компаний". Каждая запись связей содержит идентификаторы:</p>
+<ul>
+<li>"
+		<span class="learning-lesson-detail-block js-detail-info-block">
+			<span class="learning-lesson-detail-word js-detail-info-word">ENTITY_TYPE_ID</span>
+			<span class="learning-lesson-detail-body js-detail-info-body">
+				<span class="learning-lesson-detail-body-inner  js-detail-info-body-inner">
+                    <button class="learning-lesson-detail-close-button  js-detail-close-button" type="button"></button>
+                    Идентификаторы типов сущностей возвращает метод <a class="link" href="https://dev.1c-bitrix.ru/rest_help/crm/auxiliary/enum/crm_enum_ownertype.php" target="_blank">crm.enum.ownertype</a>
+                </span>
+			</span>
+		</span>
+		" - ключевое поле. Идентификатор типа сущности, для которой выбраны реквизиты. Возможные типы: "Сделка", "Предложение", "Счёт". Обязательное поле.</li>
+<li>"ENTITY_ID" - ключевое поле. Идентификатор сущности, для которой выбраны реквизиты. Обязательное поле.
+
+</li><li>"REQUISITE_ID"	- идентификатор реквизитов клиента (компании либо контакта).</li>
+<li>"BANK_DETAIL_ID"	- идентификатор банковских реквизитов клиента.</li>
+<li>"MC_REQUISITE_ID"	- идентификатор реквизитов компании продавца.</li>
+<li>"MC_BANK_DETAIL_ID"	- идентификатор банковских реквизитов компании продавца.
+<p>Если идентификатор равен 0, значит соответствующий реквизит не выбран для сделки, предложения или счёта.</p></li>
+</ul>
+
+<h4>Параметры</h4>
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr><th width="15%">Параметр</th> <th>Описание</th></tr>
+
+<tr><td>order</td><td>Поля сортировки.</td></tr>
+<tr><td>filter</td><td>Поля фильтра.</td></tr>
+
+</tbody>
+</table>
+
+<a class="link" name="example"></a>
+<h4>Пример</h4>
+<pre class="syntax" rel="example">BX24.callMethod(
+	"crm.requisite.link.list", {
+		order: {"ENTITY_ID": "ASC"},
+		filter: {"ENTITY_TYPE_ID": 5}    // Счёт
+	},
+	function (result)
+	{
+		if (result.error())
+		{
+			console.error(result.error());
+		}
+		else
+		{
+			console.dir(result.data());
+			if (result.more())
+				result.next();
+		}
+	}
+);
+</pre><br><br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,65 @@
+<html>
+        <head>
+            <title>crm.product.property.list</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.product.property.list <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/products/crm_product_property_list.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.product.property.list(order, filter)</pre>
+
+<p>Возвращает список свойств товаров.</p>
+
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+<tr>
+<td>order</td>
+<td>Поля сортировки.</td>
+</tr>
+<tr>
+<td>filter</td>
+<td>Поля фильтра.</td>
+</tr>
+
+
+	</tbody>
+</table>
+
+
+<h4>Пример</h4>
+<pre class="syntax" rel="example">BX24.callMethod(
+	"crm.product.property.list", {
+		order: {"SORT": "ASC"},
+		filter: {
+			"PROPERTY_TYPE": "S",
+			"USER_TYPE": "HTML"
+		}
+	},
+	function (result)
+	{
+		if (result.error())
+		{
+			console.error(result.error());
+		}
+		else
+		{
+			console.dir(result.data());
+			if (result.more())
+				result.next();
+		}
+	}
+);
+</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

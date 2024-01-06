@@ -1,0 +1,165 @@
+<html>
+        <head>
+            <title>crm.item.list</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.item.list <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/dynamic/methodscrmitem/crm_item_list.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p id="tab-panel-title"></p> 
+
+<div class="tab">
+<h3 class="tab-title">Описание и параметры</h3>
+
+<pre class="syntax">crm.item.list({entityTypeId: number, select:?[] = ['*'], order: ?{} = null, filter: ?{} = null, start: ?number = 0})</pre>
+
+<p>Метод вернет массив элементов смарт-процесса с идентификатором <code>entityTypeId</code>:</p>
+
+<pre class="syntax">{
+	"items": []
+}
+</pre>
+<p>где каждый элемент массива - это структура, аналогичная ответу на запрос <a class="link" href="/rest_help/crm/dynamic/methodscrmitem/crm_item_get.php">crm.item.get</a>.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr><th width="15%">Параметр</th> <th>Описание</th></tr>
+
+<tr><td>entityTypeId</td><td>Идентификатор смарт-процесса.</td></tr>
+<tr><td>select</td><td>Массив имен полей для выборки.</td></tr>
+<tr><td>order</td><td>Список для сортировки, где ключ - поле, а значение - <code>ASC</code> или <code>DESC</code>.</td></tr>
+<tr><td>filter</td><td>Список для фильтрации. Примеры фильтров ниже.</td></tr>
+<tr><td>start</td><td>Сдвиг для постраничной навигации.</td></tr>
+
+</tbody>
+</table>
+
+</div>
+<!------->
+
+<div class="tab">
+<h3 class="tab-title">Обработка select</h3>
+
+<p>Параметр <b>select</b> может содержать в себе только названия полей для этого смарт-процесса или <code>'*'</code>.</p>
+
+<p>По умолчанию будет произведена выборка всех полей. Аналогичное поведение будет, если в списке полей присутствует <code>'*'</code>.</p>
+
+<br>
+<p><b>Примеры:</b></p>
+
+<ul>
+<li>Будут выбраны все поля.
+<pre class="syntax">{
+	"select": ["*", "title", "id"],
+}</pre>
+
+</li>
+
+<li>Будет выбрано только поле <b>id</b>. Названия полей надо передавать в явном виде или <code>'*'</code>.
+<pre class="syntax">{
+	"select": ["id", "uf_*"],
+}</pre>
+
+</li>
+
+<li>Будут выбраны поля <b>id</b>, <b>title</b> и <b>categoryId</b>.
+<pre class="syntax">{
+	"select": ["id", "title", "categoryId"],
+}</pre>
+
+</li>
+
+</ul></div>
+<!------->
+
+<div class="tab">
+<h3 class="tab-title">Примеры фильтра</h3>
+<ol>
+<li>Найти элементы, у которых ответственным является пользователь с идентификатором 4
+
+<pre class="syntax">{
+	"filter": {
+		"=assignedById": "4"
+	}
+}
+</pre>
+</li>
+
+<li>Найти элементы, находящиеся на финальных стадиях, доступные для всех, либо у которых ответственным является пользователь с идентификатором 4
+
+<pre class="syntax">{
+	"filter": {
+		"@stageId": ["DT132_17:SUCCESS", "DT132_17:FAIL"],
+		"0": {
+			"logic": "OR",
+			"0": {
+				"=assignedById": 4
+			},
+			"1": {
+				"=opened": "Y"
+			}
+		}
+	}
+}
+</pre>
+</li>
+
+<li>Найти элементы, у которых заполнено пользовательское поле с кодом <code>ufCrm24_1616150749</code>
+
+<pre class="syntax">{
+	"filter": {
+		"!=ufCrm24_1616150749": ""
+	}
+}
+</pre>
+</li>
+
+<li>Найти элементы, которые были созданы, изменены и сдвинуты в период с 19.03 по 22.03
+
+<pre class="syntax">{
+	"filter": {
+		"&gt;createdTime":"2020-03-19T02:00:00+02:00",
+		"&gt;movedTime":"2020-03-19T02:00:00+02:00",
+		"&gt;updatedTime":"2020-03-19T02:00:00+02:00",
+		"&lt;createdTime":"2020-03-22T02:00:00+02:00",
+		"&lt;movedTime":"2020-03-22T02:00:00+02:00",
+		"&lt;updatedTime":"2020-03-22T02:00:00+02:00"
+	}
+}
+</pre>
+</li>
+
+
+<li>Найти элементы, которые были или созданы, или изменены или сдвинуты в период с 19.03 по 22.03
+
+<pre class="syntax">{
+	"filter": {
+		"logic":"OR",
+		"0":{
+			"&gt;createdTime":"2020-03-19T02:00:00+02:00",
+			"&lt;createdTime":"2020-03-22T02:00:00+02:00"
+		},
+		"1":{
+			"&gt;movedTime":"2020-03-19T02:00:00+02:00",
+			"&lt;movedTime":"2020-03-22T02:00:00+02:00"
+		},
+		"2":{
+			"&gt;updatedTime":"2020-03-19T02:00:00+02:00",
+			"&lt;updatedTime":"2020-03-22T02:00:00+02:00"
+		}
+	}
+}
+</pre>
+</li>
+</ol>
+
+</div>
+<!------->
+
+<br><br>							
+        </div>
+        </body>
+        </html>

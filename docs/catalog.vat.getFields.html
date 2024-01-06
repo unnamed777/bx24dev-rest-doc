@@ -1,0 +1,54 @@
+<html>
+        <head>
+            <title>catalog.vat.getFields</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">catalog.vat.getFields <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/catalog/vat/catalog_vat_getfields.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">catalog.vat.getFields()</pre>
+
+<p>Метод возвращает поля ставки НДС.</p>
+
+<h4>Параметры</h4>
+
+<p>Без параметров.</p>
+
+
+<h4>Примеры</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'catalog.vat.getFields',
+	{},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error().ex);
+		else
+			console.log(result.data());
+	}
+);
+</pre>
+
+
+<h4>Возвращаемые поля</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Поле</th> 	<th>Описание</th><th>Тип</th><th>Примечание</th></tr>
+   
+    <tr> 	<td>active</td> 	<td>Активность.</td><td>char</td><td></td></tr>
+    <tr> 	<td>id</td> 	<td>Идентификатор.</td><td>integer</td><td>Только для чтения.</td></tr>
+    <tr> 	<td>name</td> 	<td>Название.</td><td>string</td><td>Обязательное поле.</td></tr>
+    <tr> 	<td>rate</td> 	<td>Размер ставки НДС.</td><td>double</td><td>Обязательное поле.</td></tr>
+    <tr> 	<td>sort</td> 	<td>Сортировка.</td><td>integer</td><td></td></tr>
+    <tr> 	<td>timestampX</td> 	<td>Дата изменения.</td><td>datetime</td><td></td></tr>
+
+   </tbody>
+ </table>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

@@ -1,0 +1,59 @@
+<html>
+        <head>
+            <title>catalog.store.delete</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">catalog.store.delete <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/catalog/store/catalog_store_delete.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">catalog.store.delete(id)</pre>
+
+<p>Метод для удаления склада.</p>
+
+<p>Если операция успешна, возвращается <code>Y</code> в теле ответа.</p>
+
+<h4>Параметры</h4>
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th><th>Тип</th>
+			<th>Описание</th>      </tr>
+<tr><td>id</td><td>integer</td> <td>Идентификатор склада.</td></tr>
+
+	</tbody>
+</table>
+
+<h4>Примеры</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'catalog.store.delete',
+	{
+		id: 42,
+	},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error());
+		else
+			console.log(result.data());
+	}
+);
+</pre>
+
+<pre class="syntax">$result = CRest::call(
+	'catalog.store.delete',
+	[
+		'id' =&gt; 42,
+	]
+);
+
+echo '&lt;pre&gt;';
+print_r($result);
+echo '&lt;/pre&gt;';
+</pre>
+
+<br>							
+        </div>
+        </body>
+        </html>

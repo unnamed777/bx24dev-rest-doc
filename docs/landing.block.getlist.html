@@ -1,0 +1,55 @@
+<html>
+        <head>
+            <title>landing.block.getlist</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">landing.block.getlist <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/landing/block/blocks/landing_block_getlist.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">landing.block.getlist(lid, params)</pre>
+
+<p>Метод для получение списка блоков страницы. Возвращает массив блоков или ошибку.</p>
+
+<h4>Параметры</h4>
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Метод</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>lid</td> 	<td>Идентификатор страницы, или массив идентификаторов.</td> <td></td></tr>
+   
+    <tr> 	<td>params</td> 	<td>Параметры: <br>
+<b>edit_mode</b> - Режим редактирования (1) или нет (0 - по-умолчанию), вернется разный набор блоков. Обратите внимание, если вы еще <a class="link" href="/rest_help/landing/page/methods/landing_landing_publication.php">не публиковали страницу</a>, в случае режима 0 не вернется ничего.<br>
+<b>delited</b> - удаленные (1) или нет (0) блоки, по-умолчанию выводятся все не удаленные. В режиме <code>edit_mode=0</code> удаленных блоков быть не может. </td> <td></td></tr>
+   
+   </tbody>
+ </table>
+
+<h4>Пример</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'landing.block.getlist',
+	{
+		lid: 313,
+		params: {
+			edit_mode: 0
+		}
+	},
+	function(result)
+	{
+		if(result.error())
+		{
+			console.error(result.error());
+		}
+		else
+		{
+			console.info(result.data());
+		}
+	}
+);</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>

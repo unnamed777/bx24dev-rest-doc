@@ -1,0 +1,48 @@
+<html>
+        <head>
+            <title>imconnector.send.status.reading</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">imconnector.send.status.reading <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/imconnector/methods/imconnector_send_status_reading.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Метод подтверждения прочтения сообщения из ОЛ во внешнюю систему.</p>
+
+<h4>Параметры</h4>
+
+
+<table width="100%" class="tnormal"> 
+  <tbody> 
+    <tr> 	<th width="27%">Параметр</th> 	<th>Описание</th> <th width="8%">С версии</th></tr>
+   
+    <tr> 	<td>CONNECTOR </td> 	<td>ID коннектора (который был указан при регистрации обработчика).
+</td> <td></td></tr>   
+
+    <tr> 	<td>LINE</td> 	<td>ID открытой линии.
+</td> <td></td></tr>   
+
+    <tr> 	<td>MESSAGES</td> 	<td>Массив сообщений, где сообщения описываются массивом следующего формата:
+
+<pre class="syntax">array(
+	array(
+		'im',//Пересылается элемент 'im' из входящего сообщения ОЛ
+		'message' =&gt; array(
+			'id'//Массив ID во внешней системе. Именно массив, а не единичное 
+				//значение, даже если ID один.
+		),
+		'chat' =&gt; array(
+			'id'//ID чата во внешней системе.
+		),
+	),
+	array(...),
+);
+</pre>
+
+</td> <td></td></tr>   
+
+   </tbody>
+ </table>							
+        </div>
+        </body>
+        </html>

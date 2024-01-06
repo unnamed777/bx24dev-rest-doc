@@ -1,0 +1,49 @@
+<html>
+        <head>
+            <title>catalog.product.download</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">catalog.product.download <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/catalog/product/catalog_product_download.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">catalog.product.download(fileld, productId, fieldName)</pre>
+
+<p>Метод скачивания файлов товара торгового каталога по переданным параметрам.</p>
+
+<p>Если проверка успешна, возвращается <code>true</code>  в теле ответа.</p>
+
+<h4>Параметры</h4>
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th><th>Тип</th>
+			<th>Описание</th>      </tr>
+<tr><td>fileId</td><td>string</td> <td>Номер зарегистрированного файла.</td></tr>
+<tr><td>productId</td><td>string</td> <td>Номер товара торгового каталога.</td></tr>
+<tr><td>fieldName</td><td>string</td> <td>Имя поля (свойства или поля элемента информационного блока) в котором хранится файл.</td></tr>
+	</tbody>
+</table>
+
+<h4>Примеры</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'catalog.product.download', 
+	{
+		fields:{
+			fileId: 79,
+			productId: 8,
+			fieldName: 'property98'
+		}
+	},
+	function(result) {
+		if (result.error())
+			console.error(result.error().ex);
+		else
+			console.log(result.data());
+	}
+);
+</pre>							
+        </div>
+        </body>
+        </html>

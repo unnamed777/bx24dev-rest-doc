@@ -1,0 +1,48 @@
+<html>
+        <head>
+            <title>catalog.productImage.delete</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">catalog.productImage.delete <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/catalog/productimage/catalog_productimage_delete.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">catalog.productImage.delete(productId, id)</pre>
+
+<p>Метод удаляет изображение из товара или торгового предложения.</p>
+
+<p>Если операция успешна, возвращается <code>true</code> в теле ответа.</p>
+
+<h4>Параметры</h4>
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th><th>Тип</th>
+			<th>Описание</th>      </tr>
+<tr><td>productId</td><td>string</td> <td>Идентификатор товара или предложения. Обязательный параметр.</td></tr>
+<tr><td>id</td><td>integer</td> <td>Идентификатор изображения. Обязательный параметр.</td></tr>
+	</tbody>
+</table>
+
+<h4>Примеры</h4>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'catalog.productImage.delete',
+	{
+		productId: 1,
+		id: 1
+	},
+	function(result)
+	{
+		if(result.error())
+			console.error(result.error().ex);
+		else
+			console.log(result.data());
+	}
+);
+</pre>
+
+<br>							
+        </div>
+        </body>
+        </html>

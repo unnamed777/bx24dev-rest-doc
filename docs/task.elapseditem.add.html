@@ -1,0 +1,62 @@
+<html>
+        <head>
+            <title>task.elapseditem.add</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">task.elapseditem.add <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/tasks/task/elapseditem/add.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p class="note_blue">
+Scope: <span class="bg_blue">task</span> Права на выполнение: <span class="bg_orange">для всех</span>
+</p>
+
+<pre class="syntax">task.elapseditem.add(taskId, arFields)</pre>
+
+Добавляет затраченное время к задаче. Возвращает идентификатор добавленной записи. 
+
+<h4>Параметры функции</h4>
+ 
+<table class="tnormal" width="100%"> 
+  <tbody> 
+    <tr><th width="15%">Параметр</th><th>Описание</th></tr>
+   
+    <tr><td>TASKID</td><td>Идентификатор задачи.</td></tr>
+   
+    <tr><td>ARFIELDS</td><td>Массив, содержащий записи о пользователе, времени и комментарии (<b>SECONDS</b> , <b>COMMENT_TEXT</b>, <b>USER_ID</b> и <b>CREATED_DATE</b>).</td></tr>
+   	 </tbody>
+ </table>
+ 	 	 
+ <p></p><div class="note"><b>Внимание!</b> Соблюдение порядка следования параметров в запросе обязательно. При его нарушении запрос будет выполнен с ошибками.</div><p></p>
+
+<h4>Пример</h4>
+ 
+<pre class="syntax" rel="example">BX24.callMethod(
+	'task.elapseditem.add',
+	[1, {SECONDS: 113, COMMENT_TEXT: 'текст комментария', CREATED_DATE: '2016-01-20 17:26:37'}],
+	function(result)
+	{
+		console.info(result.data());
+		console.log(result);
+	}
+);
+</pre>
+
+<p>Пример добавления времени</p>
+
+<pre class="syntax" rel="example">BX24.callMethod(
+	'task.elapseditem.add',
+	[315, {SECONDS: 113, COMMENT_TEXT: 'добавили из реста', CREATED_DATE: '2018-02-16 17:26:37', USER_ID: 6}],
+	function(result)
+	{
+		console.info(result.data());
+		console.log(result);
+	}
+);</pre>
+
+
+<br> 
+<br>							
+        </div>
+        </body>
+        </html>

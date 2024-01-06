@@ -1,0 +1,51 @@
+<html>
+        <head>
+            <title>calendar.user.settings.set</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">calendar.user.settings.set <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/calendar/calendar_user_settings_set.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<p>Сохраняет пользовательские настройки календаря.</p>
+
+<h4>Параметры функции</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+  
+		<tr>
+			<td>* settings</td>
+			<td>Список пользовательских настроек.</td>
+		</tr>
+		
+<tr><td colspan="2"><b>* - обязательные параметры</b></td></tr>
+	</tbody>
+</table>
+
+<h4>Возвращаемые значения</h4>
+
+<p>Возвращает <b>true</b> в случае успешного выполнения.</p>
+
+
+<h4>Пример использования</h4>
+<pre class="syntax" rel="example">BX24.callMethod("calendar.user.settings.set",
+	{
+		settings: {
+			tabId: 'month',
+			meetSection: '23',
+			blink: true,
+			showDeclined: false,
+			showMuted: true
+		}
+	}
+);
+</pre>
+<br><br>							
+        </div>
+        </body>
+        </html>

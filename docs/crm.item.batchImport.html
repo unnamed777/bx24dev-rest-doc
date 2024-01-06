@@ -1,0 +1,78 @@
+<html>
+        <head>
+            <title>crm.item.batchImport</title>
+            <link href="style.css" type="text/css" rel="stylesheet"/>
+        </head>
+        <body>
+        <h1 class="title">crm.item.batchImport <a class="original-doc-link" href="https://dev.1c-bitrix.ru/rest_help/crm/import/crm_item_batchImport.php" target="_blank">↗︎</a></h1>
+        <div class="content">
+            
+								<pre class="syntax">crm.item.batchImport({entityTypeId: number, $data: ?{})</pre>
+
+<p>Групповой импорт записей.</p>
+
+<h4>Параметры</h4>
+
+<table class="tnormal" width="100%">
+	<tbody>
+		<tr>
+			<th width="15%">Параметр</th>
+			<th>Описание</th>
+		</tr>
+<tr>
+
+<td>entityTypeId</td><td>идентификатор типа элемента (<a class="link" href="/rest_help/crm/import/index.php">Какие сущности поддерживаются?</a>)</td></tr>
+<tr><td>data</td><td>массив значений полей элементов. Можно рассматривать его как массив, каждый элемент которого содержит набор полей <code>fields</code>, описанный в методе <a class="link" href="/rest_help/crm/import/crm_item_import.php">crm.item.import</a>.</td></tr>
+	</tbody>
+</table>
+
+<p>Метод вернет массив <code>data</code>, содержащий те же ключи, которые были в массиве <code>data</code> запроса. Каждый элемент этого массива будет содержать результат импорта конкретного элемента: массив <code>item</code> с идентификатором созданного элемента в случае успеха, либо сообщение об ошибке.</p>
+
+<p>Логика добавления элементов работает по аналогии с методом <a class="link" href="/rest_help/crm/import/crm_item_import.php">crm.item.import</a>.</p>
+
+<p>
+</p><div class="note"><b>Внимание!</b> В одном запросе допустимо импортировать максимум 20 элементов.</div>
+<p></p>
+<br>
+
+
+<h4>Пример</h4>
+
+<p>Импорт сделок:</p>
+
+<pre class="syntax" rel="example">{
+	"entityTypeId": 2,
+	"data": [
+		{
+			"title": "Моя сделка",
+			"categoryId": 0
+		},
+		{
+			"title": ""
+		}
+	]
+}
+</pre>
+<br>
+<b>Пример результата:</b>
+
+                <pre class="syntax" rel="example">{
+	"result": {
+		"items": [
+			{
+				"item": {
+					"id": 15
+				}
+			},
+			{
+				"error": "CRM_FIELD_ERROR_REQUIRED",
+				"error_description": "Поле \"Название\" обязательно для заполнения"
+			}
+		]
+	}
+}</pre>
+
+<br><br>							
+        </div>
+        </body>
+        </html>
